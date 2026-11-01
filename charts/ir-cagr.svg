@@ -1,0 +1,755 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="345pt" height="202.5pt" viewBox="0 0 345 202.5" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 202.5 
+L 345 202.5 
+L 345 0 
+L 0 0 
+L 0 202.5 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 96 10.5 
+L 286.773926 10.5 
+Q 291.273926 10.5 291.273926 15 
+L 291.273926 25.5 
+Q 291.273926 30 286.773926 30 
+L 96 30 
+Q 96 30 96 30 
+L 96 10.5 
+Q 96 10.5 96 10.5 
+z
+" clip-path="url(#p2ac9d5c139)" style="fill: #e9be8c"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 96 51 
+L 208.981874 51 
+Q 213.481874 51 213.481874 55.5 
+L 213.481874 66 
+Q 213.481874 70.5 208.981874 70.5 
+L 96 70.5 
+Q 96 70.5 96 70.5 
+L 96 51 
+Q 96 51 96 51 
+z
+" clip-path="url(#p2ac9d5c139)" style="fill: #e9be8c"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 96 91.5 
+L 205.806688 91.5 
+Q 210.306688 91.5 210.306688 96 
+L 210.306688 106.5 
+Q 210.306688 111 205.806688 111 
+L 96 111 
+Q 96 111 96 111 
+L 96 91.5 
+Q 96 91.5 96 91.5 
+z
+" clip-path="url(#p2ac9d5c139)" style="fill: #e9be8c"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 96 132 
+L 195.487334 132 
+Q 199.987334 132 199.987334 136.5 
+L 199.987334 147 
+Q 199.987334 151.5 195.487334 151.5 
+L 96 151.5 
+Q 96 151.5 96 151.5 
+L 96 132 
+Q 96 132 96 132 
+z
+" clip-path="url(#p2ac9d5c139)" style="fill: #e9be8c"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 96 172.5 
+L 183.580388 172.5 
+Q 188.080388 172.5 188.080388 177 
+L 188.080388 187.5 
+Q 188.080388 192 183.580388 192 
+L 96 192 
+Q 96 192 96 192 
+L 96 172.5 
+Q 96 172.5 96 172.5 
+z
+" clip-path="url(#p2ac9d5c139)" style="fill: #e9be8c"/>
+   </g>
+   <g id="text_1">
+    <!-- Data Bridge -->
+    <g style="fill: #5b4b3f" transform="translate(21.457031 24.57) scale(0.12 -0.12)">
+     <defs>
+      <path id="Pretendard-Medium-31" d="M 1931 0 
+C 3306 0 4106 856 4106 2269 
+C 4106 3675 3306 4525 1975 4525 
+L 463 4525 
+L 463 0 
+L 1931 0 
+z
+M 1150 600 
+L 1150 3925 
+L 1931 3925 
+C 2919 3925 3425 3331 3425 2269 
+C 3425 1200 2919 600 1894 600 
+L 1150 600 
+z
+" transform="scale(0.015625)"/>
+      <path id="Pretendard-Medium-1a0" d="M 250 956 
+C 250 294 750 -75 1394 -75 
+C 1956 -75 2269 206 2400 463 
+L 2425 463 
+L 2425 0 
+L 3075 0 
+L 3075 2256 
+C 3075 3238 2281 3438 1744 3438 
+C 944 3438 419 3031 356 2469 
+L 1019 2469 
+C 1088 2719 1325 2900 1719 2900 
+C 2175 2900 2406 2675 2406 2294 
+L 2413 2025 
+C 2253 2019 1744 1991 1519 1975 
+C 906 1931 250 1731 250 956 
+z
+M 900 950 
+C 900 1288 1175 1450 1613 1481 
+L 2413 1538 
+L 2413 1225 
+C 2413 819 2088 456 1544 456 
+C 1169 456 900 625 900 950 
+z
+" transform="scale(0.015625)"/>
+      <path id="Pretendard-Medium-2d3" d="M 1994 3394 
+L 1300 3394 
+L 1300 4206 
+L 638 4206 
+L 638 3394 
+L 138 3394 
+L 138 2863 
+L 638 2863 
+L 638 863 
+C 631 244 1100 -44 1625 -44 
+C 1806 -44 1950 -31 2044 -19 
+L 2044 563 
+C 1950 556 1800 544 1706 544 
+C 1494 550 1300 619 1300 1000 
+L 1300 2863 
+L 1994 2863 
+L 1994 3394 
+z
+" transform="scale(0.015625)"/>
+      <path id="Pretendard-Medium-2" transform="scale(0.015625)"/>
+      <path id="Pretendard-Medium-23" d="M 463 0 
+L 2194 0 
+C 3250 0 3725 525 3725 1219 
+C 3725 1919 3238 2313 2788 2338 
+L 2788 2381 
+C 3206 2488 3550 2775 3550 3338 
+C 3550 4006 3081 4525 2119 4525 
+L 463 4525 
+L 463 0 
+z
+M 2131 588 
+L 1150 588 
+L 1150 2031 
+L 2156 2031 
+C 2700 2031 3044 1681 3044 1250 
+C 3044 875 2781 588 2131 588 
+z
+M 2063 2569 
+L 1150 2569 
+L 1150 3938 
+L 2075 3938 
+C 2619 3938 2875 3656 2875 3281 
+C 2875 2850 2519 2569 2063 2569 
+z
+" transform="scale(0.015625)"/>
+      <path id="Pretendard-Medium-2b4" d="M 406 0 
+L 1075 0 
+L 1075 2069 
+C 1075 2513 1419 2831 1881 2831 
+C 2019 2831 2175 2806 2231 2794 
+L 2231 3431 
+C 2163 3438 2031 3444 1950 3444 
+C 1550 3444 1213 3219 1088 2856 
+L 1050 2856 
+L 1050 3394 
+L 406 3394 
+L 406 0 
+z
+" transform="scale(0.015625)"/>
+      <path id="Pretendard-Medium-23a" d="M 406 0 
+L 1075 0 
+L 1075 3394 
+L 406 3394 
+L 406 0 
+z
+M 744 3919 
+C 969 3919 1163 4094 1163 4313 
+C 1163 4531 969 4706 744 4706 
+C 513 4706 319 4531 319 4313 
+C 319 4094 513 3919 744 3919 
+z
+" transform="scale(0.015625)"/>
+      <path id="Pretendard-Medium-1d7" d="M 1675 -69 
+C 2294 -69 2538 306 2663 531 
+L 2713 531 
+L 2713 0 
+L 3363 0 
+L 3363 4525 
+L 2694 4525 
+L 2694 2844 
+L 2663 2844 
+C 2544 3056 2313 3438 1681 3438 
+C 863 3438 256 2794 256 1688 
+C 256 594 856 -69 1675 -69 
+z
+M 1825 500 
+C 1244 500 938 1019 938 1700 
+C 938 2369 1231 2869 1825 2869 
+C 2400 2869 2713 2406 2713 1700 
+C 2713 988 2394 500 1825 500 
+z
+" transform="scale(0.015625)"/>
+      <path id="Pretendard-Medium-219" d="M 1831 -1344 
+C 2706 -1344 3363 -944 3363 -75 
+L 3363 3394 
+L 2713 3394 
+L 2713 2844 
+L 2669 2844 
+C 2544 3056 2313 3438 1681 3438 
+C 863 3438 256 2813 256 1731 
+C 256 650 875 50 1675 50 
+C 2300 50 2544 400 2663 619 
+L 2706 619 
+L 2706 -50 
+C 2706 -581 2369 -806 1838 -806 
+C 1394 -806 1094 -650 1031 -331 
+L 350 -331 
+C 413 -963 975 -1344 1831 -1344 
+z
+M 1825 600 
+C 1244 600 938 1056 938 1719 
+C 938 2369 1231 2869 1825 2869 
+C 2400 2869 2713 2406 2713 1719 
+C 2713 1019 2394 600 1825 600 
+z
+" transform="scale(0.015625)"/>
+      <path id="Pretendard-Medium-1e9" d="M 1869 -69 
+C 2613 -69 3138 300 3288 850 
+L 2613 850 
+C 2500 644 2256 481 1875 481 
+C 1316 481 938 850 919 1494 
+L 3331 1494 
+L 3331 1731 
+C 3331 2956 2600 3438 1825 3438 
+C 881 3438 256 2719 256 1675 
+C 256 619 869 -69 1869 -69 
+z
+M 925 1994 
+C 950 2475 1297 2888 1831 2888 
+C 2344 2888 2675 2513 2675 1994 
+L 925 1994 
+z
+" transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#Pretendard-Medium-31"/>
+     <use xlink:href="#Pretendard-Medium-1a0" transform="translate(69.046875 0)"/>
+     <use xlink:href="#Pretendard-Medium-2d3" transform="translate(123.34375 0)"/>
+     <use xlink:href="#Pretendard-Medium-1a0" transform="translate(158.3125 0)"/>
+     <use xlink:href="#Pretendard-Medium-2" transform="translate(212.609375 0)"/>
+     <use xlink:href="#Pretendard-Medium-23" transform="translate(237.03125 0)"/>
+     <use xlink:href="#Pretendard-Medium-2b4" transform="translate(299.53125 0)"/>
+     <use xlink:href="#Pretendard-Medium-23a" transform="translate(335.859375 0)"/>
+     <use xlink:href="#Pretendard-Medium-1d7" transform="translate(359 0)"/>
+     <use xlink:href="#Pretendard-Medium-219" transform="translate(418.765625 0)"/>
+     <use xlink:href="#Pretendard-Medium-1e9" transform="translate(477.65625 0)"/>
+    </g>
+   </g>
+   <g id="text_2">
+    <!-- 12.3% -->
+    <g style="fill: #2a1f18" transform="translate(298.773926 25.38) scale(0.1425 -0.1425)">
+     <defs>
+      <path id="Pretendard-Bold-32ca" d="M 2306 4525 
+L 1419 4525 
+L 300 3813 
+L 300 2981 
+L 1338 3631 
+L 1363 3631 
+L 1363 0 
+L 2306 0 
+L 2306 4525 
+z
+" transform="scale(0.015625)"/>
+      <path id="Pretendard-Bold-32cb" d="M 356 0 
+L 3594 0 
+L 3594 775 
+L 1663 775 
+L 1663 800 
+L 2350 1469 
+C 3281 2313 3531 2738 3531 3250 
+C 3531 4038 2888 4588 1919 4588 
+C 963 4588 306 4025 313 3138 
+L 1206 3138 
+C 1206 3569 1481 3838 1906 3838 
+C 2319 3838 2625 3588 2625 3188 
+C 2625 2831 2400 2581 1975 2175 
+L 350 681 
+L 356 0 
+z
+" transform="scale(0.015625)"/>
+      <path id="Pretendard-Bold-3359" d="M 906 -56 
+C 1181 -56 1425 181 1425 469 
+C 1425 756 1181 988 906 988 
+C 613 988 375 756 381 469 
+C 375 181 613 -56 906 -56 
+z
+" transform="scale(0.015625)"/>
+      <path id="Pretendard-Bold-32cc" d="M 2031 -63 
+C 3050 -63 3788 494 3781 1269 
+C 3788 1831 3419 2238 2756 2319 
+L 2756 2356 
+C 3263 2444 3619 2806 3613 3313 
+C 3619 4031 2988 4588 2044 4588 
+C 1119 4588 413 4050 400 3269 
+L 1300 3269 
+C 1313 3613 1644 3838 2044 3838 
+C 2444 3838 2706 3600 2706 3256 
+C 2706 2900 2394 2656 1950 2656 
+L 1531 2656 
+L 1531 1963 
+L 1950 1963 
+C 2481 1963 2813 1700 2806 1331 
+C 2813 969 2488 713 2038 713 
+C 1600 713 1275 938 1256 1275 
+L 306 1275 
+C 325 488 1038 -63 2031 -63 
+z
+" transform="scale(0.015625)"/>
+      <path id="Pretendard-Bold-3623" d="M 1544 2263 
+C 2213 2263 2581 2750 2588 3469 
+C 2581 4188 2225 4681 1544 4681 
+C 881 4681 500 4188 500 3469 
+C 500 2756 869 2263 1544 2263 
+z
+M 1544 2819 
+C 1281 2819 1138 3081 1138 3469 
+C 1138 3850 1275 4125 1544 4125 
+C 1825 4125 1944 3856 1950 3469 
+C 1944 3081 1813 2819 1544 2819 
+z
+M 4594 -150 
+C 5269 -150 5638 338 5644 1056 
+C 5638 1775 5275 2269 4594 2269 
+C 3938 2269 3556 1775 3556 1056 
+C 3556 344 3925 -150 4594 -150 
+z
+M 4594 406 
+C 4338 406 4194 663 4194 1056 
+C 4194 1438 4331 1706 4594 1706 
+C 4881 1713 5000 1444 5006 1056 
+C 5000 663 4869 406 4594 406 
+z
+M 1150 0 
+L 1850 0 
+L 4963 4525 
+L 4263 4525 
+L 1150 0 
+z
+" transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#Pretendard-Bold-32ca"/>
+     <use xlink:href="#Pretendard-Bold-32cb" transform="translate(46.875 0)"/>
+     <use xlink:href="#Pretendard-Bold-3359" transform="translate(107.90625 0)"/>
+     <use xlink:href="#Pretendard-Bold-32cc" transform="translate(133.875 0)"/>
+     <use xlink:href="#Pretendard-Bold-3623" transform="translate(197.75 0)"/>
+    </g>
+   </g>
+   <g id="text_3">
+    <!-- Grand View -->
+    <g style="fill: #5b4b3f" transform="translate(22.054688 65.07) scale(0.12 -0.12)">
+     <defs>
+      <path id="Pretendard-Medium-63" d="M 3519 3094 
+L 4225 3094 
+C 4069 3975 3319 4588 2338 4588 
+C 1169 4588 313 3706 313 2263 
+C 313 831 1144 -63 2369 -63 
+C 3469 -63 4256 663 4256 1806 
+L 4256 2319 
+L 2475 2319 
+L 2475 1750 
+L 3588 1750 
+C 3575 1025 3097 569 2375 569 
+C 1575 569 994 1169 994 2263 
+C 994 3356 1581 3956 2344 3956 
+C 2944 3956 3350 3631 3519 3094 
+z
+" transform="scale(0.015625)"/>
+      <path id="Pretendard-Medium-276" d="M 1075 2013 
+C 1075 2556 1406 2863 1863 2863 
+C 2313 2863 2581 2569 2581 2075 
+L 2581 0 
+L 3244 0 
+L 3244 2156 
+C 3244 3000 2788 3438 2088 3438 
+C 1581 3438 1250 3200 1088 2838 
+L 1050 2838 
+L 1050 3394 
+L 406 3394 
+L 406 0 
+L 1075 0 
+L 1075 2013 
+z
+" transform="scale(0.015625)"/>
+      <path id="Pretendard-Medium-120" d="M 863 4525 
+L 119 4525 
+L 1744 0 
+L 2538 0 
+L 4169 4525 
+L 3425 4525 
+L 2169 844 
+L 2119 844 
+L 863 4525 
+z
+" transform="scale(0.015625)"/>
+      <path id="Pretendard-Medium-32d" d="M 1138 0 
+L 1825 0 
+L 2506 2444 
+L 2556 2444 
+L 3244 0 
+L 3925 0 
+L 4919 3394 
+L 4231 3394 
+L 3575 919 
+L 3538 919 
+L 2881 3394 
+L 2194 3394 
+L 1531 906 
+L 1494 906 
+L 831 3394 
+L 144 3394 
+L 1138 0 
+z
+" transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#Pretendard-Medium-63"/>
+     <use xlink:href="#Pretendard-Medium-2b4" transform="translate(71.6875 0)"/>
+     <use xlink:href="#Pretendard-Medium-1a0" transform="translate(107.484375 0)"/>
+     <use xlink:href="#Pretendard-Medium-276" transform="translate(161.78125 0)"/>
+     <use xlink:href="#Pretendard-Medium-1d7" transform="translate(218.8125 0)"/>
+     <use xlink:href="#Pretendard-Medium-2" transform="translate(278.578125 0)"/>
+     <use xlink:href="#Pretendard-Medium-120" transform="translate(303 0)"/>
+     <use xlink:href="#Pretendard-Medium-23a" transform="translate(369.890625 0)"/>
+     <use xlink:href="#Pretendard-Medium-1e9" transform="translate(393.03125 0)"/>
+     <use xlink:href="#Pretendard-Medium-32d" transform="translate(448.953125 0)"/>
+    </g>
+   </g>
+   <g id="text_4">
+    <!-- 7.4% -->
+    <g style="fill: #2a1f18" transform="translate(220.981874 65.88) scale(0.1425 -0.1425)">
+     <defs>
+      <path id="Pretendard-Bold-32d0" d="M 531 0 
+L 1506 0 
+L 3413 3744 
+L 3413 4525 
+L 219 4525 
+L 219 3756 
+L 2438 3756 
+L 2438 3725 
+L 531 0 
+z
+" transform="scale(0.015625)"/>
+      <path id="Pretendard-Bold-32cd" d="M 281 800 
+L 2481 800 
+L 2481 0 
+L 3375 0 
+L 3375 800 
+L 3950 800 
+L 3950 1556 
+L 3375 1556 
+L 3375 4525 
+L 2194 4525 
+L 281 1544 
+L 281 800 
+z
+M 1231 1556 
+L 1231 1594 
+L 2450 3494 
+L 2494 3494 
+L 2494 1556 
+L 1231 1556 
+z
+" transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#Pretendard-Bold-32d0"/>
+     <use xlink:href="#Pretendard-Bold-3359" transform="translate(45.359375 0)"/>
+     <use xlink:href="#Pretendard-Bold-32cd" transform="translate(73.578125 0)"/>
+     <use xlink:href="#Pretendard-Bold-3623" transform="translate(139.296875 0)"/>
+    </g>
+   </g>
+   <g id="text_5">
+    <!-- GM Insights -->
+    <g style="fill: #5b4b3f" transform="translate(20.601562 105.57) scale(0.12 -0.12)">
+     <defs>
+      <path id="Pretendard-Medium-a0" d="M 463 4525 
+L 463 0 
+L 1119 0 
+L 1119 3275 
+L 1156 3275 
+L 2488 6 
+L 3031 6 
+L 4356 3269 
+L 4400 3269 
+L 4400 0 
+L 5056 0 
+L 5056 4525 
+L 4219 4525 
+L 2788 1019 
+L 2731 1019 
+L 1300 4525 
+L 463 4525 
+z
+" transform="scale(0.015625)"/>
+      <path id="Pretendard-Medium-76" d="M 1150 4525 
+L 463 4525 
+L 463 0 
+L 1150 0 
+L 1150 4525 
+z
+" transform="scale(0.015625)"/>
+      <path id="Pretendard-Medium-2c3" d="M 2313 2469 
+L 2956 2469 
+C 2888 3050 2419 3438 1663 3438 
+C 875 3438 350 3025 350 2419 
+C 350 1950 669 1625 1281 1488 
+L 1813 1375 
+C 2169 1294 2331 1150 2338 931 
+C 2331 644 2056 469 1625 469 
+C 1225 469 988 619 931 925 
+L 250 925 
+C 331 294 819 -69 1631 -69 
+C 2500 -69 3013 369 3019 981 
+C 3013 1463 2713 1763 2088 1900 
+L 1550 2025 
+C 1175 2113 1013 2256 1019 2456 
+C 1013 2713 1288 2913 1669 2913 
+C 2038 2913 2250 2738 2313 2469 
+z
+" transform="scale(0.015625)"/>
+      <path id="Pretendard-Medium-22b" d="M 1075 2013 
+C 1075 2556 1419 2863 1888 2863 
+C 2338 2863 2606 2575 2606 2075 
+L 2606 0 
+L 3275 0 
+L 3275 2156 
+C 3275 3006 2813 3438 2113 3438 
+C 1581 3438 1269 3206 1106 2838 
+L 1063 2838 
+L 1063 4525 
+L 406 4525 
+L 406 0 
+L 1075 0 
+L 1075 2013 
+z
+" transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#Pretendard-Medium-63"/>
+     <use xlink:href="#Pretendard-Medium-a0" transform="translate(71.6875 0)"/>
+     <use xlink:href="#Pretendard-Medium-2" transform="translate(157.921875 0)"/>
+     <use xlink:href="#Pretendard-Medium-76" transform="translate(182.34375 0)"/>
+     <use xlink:href="#Pretendard-Medium-276" transform="translate(207.4375 0)"/>
+     <use xlink:href="#Pretendard-Medium-2c3" transform="translate(264.46875 0)"/>
+     <use xlink:href="#Pretendard-Medium-23a" transform="translate(315.453125 0)"/>
+     <use xlink:href="#Pretendard-Medium-219" transform="translate(338.59375 0)"/>
+     <use xlink:href="#Pretendard-Medium-22b" transform="translate(397.484375 0)"/>
+     <use xlink:href="#Pretendard-Medium-2d3" transform="translate(454.90625 0)"/>
+     <use xlink:href="#Pretendard-Medium-2c3" transform="translate(489 0)"/>
+    </g>
+   </g>
+   <g id="text_6">
+    <!-- 7.2% -->
+    <g style="fill: #2a1f18" transform="translate(217.806688 106.38) scale(0.1425 -0.1425)">
+     <use xlink:href="#Pretendard-Bold-32d0"/>
+     <use xlink:href="#Pretendard-Bold-3359" transform="translate(45.359375 0)"/>
+     <use xlink:href="#Pretendard-Bold-32cb" transform="translate(73.578125 0)"/>
+     <use xlink:href="#Pretendard-Bold-3623" transform="translate(134.609375 0)"/>
+    </g>
+   </g>
+   <g id="text_7">
+    <!-- MRF -->
+    <g style="fill: #5b4b3f" transform="translate(61.054688 146.07) scale(0.12 -0.12)">
+     <defs>
+      <path id="Pretendard-Medium-dd" d="M 463 0 
+L 1150 0 
+L 1150 1706 
+L 2075 1706 
+L 2119 1706 
+L 3038 0 
+L 3819 0 
+L 2819 1831 
+C 3369 2034 3644 2497 3644 3106 
+C 3644 3938 3125 4525 2075 4525 
+L 463 4525 
+L 463 0 
+z
+M 1150 2300 
+L 1150 3938 
+L 2006 3938 
+C 2675 3938 2950 3619 2950 3106 
+C 2950 2594 2675 2300 2006 2300 
+L 1150 2300 
+z
+" transform="scale(0.015625)"/>
+      <path id="Pretendard-Medium-60" d="M 463 0 
+L 1150 0 
+L 1150 1975 
+L 3069 1975 
+L 3069 2563 
+L 1150 2563 
+L 1150 3931 
+L 3269 3931 
+L 3269 4525 
+L 463 4525 
+L 463 0 
+z
+" transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#Pretendard-Medium-a0"/>
+     <use xlink:href="#Pretendard-Medium-dd" transform="translate(86.234375 0)"/>
+     <use xlink:href="#Pretendard-Medium-60" transform="translate(147.859375 0)"/>
+    </g>
+   </g>
+   <g id="text_8">
+    <!-- 6.55% -->
+    <g style="fill: #2a1f18" transform="translate(207.487334 146.88) scale(0.1425 -0.1425)">
+     <defs>
+      <path id="Pretendard-Bold-32cf" d="M 2106 -63 
+C 3125 -69 3819 594 3819 1513 
+C 3819 2363 3213 2975 2400 2975 
+C 1900 2975 1450 2738 1244 2338 
+L 1200 2338 
+C 1206 3225 1531 3781 2144 3781 
+C 2506 3781 2769 3588 2844 3269 
+L 3769 3269 
+C 3675 4013 3056 4588 2144 4588 
+C 1013 4588 281 3681 281 2156 
+C 281 500 1169 -56 2106 -63 
+z
+M 2100 681 
+C 1638 681 1300 1044 1294 1488 
+C 1300 1931 1650 2294 2113 2294 
+C 2575 2294 2906 1938 2906 1488 
+C 2906 1031 2563 681 2100 681 
+z
+" transform="scale(0.015625)"/>
+      <path id="Pretendard-Bold-32ce" d="M 2019 -63 
+C 3038 -63 3731 594 3731 1506 
+C 3731 2375 3113 2994 2281 2994 
+C 1881 2994 1544 2838 1375 2613 
+L 1338 2613 
+L 1463 3756 
+L 3475 3756 
+L 3475 4525 
+L 688 4525 
+L 444 1919 
+L 1294 1919 
+C 1431 2175 1669 2300 2006 2300 
+C 2481 2294 2819 1963 2819 1481 
+C 2819 1013 2488 681 2019 681 
+C 1625 681 1300 919 1281 1275 
+L 369 1275 
+C 388 494 1075 -63 2019 -63 
+z
+" transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#Pretendard-Bold-32cf"/>
+     <use xlink:href="#Pretendard-Bold-3359" transform="translate(61.34375 0)"/>
+     <use xlink:href="#Pretendard-Bold-32ce" transform="translate(88.984375 0)"/>
+     <use xlink:href="#Pretendard-Bold-32ce" transform="translate(151.6875 0)"/>
+     <use xlink:href="#Pretendard-Bold-3623" transform="translate(214.390625 0)"/>
+    </g>
+   </g>
+   <g id="text_9">
+    <!-- GIA -->
+    <g style="fill: #5b4b3f" transform="translate(65.859375 186.57) scale(0.12 -0.12)">
+     <defs>
+      <path id="Pretendard-Medium-3" d="M 850 0 
+L 1263 1194 
+L 3025 1194 
+L 3438 0 
+L 4169 0 
+L 2538 4525 
+L 1744 4525 
+L 119 0 
+L 850 0 
+z
+M 1463 1769 
+L 2125 3700 
+L 2156 3700 
+L 2825 1769 
+L 1463 1769 
+z
+" transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#Pretendard-Medium-63"/>
+     <use xlink:href="#Pretendard-Medium-76" transform="translate(71.6875 0)"/>
+     <use xlink:href="#Pretendard-Medium-3" transform="translate(96.78125 0)"/>
+    </g>
+   </g>
+   <g id="text_10">
+    <!-- 5.8% -->
+    <g style="fill: #2a1f18" transform="translate(195.580388 187.38) scale(0.1425 -0.1425)">
+     <defs>
+      <path id="Pretendard-Bold-32d1" d="M 2056 -63 
+C 3088 -63 3831 481 3831 1219 
+C 3831 1788 3388 2250 2838 2338 
+L 2838 2369 
+C 3313 2463 3656 2869 3663 3369 
+C 3656 4075 2981 4588 2056 4588 
+C 1131 4588 456 4075 456 3369 
+C 456 2875 794 2463 1281 2369 
+L 1281 2338 
+C 719 2250 281 1788 281 1219 
+C 281 481 1025 -63 2056 -63 
+z
+M 2056 656 
+C 1575 656 1256 925 1263 1313 
+C 1256 1706 1594 1994 2056 1994 
+C 2519 1994 2850 1706 2850 1313 
+C 2850 925 2531 656 2056 656 
+z
+M 2056 2656 
+C 1656 2656 1375 2913 1375 3275 
+C 1375 3631 1650 3875 2056 3875 
+C 2463 3875 2744 3625 2744 3275 
+C 2744 2913 2456 2656 2056 2656 
+z
+" transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#Pretendard-Bold-32ce"/>
+     <use xlink:href="#Pretendard-Bold-3359" transform="translate(60.453125 0)"/>
+     <use xlink:href="#Pretendard-Bold-32d1" transform="translate(85.796875 0)"/>
+     <use xlink:href="#Pretendard-Bold-3623" transform="translate(150.15625 0)"/>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p2ac9d5c139">
+   <rect x="0" y="0" width="345" height="202.5"/>
+  </clipPath>
+ </defs>
+</svg>
