@@ -49,3 +49,9 @@
 npm i playwright pptxgenjs sharp jszip
 node scripts/build-pptx.cjs . export/INFU-RETRO_IR_WON-SHOT.pptx
 ```
+
+`export/INFU-RETRO_IR_WON-SHOT_editable.pptx` — **편집형**. 글자(약 470개)는 PowerPoint 텍스트 상자, 사진은 그림 개체, 도표·아이콘(SVG)은 투명 PNG, 시연 영상은 동영상 개체로 올라가고, 카드 · 그라데이션 · 막대 같은 배경만 슬라이드 배경 그림으로 깔립니다. 서체는 Pretendard(설치 권장 — 없으면 비슷한 서체로 대체되어 줄 길이가 조금 달라질 수 있음).
+
+```
+node scripts/build-pptx-editable.cjs . export/INFU-RETRO_IR_WON-SHOT_editable.pptx
+```
