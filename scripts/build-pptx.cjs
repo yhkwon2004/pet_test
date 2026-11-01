@@ -110,8 +110,8 @@ async function autoplay(file, media) {
 
   const pres = new PptxGenJS();
   pres.layout = 'LAYOUT_WIDE';
-  pres.title = 'INFU RETRO — AI 자이로 센서 기반 반려동물 약물 투약 이상감지 솔루션';
-  pres.subject = '2026 NEXT WAVE-UP 아이디어 리그 · 일반·기술 트랙';
+  pres.title = 'INFU RETRO — 반려동물 약물투약 사고를 방지하기 위한 이상감지 솔루션';
+  pres.subject = 'INFU RETRO IR · 가상 AI 자이로 하중센서 모듈';
   pres.author = 'WON SHOT';
   pres.company = 'WON SHOT';
 

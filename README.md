@@ -27,7 +27,7 @@
 | 15 | 목표 매출 | KPI 10,100만 원 규모 달성 · 다음 목표 4.5억 원(추가 판로 · 사업 확대) |
 | 16 | 자금 조달 | 시드 1억 원 용도 · 누적 조달 6,000만 원 |
 | 17 | 확장 | 동물병원 → 사람 병원 47곳 → 측정 산업 |
-| 18 | 팀 | 인퓨테크 · 팀 WON SHOT 7인 · WON+ PBL 대상 · 글로벌 피우다 장려상 · 치앙마이 캡스톤 2위 · 상장 |
+| 18 | 팀 | 인퓨테크 · 팀 WON SHOT 7인 · WON+ PBL 대상 · 글로벌 피우다 장려상 · 치앙마이 캡스톤 2위 · 상장 · 협력사 4곳(전남대 수의대 · 원광대 간호학과 · ㈜씨엔 · ㈜에스케이엠엔엠) |
 | 19 | 클로징 | 갈고리마다 센서 하나로 · 시드 1억 원 요청 |
 | A1 | 부록 | 모의 병실 1,000회 테스트 상세 |
 
@@ -40,3 +40,12 @@
 - `scripts/script-time.py` — 대본 음절 수 · 장별 시간
 - `scripts/subset-font.py` — 사용 글자만 담은 Pretendard 서체를 `index.html`에 내장
 - `scripts/charts.py` — 차트 SVG 생성(일부 장에서 사용)
+
+## PowerPoint
+
+`export/INFU-RETRO_IR_WON-SHOT.pptx` — 웹 덱 20장을 그대로 담은 16:9 파일(시연 영상 2개 자동 재생 · 발표 노트에 대본). 다시 만들려면:
+
+```
+npm i playwright pptxgenjs sharp jszip
+node scripts/build-pptx.cjs . export/INFU-RETRO_IR_WON-SHOT.pptx
+```
