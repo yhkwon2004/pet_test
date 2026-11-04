@@ -36,7 +36,7 @@ def spoken(text):
     t = re.sub(r'\d[\d,]*', lambda m: read_int(int(m.group(0).replace(',', ''))), t)
     return len(re.findall(r'[가-힣]', t)) + len(re.findall(r'[A-Za-z]', t))
 
-TOTAL = 270  # 4분 30초
+TOTAL = 600  # 10분
 def plan():
     """spoken length at about 5 syllables a second, then scaled so the slides add up to TOTAL (the slack is pauses)"""
     syl = {k: sum(spoken(p) for p in v) for k, v in NOTES.items()}
