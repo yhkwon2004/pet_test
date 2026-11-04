@@ -3495,6 +3495,92 @@ span.ev{display:inline-block!important;width:auto!important;flex:none!important;
 .rf .r-sg li.ok .sgn { color: #2E9E6A; }
 .rf .r-sg li.now .sgn { color: var(--ri); }
 .rf .r-sg .sgg { margin-top: auto; }
+/* invest · path */
+.rf .r-iv2 { flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 1.2em; align-items: stretch; }
+.rf .r-iv2 .arw { align-self: center; font-style: normal; font-size: 2em; font-weight: 900; color: #8C89F5; }
+.rf .r-ivc { display: flex; flex-direction: column; gap: .6em; padding: 1.8em 2em; border-radius: 1.4em; background: #FFFFFF; border: 1.5px solid var(--rline); }
+.rf .r-ivc .st { align-self: flex-start; display: inline-flex; align-items: center; gap: .35em; padding: .3em .9em; border-radius: 99em; background: #F0F0F5; color: #8B8B9C; font-size: 1.05em; font-weight: 850; }
+.rf .r-ivc .st svg { width: 1.1em; height: 1.1em; }
+.rf .r-ivc.ok .st { background: #E3F4EA; color: #2E9E6A; }
+.rf .r-ivc.now { border: 2px solid var(--ri); box-shadow: 0 1.2em 2.6em rgba(75, 72, 224, .16); }
+.rf .r-ivc.now .st { background: var(--ri); color: #FFFFFF; }
+.rf .r-ivc .amt { font-size: 1.8em; font-weight: 800; color: var(--rk2); }
+.rf .r-ivc .amt b { font-size: 2.2em; font-weight: 900; letter-spacing: -.04em; color: var(--rk); margin-right: .1em; }
+.rf .r-ivc.ok .amt b { color: #2E9E6A; }
+.rf .r-ivc.now .amt b { color: var(--ri); }
+.rf .r-ivc .src { font-size: 1.15em; font-weight: 700; color: var(--rk2); }
+.rf .r-ivc ul { display: flex; flex-direction: column; gap: .45em; margin-top: .3em; }
+.rf .r-ivc ul li { position: relative; padding-left: 1.1em; font-size: 1.18em; font-weight: 650; color: var(--rk); }
+.rf .r-ivc ul li::before { content: ""; position: absolute; left: 0; top: .55em; width: .45em; height: .45em; border-radius: 50%; background: #8C89F5; }
+.rf .r-ivc .ms { margin-top: auto; padding-top: .9em; border-top: 1px dashed #DCDBFB; font-size: 1.1em; font-weight: 750; color: var(--rk); }
+.rf .r-ivc .ms span { display: block; margin-bottom: .15em; font-size: .85em; font-weight: 850; color: var(--ri); }
+.rf .r-ivbar { margin-top: 1.4em; display: flex; height: 3.2em; border-radius: 99em; overflow: hidden; font-size: 1.1em; }
+.rf .r-ivbar span { display: flex; align-items: center; justify-content: center; gap: .5em; font-weight: 700; color: #FFFFFF; white-space: nowrap; }
+.rf .r-ivbar b { font-weight: 900; }
+.rf .r-ivbar .a { background: #2E9E6A; }
+.rf .r-ivbar .b { background: var(--ri); }
+.rf .r-ivbar .c { background: repeating-linear-gradient(-45deg, #C9C8F8 0 .5em, #DCDBFB .5em 1em); color: var(--ri); }
+.rf .r-path { flex: 1; min-height: 0; display: grid; grid-template-columns: repeat(7, 1fr); gap: 1em; position: relative; padding-top: 1.6em; }
+.rf .r-path::before { content: ""; position: absolute; left: 7%; right: 7%; top: 3.05em; height: .35em; border-radius: 99em; background: linear-gradient(90deg, #2E9E6A 0 57%, var(--ri) 57% 64%, #DCDBFB 64% 100%); }
+.rf .r-path li { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; gap: .55em; }
+.rf .r-path .dot { position: relative; z-index: 1; display: grid; place-items: center; width: 3em; height: 3em; border-radius: 50%; background: #FFFFFF; border: .2em solid #DCDBFB; color: #8B8B9C; font-size: 1em; font-weight: 900; }
+.rf .r-path .dot svg { width: 1.4em; height: 1.4em; }
+.rf .r-path li.ok .dot { background: #2E9E6A; border-color: #2E9E6A; color: #FFFFFF; }
+.rf .r-path li.now .dot { background: var(--ri); border-color: #C9C8F8; color: #FFFFFF; box-shadow: 0 0 0 .5em rgba(75, 72, 224, .18); }
+.rf .r-path .pic { width: 100%; aspect-ratio: 1; border-radius: 1.1em; overflow: hidden; background: #F4F4F8; display: grid; place-items: center; border: 1.5px solid var(--rline); }
+.rf .r-path .pic img { width: 100%; height: 100%; object-fit: cover; }
+.rf .r-path .pic .ph { font-style: normal; font-size: 3em; font-weight: 900; color: #C9C8F8; }
+.rf .r-path li.now .pic { border: 3px solid var(--ri); box-shadow: 0 1em 2em rgba(75, 72, 224, .22); }
+.rf .r-path li:not(.ok):not(.now) .pic { border-style: dashed; }
+.rf .r-path b { font-size: 1.45em; font-weight: 850; color: var(--rk); letter-spacing: -.02em; }
+.rf .r-path li.now b { color: var(--ri); }
+.rf .r-path p { font-size: 1.05em; font-weight: 650; color: var(--rk2); line-height: 1.4; }
+.rf .r-path .now-f { position: absolute; top: -1.9em; left: 50%; transform: translateX(-50%); padding: .2em .8em; border-radius: 99em; background: var(--rr); color: #FFFFFF; font-style: normal; font-size: 1em; font-weight: 850; white-space: nowrap; }
+.rf .r-pathbar { margin-top: 1.4em; display: flex; align-items: center; gap: 1.4em; padding: 1em 1.6em; border-radius: 1.2em; background: #FFFFFF; border: 1.5px solid var(--rline); }
+.rf .r-pathbar > div { flex: none; width: 16em; height: .8em; border-radius: 99em; background: #EEEDFE; overflow: hidden; }
+.rf .r-pathbar > div span { display: block; height: 100%; background: linear-gradient(90deg, #2E9E6A, var(--ri)); }
+.rf .r-pathbar p { font-size: 1.2em; font-weight: 700; color: var(--rk2); }
+.rf .r-pathbar p b { color: var(--ri); }
+/* KPI mini visuals · stage track */
+.rf .r-kg li { position: relative; }
+.rf .r-kg .mv { margin-top: .7em; }
+.rf .mv.seg, .rf .mv.stk { display: flex; gap: .25em; height: 1.7em; border-radius: .5em; overflow: hidden; }
+.rf .mv.seg i { display: flex; align-items: center; justify-content: center; background: #DCDBFB; color: var(--ri); font-style: normal; font-size: .95em; font-weight: 800; }
+.rf .mv.seg i.b { background: var(--ri); color: #FFFFFF; }
+.rf .mv.seg.w i { background: rgba(255, 255, 255, .25); color: #FFFFFF; }
+.rf .mv.seg.w i.b { background: rgba(255, 255, 255, .45); color: var(--ri); }
+.rf .mv.stk { height: .9em; }
+.rf .mv.stk i { background: #DCDBFB; }
+.rf .mv.stk i.b { background: #8C89F5; }
+.rf .mv.stk i.b2 { background: var(--ri); }
+.rf .mv.cmp { display: flex; flex-direction: column; gap: .35em; }
+.rf .mv.cmp p { display: flex; align-items: center; gap: .5em; }
+.rf .mv.cmp i { display: block; height: .75em; border-radius: 99em; background: #D9D9E3; }
+.rf .mv.cmp p.u i { background: var(--ri); min-width: .75em; }
+.rf .mv.cmp em { font-style: normal; font-size: .95em; font-weight: 800; color: #8B8B9C; }
+.rf .mv.cmp p.u em { color: var(--ri); }
+.rf .mv.ring { position: absolute; right: 1.6em; top: 50%; transform: translateY(-50%); margin: 0; }
+.rf .mv.ring i { display: block; width: 6.4em; height: 6.4em; border-radius: 50%; background: radial-gradient(closest-side, #FFFFFF 72%, transparent 73%), conic-gradient(var(--ri) 0 100%); }
+.rf .r-kg li:has(.ring) { padding-right: 9em; }
+.rf .r-sgt { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.6em; margin-bottom: .9em; position: relative; }
+.rf .r-sgt::before { content: ""; position: absolute; left: 10%; right: 10%; top: 50%; height: .3em; transform: translateY(-50%); border-radius: 99em; background: linear-gradient(90deg, #2E9E6A 0 50%, var(--ri) 50% 75%, #DCDBFB 75%); }
+.rf .r-sgt span { position: relative; justify-self: center; width: 1.5em; height: 1.5em; border-radius: 50%; background: #FFFFFF; border: .25em solid #DCDBFB; }
+.rf .r-sgt span.ok { background: #2E9E6A; border-color: #2E9E6A; }
+.rf .r-sgt span.now { background: var(--ri); border-color: #C9C8F8; box-shadow: 0 0 0 .4em rgba(75, 72, 224, .18); }
+.rf .r-sgt em { position: absolute; left: 50%; bottom: 140%; transform: translateX(-50%); padding: .1em .7em; border-radius: 99em; background: var(--rr); color: #FFFFFF; font-style: normal; font-size: .9em; font-weight: 850; white-space: nowrap; }
+.rf .r-sg .sgi { display: grid; place-items: center; width: 4.4em; height: 4.4em; margin: auto auto .2em; border-radius: 1.2em; background: #F4F4F8; color: #B9B7F7; }
+.rf .r-sg li.ok .sgi { background: #E9F6EF; color: #2E9E6A; }
+.rf .r-sg li.now .sgi { background: #EEEDFE; color: var(--ri); }
+.rf .r-sg .sgi svg { width: 2.6em; height: 2.6em; }
+.rf .r-sg h3 + .sgi { order: 5; }
+.rf .r-sg .sgg { order: 6; margin-top: 0; }
+.rf .r-path .pic .ph svg { width: 1em; height: 1em; }
+.rf .r-path .pic .ph { color: #B9B7F7; }
+.rf .r-ivc .ivi { display: grid; place-items: center; width: 4.6em; height: 4.6em; margin: auto auto 0; border-radius: 1.3em; background: #F4F4F8; color: #B9B7F7; }
+.rf .r-ivc .ivi svg { width: 2.7em; height: 2.7em; }
+.rf .r-ivc.ok .ivi { background: #E9F6EF; color: #2E9E6A; }
+.rf .r-ivc.now .ivi { background: #EEEDFE; color: var(--ri); }
+.rf .r-ivc .ms { margin-top: 1em; }
 </style>
 <!-- The deck's own Pretendard subset (only the glyphs it uses) lives inside this file, so the text is drawn in the same
      font on any computer — offline, opened as a file, on a slow venue network — and never in a fallback font.
@@ -3771,6 +3857,26 @@ span.ev{display:inline-block!important;width:auto!important;flex:none!important;
   </div>
   <div class="note" hidden><p>이 수치는 모의 병실 1,000회 시험에서 나왔습니다. 흔들고 당겨도 잔량 오차는 3퍼센트 이내였습니다.</p><p>정상 상태 오경보는 300번 중 2번입니다. 단일 로드셀 12.3퍼센트에서 0.7퍼센트로, 17분의 1입니다.</p><p>줄 분리와 소진은 250번 모두 감지했고, 기기는 평균 2.8초에 판정했습니다. 휴대폰 도착 시간은 실측 후 공개하겠습니다. 이제 실제 동물로 넘어가겠습니다.</p></div>
 </section>
+<section class="slide rf" id="s-a-test" data-sec="7" data-time="20" data-title="내부 시험 성적서 — 모의 병실 1,000회, 정식 성적서는 2027 상">
+  <div class="frame">
+    <header class="r-hd"><p class="r-kick b">Report · 내부 시험 성적서</p><h2 class="r-t b">모의 병실 1,000회 <em>내부 성적서 발급</em>, 정식 성적서는 2027 상</h2></header>
+    <div class="r-2 w58 b">
+      <div class="r-card r-hb">
+        <img class="r-a1ph" src="media/hanger-real.webp" alt="시험 대상 시제품" data-zoom>
+        <p class="r-ct">시나리오 1,000회 · 원광대 간호학과 모의 병실 · 500 mL · 수액 10종</p>
+        <ul><li><p>정상 투여</p><span style="--w:100"></span><b>300</b></li><li><p>흔들림 · 이동</p><span style="--w:83"></span><b>250</b></li><li><p>당겨짐</p><span style="--w:67"></span><b>200</b></li><li class="us"><p>수액줄 분리</p><span style="--w:50"></span><b>150</b></li><li class="us"><p>소진</p><span style="--w:33"></span><b>100</b></li></ul>
+      </div>
+      <ul class="r-kp">
+        <li><b>1.1%</b><p>평균 잔량 오차 · 95% 구간 2.4% · 최대 2.9%</p></li>
+        <li><b>2.8초</b><p>평균 감지 시간 · 분리 150 · 소진 100 모두 감지</p></li>
+        <li><b>2/300</b><p>정상 중 오경보 0.7% · 교체 · 측관 주입 땐 알림 일시 정지</p></li>
+        <li class="pd"><b>저유속 막힘</b><p>검증 중 · 2027 하 전남대</p></li>
+      </ul>
+    </div>
+    <p class="r-foot sm b">등급 질의(검역본부) → KCL 시험성적서(2027 상 · 약 3개월 · 시드 20%) → 1등급 신고 → ㈜씨엔 공급 개시</p>
+  </div>
+  <div class="note" hidden><p>천 번 중 줄 분리 150회와 소진 100회는 모두 감지했고, 잔량 오차는 95퍼센트 구간 2.4퍼센트 이내입니다. 수액백 교체 · 측관 주입 때는 대시보드에서 알림을 일시 정지합니다.</p><p>정식 성적서는 KCL에서 잔량 정확도 · 감지 시간 · 전기 안전 · KC 전파를 받고, 시드 1억 원 중 20%를 씁니다. 저유속 막힘은 전남대에서 실측합니다.</p></div>
+</section>
 <section class="slide rf" id="s-pet" data-sec="7" data-time="22" data-title="반려동물 실증 — 움직여도 알림은 바로 도착했습니다">
   <div class="frame">
     <header class="r-hd"><p class="r-kick b">Test ② · 반려동물 실증</p><h2 class="r-t b">동물이 움직여도, <em>알림은 바로 도착</em>했습니다</h2></header>
@@ -3790,12 +3896,12 @@ span.ev{display:inline-block!important;width:auto!important;flex:none!important;
   <div class="frame">
     <header class="r-hd"><p class="r-kick b">Proof · 정량 지표</p><h2 class="r-t b">지금까지의 검증, <em>숫자로 보면</em></h2></header>
     <ul class="r-kg b">
-      <li><p class="k">현장</p><b>26<small>곳</small></b><span>전북 병원 10 · 호남권 반려동물병원 16</span></li>
-      <li><p class="k">테스트</p><b>1,000<small>회</small></b><span>모의 병실 · 원광대 간호학과</span></li>
-      <li><p class="k">정확도</p><b>2.9<small>%</small></b><span>잔량 최대 오차 · 단일 로드셀 14.2% → 1/5</span></li>
-      <li><p class="k">감지</p><b>250<small>/250</small></b><span>줄 분리 · 소진 모두 감지 · 평균 2.8초</span></li>
-      <li><p class="k">원가</p><b>1/36</b><span>센서비 90만 원+ → 2.5만 원</span></li>
-      <li class="on"><p class="k">시장</p><b>1억 100<small>만 원</small></b><span>약정 · 협약 KPI 달성 · 비구속 포함</span></li>
+      <li><p class="k">현장</p><b>26<small>곳</small></b><span>전북 병원 10 · 호남권 반려동물병원 16</span><div class="mv seg"><i style="flex:10">병원 10</i><i class="b" style="flex:16">반려 16</i></div></li>
+      <li><p class="k">테스트</p><b>1,000<small>회</small></b><span>모의 병실 · 원광대 간호학과</span><div class="mv stk"><i style="flex:300"></i><i style="flex:250"></i><i style="flex:200"></i><i class="b" style="flex:150"></i><i class="b2" style="flex:100"></i></div></li>
+      <li><p class="k">정확도</p><b>2.9<small>%</small></b><span>잔량 최대 오차 · 단일 로드셀 14.2% → 1/5</span><div class="mv cmp"><p><i style="width:100%"></i><em>14.2</em></p><p class="u"><i style="width:20.4%"></i><em>2.9</em></p></div></li>
+      <li><p class="k">감지</p><b>250<small>/250</small></b><span>줄 분리 · 소진 모두 감지 · 평균 2.8초</span><div class="mv ring"><i></i></div></li>
+      <li><p class="k">원가</p><b>1/36</b><span>센서비 90만 원+ → 2.5만 원</span><div class="mv cmp"><p><i style="width:100%"></i><em>90만</em></p><p class="u"><i style="width:2.8%"></i><em>2.5만</em></p></div></li>
+      <li class="on"><p class="k">시장</p><b>1억 100<small>만 원</small></b><span>약정 · 협약 KPI 달성 · 비구속 포함</span><div class="mv seg w"><i style="flex:51">약정 5,100</i><i class="b" style="flex:50">협약 5,000</i></div></li>
     </ul>
     <p class="r-kx b">+ 우수논문 <b>2편</b> · 특허 출원 <b>3건</b> · 수상 <b>3건</b> · 학생창업유망팀 300+ 최종 선발</p>
   </div>
@@ -3804,12 +3910,13 @@ span.ev{display:inline-block!important;width:auto!important;flex:none!important;
 <section class="slide rf" id="s-stage" data-sec="8" data-time="35" data-title="추진 단계 — 검증된 단계만 다음으로">
   <div class="frame">
     <header class="r-hd"><p class="r-kick b">Stage-gate · 추진 단계</p><h2 class="r-t b">한 단계씩 검증하고, <em>통과 기준을 넘어야 다음으로</em></h2></header>
+    <div class="r-sgt b"><span class="ok"></span><span class="ok"></span><span class="ok"></span><span class="now"><em>지금</em></span><span></span></div>
     <ol class="r-sg b">
-      <li class="ok"><p class="sgs">완료</p><h3>① 문제 검증</h3><p class="sgn">26<small>곳</small></p><p class="sgd">현장 26곳 방문 · 인터뷰</p><p class="sgg"><span>통과 기준</span>니즈 3가지 확인<br>비용 · 기존 자산 · AX</p></li>
-      <li class="ok"><p class="sgs">완료</p><h3>② 기술 검증</h3><p class="sgn">1,000<small>회</small></p><p class="sgd">모의 병실 1,000회 · 반려동물 실증</p><p class="sgg"><span>통과 기준</span>잔량 오차 ≤ 3% → <b>2.9%</b><br>분리 · 소진 <b>250/250</b></p></li>
-      <li class="ok"><p class="sgs">완료</p><h3>③ 시장 검증</h3><p class="sgn">1.01<small>억</small></p><p class="sgd">유통 2곳 · 전남대 LOI</p><p class="sgg"><span>통과 기준</span>KPI <b>1억 100만 원</b><br>약정 · 협약 달성</p></li>
-      <li class="now"><p class="sgs">진행 · 2027 상</p><h3>④ 인증</h3><p class="sgn">1<small>등급</small></p><p class="sgd">등급 질의 → KCL 성적서 → 1등급 신고</p><p class="sgg"><span>통과 기준</span>KC · 시험성적서 확보<br>시드 1억 원 투입</p></li>
-      <li><p class="sgs">계획 · 2027 하~</p><h3>⑤ 양산 · 판매</h3><p class="sgn">300<small>대</small></p><p class="sgd">초도 300대 → 직판 100대 → 누적 250대</p><p class="sgg"><span>통과 기준</span>㈜씨엔 납품 · <b>5,100만</b> 회수<br>다음 목표 <b>4.5억 원</b></p></li>
+      <li class="ok"><p class="sgs">완료</p><h3>① 문제 검증</h3><i class="sgi"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M7 9h34v22H23l-9 8v-8H7z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M15 18h18M15 24h11" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></i><p class="sgn">26<small>곳</small></p><p class="sgd">MVP 제작 · 병원 인터뷰</p><p class="sgg"><span>통과 기준</span>니즈 3가지 확인<br>비용 · 기존 자산 · AX</p></li>
+      <li class="ok"><p class="sgs">완료</p><h3>② 기술 검증</h3><i class="sgi"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="17" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="24" cy="24" r="9" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="24" cy="24" r="2.5" fill="currentColor"/></svg></i><p class="sgn">1,000<small>회</small></p><p class="sgd">MVP 개선 · 모의 병실 시험</p><p class="sgg"><span>통과 기준</span>잔량 오차 ≤ 3% → <b>2.9%</b><br>분리 · 소진 <b>250/250</b></p></li>
+      <li class="ok"><p class="sgs">완료</p><h3>③ 시장 검증</h3><i class="sgi"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="11" y="5" width="26" height="38" rx="4" fill="none" stroke="currentColor" stroke-width="3"/><path d="M17 14h14M17 21h14M17 33c3-3 5 3 8 0s4 1 6 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></i><p class="sgn">1.01<small>억</small></p><p class="sgd">LOI · MOU · 약정</p><p class="sgg"><span>통과 기준</span>KPI <b>1억 100만 원</b><br>약정 · 협약 달성</p></li>
+      <li class="now"><p class="sgs">진행 중</p><h3>④ 파일럿 테스트</h3><i class="sgi"><svg viewBox="0 0 48 48" aria-hidden="true"><ellipse cx="24" cy="31" rx="9.5" ry="8" fill="currentColor"/><circle cx="11.5" cy="21" r="4.4" fill="currentColor"/><circle cx="36.5" cy="21" r="4.4" fill="currentColor"/><circle cx="18" cy="12" r="4.4" fill="currentColor"/><circle cx="30" cy="12" r="4.4" fill="currentColor"/></svg></i><p class="sgn">NOW</p><p class="sgd">반려동물 실증 · 현장 데이터</p><p class="sgg"><span>통과 기준</span>모의 환경과 오차 차이 없음<br>움직여도 알림 즉시 전달</p></li>
+      <li><p class="sgs">계획 · 2027</p><h3>⑤ 프로토 · 도입</h3><i class="sgi"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 5l17 9.5v19L24 43 7 33.5v-19z M7 14.5L24 24l17-9.5 M24 24v19" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></svg></i><p class="sgn">300<small>대</small></p><p class="sgd">프로토타입 · KC → 현장 도입</p><p class="sgg"><span>통과 기준</span>KC · 시험성적서 확보<br>초도 납품 · <b>5,100만</b> 회수</p></li>
     </ol>
     <p class="r-sg-f b">이후 2030~ 전국 확장 → 인증 후 사람 병원 → 같은 모듈로 측정 산업</p>
   </div>
@@ -3843,6 +3950,14 @@ span.ev{display:inline-block!important;width:auto!important;flex:none!important;
     <p class="r-src c b">시장 = 병원 × 5대 × (35만 + 84만) · 상한 · KPI = 약정 5,100만(KC 후) + 비구속 협약 5,000만 · 1달러 1,400원</p>
   </div>
   <div class="note" hidden><p>시작은 호남입니다. 전남, 전북 동물병원 약 300곳, 18억 원 시장입니다. 액셀러레이터와 대학 인프라, 전남대 실증이 있는 곳입니다.</p><p>2030년부터는 실증 데이터와 학회, 유통 2곳의 판로로 전국 5,312곳, 316억 원 시장에 갑니다. 병원당 5대에 기기값과 1년 구독료를 더한 상한입니다.</p><p>인증 후에는 세계 4,400억 원 시장입니다.</p></div>
+</section>
+<section class="slide rf" id="s-path" data-sec="11" data-time="22" data-title="시장 진입 경로 — 지금은 파일럿 테스트 단계">
+  <div class="frame">
+    <header class="r-hd"><p class="r-kick b">Go-to-market · 진입 경로</p><h2 class="r-t b">MVP에서 현장 도입까지 7단계, <em>지금은 파일럿 테스트</em></h2></header>
+    <ol class="r-path b"><li class="ok"><span class="dot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div class="pic"><img src="media/module.webp" alt="" aria-hidden="true"></div><b>MVP 제작</b><p>하중센서 모듈 시제품</p></li><li class="ok"><span class="dot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div class="pic"><img src="media/visit-jb.webp" alt="" aria-hidden="true"></div><b>병원 인터뷰</b><p>현장 26곳 방문</p></li><li class="ok"><span class="dot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div class="pic"><img src="media/field-bag.webp" alt="" aria-hidden="true"></div><b>MVP 개선</b><p>모의 병실 1,000회 · 오차 2.9%</p></li><li class="ok"><span class="dot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div class="pic"><img src="media/loi-jnu.webp" alt="" aria-hidden="true"></div><b>LOI · MOU</b><p>전남대 LOI · 약정 · 협약 1억 100만</p></li><li class="now"><em class="now-f">지금 여기</em><span class="dot">5</span><div class="pic"><img src="media/pet-test-gen.webp" alt="" aria-hidden="true"></div><b>파일럿 테스트</b><p>반려동물 실증 · 현장 데이터</p></li><li class=""><span class="dot">6</span><div class="pic"><i class="ph"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 5l17 9.5v19L24 43 7 33.5v-19z M7 14.5L24 24l17-9.5 M24 24v19" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></svg></i></div><b>프로토타입 개발</b><p>금형 · KC 인증 · 2027 상</p></li><li class=""><span class="dot">7</span><div class="pic"><i class="ph"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M7 42V16l17-9 17 9v26" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M24 17v13M17.5 23.5h13" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/><path d="M18 42v-7h12v7" fill="none" stroke="currentColor" stroke-width="3"/></svg></i></div><b>현장 도입</b><p>㈜씨엔 초도 300대 · 2027 하~</p></li></ol>
+    <div class="r-pathbar b"><div><span style="width:64%"></span></div><p><b>5 / 7 단계</b> · 완료 4단계는 모두 정량 근거로 통과 — 다음 관문은 파일럿 데이터로 프로토타입 · KC</p></div>
+  </div>
+  <div class="note" hidden><p>-</p></div>
 </section>
 <section class="slide rf " id="s-entry" data-sec="11" data-time="24" data-title="약정 · 협약으로 가설을 검증했고, 1등급 신고 경로로 들어갑니다">
   <div class="frame">
@@ -3892,21 +4007,38 @@ span.ev{display:inline-block!important;width:auto!important;flex:none!important;
   </div>
   <div class="note" hidden><p>그럼 누가, 몇 대를, 얼마에 할까요. 생산은 300대 단위 위탁입니다. 대당 조립 3.5만 원, 원가는 약 8만 원입니다.</p><p>유통은 직판과 유통 2곳, 공급가는 17만 원입니다. 마케팅은 전남대 시범에서 호남 50곳으로 넓힙니다.</p><p>리스크는 두 가지를 먼저 막습니다. 협약이 전환되지 않아도 약정만으로 초도 비용을 회수합니다. KC 지연에는 등급 질의를 먼저 합니다.</p></div>
 </section>
-<section class="slide rf " id="s-funding" data-sec="13" data-time="24" data-title="6,000만 원으로 MVP까지, 시드 1억 원으로 KC · 첫 300대">
+<section class="slide rf " id="s-funding" data-sec="13" data-time="24" data-title="3,600만 원으로 MVP · 특허 · 생산 장비까지, 시드 1억 원으로 KC · 첫 300대">
   <div class="frame">
-    <header class="r-hd"><h2 class="r-t b">6,000만 원으로 MVP까지, <em>시드 1억 원으로 KC · 첫 300대</em></h2></header>
+    <header class="r-hd"><h2 class="r-t b">3,600만 원으로 MVP · 특허 · 생산 장비까지, <em>시드 1억 원으로 KC · 첫 300대</em></h2></header>
     <div class="r-fd b">
       <div class="r-circ xl"><p>시드 · 2027 상</p><b>1억 원</b><small>인퓨테크(팀 WON SHOT)</small></div>
       <div class="r-fd-r">
         <p class="r-ct">시드 용도 · 첫 납품까지</p>
         <div class="r-use"><span style="flex:35"><b>3,500만</b>금형 · 초도 300대</span><span style="flex:20"><b>2,000만</b>KCL · KC</span><span style="flex:20"><b>2,000만</b>저유속 실측</span><span style="flex:25"><b>2,500만</b>영업 · 실증</span></div>
         <p class="r-flow2">초도 300대 → KC 후 ㈜씨엔 납품 · <b>5,100만 회수</b> → 2년차 직판 100대</p>
-        <ul class="r-tr"><li><img src="media/team-pole.webp" alt="시제품과 함께한 팀"><b>6,000만</b>누적 조달</li><li><img src="media/reg-hang.webp" alt="MVP 시제품"><b>MVP</b>시제품 · 1,000회</li><li><img src="media/hanger-drawing.webp" alt="모듈 구성도"><b>3건</b>특허 출원</li><li><img src="media/doc-cn-2.webp" alt="약정서 서명면"><b>10,100만</b>약정 · 협약</li></ul>
+        <ul class="r-tr"><li><img src="media/team-pole.webp" alt="시제품과 함께한 팀"><b>3,600만</b>지원금 · 상금</li><li><img src="media/reg-hang.webp" alt="MVP 시제품"><b>MVP</b>시제품 · 1,000회</li><li><img src="media/hanger-drawing.webp" alt="모듈 구성도"><b>3건</b>특허 출원</li><li><img src="media/doc-cn-2.webp" alt="약정서 서명면"><b>10,100만</b>약정 · 협약</li></ul>
         <p class="r-src">후속 재원 후보(미확보) · TIPS R&amp;D 최대 8억 · 농식품 모태펀드 · 조건 별도 협의</p>
       </div>
     </div>
   </div>
   <div class="note" hidden><p>이 실행에 드는 자금입니다. 누적 6,000만 원으로 시제품과 1,000회 테스트, 특허 3건, 약정과 협약까지 왔습니다.</p><p>2027년 상반기 시드 1억 원은 금형과 초도 300대에 3,500만, KCL과 KC에 2,000만, 저유속 실측에 2,000만, 영업과 실증에 2,500만 원을 씁니다.</p><p>초도 300대는 KC 후 ㈜씨엔에 납품해 회수하고, 2년차 직판 100대로 이어집니다.</p></div>
+</section>
+<section class="slide rf" id="s-invest" data-sec="13" data-time="22" data-title="투자 유치 계획 — 검증한 만큼, 단계별로 조달합니다">
+  <div class="frame">
+    <header class="r-hd"><p class="r-kick b">Funding · 투자 유치 계획</p><h2 class="r-t b">검증한 만큼, <em>단계별로 조달</em>합니다</h2></header>
+    <div class="r-iv2 b">
+      <div class="r-ivc ok"><p class="st"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>확보 완료</p><p class="amt"><b>3,600</b>만 원</p><p class="src">사업화 지원금 · 경진대회 상금</p>
+        <ul><li>MVP 개발</li><li>특허 출원 3건</li><li>초기 시제품 생산 장비 구축</li></ul><i class="ivi"><svg viewBox="0 0 48 48" aria-hidden="true"><ellipse cx="24" cy="12" rx="14" ry="5" fill="none" stroke="currentColor" stroke-width="3"/><path d="M10 12v8c0 2.8 6.3 5 14 5s14-2.2 14-5v-8M10 20v8c0 2.8 6.3 5 14 5s14-2.2 14-5v-8M10 28v8c0 2.8 6.3 5 14 5s14-2.2 14-5v-8" fill="none" stroke="currentColor" stroke-width="3"/></svg></i><p class="ms"><span>달성</span>모의 병실 1,000회 · 약정 · 협약 1억 100만</p></div>
+      <i class="arw">→</i>
+      <div class="r-ivc now"><p class="st">유치 추진 · 2027 상</p><p class="amt"><b>1</b>억 원</p><p class="src">시드 투자</p>
+        <ul><li>금형 · 초도 300대 3,500만</li><li>KCL · KC 2,000만</li><li>저유속 실측 2,000만 · 영업 · 실증 2,500만</li></ul><i class="ivi"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 42V22" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M24 24c0-9 6-14 15-14 0 9-6 14-15 14zM24 30c0-7-5-11-13-11 0 7 5 11 13 11z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></svg></i><p class="ms"><span>마일스톤</span>KC 확보 · ㈜씨엔 초도 300대 → 5,100만 회수</p></div>
+      <i class="arw">→</i>
+      <div class="r-ivc"><p class="st">후속 · 인증 이후</p><p class="amt"><b>후속</b>라운드</p><p class="src">TIPS R&amp;D(최대 8억) · 농식품 모태펀드 · 후보 · 미확보</p>
+        <ul><li>전국 확장 · 유통 판로</li><li>사람 병원 인증 준비</li><li>측정 산업 모듈화</li></ul><i class="ivi"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 40h36" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><rect x="9" y="28" width="7" height="12" rx="1.5" fill="none" stroke="currentColor" stroke-width="3"/><rect x="21" y="20" width="7" height="20" rx="1.5" fill="none" stroke="currentColor" stroke-width="3"/><rect x="33" y="10" width="7" height="30" rx="1.5" fill="none" stroke="currentColor" stroke-width="3"/></svg></i><p class="ms"><span>마일스톤</span>다음 목표 4.5억 원 · 2030~ 전국</p></div>
+    </div>
+    <div class="r-ivbar b"><span class="a" style="flex:3.6"><b>3,600만</b>확보</span><span class="b" style="flex:10"><b>1억</b>시드</span><span class="c" style="flex:16"><b>후속</b>정부 R&amp;D · 정책 펀드</span></div>
+  </div>
+  <div class="note" hidden><p>-</p></div>
 </section>
 <section class="slide rf " id="s-future" data-sec="14" data-time="19" data-title="같은 원천기술로, 동물병원에서 측정 산업까지">
   <div class="frame">
@@ -3957,26 +4089,6 @@ span.ev{display:inline-block!important;width:auto!important;flex:none!important;
     </div>
   </div>
   <div class="note" hidden><p>폴대는 그대로, 수액은 놓치지 않게.</p><p>쓰던 폴대에 끼우는 INFU RETRO로, 야간에도 끊기지 않는 수액 기록을 만들겠습니다. 지금까지 팀 WON SHOT이었습니다. 감사합니다.</p></div>
-</section>
-<section class="slide rf appx" id="s-a-test" data-sec="17" data-title="부록 — 모의 병실 1,000회 테스트 상세">
-  <div class="frame">
-    <header class="r-hd"><h2 class="r-t b">모의 병실 1,000회 내부 테스트, <em>정식 성적서는 2027 상</em></h2></header>
-    <div class="r-2 w58 b">
-      <div class="r-card r-hb">
-        <img class="r-a1ph" src="media/hanger-real.webp" alt="시험 대상 시제품" data-zoom>
-        <p class="r-ct">시나리오 1,000회 · 원광대 간호학과 모의 병실 · 500 mL · 수액 10종</p>
-        <ul><li><p>정상 투여</p><span style="--w:100"></span><b>300</b></li><li><p>흔들림 · 이동</p><span style="--w:83"></span><b>250</b></li><li><p>당겨짐</p><span style="--w:67"></span><b>200</b></li><li class="us"><p>수액줄 분리</p><span style="--w:50"></span><b>150</b></li><li class="us"><p>소진</p><span style="--w:33"></span><b>100</b></li></ul>
-      </div>
-      <ul class="r-kp">
-        <li><b>1.1%</b><p>평균 잔량 오차 · 95% 구간 2.4% · 최대 2.9%</p></li>
-        <li><b>2.8초</b><p>평균 감지 시간 · 분리 150 · 소진 100 모두 감지</p></li>
-        <li><b>2/300</b><p>정상 중 오경보 0.7% · 교체 · 측관 주입 땐 알림 일시 정지</p></li>
-        <li class="pd"><b>저유속 막힘</b><p>검증 중 · 2027 하 전남대</p></li>
-      </ul>
-    </div>
-    <p class="r-foot sm b">등급 질의(검역본부) → KCL 시험성적서(2027 상 · 약 3개월 · 시드 20%) → 1등급 신고 → ㈜씨엔 공급 개시</p>
-  </div>
-  <div class="note" hidden><p>천 번 중 줄 분리 150회와 소진 100회는 모두 감지했고, 잔량 오차는 95퍼센트 구간 2.4퍼센트 이내입니다. 수액백 교체 · 측관 주입 때는 대시보드에서 알림을 일시 정지합니다.</p><p>정식 성적서는 KCL에서 잔량 정확도 · 감지 시간 · 전기 안전 · KC 전파를 받고, 시드 1억 원 중 20%를 씁니다. 저유속 막힘은 전남대에서 실측합니다.</p></div>
 </section>
 </main>
 
