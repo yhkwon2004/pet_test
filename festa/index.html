@@ -475,12 +475,19 @@ b { font-weight: 800; }
 .bcc .mgn svg { width: 160px; height: 160px; flex: none; }
 .bcc .mgn .t { white-space: nowrap; font-size: 19px; font-weight: 600; color: var(--mute); }
 .bcc .mgn .v { margin-top: 8px; font-size: 26px; font-weight: 700; color: var(--ink2); line-height: 1.3; white-space: nowrap; }
-.bcc .mgn .v b { font-size: 44px; color: var(--nv); }
+.bcc .mgn .vb { margin-top: 10px; font-size: 48px; font-weight: 800; line-height: 1.1; color: var(--nv); white-space: nowrap; }
 .bcc .sub ul { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 10px; }
 .bcc .sub li { position: relative; padding-left: 20px; font-size: 21px; font-weight: 600; color: var(--ink2); line-height: 1.4; }
 .bcc .sub li::before { content: ""; position: absolute; left: 0; top: 11px; width: 9px; height: 9px; border-radius: 50%; background: var(--nv); }
 .bcc .sub li b { color: var(--nv2); }
 .bcc .sub .ft { font-size: 16px; font-weight: 600; color: var(--mute); }
+/* s-deal: hero + agreement full text */
+.sdl2 { position: absolute; left: 0; right: 0; top: -22px; bottom: -20px; height: auto; margin: 0; display: grid; grid-template-columns: 1fr auto auto; gap: 24px; }
+.sdl2 .hero { padding: 44px 40px; }
+.sdl2 .hero .big { font-size: 100px; }
+.sdl2 .pgx { position: relative; height: 100%; aspect-ratio: 1460 / 2110; margin: 0; border-radius: 12px; overflow: hidden; background: #FFFFFF; box-shadow: 0 0 0 1.5px var(--line), 0 18px 40px rgba(14, 30, 80, .14); }
+.sdl2 .pgx img { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: contain; }
+.sdl2 .pgx figcaption { position: absolute; right: 12px; bottom: 12px; padding: 4px 12px; border-radius: 99px; background: rgba(11, 36, 102, .85); color: #FFFFFF; font-size: 16px; font-weight: 800; }
 </style>
 </head>
 <body>
@@ -836,27 +843,24 @@ b { font-weight: 800; }
 <!-- 13b deal -->
 <section class="slide" id="s-deal" data-sec="5" data-title="실제 의료기기 유통업체가 5,000만 원 규모 구매의향으로 답했습니다">
   <div class="frame">
-    <p class="crumb"><b>시장 검증</b>유통 협약 · LOI · 지식재산권</p>
+    <p class="crumb"><b>시장 검증</b>유통 협약 · 업무협약서 전문</p>
     <img class="logo" src="media/logo.png" alt="E² FESTA 2026 공학페스티벌">
     <h2 class="ttl">실제 의료기기 유통업체가 <em>5,000만 원 규모 구매의향</em>으로 답했습니다</h2>
     <div class="body">
-      <div class="sdl">
+      <div class="sdl sdl2">
         <div class="ncard hero">
           <p class="k">의료기기 유통업체 ㈜에스케이엠엔엠</p>
           <p class="t">구매의향 협약 체결</p>
           <p class="big">5,000<small>만 원</small></p>
-          <p class="d">스마트 수액관리 솔루션 구매의향 및 사업협력 업무협약<br>판로 개척 지원 포함 · 2026.10.11</p>
+          <p class="d">스마트 수액관리 솔루션<br>구매의향 및 사업협력 업무협약<br>판로 개척 지원 포함 · 2026.10.11</p>
         </div>
-        <figure class="card doc"><div><img src="media/doc-skmm-1.webp" alt="㈜에스케이엠엔엠 스마트 수액관리 솔루션 구매의향 및 사업협력 업무협약서"></div><figcaption>구매의향 및 사업협력 업무협약서 · 전문</figcaption></figure>
-        <div class="side">
-          <div class="card loi"><div class="ph"><img src="media/visit-lab.webp" alt="전남대학교 수의과대학 LOI 체결 — 시제품 모듈을 든 팀원들"></div><div><span class="tg">LOI</span><b>전남대학교 수의과대학</b><p>LOI 체결 → 실증 거점 확보</p></div></div>
-          <div class="card pat"><i>P</i><div><span class="tg">지식재산권</span><b>특허 출원 진행 중</b><p>변리사를 통해 출원 진행<br>HW 결합 구조 · 이상 감지 알고리즘</p></div></div>
-        </div>
+        <figure class="pgx"><img src="media/mou-1.webp" alt="업무협약서 1쪽 — 협약 당사자, 제1조 목적, 제2조 구매 대상 제품, 제3조 구매 예정 금액 5,000만 원"><figcaption>1 / 2</figcaption></figure>
+        <figure class="pgx"><img src="media/mou-2.webp" alt="업무협약서 2쪽 — 제4조 상호 협력, 제5조 본계약 체결, 제6조 비밀유지, 제7조 법적 효력, 2026년 10월 11일 양사 서명 날인"><figcaption>2 / 2</figcaption></figure>
       </div>
     </div>
     <p class="pg">14</p>
   </div>
-  <div class="note" hidden><p>실제 의료기기 유통업체 ㈜에스케이엠엔엠과 5,000만 원 규모의 구매의향 협약을 맺었고, 판로 개척 지원도 함께 약속받았습니다. 전남대학교 수의과대학과는 LOI를 체결해 실증 거점을 확보했고, 특허는 현재 변리사를 통해 출원을 진행하고 있습니다.</p></div>
+  <div class="note" hidden><p>실제 의료기기 유통업체 ㈜에스케이엠엔엠과 5,000만 원 규모의 구매의향 협약을 맺었습니다. 오른쪽이 협약서 전문입니다. 제3조에 5,000만 원 규모 구매의향, 제4조에 보유 유통망과 시장 정보를 통한 판로 확보와 홍보 지원이 담겨 있고, 생산과 인허가가 끝나면 수량과 단가를 협의해 본계약을 체결합니다.</p></div>
 </section>
 
 <!-- 14 market -->
@@ -935,7 +939,7 @@ b { font-weight: 800; }
         </div>
         <div class="card mgn">
           <svg viewBox="0 0 120 120" role="img" aria-label="실질 마진율 약 68%"><circle cx="60" cy="60" r="46" fill="none" stroke="#E3E8F4" stroke-width="16"/><circle cx="60" cy="60" r="46" fill="none" stroke="#0B2466" stroke-width="16" stroke-linecap="round" stroke-dasharray="196.5 289" transform="rotate(-90 60 60)"/><text x="60" y="54" text-anchor="middle" font-size="12" font-weight="700" fill="#3F4A66">실질 마진율</text><text x="60" y="76" text-anchor="middle" font-size="22" font-weight="800" fill="#0B2466">약 68%</text></svg>
-          <div><p class="t">대당 가치 25만원 기준</p><p class="v">공헌이익 약<br><b>17만원</b></p></div>
+          <div><p class="t">대당 가치 25만원 기준</p><p class="v">공헌이익 약</p><p class="vb">17만원</p></div>
         </div>
         <div class="card sub">
           <p class="h">구독 모델로 전환하면</p>
