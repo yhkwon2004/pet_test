@@ -499,21 +499,34 @@ b { font-weight: 800; }
 .s14 .rt .ncard .eq { margin-top: 14px; padding-top: 18px; border-top: 2px solid rgba(255,255,255,.2); font-size: 28px; font-weight: 700; color: #FFFFFF; }
 .s14 .rt .ncard .eq b { font-size: 44px; font-weight: 800; color: var(--cy); }
 /* slide 12 — two full paper pages */
-.s12b { grid-template-columns: auto 1fr; gap: 40px; height: 790px; margin-top: -22px; }
 .s12b .pps { height: 100%; display: flex; gap: 18px; }
 .s12b .pps figure { position: relative; height: 100%; aspect-ratio: 873 / 1147; margin: 0; border-radius: 10px; overflow: hidden; background: #FFFFFF; box-shadow: 0 0 0 1.5px var(--line), 0 16px 36px rgba(14, 30, 80, .14); }
 .s12b .pps figure:nth-child(2) { aspect-ratio: 832 / 1125; }
 .s12b .pps img { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: contain; }
 .s12b .pps figcaption { position: absolute; right: 10px; bottom: 10px; padding: 4px 12px; border-radius: 99px; background: rgba(11, 36, 102, .86); color: #FFFFFF; font-size: 16px; font-weight: 800; }
-.s12b .rt { gap: 22px; min-width: 0; }
-.s12b .sc { display: flex; flex-direction: column; gap: 14px; padding: 26px 28px; }
-.s12b .sc .h { font-size: 24px; font-weight: 800; color: var(--ink); }
-.s12b .chips span { padding: 11px 18px; font-size: 22px; }
-.s12b .mt { font-size: 26px; text-align: center; }
-.s12b .rs { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: stretch; gap: 16px; }
-.s12b .rs .ok { width: auto; height: auto; border-radius: 14px; box-shadow: none; padding: 12px 20px; font-size: 24px; place-items: start; text-align: left; background: #EEF2FB; color: var(--nv); }
-.s12b .rs ul { gap: 14px; }
-.s12b .rs li { padding: 18px 22px; font-size: 23px; }
+/* slide 12 — test panel with icons */
+.s12b { grid-template-columns: auto 1fr; gap: 36px; height: 780px; margin-top: -18px; }
+.s12b .pps { position: relative; padding-top: 0; }
+.s12b .awb { position: absolute; z-index: 2; left: 12px; bottom: 10px; display: flex; align-items: center; gap: 8px; padding: 8px 18px 8px 12px; border-radius: 99px; background: var(--nv); color: #FFFFFF; font-size: 19px; font-weight: 800; box-shadow: 0 8px 20px rgba(11, 36, 102, .3); }
+.s12b .awb svg { width: 26px; height: 26px; fill: none; stroke: var(--cy); stroke-width: 3.4; stroke-linejoin: round; }
+.s12b .rt { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.s12b .tc { padding: 24px 26px; }
+.s12b .th { display: flex; align-items: center; justify-content: space-between; }
+.s12b .th .h, .s12b .rsn .h { font-size: 25px; font-weight: 800; color: var(--ink); }
+.s12b .th .rp { padding: 6px 14px; border-radius: 99px; background: #EEF2FB; color: var(--nv2); font-size: 18px; font-weight: 800; }
+.s12b .tc ul, .s12b .rsn ul { margin-top: 16px; display: flex; flex-direction: column; gap: 14px; }
+.s12b .tc li, .s12b .rsn li { display: grid; grid-template-columns: 62px 1fr; gap: 18px; align-items: center; }
+.s12b .tc i, .s12b .rsn i { display: grid; place-items: center; width: 62px; height: 62px; border-radius: 16px; background: #EEF2FB; }
+.s12b .tc i svg, .s12b .rsn i svg { width: 36px; height: 36px; fill: none; stroke: var(--nv2); stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
+.s12b .tc b { display: block; font-size: 23px; font-weight: 800; color: var(--ink); }
+.s12b .tc span, .s12b .rsn span { display: block; margin-top: 2px; font-size: 17px; font-weight: 600; color: var(--mute); }
+.s12b .dn { text-align: center; font-size: 22px; color: var(--nv3); line-height: 1; }
+.s12b .rsn { flex: 1; padding: 24px 26px; background: var(--nv); border-color: var(--nv); }
+.s12b .rsn .h { color: var(--cy); font-size: 22px; }
+.s12b .rsn i { background: rgba(255, 255, 255, .1); }
+.s12b .rsn i svg { stroke: var(--cy); }
+.s12b .rsn b { display: block; font-size: 32px; font-weight: 900; color: #FFFFFF; letter-spacing: -.02em; line-height: 1.15; }
+.s12b .rsn span { color: #C9D4F0; }
 </style>
 </head>
 <body>
@@ -818,21 +831,26 @@ b { font-weight: 800; }
     <div class="body">
       <div class="s12 s12b">
         <div class="pps">
+          <p class="awb"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="18" r="11"/><path d="M17 27l-4 15 11-6 11 6-4-15"/></svg>우수논문상 수상 논문</p>
           <figure><img src="media/paper-1.webp" alt="논문 1쪽 — 상태 패턴 분석 기반 수액 이상 감지 알고리즘: 초록, 서론, 연구 내용"><figcaption>1 / 2</figcaption></figure>
           <figure><img src="media/paper-2.webp" alt="논문 2쪽 — 4×4 부호화 패턴과 CNN 분류, 선행 연구 비교, 참고문헌"><figcaption>2 / 2</figcaption></figure>
         </div>
         <div class="rt">
-          <div class="card sc">
-            <p class="h">모의 임상 환경 테스트</p>
-            <div class="chips"><span>병동 내 폴대 이동</span><span>흔들림 및 기울어짐</span><span>넘어짐 변수 상정</span></div>
-            <p class="mt">↓ 반복 수행</p>
-          </div>
-          <div class="rs">
-            <p class="ok">실증적으로 확인</p>
+          <div class="card tc">
+            <div class="th"><p class="h">모의 임상 환경 테스트</p><span class="rp">↻ 반복 수행</span></div>
             <ul>
-              <li>투여 완료 예측 오차 <b>± 5분 이내</b></li>
-              <li>이상 상황 감지 <b>5초 이내</b> 가능성</li>
-              <li class="nv">수액 <b>10종 이상</b> 학습<br>점도별 무게 감소 자동 보정</li>
+              <li><i><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6v30M16 40h16M7 22h11M30 22h11M11 18l-4 4 4 4M37 18l4 4-4 4"/></svg></i><div><b>병동 내 폴대 이동</b><span>이동 중 연속 측정</span></div></li>
+              <li><i><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M19 40L29 8M13 40h16"/><path d="M35 12a16 16 0 0 1 5 13"/><path d="M36 21l4 4 3-5"/></svg></i><div><b>흔들림 · 기울어짐</b><span>충격 · 기울기 노이즈 주입</span></div></li>
+              <li><i><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 7L43 40H5Z"/><path d="M24 19v10M24 34v.5"/></svg></i><div><b>넘어짐 변수 상정</b><span>전도 상황 시나리오</span></div></li>
+            </ul>
+          </div>
+          <p class="dn">▼</p>
+          <div class="card rsn">
+            <p class="h">실증적으로 확인</p>
+            <ul>
+              <li><i><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="25" r="16"/><path d="M24 15v10l7 5M19 5h10"/></svg></i><div><b>± 5분 이내</b><span>투여 완료 시점 예측 오차</span></div></li>
+              <li><i><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M27 5L12 27h12l-3 16 15-23H24z"/></svg></i><div><b>5초 이내</b><span>이상 상황 감지 가능성</span></div></li>
+              <li><i><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6S12 20 12 29a12 12 0 0 0 24 0C36 20 24 6 24 6z"/><path d="M19 30a5 5 0 0 0 5 5"/></svg></i><div><b>10종 이상</b><span>수액 학습 · 점도별 무게 자동 보정</span></div></li>
             </ul>
           </div>
         </div>
