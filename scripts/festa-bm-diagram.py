@@ -39,11 +39,12 @@ def node(x, y, w, h, img, tag, tagc, title, sub, cid, fill, s=60, iconbg='#FFFFF
     boxes.append((x, y, x + w, y + h))
 def pill(cx, cy, label, col, fs=18):
     w = tw(label, fs) + 28; h = 32
-    A(f'<rect x="{cx - w/2:.0f}" y="{cy - h/2:.0f}" width="{w:.0f}" height="{h}" rx="16" fill="#FFFFFF" stroke="{col}" stroke-opacity=".55" stroke-width="1.6"/>')
+    tint = {NV2: '#EEF2FB', RR: '#FDEEEE', GR: '#EAF7F0'}[col]
+    A(f'<rect x="{cx - w/2:.0f}" y="{cy - h/2:.0f}" width="{w:.0f}" height="{h}" rx="16" fill="{tint}" stroke="{col}" stroke-opacity=".35" stroke-width="1.4"/>')
     A(f'<text x="{cx:.0f}" y="{cy + 6:.0f}" text-anchor="middle" font-size="{fs}" font-weight="800" fill="{col}">{label}</text>')
     pills.append((cx - w/2, cy - h/2, cx + w/2, cy + h/2))
 def flow(pts, kind, label=None, at=None):
-    col, mk, dash, sw = {'p': (NV2, 'ga', '', 3.2), 'm': (RR, 'gm', ' stroke-dasharray="10 7"', 3), 'd': (GR, 'gd', ' stroke-dasharray="1 8" stroke-linecap="round"', 4.2)}[kind]
+    col, mk, dash, sw = {'p': (NV2, 'ga', '', 2.8), 'm': (RR, 'gm', ' stroke-dasharray="9 7"', 2.6), 'd': (GR, 'gd', ' stroke-dasharray="1 8" stroke-linecap="round"', 4)}[kind]
     A(f'<path d="M{" L".join(f"{x:.0f} {y:.0f}" for x, y in pts)}" stroke="{col}" stroke-width="{sw}" fill="none" stroke-linejoin="round"{dash} marker-end="url(#{mk})"/>')
     if label:
         cx, cy = at if at else ((pts[0][0] + pts[-1][0]) / 2, (pts[0][1] + pts[-1][1]) / 2)
@@ -52,8 +53,10 @@ def flow(pts, kind, label=None, at=None):
 Y0, NH = 104, 168; CYM = Y0 + NH / 2
 xs = [(0, 268), (444, 300), (920, 332), (1426, 302)]
 (px, pw), (hx, hw), (dx, dw), (bx, bw) = xs
+A(f'<rect x="-14" y="{Y0-28}" width="{W+28}" height="{NH+56}" rx="30" fill="#F4F7FC"/>')
 node(px, Y0, pw, NH, 'pcb-real.webp', '생산', '#6B7590', '생산 파트너', 'PCB · 금형 · 사출', 'gp', '#FFFFFF', s=64)
 # hub
+A(f'<rect x="{hx-6}" y="{Y0-16}" width="{hw+12}" height="{NH+32}" rx="33" fill="none" stroke="{CY}" stroke-opacity=".35" stroke-width="3"/>')
 A(f'<rect x="{hx}" y="{Y0-10}" width="{hw}" height="{NH+20}" rx="28" fill="url(#ghub)" filter="url(#gsh)"/>'); boxes.append((hx, Y0-10, hx+hw, Y0+NH+10))
 hcx = hx + hw / 2
 A(f'<clipPath id="ghc"><circle cx="{hcx}" cy="{Y0+50}" r="44"/></clipPath><circle cx="{hcx}" cy="{Y0+50}" r="44" fill="#FFFFFF"/><image href="media/product.png" x="{hcx-41}" y="{Y0+10}" width="82" height="123" preserveAspectRatio="xMidYMin meet" clip-path="url(#ghc)"/><circle cx="{hcx}" cy="{Y0+50}" r="44" fill="none" stroke="{CY}" stroke-width="4"/>')
@@ -76,19 +79,19 @@ flow([(hcx - 50, Y0 - 16), (hcx - 50, 22), (bcx + 60, 22), (bcx + 60, Y0 - 8)], 
 flow([(bcx - 60, Y0 - 8), (bcx - 60, 62), (hcx + 50, 62), (hcx + 50, Y0 - 16)], 'm', '월 관리 구독료', at=(1180, 62))
 # data loop under the row
 YD = Y0 + NH + 52
-flow([(bcx, Y0 + NH + 8), (bcx, YD), (hcx + 70, YD), (hcx + 70, Y0 + NH + 16)], 'd', '수액 투여 데이터 → AI 고도화', at=(1176, YD))
-# B2G under producer
-GX, GY, GW, GH = 0, 352, 300, 128
-node(GX, GY, GW, GH, 'ic-gov.png', 'B2G', GR, '공공 · 정부', '스마트 의료 인프라', 'gg1', '#EDF8F2', s=58, iconbg=GR)
-YG1, YG2 = GY + 40, GY + 92
-flow([(hcx - 70, Y0 + NH + 16), (hcx - 70, YG1), (GX + GW + 8, YG1)], 'p', '관제 인프라 · 데이터', at=(GX + GW + 104, YG1))
-flow([(GX + GW + 8, YG2), (hcx - 10, YG2), (hcx - 10, Y0 + NH + 16)], 'm', '보조금 사업 연계', at=(GX + GW + 104, YG2))
-# legend
-LX, LY = 1236, 462
+flow([(bcx, Y0 + NH + 8), (bcx, YD), (hcx + 80, YD), (hcx + 80, Y0 + NH + 16)], 'd', '수액 투여 데이터 → AI 고도화', at=(1300, YD))
+# B2G centred under the chain
+GX, GY, GW, GH = 840, 362, 330, 118
+node(GX, GY, GW, GH, 'ic-gov.png', 'B2G 고객', GR, '공공 · 정부', '스마트 의료 인프라', 'gg1', '#EDF8F2', s=58, iconbg=GR)
+YG1, YG2 = GY + 34, GY + 86
+flow([(hcx + 20, Y0 + NH + 16), (hcx + 20, YG1), (GX - 8, YG1)], 'p', '관제 인프라', at=((hcx + 20 + GX) / 2 + 4, YG1))
+flow([(GX - 8, YG2), (hcx - 40, YG2), (hcx - 40, Y0 + NH + 16)], 'm', '보조금 사업', at=((hcx - 40 + GX) / 2, YG2))
+# legend (bottom right)
+LX, LY = 1450, 384
 for i, (k, t) in enumerate((('p', '제품 · 서비스'), ('m', '매출 · 비용'), ('d', '데이터'))):
-    x = LX + i * 168
-    col, dash, sw = {'p': (NV2, '', 3.2), 'm': (RR, ' stroke-dasharray="10 7"', 3), 'd': (GR, ' stroke-dasharray="1 8" stroke-linecap="round"', 4.2)}[k]
-    A(f'<path d="M{x} {LY} L{x+40} {LY}" stroke="{col}" stroke-width="{sw}"{dash}/><text x="{x+50}" y="{LY+6}" font-size="17" font-weight="700" fill="{MU}">{t}</text>')
+    y = LY + i * 34
+    col, dash, sw = {'p': (NV2, '', 2.8), 'm': (RR, ' stroke-dasharray="9 7"', 2.6), 'd': (GR, ' stroke-dasharray="1 8" stroke-linecap="round"', 4)}[k]
+    A(f'<path d="M{LX} {y} L{LX+44} {y}" stroke="{col}" stroke-width="{sw}"{dash}/><text x="{LX+56}" y="{y+6}" font-size="17" font-weight="700" fill="{MU}">{t}</text>')
 def ov(a, b): return not (a[2] <= b[0] or b[2] <= a[0] or a[3] <= b[1] or b[3] <= a[1])
 for i, p in enumerate(pills):
     assert 0 <= p[0] and p[2] <= W and p[1] >= 0 and p[3] <= H, p
