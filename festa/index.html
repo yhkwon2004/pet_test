@@ -702,6 +702,53 @@ b { font-weight: 800; }
 .a4t { flex: 1; display: flex; flex-direction: column; }
 .a4t p:not(.hd) { flex: 1; font-size: 20px; }
 .a4r .v { font-size: 80px; line-height: 92px; }
+/* appendix readability v2 */
+.ax .ttl { top: 96px; }
+.axk { position: absolute; left: 96px; right: 280px; top: 178px; display: block; line-height: 40px; font-size: 24px; font-weight: 700; color: var(--ink2); }
+.axk b { display: inline-block; margin-right: 14px; line-height: 1.3; vertical-align: 2px; padding: 5px 14px; border-radius: 99px; background: var(--cy); color: var(--nv); font-size: 17px; font-weight: 900; }
+.axk em { font-style: normal; color: var(--nv2); font-weight: 800; }
+.ax .body { top: 236px; display: flex; flex-direction: column; }
+.ax .body > .a2g, .ax .body > .a3g, .ax .body > .a5g { flex: 1; min-height: 0; height: auto; margin-top: 0; }
+.a1pt { margin-top: 0; padding: 10px 20px; font-size: 21px; }
+.a1g { flex: 1; min-height: 0; margin-top: 14px; }
+.a1t p { padding: 11px 0; font-size: 19px; }
+.a1t p:not(.hd) span:last-child::before { content: "✓ "; color: #1F9D63; font-weight: 900; }
+.a1t small { font-size: 14px; color: var(--mute); }
+.a1v { margin-top: auto; height: 186px; }
+.a1v.ph figcaption { font-size: 16px; padding: 5px 10px; }
+.a1v.ph figure:last-child img { object-fit: cover; object-position: 50% 35%; background: none; }
+.a1pr { margin-top: 12px; font-size: 17px; }
+.a1pr em { font-style: normal; font-weight: 800; color: var(--nv2); }
+.a2w { display: flex; flex-direction: column; }
+.beds { flex: 1; min-height: 0; grid-auto-rows: 1fr; }
+.bed { height: auto; }
+.a3g { grid-template-columns: 380px 160px 1fr 160px 380px; }
+.a3s ul { flex: 1; justify-content: center; gap: 12px; }
+.a3s li { font-size: 21px; padding: 12px 14px 12px 34px; border-radius: 12px; background: rgba(255, 255, 255, .75); }
+.a3s li::before { left: 15px; top: 24px; }
+.a3s .dl small { display: block; margin-top: 2px; font-size: 14px; font-weight: 700; color: var(--mute); }
+.a3x p { font-size: 17px; word-break: keep-all; }
+.a3b { margin-top: 14px; }
+.a4p { margin-top: 0; }
+.a4g { flex: 1; min-height: 0; height: auto; margin-top: 20px; }
+.a4q .ql { margin-left: 10px; padding: 3px 10px; border-radius: 8px; background: var(--bg2); color: var(--mute); font-size: 15px; font-weight: 800; vertical-align: 3px; }
+.a4r .k { font-size: 18px; }
+.a5r .ds { flex: none; }
+.a5r .ds img { flex: none; height: auto; }
+.a5r .vs { flex: 1; }
+.a5r .vs > div { display: flex; flex-direction: column; justify-content: center; font-size: 21px; line-height: 1.55; }
+.a5r .vs .k { font-size: 18px; }
+.a5t li b { font-size: 24px; }
+.a5t li em, .a5t li span { font-size: 17px; }
+.a1v.dt .tr { gap: 4px; }
+.a1v.dt .tr p { padding: 8px 16px; font-size: 17px; }
+.a1v.dt .tr p b { font-size: 19px; }
+.a1v.dt .tr p.fb { padding: 0; font-size: 15px; }
+.a1v.dt { padding: 12px 16px; }
+.a1pr { display: block; }
+.a1pr b { display: inline-block; margin-right: 12px; }
+.a1c { padding-bottom: 18px; }
+.a2r em.t { font-style: normal; }
 </style>
 </head>
 <body>
@@ -1234,6 +1281,7 @@ b { font-weight: 800; }
     <p class="crumb"><b>부록 A1</b>특허 가능성</p>
     <img class="logo" src="media/logo.png" alt="E² FESTA 2026 공학페스티벌">
     <h2 class="ttl">특허 가능성 — <em>신호처리 구조</em>와 <em>탈부착 하드웨어</em>가 다릅니다</h2>
+    <p class="axk"><b>쉽게 말하면</b>무게 신호 하나를 <em>예측 · 감지 두 갈래</em>로 나눠 처리하는 방식 — 확인한 선행특허 5건에는 없는 구성입니다</p>
     <div class="body">
       <p class="a1pt"><span>발명의 명칭</span>이중 트랙 신호처리 기반 탈부착형 수액 모니터링 장치 및 그 방법<b>변리사 통해 출원 진행 중</b></p>
       <div class="a1g">
@@ -1244,7 +1292,7 @@ b { font-weight: 800; }
             <p><span>신호 경로</span><span>단일 경로 (이동평균 · 회귀)</span><span><b>예측 · 감지 이중 트랙</b> 병렬 + 상호 보정</span></p>
             <p><span>임계값</span><span>고정 임계값</span><span>환자별 유속에 <b>자동 적응</b>하는 임계값</span></p>
             <p><span>경보</span><span>소진 임박 단일 경보</span><span>중단 · 역류 · 급속 주입 · 잔량 <b>유형 분류</b></span></p>
-            <p><span>외란 · 통신</span><span>흔들림 보정 없음 · 단절 시 유실</span><span>IMU 마스킹 · 햄펄 필터 · <b>링버퍼 재전송</b></span></p>
+            <p><span>외란 · 통신</span><span>흔들림 보정 없음 · 단절 시 유실</span><span>흔들림 구간 마스킹 · <b>링버퍼 재전송</b></span></p>
           </div>
           <div class="a1v dt">
             <p class="in">무게<br>W(t)</p>
@@ -1255,23 +1303,23 @@ b { font-weight: 800; }
           <p class="h"><i>HW</i>기존 설계 방식과의 차별점</p>
           <div class="a1t">
             <p class="hd"><span></span><span>기존 방식</span><span>INFUTECH</span></p>
-            <p><span>설치</span><span>폴대 일체형 · 폴대 교체 필요</span><span>기존 폴대 걸이부에 <b>탈부착</b></span></p>
+            <p><span>설치 · 운용</span><span>전용 거치대 · 유선 접속장치</span><span>QR · BLE로 <b>수 분 내 설치</b> · OTA 갱신</span></p>
             <p><span>측정 원리</span><span>점적 광학 센서 — 외광 · 기울기 민감</span><span>로드셀로 <b>잔량 무게 직접 측정</b></span></p>
-            <p><span>정밀도</span><span>범용 저가 ADC</span><span>24비트 전용 ADC + 전원 분리 · RC 필터 → <b>방울 단위</b></span></p>
-            <p><span>외란 검출</span><span>정지한 폴대 전제</span><span>IMU로 흔들림 마스킹 · <b>전도 검출</b></span></p>
+            <p><span>정밀도</span><span>범용 저가 ADC</span><span>24비트 ADC · RC 필터 → <b>방울 단위에 가까운</b> 변화</span></p>
+            <p><span>외란 검출</span><span>정지한 폴대 전제</span><span>보조 MEMS IMU로 <b>흔들림 · 전도</b> 구분 <small>(실시예)</small></span></p>
           </div>
           <div class="a1v ph">
-            <figure><img src="media/mod-inside.webp" alt="계측 모듈 내부 — 로드셀, 회로기판, 배터리"><figcaption>모듈 내부 · 로드셀 · 24비트 ADC · ESP32 · IMU</figcaption></figure>
+            <figure><img src="media/mod-inside.webp" alt="계측 모듈 내부 — 로드셀, 회로기판, 배터리"><figcaption>모듈 내부 · 로드셀 · 회로기판 · 배터리</figcaption></figure>
             <figure><img src="media/mod-mounted.webp" alt="기존 링거폴대 걸이부에 장착한 모듈"><figcaption>기존 폴대 걸이부에 장착</figcaption></figure>
           </div>
         </div>
       </div>
-      <p class="a1pr"><b>선행특허 검토</b>10-0543391 · 10-0543390 · 10-1413945 · 10-2020-0071897 — 무게 측정 · 원격 표시 · 도달 경보는 공통, 위 구성은 개시되지 않음</p>
+      <p class="a1pr"><b>선행특허 5건</b>10-0543391 · 10-0543390 · 10-1413945 · 10-2010-0128044 · 10-2020-0071897 — 무게 측정 · 탈부착 거치 · 원격 표시 · 도달 경보는 공통 / <em>이중 트랙 · 적응 임계 · 유형 분류 · 외란 마스킹 · 링버퍼</em>는 미개시</p>
     </div>
-    <p class="src">출처: INFUTECH 발명신고서 「이중 트랙 신호처리 기반 탈부착형 수액 모니터링 장치 및 그 방법」(2026) — 종래기술과의 차이점 · 선행특허는 발명자가 Google Patents 공개 검색으로 확인한 범위이며, 신규성 · 진보성 최종 판단은 선행기술조사에서 검토</p>
+    <p class="src">출처: INFUTECH 발명신고서 「이중 트랙 신호처리 기반 탈부착형 수액 모니터링 장치 및 그 방법」(2026) · 선행특허는 발명자 공개 검색 범위(최종 판단은 선행기술조사) · 출원 상태 – 팀 기준 · IMU는 실시예(보조 센서)</p>
     <p class="pg">A1</p>
   </div>
-  <div class="note" hidden><p>특허의 핵심은 두 가지입니다. 소프트웨어는 하나의 무게 신호를 예측 트랙과 감지 트랙으로 나눠 병렬 처리하고, 환자별 유속에 맞춰 임계값이 자동으로 바뀌며, 이상을 유형별로 구분합니다. 하드웨어는 기존 폴대에 탈부착하고, 로드셀과 24비트 전용 ADC로 방울 단위 무게 변화를 읽으며, IMU로 흔들림과 넘어짐을 구분합니다. 확인한 선행특허 4건은 무게 측정과 도달 경보까지만 공통입니다.</p></div>
+  <div class="note" hidden><p>특허의 핵심은 신호처리 구조입니다. 하나의 무게 신호를 예측 트랙과 감지 트랙으로 나눠 병렬 처리하고, 환자별 유속에 맞춰 임계값이 자동으로 바뀌며, 이상을 유형별로 구분합니다. 하드웨어는 24비트 ADC와 RC 필터로 방울 단위에 가까운 무게 변화를 읽고, QR과 BLE로 몇 분 안에 설치됩니다. 확인한 선행특허 5건은 무게 측정, 탈부착 거치, 원격 표시, 도달 경보까지가 공통이고, 이중 트랙과 적응형 임계, 유형 분류, 외란 마스킹, 링버퍼는 개시되어 있지 않습니다.</p></div>
 </section>
 <!-- A2 application -->
 <section class="slide ax" id="s-a2" data-sec="10" data-title="부록 A2 · 적용 — 인퓨전 펌프를 대체하지 않고 보완합니다">
@@ -1279,6 +1327,7 @@ b { font-weight: 800; }
     <p class="crumb"><b>부록 A2</b>적용 범위</p>
     <img class="logo" src="media/logo.png" alt="E² FESTA 2026 공학페스티벌">
     <h2 class="ttl">인퓨전 펌프를 <em>대체하지 않고</em>, 펌프가 닿지 않는 병상을 채웁니다</h2>
+    <p class="axk"><b>쉽게 말하면</b>비싼 펌프는 꼭 필요한 병상에만, <em>나머지 병상은 25만 원 모듈</em>로 감시합니다</p>
     <div class="body">
       <div class="a2g">
         <div class="card a2w">
@@ -1288,15 +1337,15 @@ b { font-weight: 800; }
         </div>
         <div class="a2c">
           <div class="a2r hd"><span></span><span>인퓨전 펌프</span><span>INFU RETRO</span></div>
-          <div class="a2r"><span>역할</span><span>유량을 <b>능동 제어</b></span><span>유량 제어 없이 <b>감시 · 통지</b></span></div>
-          <div class="a2r"><span>가격</span><span>대당 <b>약 100만 원</b> 안팎</span><span>대당 <b>25만 원</b></span></div>
-          <div class="a2r"><span>도입</span><span>보유 수량 한정 · 전용 세트</span><span>기존 폴대 · 수액세트 그대로 <b>전 병상</b></span></div>
-          <div class="a2r"><span>유지보수</span><span>장비 관리 부담 큼</span><span>월 관리 구독에 <b>A/S 포함</b></span></div>
+          <div class="a2r"><span>역할</span><span><em class="t">유량을 <b>능동 제어</b></em></span><span><em class="t">유량 제어 없이 <b>감시 · 통지</b></em></span></div>
+          <div class="a2r"><span>가격</span><span><em class="t">대당 <b>약 100만 원</b> 안팎</em></span><span><em class="t">대당 <b>25만 원</b></em></span></div>
+          <div class="a2r"><span>도입</span><span>보유 수량 한정 · 전용 세트</span><span><em class="t">기존 폴대 · 수액세트 그대로 <b>전 병상</b></em></span></div>
+          <div class="a2r"><span>유지보수</span><span>장비 관리 부담 큼</span><span><em class="t">월 관리 구독에 <b>A/S 포함</b></em></span></div>
           <p class="a2k">펌프는 <b>정밀 투여 병상</b>에, INFU RETRO는 <b>나머지 모든 병상</b>에</p>
         </div>
       </div>
     </div>
-    <p class="src">출처: 펌프 가격 – 국산 범용 인퓨전 펌프(AMPALL IP-7700) 국내 온라인 판매가 약 99만~121만 원(2026.11 검색) · 보유 수량 · 유지보수 부담, 감시 전용 보완재 – INFUTECH 발명신고서(2026, 간호학 전공자 협업 현장 문제 정리) · 판매가 25만 원 – INFUTECH 사업계획서 · 병상 배치는 개념도</p>
+    <p class="src">출처: 펌프 가격 – 국산 범용 인퓨전 펌프(AMPALL IP-7700) 국내 온라인 판매가 약 99만~121만 원(2026.11 검색) · 보유 수량 · 유지보수 부담, 감시 전용 보완재 – INFUTECH 발명신고서(2026) · 판매가 25만 원 – INFUTECH 사업계획서 · 구독 조건 – 내부 기준 · 병상 배치는 개념도</p>
     <p class="pg">A2</p>
   </div>
   <div class="note" hidden><p>저희 제품은 인퓨전 펌프를 대체하지 않습니다. 펌프는 유량을 직접 제어하는 정밀 장비지만 대당 100만 원 안팎으로 비싸 보유 수량이 한정되고, 그래서 대부분의 일반 병상은 자연낙하식 수액을 간호사가 직접 확인합니다. INFU RETRO는 유량을 제어하지 않고 감시와 통지만 하는 대당 25만 원의 보완재로, 펌프가 닿지 않는 나머지 병상을 채웁니다.</p></div>
@@ -1307,6 +1356,7 @@ b { font-weight: 800; }
     <p class="crumb"><b>부록 A3</b>팀원 역할 · 협력 관계도</p>
     <img class="logo" src="media/logo.png" alt="E² FESTA 2026 공학페스티벌">
     <h2 class="ttl">개발 · 의료 실증 · 유통이 <em>한 흐름</em>으로 협력합니다</h2>
+    <p class="axk"><b>쉽게 말하면</b><em>간호학과</em>가 현장 문제를, <em>컴공 개발팀</em>이 제품을, <em>유통업체</em>가 판로를 맡습니다</p>
     <div class="body">
       <div class="a3g">
         <div class="card a3s med">
@@ -1315,30 +1365,30 @@ b { font-weight: 800; }
           <ul><li>현장 문제 정의 · 간호사 인터뷰</li><li>모의 임상 시나리오 설계</li><li>사용성 피드백 → 반복 개선</li><li>이동 · 흔들림 · 넘어짐 모의 테스트</li></ul>
           <div class="pp"><img src="media/m-han-b.webp" alt="한별"><div><b>한별 · Advisor</b><span>간호 협력 · 실험 환경 세팅</span></div></div>
         </div>
-        <div class="a3x"><p class="r">현장 문제 · 임상 피드백 →</p><p class="l">← 시제품 · 테스트 환경</p></div>
+        <div class="a3x"><p class="r">현장 문제 ·<br>임상 피드백 →</p><p class="l">← 시제품 ·<br>테스트 환경</p></div>
         <div class="card a3m">
           <p class="tg">INFUTECH 개발팀 · 원광대 컴퓨터소프트웨어공학과</p>
           <div class="mm">
-            <div><img src="media/m-jeong.webp" alt="정익상"><p class="k">알고리즘</p><b>정익상</b><span>PL · AI 모델 · 칼만 필터 · CNN</span></div>
+            <div><img src="media/m-jeong.webp" alt="정익상"><p class="k">알고리즘</p><b>정익상</b><span>PL · AI 엔지니어 · 모델 학습</span></div>
             <div><img src="media/m-kwon.webp" alt="권용현"><p class="k">제품 설계 · HW</p><b>권용현</b><span>F/W · PCB 개발 총괄</span></div>
-            <div><img src="media/m-han-wj.webp" alt="한우진"><p class="k">제품 설계 · 기구</p><b>한우진</b><span>3D 설계 · F/W</span></div>
+            <div><img src="media/m-han-wj.webp" alt="한우진"><p class="k">제품 설계 · 알고리즘</p><b>한우진</b><span>3D 설계 · F/W · CNN 논문 제1저자</span></div>
             <div><img src="media/m-choi.webp" alt="최이지"><p class="k">서버 구축</p><b>최이지</b><span>서버 · DB · 대시보드 연동</span></div>
           </div>
         </div>
-        <div class="a3x"><p class="r">모듈 공급 · 제품 정보 →</p><p class="l">← 판로 · 현장 의견 전달</p></div>
+        <div class="a3x"><p class="r">모듈 공급 ·<br>제품 정보 →</p><p class="l">← 판로 ·<br>현장 의견 전달</p></div>
         <div class="card a3s dst">
           <p class="tg">협력 기관 · 유통</p>
           <h3>㈜에스케이엠엔엠</h3>
           <ul><li>의료기기 유통망으로 판로 확보</li><li>시장 정보 · 홍보 지원</li><li>의료 현장 사용자 의견 전달</li><li>생산 · 인허가 후 본계약 협의</li></ul>
-          <p class="dl">구매의향 및 사업협력 업무협약<b>5,000만 원</b></p>
+          <p class="dl">구매의향 및 사업협력 업무협약<b>5,000만 원</b><small>법적 구속력 없는 의향 협약 (제7조)</small></p>
         </div>
       </div>
       <p class="a3b"><b>연구 · 지식재산</b>원광대학교 연구 지원 · 공동학술발표회 우수논문상 · 변리사 통해 특허 출원 진행 중</p>
     </div>
-    <p class="src">출처: 팀 구성 · 역할 – INFUTECH 팀 소개 · 유통 협력 범위 – ㈜에스케이엠엔엠 구매의향 및 사업협력 업무협약서 제4조(2026.10.11) · 간호학과 협업 – INFUTECH 발명신고서(2026) · 연구 지원 – 논문 Acknowledgments(“supported by Wonkwang University”)</p>
+    <p class="src">출처: 팀 구성 · 역할 – INFUTECH 팀 소개 · 유통 협력 · 금액 – ㈜에스케이엠엔엠 구매의향 및 사업협력 업무협약서 제3 · 4 · 5 · 7조(2026.10.11) · 간호학과 협업 – INFUTECH 팀 소개 · 발명신고서(2026, 현장 문제 정리) · 모의 테스트 – 본문 12쪽 · 연구 지원 – 논문 Acknowledgments(“supported by Wonkwang University”)</p>
     <p class="pg">A3</p>
   </div>
-  <div class="note" hidden><p>개발은 컴퓨터소프트웨어공학과 네 명이 나눠 맡습니다. 정익상이 알고리즘과 AI 모델, 권용현이 펌웨어와 PCB, 한우진이 3D 기구 설계, 최이지가 서버와 데이터베이스를 담당합니다. 원광대 간호학과는 현장 문제 정의와 모의 임상 시나리오, 사용성 피드백을, 한별 어드바이저는 간호 협력과 실험 환경 세팅을 맡습니다. 유통은 에스케이엠엔엠이 판로와 현장 의견 전달을 맡습니다.</p></div>
+  <div class="note" hidden><p>개발은 컴퓨터소프트웨어공학과 네 명이 나눠 맡습니다. 정익상이 팀장이자 AI 엔지니어로 모델 학습을, 권용현이 펌웨어와 PCB, 한우진이 3D 기구 설계와 CNN 알고리즘 논문을, 최이지가 서버와 데이터베이스를 담당합니다. 원광대 간호학과는 현장 문제 정의와 모의 임상 시나리오, 사용성 피드백을, 한별 어드바이저는 간호 협력과 실험 환경 세팅을 맡습니다. 유통은 에스케이엠엔엠이 판로와 현장 의견 전달을 맡습니다.</p></div>
 </section>
 <!-- A4 algorithm -->
 <section class="slide ax" id="s-a4" data-sec="10" data-title="부록 A4 · 알고리즘 — 칼만 필터 + 4×4 패턴 이미지 + 경량 2D CNN">
@@ -1346,6 +1396,7 @@ b { font-weight: 800; }
     <p class="crumb"><b>부록 A4</b>알고리즘</p>
     <img class="logo" src="media/logo.png" alt="E² FESTA 2026 공학페스티벌">
     <h2 class="ttl">무게 신호를 <em>4×4 이미지</em>로 바꿔 경량 2D CNN이 판별합니다</h2>
+    <p class="axk"><b>쉽게 말하면</b>16번 잰 결과를 <em>4×4 그림</em>으로 그려, 그림 모양으로 정상과 이상을 구별합니다</p>
     <div class="body">
       <ol class="a4p">
         <li><i><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="30" width="32" height="10" rx="3"/><path d="M24 30V12M14 12h20M17 12l-5 10h10zM31 12l-5 10h10z"/></svg></i><b>무게 측정</b><span>로드셀 · 24비트 ADC</span></li>
@@ -1356,7 +1407,7 @@ b { font-weight: 800; }
       </ol>
       <div class="a4g">
         <div class="card a4q">
-          <p class="h">Q. 왜 1D CNN · RNN이 아닌 <em>2D CNN</em>인가?</p>
+          <p class="h">Q. 왜 1D CNN · RNN이 아닌 <em>2D CNN</em>인가? <span class="ql">설계 관점 정성 비교</span></p>
           <div class="a4t">
             <p class="hd"><span></span><span>1D CNN</span><span>RNN · LSTM · GRU</span><span>2D CNN (INFUTECH)</span></p>
             <p><span>입력</span><span>원시 시계열 1축</span><span>시점별 순차 입력</span><span><b>4×4 상태 패턴</b> 16칸</span></p>
@@ -1366,16 +1417,16 @@ b { font-weight: 800; }
           </div>
         </div>
         <div class="card a4r">
-          <p class="k">판별 정확도</p><p class="v">97.3<small>%</small></p>
+          <p class="k">모의 데이터 검증 정확도</p><p class="v">97.3<small>%</small></p>
           <p class="k">판별 시간</p><p class="v">5<small>초 이내</small></p>
           <p class="m">Conv2D(8, 3×3) → MaxPool(2×2)<br>→ Dense(16) → Dense(3) → Softmax<br>ESP32 · TensorFlow Lite Micro</p>
         </div>
       </div>
     </div>
-    <p class="src">출처: 부호화 · 4×4 패턴 · 모델 구조 · 파라미터 · 메모리 – 한우진 외, 「상태 패턴 분석 기반 수액 이상 감지 알고리즘」(2026 공동학술발표회 우수논문상) · 칼만 필터 · 정확도 97.3% · 5초 이내 – INFUTECH 사업계획서 · 1D CNN · LSTM · GRU와의 정량 비교는 후속 연구 예정(논문 본문) · 4×4 그림은 예시</p>
+    <p class="src">출처: 부호화 · 4×4 패턴 · 모델 구조 · 파라미터 · 메모리 – 한우진 외, 「상태 패턴 분석 기반 수액 이상 감지 알고리즘」(2026 공동학술발표회 우수논문상) · 칼만 필터 · 모의 데이터 검증 정확도 97.3% · 5초 이내 – INFUTECH 사업계획서 · 1D CNN · RNN 열은 설계 관점 정성 비교(미측정), LSTM · GRU 등과의 정량 비교는 후속 연구(논문) · 특허(A1)는 이중 트랙 신호처리 대상 · 4×4 그림은 예시</p>
     <p class="pg">A4</p>
   </div>
-  <div class="note" hidden><p>로드셀로 받은 무게 신호를 칼만 필터로 1차 정리한 뒤, 기준 유속 대비 편차를 느림, 정상, 빠름 세 상태로 부호화합니다. 연속 16개 상태를 4×4 이미지로 접으면, 지속되는 이상은 인접한 덩어리로, 순간 노이즈는 고립된 한 칸으로 나타납니다. 3×3 필터 하나가 최대 11스텝 범위를 9개 가중치로 보기 때문에, 파라미터 약 660개, 약 10KB의 작은 모델로도 ESP32에서 실시간 판별이 가능합니다. RNN 계열은 순차 연산과 상태 메모리 부담이 커서 MCU에 불리합니다. 1D CNN과 LSTM, GRU와의 정량 비교는 후속 연구로 진행합니다.</p></div>
+  <div class="note" hidden><p>로드셀로 받은 무게 신호를 칼만 필터로 1차 정리한 뒤, 기준 유속 대비 편차를 느림, 정상, 빠름 세 상태로 부호화합니다. 연속 16개 상태를 4×4 이미지로 접으면, 지속되는 이상은 인접한 덩어리로, 순간 노이즈는 고립된 한 칸으로 나타납니다. 3×3 필터 하나가 최대 11스텝 범위를 9개 가중치로 보기 때문에, 파라미터 약 660개, 약 10KB의 작은 모델로도 ESP32에서 실시간 판별이 가능합니다. RNN 계열은 순차 연산과 상태 메모리 부담을 고려해, 임베디드 실시간 처리를 위해 경량 2D CNN을 우선 적용했습니다. 다른 시계열 모델과의 정량 비교는 후속 연구로 진행합니다.</p></div>
 </section>
 <!-- A5 anomaly detection -->
 <section class="slide ax" id="s-a5" data-sec="10" data-title="부록 A5 · 수액 이상 탐지 — 유형 구분과 스테이션 알림">
@@ -1383,26 +1434,27 @@ b { font-weight: 800; }
     <p class="crumb"><b>부록 A5</b>수액 이상 탐지</p>
     <img class="logo" src="media/logo.png" alt="E² FESTA 2026 공학페스티벌">
     <h2 class="ttl">느림 · 빠름을 넘어 <em>이상 유형</em>을 구분하고, <em>스테이션</em>에 알립니다</h2>
+    <p class="axk"><b>쉽게 말하면</b>"느리다 · 빠르다"가 아니라 <em>무슨 이상인지</em>를 구분해, <em>어느 병상인지</em> 스테이션에 바로 알립니다</p>
     <div class="body">
       <div class="a5g">
         <div class="card a5t">
           <p class="h">무게 변화의 방향 · 지속성으로 구분하는 6가지 이상</p>
-          <ul><li><i><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="9" y="9" width="30" height="30" rx="6"/><path d="M19 18v12M29 18v12"/></svg></i><div><b>투여 중단</b><em>줄 막힘 · 꺾임 · 클램프 잠김</em><span>무게 감소가 멈춤</span></div></li><li><i><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6S12 20 12 29a12 12 0 0 0 24 0C36 20 24 6 24 6z"/><path d="M24 22v12M19 29l5 5 5-5"/></svg></i><div><b>급속 감소</b><em>조절기 풀림 · 줄 빠짐</em><span>기저 유속의 k배 이상 급감 지속</span></div></li><li><i><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 40V12M15 21l9-9 9 9"/><path d="M10 40h28"/></svg></i><div><b>역류 · 외력</b><em>교체 지연 · 접촉</em><span>무게가 거꾸로 증가 · 요동</span></div></li><li><i><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="15" y="6" width="18" height="36" rx="5"/><path d="M15 32h18"/><path d="M20 3h8"/></svg></i><div><b>잔량 부족</b><em>소진 임박</em><span>잔량 50 mL 이하</span></div></li><li><i><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 40L36 14"/><path d="M8 40h20"/><path d="M38 8l3 3M42 16l-4 1M33 5l-1 4"/></svg></i><div><b>폴대 전도 · 충격</b><em>넘어짐 · 강한 충격</em><span>IMU 이벤트</span></div></li><li><i><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 20a23 23 0 0 1 32 0M14 27a14 14 0 0 1 20 0M20 34a6 6 0 0 1 8 0"/><path d="M8 8l32 32"/></svg></i><div><b>기기 오프라인</b><em>통신 · 전원 이상</em><span>신호 3분 이상 끊김</span></div></li></ul>
+          <ul><li><i><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="9" y="9" width="30" height="30" rx="6"/><path d="M19 18v12M29 18v12"/></svg></i><div><b>투여 중단</b><em>줄 막힘 · 꺾임 · 클램프 잠김</em><span>무게 감소가 멈춤</span></div></li><li><i><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6S12 20 12 29a12 12 0 0 0 24 0C36 20 24 6 24 6z"/><path d="M24 22v12M19 29l5 5 5-5"/></svg></i><div><b>급속 감소</b><em>조절기 풀림 · 줄 빠짐(추정)</em><span>기저 유속의 k배 이상 급감 지속</span></div></li><li><i><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 40V12M15 21l9-9 9 9"/><path d="M10 40h28"/></svg></i><div><b>역류 · 외력</b><em>교체 지연 · 접촉</em><span>무게가 거꾸로 증가 · 요동</span></div></li><li><i><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="15" y="6" width="18" height="36" rx="5"/><path d="M15 32h18"/><path d="M20 3h8"/></svg></i><div><b>잔량 부족</b><em>소진 임박</em><span>잔량 50 mL 이하</span></div></li><li><i><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 40L36 14"/><path d="M8 40h20"/><path d="M38 8l3 3M42 16l-4 1M33 5l-1 4"/></svg></i><div><b>폴대 전도 · 충격</b><em>넘어짐 · 강한 충격</em><span>보조 IMU 이벤트 (실시예)</span></div></li><li><i><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 20a23 23 0 0 1 32 0M14 27a14 14 0 0 1 20 0M20 34a6 6 0 0 1 8 0"/><path d="M8 8l32 32"/></svg></i><div><b>기기 오프라인</b><em>통신 · 전원 이상</em><span>신호 3분 이상 끊김</span></div></li></ul>
           <p class="st">시제품 실험 · 이상 감지 평균 <b>2.3초</b> · 위양성 <b>2.9%</b> · 위음성 <b>1.3%</b></p>
         </div>
         <div class="a5r">
           <div class="vs">
-            <div class="o"><p class="k">단독형 인퓨전 펌프</p><p>경보가 <b>기기 앞에서만</b> 울림<br>소리를 듣고 병상을 찾아가야 함</p></div>
+            <div class="o"><p class="k">네트워크 미연동 단독형 펌프</p><p>경보가 <b>기기 앞에서만</b> 울림<br>소리를 듣고 병상을 찾아가야 함</p></div>
             <div class="n"><p class="k">INFUTECH</p><p>병상 모듈 → 서버 → <b>간호사 스테이션 · 보호자 앱</b><br><b>어느 병실 · 몇 번 병상 · 어떤 이상</b>인지 즉시</p></div>
           </div>
           <figure class="card ds"><img src="media/dash.webp" alt="간호사 스테이션 대시보드 — 병실·병상별 잔량·유속·종료 예상 시각과 실시간 알림, 보호자 앱 화면"><figcaption>스테이션 대시보드 · 보호자 앱 — 병상별 잔량 · 유속 · 종료 예상 시각 · 실시간 알림</figcaption></figure>
         </div>
       </div>
     </div>
-    <p class="src">출처: 이상 유형 · 판정 기준 · 알림 구조 – INFUTECH 발명신고서(2026) · 감지 시간 · 위양성 · 위음성 – 시제품 실험(500 mL 생리식염수, 20~80 gtt/min, 조건별 10회, AIT 2026 제출 논문 Table 1), 실험실 결과이며 임상 검증은 후속 진행 · 화면 – INFUTECH 대시보드 · 앱</p>
+    <p class="src">출처: 이상 유형 · 판정 기준 · 알림 구조 – INFUTECH 발명신고서(2026), 줄 빠짐은 급속 감소 패턴으로 본 추정 시나리오 · 감지 시간 · 위양성 · 위음성 – 시제품 실험(500 mL 생리식염수, 20~80 gtt/min, 조건별 10회, AIT 2026 제출 논문 Table 1), 실험실 결과이며 임상 검증은 후속 진행 · 화면 – INFUTECH 대시보드 · 앱</p>
     <p class="pg">A5</p>
   </div>
-  <div class="note" hidden><p>단순히 느림과 빠름만 보는 것이 아닙니다. 무게 변화의 방향과 지속성으로 투여 중단, 줄 빠짐이나 조절기 풀림에 의한 급속 감소, 역류와 외력, 잔량 부족을 구분하고, IMU로 폴대 전도를, 신호 단절로 기기 오프라인을 따로 알립니다. 단독형 인퓨전 펌프는 경보가 기기 앞에서만 울리지만, 저희는 서버를 거쳐 간호사 스테이션과 보호자 앱으로 어느 병실 몇 번 병상에서 어떤 이상이 생겼는지 바로 보여줍니다. 시제품 실험에서 이상 감지는 평균 2.3초, 위양성 2.9퍼센트였습니다.</p></div>
+  <div class="note" hidden><p>단순히 느림과 빠름만 보는 것이 아닙니다. 무게 변화의 방향과 지속성으로 투여 중단, 줄 빠짐이나 조절기 풀림에 의한 급속 감소, 역류와 외력, 잔량 부족을 구분하고, 보조 IMU로 폴대 전도를, 신호 단절로 기기 오프라인을 따로 알립니다. 네트워크에 연결되지 않은 단독형 인퓨전 펌프는 경보가 기기 앞에서만 울리지만, 저희는 서버를 거쳐 간호사 스테이션과 보호자 앱으로 어느 병실 몇 번 병상에서 어떤 이상이 생겼는지 바로 보여줍니다. 시제품 실험에서 이상 감지는 평균 2.3초, 위양성 2.9퍼센트였습니다.</p></div>
 </section>
 
 </main>
