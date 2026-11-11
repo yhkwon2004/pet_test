@@ -173,7 +173,7 @@ function extract(id) {
   }
   // brand corner + page number (pseudo-elements)
   for (const [pseudo, txt] of [['::before', 'WON SHOT'], ['::after', frame.dataset.pg]]) {
-    const cs = getComputedStyle(frame, pseudo); if (cs.content === 'none' || cs.display === 'none' || !txt) continue;
+    const cs = getComputedStyle(frame, pseudo); if (cs.content === 'none' || cs.display === 'none' || !txt || (pseudo === '::before' && !cs.content.includes(txt))) continue;
     const c = hex(cs.color) || { hex: '777777', a: 1 }, fs = parseFloat(cs.fontSize);
     const right = parseFloat(cs.right), top = parseFloat(cs.top), bottom = parseFloat(cs.bottom), left = parseFloat(cs.left);
     const w = 400, h = fs * 1.4;
@@ -276,7 +276,8 @@ async function finish(file, media) {
   const mainCount = slides.filter(s => s.sec !== APPX).length;
 
   const pres = new PptxGenJS(); pres.layout = 'LAYOUT_WIDE';
-  pres.title = 'INFU RETRO — 반려동물 약물투약 사고를 방지하기 위한 이상감지 솔루션'; pres.author = 'WON SHOT'; pres.company = 'WON SHOT';
+  const META = n => (new RegExp('<meta name="pptx-' + n + '" content="([^"]*)"').exec(html) || [])[1];
+  pres.title = META('title') || 'INFU RETRO — 반려동물 약물투약 사고를 방지하기 위한 이상감지 솔루션'; pres.author = META('author') || 'WON SHOT'; pres.company = META('author') || 'WON SHOT';
   pres.theme = { headFontFace: FONT, bodyFontFace: FONT };
   const media = []; let section = '', stats = { t: 0, i: 0, s: 0 };
 

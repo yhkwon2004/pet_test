@@ -1,0 +1,943 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>INFUTECH — 지능형 수액 모니터링 링거 폴대 · 2026 공학페스티벌</title>
+<meta name="description" content="링거폴대 교체 없이 활용가능한 스마트 수액 모니터링 솔루션 — INFUTECH / 원광대학교, 2026 공학페스티벌 발표 자료">
+<meta name="pptx-title" content="INFUTECH — 지능형 수액 모니터링 링거 폴대">
+<meta name="pptx-subject" content="2026 공학페스티벌 · 링거폴대 교체 없이 활용가능한 스마트 수액 모니터링 솔루션">
+<meta name="pptx-author" content="INFUTECH">
+<style>
+@font-face { font-family: "Pretendard"; src: url("fonts/PretendardVariable.woff2") format("woff2-variations"); font-weight: 100 900; font-display: block; }
+:root {
+  --nv: #0B2466;      /* brand navy */
+  --nv2: #1C3A8A;
+  --nv3: #4A5E91;
+  --nvl: #B9C1D6;
+  --cy: #1CE8F2;      /* accent cyan (on navy) */
+  --cyd: #0891B2;     /* accent cyan (on white) */
+  --ink: #0F1A38;
+  --ink2: #3F4A66;
+  --mute: #6B7590;
+  --line: #DCE2EE;
+  --bg2: #F3F6FB;
+  --rd: #E5484D;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: #0B1330; overflow: hidden; }
+body { font-family: "Pretendard", -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif; -webkit-font-smoothing: antialiased; word-break: keep-all; color: var(--ink); }
+p, h1, h2, h3, ul, ol, figure { margin: 0; padding: 0; }
+ul, ol { list-style: none; }
+img { display: block; max-width: 100%; }
+b { font-weight: 800; }
+
+/* ---------- deck runtime ---------- */
+.deck { position: fixed; inset: 0; }
+.slide { position: absolute; inset: 0; visibility: hidden; background: #FFFFFF; }
+.slide.on { visibility: visible; }
+.frame { position: absolute; left: 50%; top: 50%; width: 1920px; height: 1080px; transform: translate(-50%, -50%) scale(var(--s, 1)); transform-origin: 50% 50%; overflow: hidden; background: #FFFFFF; }
+.note { display: none; }
+
+/* ---------- shared chrome ---------- */
+.frame::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 150px; background: radial-gradient(900px 160px at 70% 0%, rgba(28, 58, 138, .07), rgba(28, 58, 138, 0) 70%); pointer-events: none; }
+.logo { position: absolute; top: 30px; right: 56px; height: 76px; width: auto; z-index: 5; }
+.crumb { position: absolute; left: 96px; top: 48px; font-size: 21px; font-weight: 500; color: var(--mute); letter-spacing: -.01em; }
+.crumb b { color: var(--nv); font-weight: 800; margin-right: 12px; }
+.ttl { position: absolute; left: 96px; top: 112px; right: 340px; font-size: 54px; font-weight: 800; letter-spacing: -.035em; line-height: 1.2; color: var(--ink); }
+.ttl em { font-style: normal; color: var(--nv2); }
+.body { position: absolute; left: 96px; right: 96px; top: 222px; bottom: 76px; }
+.src { position: absolute; left: 96px; right: 200px; bottom: 26px; font-size: 16px; font-weight: 500; color: #8A93AA; line-height: 1.4; }
+.pg { position: absolute; right: 64px; bottom: 24px; font-size: 20px; font-weight: 700; color: #9AA3B9; font-variant-numeric: tabular-nums; }
+.card { background: #FFFFFF; border: 1.5px solid var(--line); border-radius: 22px; box-shadow: 0 14px 36px rgba(14, 30, 80, .07); }
+.ncard { background: var(--nv); color: #FFFFFF; border-radius: 22px; box-shadow: 0 16px 38px rgba(11, 36, 102, .28); }
+.pill-o { display: block; text-align: center; line-height: 67px; height: 72px; border: 2.5px solid var(--nv); border-radius: 99px; font-size: 27px; font-weight: 700; color: var(--nv); background: #FFFFFF; }
+.pill-n { display: block; text-align: center; line-height: 76px; height: 76px; border-radius: 99px; background: var(--nv); color: #FFFFFF; font-size: 28px; font-weight: 700; box-shadow: 0 14px 30px rgba(11, 36, 102, .25); }
+.pill-n em, .ncard em { font-style: normal; color: var(--cy); }
+.hd-n { display: flex; align-items: center; justify-content: center; height: 64px; border-radius: 14px; background: var(--nv); color: #FFFFFF; font-size: 26px; font-weight: 800; }
+
+/* ---------- 1 · 19 cover / closing ---------- */
+.cov { background: #FFFFFF; }
+.cov .bgnet { position: absolute; inset: 0; background:
+  radial-gradient(circle at 18% 22%, rgba(28, 58, 138, .06) 0 2px, transparent 3px) 0 0 / 46px 46px,
+  linear-gradient(180deg, #FFFFFF 0%, #F2F5FB 72%); }
+.cov .band { position: absolute; left: 0; right: 0; bottom: 0; height: 340px; background: linear-gradient(100deg, #0A2160 0%, #0B2466 55%, #13307D 100%); }
+.cov .band::after { content: ""; position: absolute; left: 96px; top: 0; width: 140px; height: 8px; background: var(--cy); }
+.cov .yr { position: absolute; left: 96px; top: 58px; font-size: 24px; font-weight: 700; color: var(--ink2); letter-spacing: .02em; }
+.cov .sub { position: absolute; left: 96px; top: 190px; font-size: 38px; font-weight: 700; color: var(--nv2); letter-spacing: -.02em; }
+.cov h1 { position: absolute; left: 90px; top: 262px; font-size: 128px; font-weight: 800; line-height: 1.12; letter-spacing: -.045em; color: var(--nv); }
+.cov .prod { position: absolute; right: 150px; top: 70px; height: 1010px; width: auto; filter: drop-shadow(0 30px 40px rgba(10, 30, 80, .25)); z-index: 2; }
+.cov .bandtxt { position: absolute; left: 96px; bottom: 64px; color: #FFFFFF; z-index: 3; }
+.cov .org { font-size: 34px; font-weight: 800; letter-spacing: .01em; }
+.cov .mem { margin-top: 26px; display: grid; grid-template-columns: auto 1fr; gap: 10px 22px; font-size: 26px; font-weight: 500; color: #DCE4F7; }
+.cov .mem dt { font-weight: 800; color: #FFFFFF; }
+.cov .mem dd { margin: 0; }
+.end h1 { top: 330px; font-size: 150px; }
+.end .sub { top: 176px; font-size: 40px; line-height: 1.45; color: var(--ink); font-weight: 700; }
+.end .sub em { font-style: normal; color: var(--nv2); }
+.end .bandtxt .org { font-size: 38px; }
+.end .bandtxt p { margin-top: 14px; font-size: 26px; font-weight: 500; color: #DCE4F7; }
+
+/* ---------- 2 nurse load ---------- */
+.s2 { display: grid; grid-template-columns: 660px 1fr; gap: 36px; height: 560px; }
+.s2 .ncard { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
+.s2 .k { font-size: 30px; font-weight: 700; color: #C9D3EE; }
+.s2 .big { margin-top: 34px; font-size: 210px; font-weight: 800; letter-spacing: -.05em; line-height: 1; }
+.s2 .big small { font-size: 76px; font-weight: 700; margin-left: 10px; letter-spacing: 0; }
+.s2 .tag { margin-top: 18px; padding: 10px 30px; border-radius: 99px; background: var(--cy); color: var(--nv); font-size: 30px; font-weight: 800; }
+.s2 .card { padding: 44px 52px; display: flex; flex-direction: column; }
+.s2 .ch { font-size: 30px; font-weight: 800; color: var(--ink); }
+.s2 .cs { margin-top: 6px; font-size: 21px; font-weight: 500; color: var(--mute); }
+.s2 .bars { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 46px; }
+.s2 .row { display: grid; grid-template-columns: 90px 1fr; align-items: center; gap: 20px; }
+.s2 .row > span { font-size: 28px; font-weight: 800; color: var(--ink2); }
+.s2 .bar { position: relative; height: 78px; }
+.s2 .bar i { display: block; height: 100%; border-radius: 0 14px 14px 0; background: var(--nv); }
+.s2 .bar.us i { background: var(--nvl); }
+.s2 .bar b { position: absolute; top: 50%; transform: translateY(-50%); font-size: 40px; font-weight: 800; }
+.s2 .bar:not(.us) b { right: 22px; color: #FFFFFF; }
+.s2 .bar.us b { left: calc(13% + 20px); color: var(--nv3); }
+.s2 .cf { padding-top: 22px; border-top: 1.5px solid var(--line); font-size: 23px; font-weight: 600; color: var(--ink2); }
+.s2 .cf b { color: var(--nv2); }
+.s2-q { margin-top: 40px; }
+
+/* ---------- 3 safety ---------- */
+.s3 { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; height: 600px; }
+.s3 .col { display: flex; flex-direction: column; gap: 18px; }
+.s3 .card { flex: 1; padding: 30px 44px 26px; display: flex; flex-direction: column; }
+.s3 .kk { text-align: center; font-size: 25px; font-weight: 700; color: var(--ink2); }
+.s3 .vv { text-align: center; margin-top: 26px; font-size: 36px; font-weight: 600; color: var(--ink2); }
+.s3 .vv b { font-size: 60px; color: var(--nv); letter-spacing: -.03em; margin: 0 6px; }
+.s3 .hb { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 22px; margin-top: 14px; }
+.s3 .hb .r { display: grid; grid-template-columns: 70px 1fr; align-items: center; gap: 16px; }
+.s3 .hb .r > span { font-size: 26px; font-weight: 800; color: var(--ink2); }
+.s3 .hb .b { position: relative; height: 46px; }
+.s3 .hb i { display: block; height: 100%; width: calc(var(--w) * 1%); border-radius: 0 10px 10px 0; background: var(--nvl); }
+.s3 .hb .r.k1 i { background: var(--nv); } .s3 .hb .r.k2 i { background: var(--nv3); }
+.s3 .hb em { position: absolute; top: 50%; transform: translateY(-50%); left: calc(var(--w) * 1% + 14px); font-style: normal; font-size: 26px; font-weight: 800; color: var(--ink2); white-space: nowrap; }
+.s3 .hb .r.k1 em { left: auto; right: 16px; color: #FFFFFF; }
+.s3 .dn { flex: 1; display: grid; grid-template-columns: 300px 1fr; align-items: center; gap: 40px; margin-top: 10px; }
+.s3 .dn svg { width: 300px; height: 300px; }
+.s3 .lg { display: flex; flex-direction: column; gap: 12px; }
+.s3 .lg p { display: grid; grid-template-columns: 22px 1fr auto; align-items: center; gap: 14px; font-size: 24px; font-weight: 600; color: var(--ink2); }
+.s3 .lg p i { width: 22px; height: 22px; border-radius: 6px; }
+.s3 .lg p b { font-weight: 800; color: var(--ink); font-variant-numeric: tabular-nums; }
+.s3 .lg p.top { font-size: 28px; } .s3 .lg p.top b { color: var(--nv); font-size: 34px; }
+.s3-q { margin-top: 30px; }
+
+/* ---------- 4 gap ---------- */
+.s4tl { height: 150px; padding: 26px 50px; display: grid; grid-template-columns: 280px 1fr; align-items: center; gap: 40px; }
+.s4tl .k { font-size: 23px; font-weight: 700; color: var(--mute); }
+.s4tl .v { margin-top: 6px; font-size: 30px; font-weight: 700; color: var(--ink2); }
+.s4tl .v b { font-size: 62px; color: var(--nv); letter-spacing: -.03em; margin: 0 4px; }
+.s4tl svg { width: 100%; height: 96px; }
+.s4c { margin-top: 26px; display: grid; grid-template-columns: 1fr 44px 1fr 44px 1fr 44px 1fr; align-items: stretch; height: 448px; }
+.s4c .ar { align-self: center; justify-self: center; font-size: 40px; font-weight: 900; color: var(--nv3); }
+.s4c .card, .s4c .ncard { display: flex; flex-direction: column; padding: 22px 24px 24px; gap: 14px; }
+.s4c .no { font-size: 20px; font-weight: 800; color: var(--nv2); letter-spacing: .02em; }
+.s4c .ncard .no { color: var(--cy); }
+.s4c .ph { height: 150px; border-radius: 14px; overflow: hidden; background: var(--bg2); }
+.s4c .ph img { width: 100%; height: 100%; object-fit: cover; }
+.s4c .ph3 { height: 150px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.s4c .ph3 figure { position: relative; border-radius: 12px; overflow: hidden; }
+.s4c .ph3 img { width: 100%; height: 100%; object-fit: cover; }
+.s4c .ph3 figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 4px 0; text-align: center; background: rgba(11, 36, 102, .88); color: #FFFFFF; font-size: 15px; font-weight: 700; }
+.s4c h3 { font-size: 30px; font-weight: 800; color: var(--nv); letter-spacing: -.02em; }
+.s4c .ncard h3 { color: #FFFFFF; }
+.s4c p.d { font-size: 21px; font-weight: 500; line-height: 1.5; color: var(--ink2); }
+.s4c .ncard p.d { color: #D7DFF3; }
+.s4c .ncard p.d em { font-style: normal; color: var(--cy); font-weight: 800; }
+.s4-q { margin-top: 28px; }
+.s4-n { margin-top: 12px; text-align: right; font-size: 17px; color: #8A93AA; font-weight: 500; }
+
+/* ---------- 5 dark statement ---------- */
+.dark .frame { background: #0B1330; }
+.dark .frame::before { display: none; }
+.dark .bgimg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 70% 40%; }
+.dark .shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(8, 14, 34, .96) 0%, rgba(8, 14, 34, .88) 38%, rgba(8, 14, 34, .25) 70%, rgba(8, 14, 34, .05) 100%); }
+.dark .crumb { color: rgba(255, 255, 255, .7); }
+.dark .crumb b { color: #FFFFFF; }
+.dark .st { position: absolute; left: 96px; top: 300px; width: 900px; }
+.dark .st::before { content: ""; display: block; width: 72px; height: 6px; background: var(--cy); margin-bottom: 52px; }
+.dark .st h2 { font-size: 66px; font-weight: 800; line-height: 1.38; letter-spacing: -.035em; color: #FFFFFF; }
+.dark .st h2 em { font-style: normal; color: var(--cy); }
+.dark .st p { margin-top: 44px; font-size: 26px; font-weight: 800; letter-spacing: .08em; color: rgba(255, 255, 255, .8); }
+
+/* ---------- 6 interview ---------- */
+.s6sub { position: absolute; left: 96px; top: 186px; font-size: 25px; font-weight: 500; color: var(--ink2); }
+.s6sub b { color: var(--nv2); }
+.s6 { position: absolute; left: 96px; right: 96px; top: 262px; bottom: 90px; display: grid; grid-template-columns: 820px 1fr; gap: 48px; }
+.s6 .ph { border-radius: 22px; overflow: hidden; box-shadow: 0 18px 40px rgba(14, 30, 80, .16); }
+.s6 .ph img { width: 100%; height: 100%; object-fit: cover; }
+.s6 .fl { display: flex; flex-direction: column; justify-content: center; gap: 12px; }
+.s6 .fl .t { font-size: 25px; font-weight: 600; color: var(--ink2); text-align: center; line-height: 1.5; }
+.s6 .fl .dn { text-align: center; font-size: 34px; color: var(--nv3); font-weight: 900; line-height: 1; }
+.s6 .fl .q { padding: 30px 32px; border-radius: 18px; background: var(--nv); color: #FFFFFF; text-align: center; font-size: 31px; font-weight: 800; letter-spacing: -.02em; box-shadow: 0 14px 30px rgba(11, 36, 102, .25); }
+.s6 .fl .m { padding: 22px 28px; border-radius: 16px; background: var(--bg2); border: 1.5px solid var(--line); }
+
+/* ---------- 7 survey ---------- */
+.s7 { display: grid; grid-template-columns: 1fr 640px; gap: 60px; height: 700px; align-items: center; }
+.s7 .bars { display: flex; flex-direction: column; gap: 34px; }
+.s7 .bars li { display: grid; grid-template-columns: 1fr; gap: 10px; }
+.s7 .bars span { font-size: 27px; font-weight: 700; color: var(--ink2); }
+.s7 .bars div { display: flex; align-items: center; gap: 18px; }
+.s7 .bars i { display: block; height: 58px; width: calc(var(--w) * 1.6%); min-width: 40px; border-radius: 0 14px 14px 0; background: linear-gradient(90deg, #5E73A8, var(--nv)); }
+.s7 .bars li.top i { background: linear-gradient(90deg, var(--nv2), var(--nv)); }
+.s7 .bars b { font-size: 44px; font-weight: 800; color: var(--nv); letter-spacing: -.02em; }
+.s7 .bars b small { font-size: 26px; margin-left: 2px; }
+.s7 .bars li:not(.top) b { color: var(--nv3); font-size: 38px; }
+.s7 .circ { width: 600px; height: 600px; border-radius: 50%; background: var(--nv); box-shadow: 0 0 0 18px #E3E8F4, 0 26px 50px rgba(11, 36, 102, .3); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: #FFFFFF; padding: 0 80px; position: relative; }
+.s7 .circ .qm { position: absolute; top: 120px; left: 96px; font-size: 90px; line-height: 1; color: rgba(255, 255, 255, .25); font-weight: 900; }
+.s7 .circ p { font-size: 34px; font-weight: 700; line-height: 1.45; letter-spacing: -.02em; }
+.s7 .circ p em { font-style: normal; color: var(--cy); }
+.s7 .circ b { margin-top: 20px; font-size: 128px; font-weight: 800; color: var(--cy); letter-spacing: -.04em; line-height: 1; }
+.s7 .circ b small { font-size: 60px; }
+.s7 .cap { margin-bottom: 6px; font-size: 22px; font-weight: 700; color: var(--mute); }
+
+/* ---------- 8 limits ---------- */
+.s8 { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; height: 560px; }
+.s8 .col { display: flex; flex-direction: column; gap: 18px; }
+.s8 .it { display: grid; grid-template-columns: 72px 1fr; align-items: center; gap: 22px; padding: 22px 28px; border-radius: 18px; background: var(--bg2); }
+.s8 .it img { width: 64px; height: 64px; object-fit: contain; }
+.s8 .it b { display: block; font-size: 28px; font-weight: 800; color: var(--ink); letter-spacing: -.02em; }
+.s8 .it span { display: block; margin-top: 4px; font-size: 21px; font-weight: 500; color: var(--ink2); }
+.s8 .res { margin-top: auto; text-align: center; font-size: 27px; font-weight: 800; color: var(--nv2); }
+.s8 .two { display: grid; grid-template-columns: 300px 1fr; gap: 18px; flex: 1; }
+.s8 .two figure { display: flex; flex-direction: column; gap: 10px; }
+.s8 .two figure div { flex: 1; border-radius: 16px; overflow: hidden; }
+.s8 .two figure img { width: 100%; height: 100%; object-fit: cover; object-position: 40% 30%; }
+.s8 .two figcaption { font-size: 18px; font-weight: 600; color: var(--mute); line-height: 1.4; }
+.s8 .two .its { display: flex; flex-direction: column; gap: 18px; }
+.s8 .two .it { flex: 1; }
+.s8 .col1 .it { flex: 1; }
+.s8-q { margin-top: 36px; }
+
+/* ---------- 9 product ---------- */
+.s9 { position: absolute; left: 96px; right: 96px; top: 222px; bottom: 76px; border-radius: 26px; overflow: hidden; background: #0B1330; box-shadow: 0 22px 50px rgba(14, 30, 80, .22); }
+.s9 video { width: 100%; height: 100%; object-fit: contain; display: block; background: #0B1330; }
+
+/* ---------- 10 pcb ---------- */
+.s10 { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; height: 560px; }
+.s10 figure { display: flex; flex-direction: column; padding: 22px; }
+.s10 figure div { flex: 1; border-radius: 14px; overflow: hidden; background: #0E1222; display: grid; place-items: center; }
+.s10 figure.lt div { background: var(--bg2); }
+.s10 figure img { width: 100%; height: 100%; object-fit: contain; }
+.s10 figcaption { margin-top: 16px; text-align: center; font-size: 26px; font-weight: 800; color: var(--ink); }
+.s10b { margin-top: 30px; height: 130px; display: grid; grid-template-columns: 1fr 1fr 1fr; border-radius: 22px; background: var(--nv); overflow: hidden; box-shadow: 0 16px 34px rgba(11, 36, 102, .26); }
+.s10b div { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 6px; color: #FFFFFF; text-align: center; }
+.s10b div + div { border-left: 1.5px solid rgba(255, 255, 255, .18); }
+.s10b span { font-size: 21px; font-weight: 600; color: #BFCBEA; }
+.s10b b { font-size: 29px; font-weight: 800; }
+.s10b div.hi { background: var(--nv2); }
+.s10b div.hi b { color: var(--cy); }
+
+/* ---------- 11 ai ---------- */
+.s11t { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+.s11t div { padding: 26px 34px; border-radius: 18px; background: var(--nv); color: #FFFFFF; font-size: 26px; font-weight: 700; line-height: 1.5; text-align: center; box-shadow: 0 14px 30px rgba(11, 36, 102, .22); }
+.s11t div em { font-style: normal; color: var(--cy); }
+.s11m { margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+.s11m p { display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 27px; font-weight: 800; color: var(--nv); }
+.s11m p::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--cyd); }
+.s11c { margin-top: 20px; height: 470px; padding: 26px 30px; display: grid; place-items: center; }
+.s11c img { width: 100%; height: 100%; object-fit: contain; }
+
+/* ---------- 12 test ---------- */
+.s12 { display: grid; grid-template-columns: 560px 1fr; gap: 50px; height: 760px; margin-top: -10px; }
+.s12 .pp { padding: 18px; display: grid; place-items: center; background: var(--bg2); }
+.s12 .pp img { width: 100%; height: 100%; object-fit: contain; }
+.s12 .rt { display: flex; flex-direction: column; gap: 30px; }
+.s12 .sc { display: grid; grid-template-columns: 1fr 70px 300px; align-items: center; gap: 10px; padding: 30px 34px; }
+.s12 .chips { display: flex; flex-direction: column; gap: 16px; }
+.s12 .chips span { display: block; padding: 14px 24px; border-radius: 99px; border: 2px solid var(--nv2); color: var(--nv2); background: #EEF2FB; font-size: 25px; font-weight: 800; text-align: center; }
+.s12 .ar { text-align: center; font-size: 42px; font-weight: 900; color: var(--nv3); }
+.s12 .mt { text-align: center; font-size: 38px; font-weight: 800; line-height: 1.35; color: var(--nv); }
+.s12 .rs { flex: 1; display: grid; grid-template-columns: 1fr 300px; gap: 30px; align-items: center; }
+.s12 .rs ul { display: flex; flex-direction: column; gap: 18px; }
+.s12 .rs li { padding: 22px 30px; border-radius: 18px; background: #FFFFFF; border: 1.5px solid var(--line); box-shadow: 0 10px 26px rgba(14, 30, 80, .06); font-size: 26px; font-weight: 700; color: var(--ink); line-height: 1.45; }
+.s12 .rs li b { color: var(--nv2); }
+.s12 .rs li.nv { background: var(--nv); color: #FFFFFF; border-color: var(--nv); }
+.s12 .rs li.nv b { color: var(--cy); }
+.s12 .ok { width: 290px; height: 290px; border-radius: 50%; background: var(--nv); box-shadow: 0 0 0 16px #E3E8F4, 0 20px 40px rgba(11, 36, 102, .3); display: grid; place-items: center; text-align: center; color: #FFFFFF; font-size: 42px; font-weight: 800; line-height: 1.35; }
+
+/* ---------- 13 academic ---------- */
+.s13 { display: grid; grid-template-columns: 1fr 1.25fr; gap: 36px; height: 770px; margin-top: -10px; }
+.s13 .tg { align-self: flex-start; padding: 8px 18px; border-radius: 10px; background: var(--nv); color: #FFFFFF; font-size: 21px; font-weight: 800; }
+.s13 .l { display: flex; flex-direction: column; gap: 20px; padding: 28px; }
+.s13 .l .ph { flex: 1; border-radius: 16px; overflow: hidden; }
+.s13 .l .ph img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
+.s13 .l .k { font-size: 21px; font-weight: 600; color: var(--mute); }
+.s13 .l h3 { font-size: 36px; font-weight: 800; color: var(--ink); letter-spacing: -.02em; }
+.s13 .l .d { font-size: 22px; font-weight: 600; color: var(--ink2); }
+.s13 .r { display: flex; flex-direction: column; gap: 18px; padding: 28px 30px; }
+.s13 .r .tg { background: var(--cy); color: var(--nv); }
+.s13 .r .hh { display: block; font-size: 26px; font-weight: 800; }
+.s13 .r .hh .tg { display: inline-block; margin-right: 16px; vertical-align: 2px; }
+.s13 .r .hh b { color: var(--cy); }
+.s13 .aw { flex: 1; display: grid; grid-template-columns: 240px 1fr; gap: 26px; align-items: center; padding: 18px; border-radius: 18px; background: #FFFFFF; color: var(--ink); }
+.s13 .aw .im { height: 100%; max-height: 210px; border-radius: 10px; overflow: hidden; background: var(--bg2); display: grid; place-items: center; }
+.s13 .aw .im img { width: 100%; height: 100%; object-fit: contain; }
+.s13 .aw .k { display: inline-block; padding: 4px 12px; border-radius: 8px; background: #EEF2FB; color: var(--nv2); font-size: 17px; font-weight: 800; }
+.s13 .aw h4 { margin: 8px 0 6px; font-size: 32px; font-weight: 800; color: var(--nv); letter-spacing: -.02em; }
+.s13 .aw p { font-size: 19px; font-weight: 600; color: var(--ink2); line-height: 1.45; }
+.s13 .aw p.m { margin-top: 6px; font-size: 17px; font-weight: 600; color: var(--mute); }
+.s13 .ch { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.s13 .ch div { display: grid; grid-template-columns: 50px 1fr; align-items: center; gap: 14px; padding: 14px 18px; border-radius: 14px; border: 1.5px solid rgba(255, 255, 255, .3); background: rgba(255, 255, 255, .08); }
+.s13 .ch i { display: grid; place-items: center; width: 50px; height: 50px; border-radius: 50%; background: #FFFFFF; color: var(--nv); font-style: normal; font-size: 24px; font-weight: 900; }
+.s13 .ch b { display: block; font-size: 23px; font-weight: 800; }
+.s13 .ch span { display: block; font-size: 17px; font-weight: 600; color: #C9D3EE; }
+
+/* ---------- 14 market ---------- */
+.s14 { display: grid; grid-template-columns: 640px 1fr 500px; gap: 34px; height: 740px; margin-top: -6px; }
+.s14 .tsm { position: relative; }
+.s14 .tsm .c { position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); border-radius: 50%; display: flex; flex-direction: column; align-items: center; text-align: center; color: #FFFFFF; }
+.s14 .tsm .t { width: 640px; height: 640px; background: #D8DEEC; color: var(--nv); padding-top: 22px; }
+.s14 .tsm .s { width: 440px; height: 440px; background: var(--nv3); padding-top: 26px; }
+.s14 .tsm .o { width: 250px; height: 250px; background: var(--nv); padding-top: 36px; box-shadow: 0 16px 34px rgba(11, 36, 102, .35); }
+.s14 .tsm .lb { font-size: 34px; font-weight: 900; letter-spacing: .02em; }
+.s14 .tsm .ds { font-size: 20px; font-weight: 700; opacity: .85; margin-top: 8px; }
+.s14 .tsm .vl { font-size: 24px; font-weight: 700; margin-top: 16px; }
+.s14 .tsm .vl b { font-size: 46px; font-weight: 800; letter-spacing: -.03em; margin: 0 4px; }
+.s14 .gr { display: flex; flex-direction: column; padding: 34px 36px 28px; }
+.s14 .gr .h { font-size: 24px; font-weight: 800; color: var(--ink); }
+.s14 .gr .cagr { margin-top: 18px; display: inline-block; align-self: flex-start; padding: 10px 20px; border-radius: 12px; background: #EEF2FB; color: var(--nv2); font-size: 22px; font-weight: 700; }
+.s14 .gr .cagr b { font-size: 40px; color: var(--nv); margin: 0 8px; }
+.s14 .gr .cols { flex: 1; display: flex; align-items: flex-end; justify-content: space-around; gap: 30px; padding-top: 20px; border-bottom: 2px solid var(--line); }
+.s14 .gr .cols div { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.s14 .gr .cols i { display: block; width: 150px; border-radius: 12px 12px 0 0; background: var(--nvl); }
+.s14 .gr .cols .b2 i { background: var(--nv); }
+.s14 .gr .cols b { font-size: 34px; font-weight: 800; color: var(--nv3); letter-spacing: -.02em; }
+.s14 .gr .cols .b2 b { color: var(--nv); font-size: 40px; }
+.s14 .gr .yr { display: flex; justify-content: space-around; margin-top: 12px; font-size: 24px; font-weight: 800; color: var(--ink2); }
+.s14 .rt { display: flex; flex-direction: column; gap: 16px; }
+.s14 .rt .a { padding: 30px; text-align: center; font-size: 26px; font-weight: 600; line-height: 1.55; color: var(--ink2); }
+.s14 .rt .a b { color: var(--nv); }
+.s14 .rt .dn { text-align: center; font-size: 36px; font-weight: 900; color: var(--nv3); line-height: 1; }
+.s14 .rt .ncard { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 10px; padding: 26px; }
+.s14 .rt .ncard .k { font-size: 24px; font-weight: 700; color: #C9D3EE; }
+.s14 .rt .ncard .v { font-size: 30px; font-weight: 700; }
+.s14 .rt .ncard .v b { display: block; font-size: 52px; font-weight: 800; color: var(--cy); letter-spacing: -.03em; line-height: 1.15; }
+.s14 .rt .ncard .f { font-size: 38px; font-weight: 800; }
+
+/* ---------- 15 bm ---------- */
+.s15t { display: grid; grid-template-columns: 560px 80px 1fr; align-items: center; height: 120px; }
+.s15t .o { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; border-radius: 18px; border: 2px dashed #B6C0D8; background: var(--bg2); }
+.s15t .o span { font-size: 20px; font-weight: 700; color: var(--mute); }
+.s15t .o b { font-size: 30px; font-weight: 800; color: var(--ink2); }
+.s15t .ar { text-align: center; font-size: 46px; font-weight: 900; color: var(--nv); }
+.s15t .n { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; border-radius: 18px; background: var(--nv); color: #FFFFFF; box-shadow: 0 14px 30px rgba(11, 36, 102, .25); }
+.s15t .n span { font-size: 20px; font-weight: 800; letter-spacing: .08em; color: #BFCBEA; }
+.s15t .n b { font-size: 32px; font-weight: 800; }
+.s15t .n b em { font-style: normal; color: var(--cy); }
+.s15c { margin-top: 28px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; height: 400px; }
+.s15c .card { overflow: hidden; display: flex; flex-direction: column; }
+.s15c .h { display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: 14px; padding: 20px 24px; background: var(--nv); color: #FFFFFF; }
+.s15c .c3 .h { background: var(--nv3); }
+.s15c .h img { width: 58px; height: 58px; border-radius: 10px; }
+.s15c .h b { font-size: 27px; font-weight: 800; }
+.s15c .h span { padding: 4px 12px; border-radius: 99px; background: var(--cy); color: var(--nv); font-size: 18px; font-weight: 800; }
+.s15c .bd { flex: 1; padding: 26px 30px; display: flex; flex-direction: column; gap: 14px; }
+.s15c .bd .k { font-size: 28px; font-weight: 800; color: var(--nv2); }
+.s15c .bd { justify-content: center; gap: 18px; }
+.s15c .bd li { position: relative; padding-left: 22px; font-size: 26px; font-weight: 600; color: var(--ink2); line-height: 1.4; }
+.s15c .bd li::before { content: ""; position: absolute; left: 0; top: 13px; width: 9px; height: 9px; border-radius: 50%; background: var(--nv3); }
+.s15-q { margin-top: 30px; }
+
+/* ---------- 16 unit ---------- */
+.s16 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; height: 760px; margin-top: -10px; }
+.s16 .l { display: flex; flex-direction: column; padding: 30px 36px; }
+.s16 .l .k { font-size: 26px; font-weight: 800; color: var(--ink); }
+.s16 .l .ls { flex: 1; display: flex; flex-direction: column; justify-content: space-around; margin-top: 10px; }
+.s16 .l .cs { display: grid; grid-template-columns: 8px 1fr; gap: 20px; padding: 18px 22px; border-radius: 14px; background: var(--bg2); }
+.s16 .l .cs i { border-radius: 4px; background: var(--nv); }
+.s16 .l .cs:nth-of-type(2) i { background: var(--nv3); } .s16 .l .cs:nth-of-type(3) i { background: var(--nvl); }
+.s16 .l .cs b { display: block; font-size: 28px; font-weight: 800; color: var(--ink); }
+.s16 .l .cs span { display: block; margin-top: 4px; font-size: 20px; font-weight: 600; color: var(--ink2); }
+.s16 .l .pl { text-align: center; font-size: 34px; font-weight: 900; color: var(--nv3); line-height: 1; }
+.s16 .l .sum { margin-top: 18px; height: 96px; display: flex; align-items: center; justify-content: center; gap: 16px; border-radius: 16px; background: var(--nv); color: #FFFFFF; font-size: 28px; font-weight: 700; }
+.s16 .l .sum b { font-size: 46px; font-weight: 800; color: var(--cy); }
+.s16 .r { display: flex; flex-direction: column; gap: 28px; }
+.s16 .mg { display: grid; grid-template-columns: 260px 1fr; align-items: center; gap: 36px; padding: 30px 40px; }
+.s16 .mg svg { width: 260px; height: 260px; }
+.s16 .mg .t { font-size: 24px; font-weight: 600; color: var(--mute); }
+.s16 .mg .v { margin-top: 10px; font-size: 32px; font-weight: 700; color: var(--ink2); }
+.s16 .mg .v b { font-size: 50px; color: var(--nv); letter-spacing: -.02em; }
+.s16 .sb { flex: 1; padding: 30px 40px; display: flex; flex-direction: column; gap: 14px; }
+.s16 .sb .k { font-size: 28px; font-weight: 800; color: var(--ink); }
+.s16 .sb li { position: relative; padding-left: 24px; font-size: 24px; font-weight: 600; color: var(--ink2); line-height: 1.45; }
+.s16 .sb li::before { content: ""; position: absolute; left: 0; top: 14px; width: 10px; height: 10px; border-radius: 50%; background: var(--nv); }
+.s16 .sb li b { color: var(--nv2); }
+.s16 .sb .ft { margin-top: auto; font-size: 18px; font-weight: 600; color: var(--mute); }
+
+/* ---------- 17 impact ---------- */
+.s17 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 34px; height: 740px; margin-top: -6px; }
+.s17 .c { display: flex; flex-direction: column; overflow: hidden; position: relative; }
+.s17 .c .ph { height: 330px; overflow: hidden; }
+.s17 .c .ph img { width: 100%; height: 100%; object-fit: cover; }
+.s17 .c .no { position: absolute; left: 30px; top: 300px; display: grid; place-items: center; width: 64px; height: 64px; border-radius: 50%; background: var(--nv); color: #FFFFFF; font-size: 26px; font-weight: 800; box-shadow: 0 0 0 6px #FFFFFF; }
+.s17 .c .tx { flex: 1; padding: 50px 34px 30px; display: flex; flex-direction: column; gap: 12px; }
+.s17 .c .k { font-size: 22px; font-weight: 700; color: var(--mute); }
+.s17 .c h3 { font-size: 38px; font-weight: 800; color: var(--ink); letter-spacing: -.03em; line-height: 1.25; }
+.s17 .c h3::after { content: ""; display: block; width: 52px; height: 4px; margin-top: 18px; background: var(--nv); }
+.s17 .c p { font-size: 23px; font-weight: 500; color: var(--ink2); line-height: 1.6; }
+.s17 .c.nv { background: var(--nv); border-color: var(--nv); }
+.s17 .c.nv .ph { background: radial-gradient(circle at 50% 60%, #17388F, #0B2466 70%); }
+.s17 .c.nv .ph img { object-fit: contain; opacity: .9; }
+.s17 .c.nv .no { background: var(--cy); color: var(--nv); box-shadow: 0 0 0 6px var(--nv); }
+.s17 .c.nv .k { color: #BFCBEA; }
+.s17 .c.nv h3 { color: #FFFFFF; }
+.s17 .c.nv h3::after { background: var(--cy); }
+.s17 .c.nv p { color: #D7DFF3; }
+
+/* ---------- 18 team ---------- */
+.s18l { position: absolute; left: 96px; right: 96px; top: 170px; height: 330px; display: grid; grid-template-columns: 330px 1fr 620px; align-items: center; gap: 50px; padding: 0 56px 0 30px; border-radius: 180px 30px 30px 180px; background: var(--nv); color: #FFFFFF; box-shadow: 0 20px 44px rgba(11, 36, 102, .3); }
+.s18l .ph { width: 290px; height: 290px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 10px rgba(255, 255, 255, .9); }
+.s18l .ph img { width: 100%; height: 100%; object-fit: cover; }
+.s18l .k { font-size: 30px; font-weight: 700; color: #BFCBEA; }
+.s18l h3 { margin-top: 6px; font-size: 76px; font-weight: 800; letter-spacing: -.02em; }
+.s18l .rl { margin-top: 20px; padding-top: 20px; border-top: 2px solid rgba(255, 255, 255, .3); font-size: 28px; font-weight: 800; letter-spacing: .06em; color: var(--cy); }
+.s18l ul { display: flex; flex-direction: column; gap: 16px; }
+.s18l li { padding: 18px 26px; border-radius: 14px; background: #FFFFFF; color: var(--nv); font-size: 26px; font-weight: 800; letter-spacing: -.01em; }
+.s18m { position: absolute; left: 160px; right: 160px; top: 560px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; }
+.s18m li { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.s18m .ph { width: 220px; height: 220px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 8px #E3E8F4, 0 14px 30px rgba(14, 30, 80, .18); }
+.s18m .ph img { width: 100%; height: 100%; object-fit: cover; }
+.s18m .r { margin-top: 26px; font-size: 22px; font-weight: 800; color: var(--nv2); letter-spacing: .04em; }
+.s18m b { margin-top: 4px; font-size: 40px; font-weight: 800; color: var(--ink); }
+.s18m span { margin-top: 6px; font-size: 21px; font-weight: 600; color: var(--ink2); }
+</style>
+</head>
+<body>
+<main class="deck">
+
+<!-- 1 cover -->
+<section class="slide cov" id="s-cover" data-sec="0" data-title="지능형 수액 모니터링 링거 폴대">
+  <div class="frame">
+    <div class="bgnet"></div><div class="band"></div>
+    <p class="yr">2026 공학페스티벌</p>
+    <img class="logo" src="media/logo.png" alt="E² FESTA 2026 공학페스티벌">
+    <p class="sub">링거폴대 교체 없이 활용가능한 스마트 수액 모니터링 솔루션</p>
+    <h1>지능형 수액 모니터링<br>링거 폴대</h1>
+    <img class="prod" src="media/product.png" alt="링거폴대 상단에 결합한 INFU RETRO 모듈과 수액백">
+    <div class="bandtxt">
+      <p class="org">INFUTECH / 원광대학교</p>
+      <dl class="mem"><dt>지도교수</dt><dd>이완범</dd><dt>팀장</dt><dd>정익상</dd><dt>팀원</dt><dd>권용현, 최이지, 한우진, 한별</dd></dl>
+    </div>
+  </div>
+  <div class="note" hidden><p>영어 접수 X only 한글로 작품 제목 다시 만들 것</p></div>
+</section>
+
+<!-- 2 nurse load -->
+<section class="slide" id="s-nurse" data-sec="1" data-title="간호사 1명이 맡는 환자, 무려 43.6명입니다">
+  <div class="frame">
+    <p class="crumb"><b>기존 상황의 문제점</b>의료 인력의 구조적 한계와 간호사 과부하</p>
+    <img class="logo" src="media/logo.png" alt="E² FESTA 2026 공학페스티벌">
+    <h2 class="ttl">간호사 1명이 맡는 환자, 무려 <em>43.6명</em>입니다</h2>
+    <div class="body">
+      <div class="s2">
+        <div class="ncard"><p class="k">간호사 1인당 담당 환자 수</p><p class="big">43.6<small>명</small></p><p class="tag">미국 대비 약 8배</p></div>
+        <div class="card">
+          <p class="ch">한국 vs 미국, 간호사 1명이 돌보는 환자</p><p class="cs">병원급 의료기관 기준</p>
+          <div class="bars">
+            <div class="row"><span>한국</span><div class="bar"><i style="width:100%"></i><b>43.6명</b></div></div>
+            <div class="row"><span>미국</span><div class="bar us"><i style="width:13%"></i><b>5.7명</b></div></div>
+          </div>
+          <p class="cf">미국 간호사 1명이 돌볼 환자를, 한국에서는 <b>약 8명 몫</b>으로 감당합니다</p>
+        </div>
+      </div>
+      <p class="pill-o s2-q">한 사람이 수십 명을 돌보는 병동, 그 틈에서는 어떤 일이 벌어지고 있을까요? →</p>
+    </div>
+    <p class="src">출처: 배성희(이화여대), 국회 ‘간호의 질 향상 방안 토론회’(병원급 43.6명, 미국 5.7명), 라포르시안 2019</p>
+    <p class="pg">2</p>
+  </div>
+  <div class="note" hidden><p></p></div>
+</section>
+
+<!-- 3 safety -->
+<section class="slide" id="s-safety" data-sec="1" data-title="과중한 업무는 사고와 소통의 공백으로 이어집니다">
+  <div class="frame">
+    <p class="crumb"><b>기존 상황의 문제점</b>안전사고의 위험과 비효율적 커뮤니케이션</p>
+    <img class="logo" src="media/logo.png" alt="E² FESTA 2026 공학페스티벌">
+    <h2 class="ttl">과중한 업무는 <em>사고와 소통의 공백</em>으로 이어집니다</h2>
+    <div class="body">
+      <div class="s3">
+        <div class="col">
+          <p class="hd-n">① 안전사고의 위험</p>
+          <div class="card">
+            <p class="kk">국민 환자 안전사고</p>
+            <p class="vv">연간<b>22,000건</b>이상</p>
+            <div class="hb">
+              <div class="r k1" style="--w:100"><span>약물</span><div class="b"><i></i><em>11,257건</em></div></div>
+              <div class="r k2" style="--w:64.1"><span>낙상</span><div class="b"><i></i><em>7,211건</em></div></div>
+              <div class="r " style="--w:7.3"><span>검사</span><div class="b"><i></i><em>823건</em></div></div>
+              <div class="r " style="--w:4.4"><span>상해</span><div class="b"><i></i><em>494건</em></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <p class="hd-n">② 비효율적 커뮤니케이션</p>
+          <div class="card">
+            <p class="kk">병원 내 환자안전사고의 67.1%</p>
+            <p class="vv"><b>관리 미흡</b>에서 발생</p>
+            <div class="dn">
+              <svg viewBox="0 0 120 120" role="img" aria-label="발생 원인 — 관리감독미흡 67%, 기타 24%, 사유미인정 6%, 장비오작동 2%, 제도미비 1%">
+                <g transform="rotate(-90 60 60)" fill="none" stroke-width="22">
+                  <circle cx="60" cy="60" r="44" stroke="#0B2466" stroke-dasharray="185.3 276.5" stroke-dashoffset="0"/>
+                  <circle cx="60" cy="60" r="44" stroke="#4A5E91" stroke-dasharray="66.4 276.5" stroke-dashoffset="-185.3"/>
+                  <circle cx="60" cy="60" r="44" stroke="#8090B8" stroke-dasharray="16.6 276.5" stroke-dashoffset="-251.7"/>
+                  <circle cx="60" cy="60" r="44" stroke="#B9C1D6" stroke-dasharray="5.5 276.5" stroke-dashoffset="-268.3"/>
+                  <circle cx="60" cy="60" r="44" stroke="#0891B2" stroke-dasharray="2.8 276.5" stroke-dashoffset="-273.8"/>
+                </g>
+                <text x="60" y="58" text-anchor="middle" font-size="17" font-weight="800" fill="#0B2466">67%</text>
+                <text x="60" y="74" text-anchor="middle" font-size="8.5" font-weight="700" fill="#3F4A66">관리감독미흡</text>
+              </svg>
+              <div class="lg">
+                <p class="top"><i style="background:#0B2466"></i>관리감독미흡<b>67%</b></p>
+                <p><i style="background:#4A5E91"></i>기타<b>24%</b></p>
+                <p><i style="background:#8090B8"></i>사유미인정<b>6%</b></p>
+                <p><i style="background:#B9C1D6"></i>장비오작동<b>2%</b></p>
+                <p><i style="background:#0891B2"></i>제도미비<b>1%</b></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="pill-n s3-q">이 공백을 메우는 유일한 수단은 결국 <em>간호사의 ‘병원 순회’</em>뿐입니다 →</p>
+    </div>
+    <p class="src">출처: 안전사고 – 의료기관평가인증원 중앙환자안전센터 「2024 환자안전 연례보고서」(2024년 22,118건, 사고 종류별 보고건수) · 발생 원인 – 한국소비자원 보도자료(2018.10, 피해구제 신청 137건 분석)</p>
+    <p class="pg">3</p>
+  </div>
+  <div class="note" hidden><p></p></div>
+</section>
+
+<!-- 4 gap -->
+<section class="slide" id="s-gap" data-sec="1" data-title="순회와 순회 사이, 수액 관리의 구조적 사각지대">
+  <div class="frame">
+    <p class="crumb"><b>기존 상황의 문제점</b>순회 공백에서 시작되는 수액 사고</p>
+    <img class="logo" src="media/logo.png" alt="E² FESTA 2026 공학페스티벌">
+    <h2 class="ttl">순회와 순회 사이, <em>수액 관리의 구조적 사각지대</em></h2>
+    <div class="body">
+      <div class="card s4tl">
+        <div><p class="k">간호사 순회 주기</p><p class="v">약<b>10~30</b>분</p></div>
+        <svg viewBox="0 0 1300 96" role="img" aria-label="순회 확인 — 이상이 생겨도 알 수 없는 공백 — 순회 확인 — 이상이 생겨도 알 수 없는 공백 — 다음 순회">
+          <line x1="30" y1="40" x2="1240" y2="40" stroke="#B9C1D6" stroke-width="4" stroke-dasharray="10 9"/>
+          <rect x="120" y="24" width="440" height="32" rx="16" fill="#FDECEC"/><text x="340" y="47" text-anchor="middle" font-size="20" font-weight="800" fill="#E5484D">이상이 생겨도 알 수 없는 공백</text>
+          <rect x="700" y="24" width="440" height="32" rx="16" fill="#FDECEC"/><text x="920" y="47" text-anchor="middle" font-size="20" font-weight="800" fill="#E5484D">이상이 생겨도 알 수 없는 공백</text>
+          <circle cx="40" cy="40" r="16" fill="#FFFFFF" stroke="#0B2466" stroke-width="6"/><text x="40" y="88" text-anchor="middle" font-size="20" font-weight="800" fill="#0B2466">순회 확인</text>
+          <circle cx="630" cy="40" r="16" fill="#FFFFFF" stroke="#0B2466" stroke-width="6"/><text x="630" y="88" text-anchor="middle" font-size="20" font-weight="800" fill="#0B2466">순회 확인</text>
+          <circle cx="1230" cy="40" r="16" fill="#FFFFFF" stroke="#6B7590" stroke-width="5"/><path d="M1252 40h28m-10-9l10 9-10 9" stroke="#6B7590" stroke-width="4" fill="none" stroke-linecap="round"/><text x="1230" y="88" text-anchor="middle" font-size="20" font-weight="700" fill="#6B7590">다음 순회</text>
+        </svg>
+      </div>
+      <div class="s4c">
+        <div class="card"><p class="no">01 · 언제</p><div class="ph"><img src="media/night-nurse.webp" alt="야간 병동을 순회하는 간호사"></div><h3>확인 직후 · 야간</h3><p class="d">간호사가 확인하고 간 직후, 발견하기 어려운 밤에도 문제는 발생할 수 있습니다</p></div>
+        <span class="ar">›</span>
+        <div class="card"><p class="no">02 · 누구에게</p><div class="ph"><img src="media/patient.webp" alt="산소 마스크를 쓴 고령 환자"></div><h3>고령 환자</h3><p class="d">의식이 없거나 의사소통이 어려운 환자는 스스로 문제를 알리기 어렵습니다</p></div>
+        <span class="ar">›</span>
+        <div class="card"><p class="no">03 · 어떤 문제가</p><div class="ph3"><figure><img src="media/iv-air.webp" alt="수액 점적통"><figcaption>공기색전</figcaption></figure><figure><img src="media/iv-blood.webp" alt="혈액이 역류한 수액줄"><figcaption>혈액역류</figcaption></figure><figure><img src="media/iv-pump.webp" alt="주입 장치"><figcaption>막힘·줄꺾임</figcaption></figure></div><h3>수액 관련 합병증</h3><p class="d">공기색전, 혈액역류, 막힘·줄꺾임 등의 문제가 발생할 수 있습니다</p></div>
+        <span class="ar">›</span>
+        <div class="ncard"><p class="no">04 · 그 결과</p><div class="ph"><img src="media/stethoscope.webp" alt="청진기와 의료 서류"></div><h3>치명적 상황 · 의료분쟁</h3><p class="d">노약자와 아동에게는 치명적일 수 있으며, 실제 <em>의료 분쟁</em>까지 이어진 사례도 있습니다</p></div>
+      </div>
+      <p class="pill-o s4-q">그래서 현장에서는 순회 공백을 메울 실질적인 모니터링의 필요성을 느끼고 있습니다</p>
+    </div>
+    <p class="src">※ 순회 주기 및 현장 사례: 원광대학교 병원 등 현장 간호사 인터뷰 기준</p>
+    <p class="pg">4</p>
+  </div>
+  <div class="note" hidden><p></p></div>
+</section>
+
+<!-- 5 statement (dark) -->
+<section class="slide dark" id="s-need" data-sec="1" data-title="고령 환자 등 사회적 약자, 보호자 부재·의료 공백 시 수액 사고 알림 제품 필요">
+  <div class="frame">
+    <img class="bgimg" src="media/dark-nurse.webp" alt="어두운 병동에서 수액을 확인하는 간호사">
+    <div class="shade"></div>
+    <p class="crumb"><b>기존 상황의 문제점</b></p>
+    <img class="logo" src="media/logo-white.png" alt="E² FESTA 2026 공학페스티벌">
+    <div class="st">
+      <h2>고령 환자 등 <em>사회적 약자</em>,<br>보호자 부재 · 의료 공백 시<br><em>수액 사고 알림</em> 제품 필요</h2>
+      <p>INFUTECH</p>
+    </div>
+    <p class="pg" style="color:rgba(255,255,255,.6)">5</p>
+  </div>
+  <div class="note" hidden><p>공학페스티벌 로고 흰색글씨로 배경에 가리지 않게 바꾸기</p></div>
+</section>
+
+<!-- 6 interview -->
+<section class="slide" id="s-interview" data-sec="2" data-title="병원 현장에서 확인한 제품 개발의 필요성">
+  <div class="frame">
+    <p class="crumb"><b>현장 인터뷰</b>병원 현장에서 확인한 제품 개발의 필요성</p>
+    <img class="logo" src="media/logo.png" alt="E² FESTA 2026 공학페스티벌">
+    <h2 class="ttl">병원 현장에서 확인한 <em>제품 개발의 필요성</em></h2>
+    <p class="s6sub">링거폴대 교체 없이 활용가능한 <b>스마트 수액 모니터링 솔루션</b>이 필요한 이유</p>
+    <div class="s6">
+      <div class="ph"><img src="media/interview.webp" alt="병원 접수대 앞에서 간호사를 인터뷰하는 팀원들"></div>
+      <div class="fl">
+        <p class="t">원광대학교 병원 등 임상 현장 방문 및<br>간호사 대상 인터뷰 진행</p>
+        <p class="dn">↓</p>
+        <p class="q">‘순회 간격 사이의 의료 사고 파악 어렵다’</p>
+        <p class="dn">↓</p>
+        <p class="t m">투여 속도를 간호사가 처음 정해두면 움직임, 이동, 임의조절 등<br>원래 투여하려던 속도보다 다른 경우가 있다.</p>
+        <p class="dn">↓</p>
+        <p class="q">‘투여 속도를 감시만 해도 실용적이다’</p>
+      </div>
+    </div>
+    <p class="pg">6</p>
+  </div>
+  <div class="note" hidden><p></p></div>
+</section>
+
+<!-- 7 survey -->
+<section class="slide" id="s-survey" data-sec="2" data-title="현장이 요구하는 실효성 있는 솔루션의 부재">
+  <div class="frame">
+    <p class="crumb"><b>현장 인터뷰</b>간호사 설문으로 확인한 현장 니즈</p>
+    <img class="logo" src="media/logo.png" alt="E² FESTA 2026 공학페스티벌">
+    <h2 class="ttl">현장이 요구하는 <em>실효성 있는 솔루션</em>의 부재</h2>
+    <div class="body">
+      <div class="s7">
+        <ul class="bars">
+          <li class="top" style="--w:47"><span>고령·아동 환자, 예상치 못한 사고 확인이 어려움</span><div><i></i><b>47<small>%</small></b></div></li>
+          <li style="--w:13"><span>환자 호출 시 우선순위 파악 어려움</span><div><i></i><b>13<small>%</small></b></div></li>
+          <li style="--w:13"><span>환자 위치 파악 어려움</span><div><i></i><b>13<small>%</small></b></div></li>
+          <li style="--w:7"><span>스탠드 교체 시기 파악의 어려움</span><div><i></i><b>7<small>%</small></b></div></li>
+        </ul>
+        <div class="circ"><span class="qm">“</span><p>수액 투여 이상상황을<br>스테이션 컴퓨터로<br><em>자동 전송</em>하는 기능이<br>필요하다</p><b>70<small>%</small></b></div>
+      </div>
+    </div>
+    <p class="pg">7</p>
+  </div>
+  <div class="note" hidden><p></p></div>
+</section>
+
+<!-- 8 limits -->
+<section class="slide" id="s-limits" data-sec="3" data-title="해결책은 있지만… 왜 아직도 많이 사용하지 않을까?">
+  <div class="frame">
+    <p class="crumb"><b>기존 솔루션의 한계점</b>기존 대안의 한계 분석</p>
+    <img class="logo" src="media/logo.png" alt="E² FESTA 2026 공학페스티벌">
+    <h2 class="ttl">해결책은 있지만… <em>왜 아직도 많이 사용하지 않을까?</em></h2>
+    <div class="body">
+      <div class="s8">
+        <div class="col col1">
+          <p class="hd-n">인퓨전 펌프</p>
+          <div class="it"><img src="media/ic-price.png" alt=""><div><b>높은 가격 약 100만원 이상</b><span>고가 장비로 병상당 도입 부담이 큼</span></div></div>
+          <div class="it"><img src="media/ic-bed.png" alt=""><div><b>한정적인 보유 수량</b><span>일반 수액 환자는 결국 직접 확인에 의존</span></div></div>
+          <p class="res">→ 모든 병상 도입 어려움</p>
+        </div>
+        <div class="col">
+          <p class="hd-n">기존 스마트 링거폴대</p>
+          <div class="two">
+            <figure><div><img src="media/talking-pole.webp" alt="스마트 링거폴대를 소개하는 개발자"></div><figcaption>삼성전자 C랩 ‘토킹폴’ 등<br>스마트 링거폴대 개발 사례 존재</figcaption></figure>
+            <div class="its">
+              <div class="it"><img src="media/ic-sensor.png" alt=""><div><b>고가 센서 부품</b><span>자이로·적외선 센서 등 원가 부담</span></div></div>
+              <div class="it"><img src="media/ic-maint.png" alt=""><div><b>유지보수 한계</b><span>폴대 일체형 · 충전·수리 부담</span></div></div>
+            </div>
+          </div>
+          <p class="res">→ 병원 실사용 어려움</p>
+        </div>
+      </div>
+      <p class="pill-n s8-q">그래서 우리는 <em>센서 비용은 줄이고, 유지보수는 쉬운</em> 형태로 개발했습니다</p>
+    </div>
+    <p class="src">출처: 토킹폴 – 삼성전자 뉴스룸(2017, KIMES 2017 출품) · 실사용 한계 – 현장 간호사 인터뷰 기준</p>
+    <p class="pg">8</p>
+  </div>
+  <div class="note" hidden><p></p></div>
+</section>
+
+<!-- 9 product -->
+<section class="slide" id="s-product" data-sec="4" data-title="기존 폴대를 그대로 활용하는 INFU RETRO">
+  <div class="frame">
+    <p class="crumb"><b>솔루션 소개</b>제품 개요 : 레트로핏 방식의 AIoT 모듈</p>
+    <img class="logo" src="media/logo.png" alt="E² FESTA 2026 공학페스티벌">
+    <h2 class="ttl">기존 폴대를 그대로 활용하는 <em>‘INFU RETRO’</em></h2>
+    <div class="s9"><video src="media/demo.mp4" poster="media/module-hand.webp" muted loop playsinline preload="auto" aria-label="INFU RETRO 시연 영상 — 결합 과정, 수액 투여, 앱과 대시보드 알람"></video></div>
+    <p class="pg">9</p>
+  </div>
+  <div class="note" hidden><p>현장에서 영상 안될것을 대비하여 스페어로 항상 가지고 있기. 미리 확인 가능하다면 이상 없음.</p><p>영상 추가 1. 결합 과정 장면 2. 바로 앱과 수액 투여되는 장면 3. 실제 임상이 불가하니, 임의로 수액 조절. 앱과 대시보드에 알람가는 장면 약 15초정도 최대 20초</p></div>
+</section>
+
+<!-- 10 pcb -->
+<section class="slide" id="s-pcb" data-sec="4" data-title="무게센서 하나로 끝내는 자체 설계 PCB">
+  <div class="frame">
+    <p class="crumb"><b>솔루션 소개</b>자체 설계 하드웨어 · ESP-ADS1232 앰프 회로</p>
+    <img class="logo" src="media/logo.png" alt="E² FESTA 2026 공학페스티벌">
+    <h2 class="ttl">무게센서 하나로 끝내는 <em>자체 설계 PCB</em></h2>
+    <div class="body">
+      <div class="s10">
+        <figure class="card"><div><img src="media/pcb-layout.webp" alt="PCB 설계 레이아웃 60 × 35mm"></div><figcaption>PCB 설계 (60 × 35mm)</figcaption></figure>
+        <figure class="card lt"><div><img src="media/pcb-real.webp" alt="실물 PCB 앞면과 뒷면"></div><figcaption>실물 제작 완료 (앞면 · 뒷면)</figcaption></figure>
+      </div>
+      <div class="s10b">
+        <div><span>ADS1232 앰프</span><b>무게센서 신호 직접 처리</b></div>
+        <div class="hi"><span>추가 센서 없이</span><b>무게센서 단일로 수액 감지</b></div>
+        <div><span>ESP 무선 통신 일체형</span><b>USB-C · 로드셀 4핀 단자</b></div>
+      </div>
+    </div>
+    <p class="pg">10</p>
+  </div>
+  <div class="note" hidden><p></p></div>
+</section>
+
+<!-- 11 ai -->
+<section class="slide" id="s-ai" data-sec="4" data-title="이상 상태 감지 Foundation AI">
+  <div class="frame">
+    <p class="crumb"><b>솔루션 소개</b>핵심 알고리즘</p>
+    <img class="logo" src="media/logo.png" alt="E² FESTA 2026 공학페스티벌">
+    <h2 class="ttl">이상 상태 감지 <em>Foundation AI</em></h2>
+    <div class="body">
+      <div class="s11t">
+        <div><em>칼만 필터</em>로 센서 노이즈를 제거한 뒤<br>초기 1분간의 무게 감소량으로 투여 속도 추정</div>
+        <div>수액통 흔들림, 환자의 일시적 움직임 등 외부 노이즈를 걸러내고<br><em>유속 이상이나 주입 중단</em> 시 정확하게 감지</div>
+      </div>
+      <div class="s11m"><p>최근 상태 변화를 패턴 이미지로 변환하여 경량 CNN 모델 분석</p><p>오알람 대폭 감소</p></div>
+      <div class="card s11c"><img src="media/cnn-curve.webp" alt="경량 CNN 학습 곡선 — 손실 감소, 정확도 상승, 학습 로그"></div>
+    </div>
+    <p class="pg">11</p>
+  </div>
+  <div class="note" hidden><p></p></div>
+</section>
+
+<!-- 12 test -->
+<section class="slide" id="s-test" data-sec="5" data-title="실제 병동 처럼 옮기고, 흔들며 검증">
+  <div class="frame">
+    <p class="crumb"><b>가설 수립 및 인터뷰</b>모의 임상 환경 테스트 및 알고리즘 고도화</p>
+    <img class="logo" src="media/logo.png" alt="E² FESTA 2026 공학페스티벌">
+    <h2 class="ttl">실제 병동 처럼 옮기고, <em>흔들며 검증</em></h2>
+    <div class="body">
+      <div class="s12">
+        <div class="card pp"><img src="media/paper-page.webp" alt="모의 임상 테스트와 알고리즘을 담은 논문 페이지"></div>
+        <div class="rt">
+          <div class="card sc">
+            <div class="chips"><span>병동 내 폴대 이동</span><span>흔들림 및 기울어짐</span><span>넘어짐 변수 상정</span></div>
+            <p class="ar">→</p>
+            <p class="mt">모의 테스트<br>반복 수행</p>
+          </div>
+          <div class="rs">
+            <ul>
+              <li>투여 완료 시점 예측 오차 <b>± 5분 이내</b></li>
+              <li>이상 상황 감지 <b>5초 이내</b> 달성 가능성</li>
+              <li class="nv">기초·영양수액 등 <b>10종 이상</b> 학습<br>점도에 따른 무게 감소도 자동 보정</li>
+            </ul>
+            <p class="ok">실증적으로<br>확인</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="pg">12</p>
+  </div>
+  <div class="note" hidden><p></p></div>
+</section>
+
+<!-- 13 academic -->
+<section class="slide" id="s-academic" data-sec="5" data-title="현장과 함께 개발, 국내외 학계 알고리즘 논문 발표">
+  <div class="frame">
+    <p class="crumb"><b>제품 검증</b>현장 협업 개발 · 국내외 학술 성과</p>
+    <img class="logo" src="media/logo.png" alt="E² FESTA 2026 공학페스티벌">
+    <h2 class="ttl">현장과 함께 개발, <em>국내외 학계 알고리즘 논문 발표</em></h2>
+    <div class="body">
+      <div class="s13">
+        <div class="card l">
+          <p class="tg">01 · 현장 협업</p>
+          <div class="ph"><img src="media/team-lab.webp" alt="간호학과 학생들과 함께한 개발 협업 현장"></div>
+          <p class="k">사용자가 직접 설계에 참여한 제품</p>
+          <h3>간호학과와 함께 제작</h3>
+          <p class="d">병원 현장 피드백 반영 → 반복 개선</p>
+        </div>
+        <div class="ncard r">
+          <p class="hh"><span class="tg">02 · 학술 검증</span>국내외 학회 <b>우수논문상 2회</b> 수상</p>
+          <div class="aw"><div class="im"><img src="media/award-best.webp" alt="AIT 2026 Best Paper Award 상장"></div><div><span class="k">국제 학회 · 베트남 다낭</span><h4>Best Paper Award</h4><p>Design of a Dual-Track Algorithm for Real-Time IV Monitoring Based on Load Cell</p><p class="m">AIT 2026 국제학술대회 · 2026.01</p></div></div>
+          <div class="aw"><div class="im"><img src="media/award-kr.webp" alt="우수논문상 상장"></div><div><span class="k">국내 학회 · 공동학술발표회</span><h4>우수논문상</h4><p>CNN 상태 패턴 분석 기반 정맥 수액 이상 감지 알고리즘</p><p class="m">(사)한국혁신산업학회 · (사)한국디지털정책학회 · 2026.07.06</p></div></div>
+          <div class="ch"><div><i>A</i><p><b>캡스톤 디자인 대상</b><span>대학부 및 글로벌</span></p></div><div><i>P</i><p><b>특허 출원 진행</b><span>HW 결합 구조 · 이상 감지 알고리즘</span></p></div></div>
+        </div>
+      </div>
+    </div>
+    <p class="pg">13</p>
+  </div>
+  <div class="note" hidden><p></p></div>
+</section>
+
+<!-- 14 market -->
+<section class="slide" id="s-market" data-sec="6" data-title="40만 병상, 모든 링거폴대가 우리의 시장입니다">
+  <div class="frame">
+    <p class="crumb"><b>시장 규모</b>글로벌 및 국내 의료기기 시장 규모</p>
+    <img class="logo" src="media/logo.png" alt="E² FESTA 2026 공학페스티벌">
+    <h2 class="ttl"><em>40만 병상</em>, 모든 링거폴대가 우리의 시장입니다</h2>
+    <div class="body">
+      <div class="s14">
+        <div class="tsm">
+          <div class="c t"><p class="lb">TAM</p><p class="ds">글로벌 의료기기 시장</p><p class="vl">약<b>49</b>조 원</p></div>
+          <div class="c s"><p class="lb">SAM</p><p class="ds">국내정맥수액모니터링</p><p class="vl">약<b>5,000</b>억 원</p></div>
+          <div class="c o"><p class="lb">SOM</p><p class="ds">Infutech 초기 목표</p><p class="vl">약<b>130</b>억 원</p></div>
+        </div>
+        <div class="card gr">
+          <p class="h">인퓨전 펌프 시장 추이</p>
+          <p class="cagr">연 평균 <b>7.6%</b> 성장률 전망</p>
+          <div class="cols"><div><b>175억 달러</b><i style="height:206px"></i></div><div class="b2"><b>364억 달러</b><i style="height:428px"></i></div></div>
+          <div class="yr"><span>2025년</span><span>2035년</span></div>
+        </div>
+        <div class="rt">
+          <div class="card a">국내 약 <b>4,000개소</b>의 병원,<br>평균 100개 병상 기준<br>약 <b>40만 병상</b> 존재</div>
+          <p class="dn">↓</p>
+          <div class="ncard"><p class="k">초기 3년</p><p class="v">전북지역 2차 병원 타겟</p><p class="v"><b>약 10,000 ~ 15,000</b>유닛</p><p class="f">보급 설정</p></div>
+        </div>
+      </div>
+    </div>
+    <p class="src">출처: 성장률·시장 추이 – Precedence Research, Infusion Pump Market(2025년 174.9억 → 2035년 364.2억 달러, CAGR 7.61%) · 병원 수 – 심평원(4,221개소, 2024) · TAM – 원본 자료 기준 · SAM/SOM – 자체 추정</p>
+    <p class="pg">14</p>
+  </div>
+  <div class="note" hidden><p></p></div>
+</section>
+
+<!-- 15 bm -->
+<section class="slide" id="s-bm" data-sec="7" data-title="구독 관리로 매달 수익을 만듭니다">
+  <div class="frame">
+    <p class="crumb"><b>비즈니스 모델</b>판매하고 끝이 아닌, 관리하는 구독 모델</p>
+    <img class="logo" src="media/logo.png" alt="E² FESTA 2026 공학페스티벌">
+    <h2 class="ttl"><em>구독 관리</em>로 매달 수익을 만듭니다</h2>
+    <div class="body">
+      <div class="s15t">
+        <div class="o"><span>기존 방식</span><b>일회성 하드웨어 판매</b></div>
+        <p class="ar">→</p>
+        <div class="n"><span>INFUTECH 방식</span><b>설치 + <em>월간 관리 구독</em> (유지보수 · 소프트웨어 포함)</b></div>
+      </div>
+      <div class="s15c">
+        <div class="card"><div class="h"><img src="media/ic-hosp.png" alt=""><b>① 관리 구독료</b><span>핵심</span></div><div class="bd"><p class="k">병원 · 동물병원 (B2B)</p><ul><li>모듈 설치 후 병상당 월 관리비</li><li>유지보수 · A/S · 교체 포함</li><li>초기 구매 부담 없이 전 병상 도입</li></ul></div></div>
+        <div class="card"><div class="h"><img src="media/ic-saas.png" alt=""><b>② 관제 SaaS</b><span>확장</span></div><div class="bd"><p class="k">다중 환자 관제 대시보드</p><ul><li>스테이션 대시보드 · 환자 앱</li><li>소프트웨어 구독 + 업데이트</li><li>기관 규모별 차등 요금제</li></ul></div></div>
+        <div class="card c3"><div class="h"><img src="media/ic-gov.png" alt=""><b>③ B2G · 부가가치</b><span>성장</span></div><div class="bd"><p class="k">공공 · 데이터 사업</p><ul><li>정부 스마트 의료 인프라 보조금 사업 연계</li><li>수액 투여 데이터 고도화 부가 사업 확장</li></ul></div></div>
+      </div>
+      <p class="pill-n s15-q">병원은 도입 부담을 덜고, INFUTECH는 <em>반복 매출(MRR)</em>을 쌓습니다</p>
+    </div>
+    <p class="pg">15</p>
+  </div>
+  <div class="note" hidden><p></p></div>
+</section>
+
+<!-- 16 unit -->
+<section class="slide" id="s-unit" data-sec="7" data-title="센서를 줄인 설계가, 낮은 원가로 이어집니다">
+  <div class="frame">
+    <p class="crumb"><b>비즈니스 모델</b>단위 경제성 분석</p>
+    <img class="logo" src="media/logo.png" alt="E² FESTA 2026 공학페스티벌">
+    <h2 class="ttl">센서를 줄인 설계가, <em>낮은 원가</em>로 이어집니다</h2>
+    <div class="body">
+      <div class="s16">
+        <div class="card l">
+          <p class="k">1대 기준</p>
+          <div class="ls">
+            <div class="cs"><i></i><div><b>제조 비용</b><span>하드웨어 BOM · 조립 · 테스트/캘리브레이션 · 패키징</span></div></div>
+            <p class="pl">+</p>
+            <div class="cs"><i></i><div><b>운영 비용</b><span>인증비 배분 · 서버/SW 운영 · A/S 충당</span></div></div>
+            <p class="pl">+</p>
+            <div class="cs"><i></i><div><b>유통 비용</b><span>물류 · 영업/유통</span></div></div>
+          </div>
+          <p class="sum">= 합산 대당 판매가 <b>25만원</b></p>
+        </div>
+        <div class="r">
+          <div class="card mg">
+            <svg viewBox="0 0 120 120" role="img" aria-label="실질 마진율 약 68%">
+              <circle cx="60" cy="60" r="46" fill="none" stroke="#E3E8F4" stroke-width="16"/>
+              <circle cx="60" cy="60" r="46" fill="none" stroke="#0B2466" stroke-width="16" stroke-linecap="round" stroke-dasharray="196.5 289" transform="rotate(-90 60 60)"/>
+              <text x="60" y="53" text-anchor="middle" font-size="11" font-weight="700" fill="#3F4A66">실질 마진율</text>
+              <text x="60" y="76" text-anchor="middle" font-size="22" font-weight="800" fill="#0B2466">약 68%</text>
+            </svg>
+            <div><p class="t">대당 가치 25만원 기준</p><p class="v">공헌이익 약 <b>17만원</b></p></div>
+          </div>
+          <div class="card sb">
+            <p class="k">구독 모델로 전환하면</p>
+            <ul><li>낮은 원가 → <b>원가 회수 기간 단축</b></li><li>회수 이후 월 관리비는 <b>반복 수익</b>으로 누적</li><li>유지보수 비용을 구독에 포함해 <b>A/S 리스크 관리</b></li></ul>
+            <p class="ft">※ 월 구독료는 기관 규모별 차등 적용 (세부 요금 별도 협의)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="pg">16</p>
+  </div>
+  <div class="note" hidden><p></p></div>
+</section>
+
+<!-- 17 impact -->
+<section class="slide" id="s-impact" data-sec="7" data-title="순회 사이의 공백이 사라지면, 달라지는 세 가지">
+  <div class="frame">
+    <p class="crumb"><b>비즈니스 모델</b>기대효과 · 임상적 가치 및 사회/경제적 파급효과</p>
+    <img class="logo" src="media/logo.png" alt="E² FESTA 2026 공학페스티벌">
+    <h2 class="ttl">순회 사이의 공백이 사라지면, <em>달라지는 세 가지</em></h2>
+    <div class="body">
+      <div class="s17">
+        <div class="card c"><div class="ph"><img src="media/nurse-app.webp" alt="스마트폰 앱으로 수액 상태를 확인하는 간호사"></div><span class="no">01</span><div class="tx"><p class="k">간호사에게</p><h3>임상적 효용성</h3><p>불필요한 단순 반복 업무를 줄이고 위급 환자 처치에 집중할 수 있는 환경을 조성하여 수액 관련 의료사고 미연에 방지</p></div></div>
+        <div class="card c"><div class="ph"><img src="media/patient-calm.webp" alt="병상에서 안정을 취하는 환자"></div><span class="no">02</span><div class="tx"><p class="k">환자·보호자에게</p><h3>환자 및 보호자 안심</h3><p>실시간 모니터링 앱 알림을 통해 환자의 불안감을 해소하고 불필요한 호출벨 사용을 감소</p></div></div>
+        <div class="card c nv"><div class="ph"><img src="media/world-map.webp" alt="세계 지도"></div><span class="no">03</span><div class="tx"><p class="k">사회에</p><h3>국가적 기여<br>병원 AX 전환</h3><p>대한민국 정부의 디지털 뉴딜 스마트 의료 인프라 구축 목표에 부합하며 K-Bio 헬스케어의 글로벌 경쟁력 강화</p></div></div>
+      </div>
+    </div>
+    <p class="pg">17</p>
+  </div>
+  <div class="note" hidden><p></p></div>
+</section>
+
+<!-- 18 team -->
+<section class="slide" id="s-team" data-sec="8" data-title="INFUTECH 팀 소개 — 대표자 및 팀원 소개">
+  <div class="frame">
+    <p class="crumb"><b>INFUTECH 팀 소개</b>대표자 및 팀원 소개</p>
+    <img class="logo" src="media/logo.png" alt="E² FESTA 2026 공학페스티벌">
+    <div class="s18l">
+      <div class="ph"><img src="media/m-jeong.webp" alt="팀장 정익상"></div>
+      <div><p class="k">팀장</p><h3>정익상</h3><p class="rl">PL, AI ENGINEER</p></div>
+      <ul><li>2026 WON+PBL 챌린지 총장상</li><li>학생창업 유망팀 U300+ 2026 선발</li><li>모두의 창업 1기 2라운드 선발</li></ul>
+    </div>
+    <ul class="s18m">
+      <li><div class="ph"><img src="media/m-kwon.webp" alt="권용현"></div><p class="r">Engineer</p><b>권용현</b><span>F/W 및 PCB 개발총괄</span></li>
+      <li><div class="ph"><img src="media/m-han-wj.webp" alt="한우진"></div><p class="r">Developer</p><b>한우진</b><span>3D 설계 및 F/W 담당</span></li>
+      <li><div class="ph"><img src="media/m-choi.webp" alt="최이지"></div><p class="r">Developer</p><b>최이지</b><span>서버 및 데이터베이스 설계</span></li>
+      <li><div class="ph"><img src="media/m-han-b.webp" alt="한별"></div><p class="r">Advisor</p><b>한별</b><span>간호협력 및 실험 세팅</span></li>
+    </ul>
+    <p class="pg">18</p>
+  </div>
+  <div class="note" hidden><p></p></div>
+</section>
+
+<!-- 19 closing -->
+<section class="slide cov end" id="s-end" data-sec="9" data-title="감사합니다">
+  <div class="frame">
+    <div class="bgnet"></div><div class="band"></div>
+    <p class="yr">2026 공학페스티벌</p>
+    <img class="logo" src="media/logo.png" alt="E² FESTA 2026 공학페스티벌">
+    <p class="sub">사회적 약자도 안심할 수 있는 병상,<br><em>INFUTECH</em>가 기술로 사회에 기여하겠습니다.</p>
+    <h1>감사합니다</h1>
+    <img class="prod" src="media/product.png" alt="링거폴대 상단에 결합한 INFU RETRO 모듈과 수액백">
+    <div class="bandtxt"><p class="org">INFUTECH</p><p>링거폴대 교체 없이 활용가능한 스마트 수액 모니터링 솔루션</p></div>
+  </div>
+  <div class="note" hidden><p></p></div>
+</section>
+
+</main>
+<script>
+  const SECTIONS = ['표지', '기존 상황의 문제점', '현장 인터뷰', '기존 솔루션의 한계점', '솔루션 소개', '검증 · 학술 성과', '시장 규모', '비즈니스 모델', '팀 소개', '마무리'];
+  const APPX = 10;
+  const slides = [...document.querySelectorAll('.slide')];
+  let cur = 0;
+  function fit() {
+    const s = Math.min(innerWidth / 1920, innerHeight / 1080);
+    document.querySelectorAll('.frame').forEach(f => f.style.setProperty('--s', s));
+  }
+  function show(k) {
+    k = Math.max(0, Math.min(slides.length - 1, k));
+    slides.forEach((s, i) => {
+      s.classList.toggle('on', i === k);
+      s.querySelectorAll('video').forEach(v => { if (i === k) { v.currentTime = 0; v.play().catch(() => {}); } else v.pause(); });
+    });
+    cur = k;
+    if (location.hash.slice(1) !== slides[k].id) history.replaceState(null, '', '#' + slides[k].id);
+  }
+  function fromHash() {
+    const h = decodeURIComponent(location.hash.slice(1));
+    let k = slides.findIndex(s => s.id === h);
+    if (k < 0 && /^\d+$/.test(h)) k = +h - 1;
+    return k < 0 ? 0 : k;
+  }
+  addEventListener('hashchange', () => show(fromHash()));
+  addEventListener('resize', fit);
+  addEventListener('keydown', e => {
+    if (['ArrowRight', 'PageDown', ' ', 'Enter'].includes(e.key)) { e.preventDefault(); show(cur + 1); }
+    else if (['ArrowLeft', 'PageUp', 'Backspace'].includes(e.key)) { e.preventDefault(); show(cur - 1); }
+    else if (e.key === 'Home') show(0);
+    else if (e.key === 'End') show(slides.length - 1);
+  });
+  addEventListener('click', e => { if (e.target.closest('video')) return; show(cur + (e.clientX > innerWidth / 3 ? 1 : -1)); });
+  fit(); show(fromHash());
+</script>
+</body>
+</html>

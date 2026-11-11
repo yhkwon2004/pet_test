@@ -110,10 +110,11 @@ async function autoplay(file, media) {
 
   const pres = new PptxGenJS();
   pres.layout = 'LAYOUT_WIDE';
-  pres.title = 'INFU RETRO — 반려동물 약물투약 사고를 방지하기 위한 이상감지 솔루션';
-  pres.subject = 'INFU RETRO IR · 가상 AI 자이로 하중센서 모듈';
-  pres.author = 'WON SHOT';
-  pres.company = 'WON SHOT';
+  const META = n => (new RegExp('<meta name="pptx-' + n + '" content="([^"]*)"').exec(html) || [])[1];
+  pres.title = META('title') || 'INFU RETRO — 반려동물 약물투약 사고를 방지하기 위한 이상감지 솔루션';
+  pres.subject = META('subject') || 'INFU RETRO IR · 가상 AI 자이로 하중센서 모듈';
+  pres.author = META('author') || 'WON SHOT';
+  pres.company = META('author') || 'WON SHOT';
 
   const media = [];
   let section = '', total = 0;
