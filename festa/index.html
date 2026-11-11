@@ -458,31 +458,9 @@ b { font-weight: 800; }
 .s8 .two figure div { min-height: 0; }
 .s8 .col1 .two figure img { object-position: 50% 30%; }
 /* merged bm + cost */
-.bc { display: flex; flex-direction: column; gap: 20px; top: 214px; bottom: 60px; }
+.bc { display: flex; flex-direction: column; gap: 20px; top: 214px; bottom: 70px; }
 .bcd { flex: none; padding: 14px 26px; }
 .bcd .bmsvg { display: block; width: 100%; height: auto; }
-.bcc { flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr 450px 450px; gap: 22px; }
-.bcc .card { padding: 20px 26px; display: flex; flex-direction: column; }
-.bcc .h { font-size: 24px; font-weight: 800; color: var(--ink); }
-.bcc .h span { margin-left: 12px; font-size: 18px; font-weight: 700; color: var(--nv2); }
-.bcc .cs3 { flex: 1; display: grid; grid-template-columns: 1fr 30px 1fr 30px 1fr; align-items: center; margin-top: 10px; }
-.bcc .cs3 i { text-align: center; font-style: normal; font-size: 30px; font-weight: 900; color: var(--nv3); }
-.bcc .cs3 .c { height: 100%; display: flex; flex-direction: column; justify-content: center; gap: 6px; padding: 10px 16px; border-radius: 12px; background: var(--bg2); border-left: 6px solid var(--nv); }
-.bcc .cs3 .c:nth-of-type(2) { border-color: var(--nv3); } .bcc .cs3 .c:nth-of-type(3) { border-color: var(--nvl); }
-.bcc .cs3 b { font-size: 24px; font-weight: 800; color: var(--ink); }
-.bcc .cs3 span { font-size: 17px; font-weight: 600; color: var(--ink2); line-height: 1.4; }
-.bcc .sum { margin-top: 12px; height: 60px; display: flex; align-items: center; justify-content: center; gap: 14px; border-radius: 12px; background: var(--nv); color: #FFFFFF; font-size: 24px; font-weight: 700; }
-.bcc .sum b { font-size: 36px; font-weight: 800; color: var(--cy); }
-.bcc .mgn { flex-direction: row; align-items: center; gap: 22px; }
-.bcc .mgn svg { width: 160px; height: 160px; flex: none; }
-.bcc .mgn .t { white-space: nowrap; font-size: 19px; font-weight: 600; color: var(--mute); }
-.bcc .mgn .v { margin-top: 8px; font-size: 26px; font-weight: 700; color: var(--ink2); line-height: 1.3; white-space: nowrap; }
-.bcc .mgn .vb { margin-top: 10px; font-size: 48px; font-weight: 800; line-height: 1.1; color: var(--nv); white-space: nowrap; }
-.bcc .sub ul { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 10px; }
-.bcc .sub li { position: relative; padding-left: 20px; font-size: 21px; font-weight: 600; color: var(--ink2); line-height: 1.4; }
-.bcc .sub li::before { content: ""; position: absolute; left: 0; top: 11px; width: 9px; height: 9px; border-radius: 50%; background: var(--nv); }
-.bcc .sub li b { color: var(--nv2); }
-.bcc .sub .ft { font-size: 16px; font-weight: 600; color: var(--mute); }
 /* s-deal: hero + agreement full text */
 .sdl2 { position: absolute; left: 0; right: 0; top: -22px; bottom: -20px; height: auto; margin: 0; display: grid; grid-template-columns: 1fr auto auto; gap: 24px; }
 .sdl2 .hero { padding: 44px 40px; }
@@ -490,6 +468,24 @@ b { font-weight: 800; }
 .sdl2 .pgx { position: relative; height: 100%; aspect-ratio: 1460 / 2110; margin: 0; border-radius: 12px; overflow: hidden; background: #FFFFFF; box-shadow: 0 0 0 1.5px var(--line), 0 18px 40px rgba(14, 30, 80, .14); }
 .sdl2 .pgx img { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: contain; }
 .sdl2 .pgx figcaption { position: absolute; right: 12px; bottom: 12px; padding: 4px 12px; border-radius: 99px; background: rgba(11, 36, 102, .85); color: #FFFFFF; font-size: 16px; font-weight: 800; }
+/* slide 17 unit economics */
+.bue { flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr 470px; gap: 40px; align-items: center; padding: 26px 34px; }
+.bue .h { font-size: 26px; font-weight: 800; color: var(--ink); }
+.bue .h span { margin-left: 14px; font-size: 20px; font-weight: 700; color: var(--nv2); }
+.bue .ub { margin-top: 22px; display: grid; grid-template-columns: 32fr 68fr; height: 104px; border-radius: 14px; overflow: hidden; }
+.bue .ub div { display: flex; flex-direction: column; justify-content: center; gap: 4px; padding: 0 24px; }
+.bue .ub .u1 { background: #DCE3F2; color: var(--nv); }
+.bue .ub .u2 { background: var(--nv); color: #FFFFFF; }
+.bue .ub b { font-size: 28px; font-weight: 800; letter-spacing: -.02em; white-space: nowrap; }
+.bue .ub span { font-size: 18px; font-weight: 600; opacity: .8; white-space: nowrap; }
+.bue .ub .u2 span { color: var(--cy); opacity: 1; font-weight: 800; }
+.bue .ut { display: flex; justify-content: center; margin-top: 10px; font-size: 18px; font-weight: 700; color: var(--mute); }
+.bue .ut b { font-size: 24px; color: var(--ink); }
+.bue .us { height: 100%; display: flex; flex-direction: column; justify-content: center; gap: 8px; padding: 22px 30px; border-radius: 18px; background: var(--bg2); border-left: 6px solid var(--cy); }
+.bue .us .k { font-size: 22px; font-weight: 800; color: var(--nv2); }
+.bue .us .v { font-size: 30px; font-weight: 700; color: var(--ink); line-height: 1.35; }
+.bue .us .v b { color: var(--nv); font-weight: 900; }
+.bue .us .f { font-size: 17px; font-weight: 600; color: var(--mute); }
 </style>
 </head>
 <body>
@@ -929,30 +925,23 @@ b { font-weight: 800; }
     <h2 class="ttl">구독형 비즈니스 구조, <em>낮은 원가</em>로 완성합니다</h2>
     <div class="body bc">
       <div class="card bcd"><svg class="bmsvg" viewBox="0 0 1728 462" role="img" aria-label="비즈니스 모델 구조도 — 생산 파트너가 INFUTECH 설계대로 모듈을 납품하고, 의료기기 유통업체 ㈜에스케이엠엔엠(구매의향 5,000만 원)이 판로를 열며, 병원(B2B)에는 설치 + 월간 관리 구독으로 대당 25만 원과 월 관리비를 받고 수액 투여 데이터로 AI를 고도화합니다. 공공(B2G)에는 관제 인프라 · 데이터 사업을 보조금 사업과 연계합니다."><defs><marker id="fa" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#1C3A8A"/></marker><marker id="fm" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#E5484D"/></marker><marker id="fd" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#1F9D63"/></marker><linearGradient id="fhub" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1C3A8A"/><stop offset="1" stop-color="#0B2466"/></linearGradient></defs><rect x="625" y="110" width="300" height="240" rx="28" fill="url(#fhub)"/><clipPath id="fhc"><circle cx="775.0" cy="182" r="50"/></clipPath><circle cx="775.0" cy="182" r="50" fill="#FFFFFF"/><image href="media/product.png" x="729" y="142" width="92" height="138" preserveAspectRatio="xMidYMin meet" clip-path="url(#fhc)"/><circle cx="775.0" cy="182" r="50" fill="none" stroke="#0891B2" stroke-width="5"/><text x="775.0" y="276" text-anchor="middle" font-size="36" font-weight="900" fill="#FFFFFF">INFUTECH</text><text x="775.0" y="314" text-anchor="middle" font-size="20" font-weight="700" fill="#DCE4F7">모듈 · 이상 감지 AI · 관제 SaaS</text><rect x="0" y="155" width="400" height="150" rx="20" fill="#FFFFFF" stroke="#DCE2EE" stroke-width="2"/><clipPath id="fp"><rect x="20" y="192.0" width="76" height="76" rx="12"/></clipPath><rect x="20" y="192.0" width="76" height="76" rx="12" fill="#F3F6FB"/><image href="media/pcb-real.webp" x="20" y="192.0" width="76" height="76" preserveAspectRatio="xMidYMid slice" clip-path="url(#fp)"/><rect x="118" y="180.0" width="55" height="28" rx="14" fill="#6B7590"/><text x="146" y="200.0" text-anchor="middle" font-size="17" font-weight="850" fill="#FFFFFF">생산</text><text x="118" y="244.0" font-size="29" font-weight="850" fill="#0F1A38">생산 파트너</text><text x="118" y="276.0" font-size="20" font-weight="650" fill="#3F4A66">PCB · 금형 · 사출 외주</text><path d="M617 185 L408 185" stroke="#1C3A8A" stroke-width="3.4" fill="none" stroke-linejoin="round" marker-end="url(#fa)"/><rect x="427" y="168" width="172" height="34" rx="17" fill="#FFFFFF" stroke="#1C3A8A" stroke-opacity=".5" stroke-width="1.8"/><text x="512" y="192" text-anchor="middle" font-size="20" font-weight="800" fill="#1C3A8A">설계 · 부품 사양</text><path d="M408 230 L617 230" stroke="#1C3A8A" stroke-width="3.4" fill="none" stroke-linejoin="round" marker-end="url(#fa)"/><rect x="456" y="213" width="114" height="34" rx="17" fill="#FFFFFF" stroke="#1C3A8A" stroke-opacity=".5" stroke-width="1.8"/><text x="512" y="237" text-anchor="middle" font-size="20" font-weight="800" fill="#1C3A8A">모듈 납품</text><path d="M617 275 L408 275" stroke="#E5484D" stroke-width="3.4" fill="none" stroke-linejoin="round" stroke-dasharray="11 8" marker-end="url(#fm)"/><rect x="446" y="258" width="134" height="34" rx="17" fill="#FFFFFF" stroke="#E5484D" stroke-opacity=".5" stroke-width="1.8"/><text x="512" y="282" text-anchor="middle" font-size="20" font-weight="800" fill="#E5484D">제조비 지급</text><rect x="1236" y="0" width="492" height="112" rx="20" fill="#FFF6EC" stroke="#DCE2EE" stroke-width="2"/><clipPath id="fdst"><rect x="1256" y="20.0" width="72" height="72" rx="12"/></clipPath><rect x="1256" y="20.0" width="72" height="72" rx="12" fill="#F3F6FB"/><image href="media/doc-skmm-1.webp" x="1256" y="20.0" width="72" height="72" preserveAspectRatio="xMidYMid slice" clip-path="url(#fdst)"/><rect x="1350" y="6.0" width="93" height="28" rx="14" fill="#E07B2E"/><text x="1397" y="26.0" text-anchor="middle" font-size="17" font-weight="850" fill="#FFFFFF">B2B 판로</text><text x="1350" y="70.0" font-size="29" font-weight="850" fill="#0F1A38">의료기기 유통업체</text><text x="1350" y="102.0" font-size="20" font-weight="650" fill="#3F4A66">㈜에스케이엠엔엠 · 구매의향 5,000만</text><rect x="1236" y="155" width="492" height="150" rx="20" fill="#EEF2FB" stroke="#DCE2EE" stroke-width="2"/><clipPath id="fhos"><rect x="1256" y="192.0" width="76" height="76" rx="12"/></clipPath><rect x="1256" y="192.0" width="76" height="76" rx="12" fill="#F3F6FB"/><image href="media/ic-hosp.png" x="1256" y="192.0" width="76" height="76" preserveAspectRatio="xMidYMid slice" clip-path="url(#fhos)"/><rect x="1354" y="180.0" width="55" height="28" rx="14" fill="#0B2466"/><text x="1382" y="200.0" text-anchor="middle" font-size="17" font-weight="850" fill="#FFFFFF">B2B</text><text x="1354" y="244.0" font-size="29" font-weight="850" fill="#0F1A38">병원</text><text x="1354" y="276.0" font-size="20" font-weight="650" fill="#3F4A66">병상마다 설치 · 스테이션 대시보드</text><rect x="1236" y="348" width="492" height="112" rx="20" fill="#EDF8F2" stroke="#DCE2EE" stroke-width="2"/><clipPath id="fgov"><rect x="1256" y="368.0" width="72" height="72" rx="12"/></clipPath><rect x="1256" y="368.0" width="72" height="72" rx="12" fill="#F3F6FB"/><image href="media/ic-gov.png" x="1256" y="368.0" width="72" height="72" preserveAspectRatio="xMidYMid slice" clip-path="url(#fgov)"/><rect x="1350" y="354.0" width="55" height="28" rx="14" fill="#1F9D63"/><text x="1378" y="374.0" text-anchor="middle" font-size="17" font-weight="850" fill="#FFFFFF">B2G</text><text x="1350" y="418.0" font-size="29" font-weight="850" fill="#0F1A38">공공 · 정부</text><text x="1350" y="450.0" font-size="20" font-weight="650" fill="#3F4A66">스마트 의료 인프라 보조금 사업</text><path d="M775.0 104 L775.0 56 L1228 56" stroke="#1C3A8A" stroke-width="3.4" fill="none" stroke-linejoin="round" marker-end="url(#fa)"/><rect x="947" y="39" width="216" height="34" rx="17" fill="#FFFFFF" stroke="#1C3A8A" stroke-opacity=".5" stroke-width="1.8"/><text x="1055" y="63" text-anchor="middle" font-size="20" font-weight="800" fill="#1C3A8A">모듈 공급 · 영업 협력</text><path d="M1640 116 L1640 150" stroke="#1C3A8A" stroke-width="3.4" fill="none" stroke-linejoin="round" marker-end="url(#fa)"/><rect x="1471" y="116" width="117" height="34" rx="17" fill="#FFFFFF" stroke="#1C3A8A" stroke-opacity=".5" stroke-width="1.8"/><text x="1530" y="140" text-anchor="middle" font-size="18" font-weight="800" fill="#1C3A8A">판로 · 납품</text><path d="M933 185 L1228 185" stroke="#1C3A8A" stroke-width="3.4" fill="none" stroke-linejoin="round" marker-end="url(#fa)"/><rect x="970" y="168" width="221" height="34" rx="17" fill="#FFFFFF" stroke="#1C3A8A" stroke-opacity=".5" stroke-width="1.8"/><text x="1080" y="192" text-anchor="middle" font-size="20" font-weight="800" fill="#1C3A8A">설치 + 월간 관리 구독</text><path d="M1228 230 L933 230" stroke="#E5484D" stroke-width="3.4" fill="none" stroke-linejoin="round" stroke-dasharray="11 8" marker-end="url(#fm)"/><rect x="955" y="213" width="251" height="34" rx="17" fill="#FFFFFF" stroke="#E5484D" stroke-opacity=".5" stroke-width="1.8"/><text x="1080" y="237" text-anchor="middle" font-size="20" font-weight="800" fill="#E5484D">대당 25만 원 + 월 관리비</text><path d="M1228 275 L933 275" stroke="#1F9D63" stroke-width="4" fill="none" stroke-linejoin="round" stroke-dasharray="2 8" stroke-linecap="round" marker-end="url(#fd)"/><rect x="956" y="258" width="248" height="34" rx="17" fill="#FFFFFF" stroke="#1F9D63" stroke-opacity=".5" stroke-width="1.8"/><text x="1080" y="282" text-anchor="middle" font-size="20" font-weight="800" fill="#1F9D63">투여 데이터 → AI 고도화</text><path d="M865.0 356 L865.0 380 L1228 380" stroke="#1C3A8A" stroke-width="3.4" fill="none" stroke-linejoin="round" marker-end="url(#fa)"/><rect x="932" y="363" width="256" height="34" rx="17" fill="#FFFFFF" stroke="#1C3A8A" stroke-opacity=".5" stroke-width="1.8"/><text x="1060" y="387" text-anchor="middle" font-size="20" font-weight="800" fill="#1C3A8A">관제 인프라 · 데이터 사업</text><path d="M1228 430 L685.0 430 L685.0 358" stroke="#E5484D" stroke-width="3.4" fill="none" stroke-linejoin="round" stroke-dasharray="11 8" marker-end="url(#fm)"/><rect x="971" y="413" width="178" height="34" rx="17" fill="#FFFFFF" stroke="#E5484D" stroke-opacity=".5" stroke-width="1.8"/><text x="1060" y="437" text-anchor="middle" font-size="20" font-weight="800" fill="#E5484D">보조금 사업 연계</text></svg></div>
-      <div class="bcc">
-        <div class="card cst">
-          <p class="h">1대 기준 원가 구성 <span>센서를 줄인 설계 → 낮은 원가</span></p>
-          <div class="cs3">
-            <div class="c"><b>제조 비용</b><span>하드웨어 BOM · 조립 · 테스트/캘리브레이션 · 패키징</span></div><i>+</i>
-            <div class="c"><b>운영 비용</b><span>인증비 배분 · 서버/SW 운영 · A/S 충당</span></div><i>+</i>
-            <div class="c"><b>유통 비용</b><span>물류 · 영업/유통</span></div>
-          </div>
-          <p class="sum">= 합산 대당 판매가 <b>25만원</b></p>
+      <div class="card bue">
+        <div class="ue">
+          <p class="h">1대 단위 경제성 <span>센서를 줄인 설계 → 낮은 원가</span></p>
+          <div class="ub"><div class="u1"><b>원가 약 8만 원</b><span>제조 · 운영 · 유통 포함</span></div><div class="u2"><b>공헌이익 약 17만 원</b><span>공헌이익률 68%</span></div></div>
+          <div class="ut"><span>← 판매가 1대 <b>25만 원</b> →</span></div>
         </div>
-        <div class="card mgn">
-          <svg viewBox="0 0 120 120" role="img" aria-label="실질 마진율 약 68%"><circle cx="60" cy="60" r="46" fill="none" stroke="#E3E8F4" stroke-width="16"/><circle cx="60" cy="60" r="46" fill="none" stroke="#0B2466" stroke-width="16" stroke-linecap="round" stroke-dasharray="196.5 289" transform="rotate(-90 60 60)"/><text x="60" y="54" text-anchor="middle" font-size="12" font-weight="700" fill="#3F4A66">실질 마진율</text><text x="60" y="76" text-anchor="middle" font-size="22" font-weight="800" fill="#0B2466">약 68%</text></svg>
-          <div><p class="t">대당 가치 25만원 기준</p><p class="v">공헌이익 약</p><p class="vb">17만원</p></div>
-        </div>
-        <div class="card sub">
-          <p class="h">구독 모델로 전환하면</p>
-          <ul><li>낮은 원가 → <b>원가 회수 기간 단축</b></li><li>회수 이후 월 관리비는 <b>반복 수익</b>으로 누적</li><li>유지보수 비용을 구독에 포함해 <b>A/S 리스크 관리</b></li></ul>
-          <p class="ft">※ 월 구독료는 기관 규모별 차등 적용 (세부 요금 별도 협의)</p>
+        <div class="us">
+          <p class="k">+ 월 관리 구독</p>
+          <p class="v">원가 회수 뒤<br><b>반복 매출</b>로 누적</p>
+          <p class="f">요금은 기관 규모별 차등</p>
         </div>
       </div>
     </div>
+    <p class="src">출처: 원가 · 판매가 · 공헌이익률 – INFUTECH 사업계획서(2026) 원가 분석 (실질 제조원가 8만 원, 판매가 25만 원, 공헌이익률 68%) · 유통 파트너 – ㈜에스케이엠엔엠 구매의향 및 사업협력 업무협약서(2026.10.11) · 구독 요금 – 내부 기준</p>
     <p class="pg">17</p>
   </div>
-  <div class="note" hidden><p>생산은 PCB · 금형 · 사출을 외주로 맡기고, 의료기기 유통업체가 판로를 엽니다. 병원에는 설치 후 월간 관리 구독으로 매출을 만들고, 모이는 수액 투여 데이터로 AI를 고도화합니다. 공공에는 관제 인프라와 데이터 사업을 보조금 사업과 연계합니다.</p><p>센서를 줄인 설계 덕분에 제조 · 운영 · 유통 비용을 모두 더해도 대당 판매가 25만 원, 실질 마진율 약 68퍼센트, 공헌이익 약 17만 원입니다. 구독으로 원가 회수 뒤에는 반복 수익이 쌓입니다.</p></div>
+  <div class="note" hidden><p>생산은 PCB · 금형 · 사출을 외주로 맡기고, 의료기기 유통업체가 판로를 엽니다. 병원에는 설치 후 월간 관리 구독으로 매출을 만들고, 모이는 수액 투여 데이터로 AI를 고도화합니다. 공공에는 관제 인프라와 데이터 사업을 보조금 사업과 연계합니다.</p><p>센서를 줄인 설계 덕분에 제조 · 운영 · 유통 비용을 모두 더한 대당 원가는 약 8만 원입니다. 판매가 25만 원 중 약 17만 원, 68퍼센트가 공헌이익으로 남고, 원가를 회수한 뒤에는 월 관리 구독이 반복 매출로 쌓입니다.</p></div>
 </section>
 
 <!-- 17 impact -->
