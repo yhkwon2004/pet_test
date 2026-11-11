@@ -404,6 +404,57 @@ b { font-weight: 800; }
 .s18m .r { margin-top: 26px; font-size: 22px; font-weight: 800; color: var(--nv2); letter-spacing: .04em; }
 .s18m b { margin-top: 4px; font-size: 40px; font-weight: 800; color: var(--ink); }
 .s18m span { margin-top: 6px; font-size: 21px; font-weight: 600; color: var(--ink2); }
+/* v2: impact · new slides */
+.ttl::before { content: ""; position: absolute; left: -32px; top: 10px; width: 10px; height: 48px; border-radius: 5px; background: linear-gradient(180deg, var(--cy), var(--nv2)); }
+.crumb b { padding: 4px 12px; border-radius: 8px; background: #EEF2FB; }
+.dark .crumb b { background: rgba(255, 255, 255, .14); }
+.cov h1 { color: var(--nv); text-shadow: 0 6px 24px rgba(11, 36, 102, .12); }
+.bmc { height: 100%; padding: 26px 30px; display: flex; align-items: center; }
+.bmc .bmsvg { width: 100%; height: auto; display: block; }
+.sdl { display: grid; grid-template-columns: 1.05fr .78fr 1fr; gap: 32px; height: 760px; margin-top: -10px; }
+.sdl .hero { display: flex; flex-direction: column; justify-content: center; padding: 50px 48px; background: radial-gradient(120% 90% at 0% 0%, #1C3A8A 0%, #0B2466 60%); }
+.sdl .hero .k { font-size: 25px; font-weight: 700; color: #BFCBEA; }
+.sdl .hero .t { margin-top: 18px; font-size: 44px; font-weight: 800; letter-spacing: -.02em; }
+.sdl .hero .big { margin-top: 26px; font-size: 136px; font-weight: 900; letter-spacing: -.045em; line-height: 1; color: var(--cy); }
+.sdl .hero .big small { font-size: 54px; font-weight: 800; margin-left: 8px; letter-spacing: 0; }
+.sdl .hero .d { margin-top: 34px; padding-top: 26px; border-top: 2px solid rgba(255, 255, 255, .2); font-size: 22px; font-weight: 600; line-height: 1.55; color: #DCE4F7; }
+.sdl .doc { display: flex; flex-direction: column; padding: 20px; }
+.sdl .doc div { flex: 1; border-radius: 12px; overflow: hidden; background: #F3F6FB; }
+.sdl .doc img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0%; }
+.sdl .doc figcaption { margin-top: 14px; text-align: center; font-size: 21px; font-weight: 800; color: var(--ink2); }
+.sdl .side { display: flex; flex-direction: column; gap: 28px; }
+.sdl .side .card { flex: 1; display: grid; align-items: center; gap: 24px; padding: 24px 28px; }
+.sdl .loi { grid-template-columns: 210px 1fr; }
+.sdl .loi .ph { height: 210px; border-radius: 16px; overflow: hidden; }
+.sdl .loi .ph img { width: 100%; height: 100%; object-fit: cover; }
+.sdl .pat { grid-template-columns: 110px 1fr; background: #F7F9FD; }
+.sdl .pat i { display: grid; place-items: center; width: 110px; height: 110px; border-radius: 50%; background: var(--nv); color: var(--cy); font-style: normal; font-size: 56px; font-weight: 900; box-shadow: 0 0 0 10px #E3E8F4; }
+.sdl .tg { display: inline-block; padding: 5px 14px; border-radius: 8px; background: var(--nv); color: #FFFFFF; font-size: 18px; font-weight: 800; }
+.sdl .side b { display: block; margin-top: 12px; font-size: 32px; font-weight: 800; color: var(--ink); letter-spacing: -.02em; }
+.sdl .side p { margin-top: 8px; font-size: 22px; font-weight: 600; color: var(--ink2); line-height: 1.5; }
+.s18l { top: 160px; height: 300px; }
+.s18l .ph { width: 260px; height: 260px; }
+.s18l h3 { font-size: 70px; }
+.s18g { position: absolute; left: 96px; right: 96px; top: 500px; bottom: 70px; display: grid; grid-template-columns: 3fr 2fr; gap: 32px; }
+.s18g .grp { display: flex; flex-direction: column; padding: 22px 30px 26px; border-radius: 26px; background: #F3F6FB; border: 1.5px solid var(--line); }
+.s18g .grp.cli { background: #EDF8F2; border-color: #C9EBD8; }
+.s18g .gh { display: flex; align-items: center; gap: 16px; font-size: 22px; font-weight: 600; color: var(--ink2); }
+.s18g .gh b { padding: 6px 18px; border-radius: 99px; background: var(--nv); color: #FFFFFF; font-size: 26px; font-weight: 800; }
+.s18g .cli .gh b { background: #1F9D63; }
+.s18g ul { flex: 1; display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; align-items: center; }
+.s18g li { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.s18g .ph { width: 190px; height: 190px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 7px #FFFFFF, 0 12px 28px rgba(14, 30, 80, .16); }
+.s18g .ph img { width: 100%; height: 100%; object-fit: cover; }
+.s18g .r { margin-top: 18px; font-size: 20px; font-weight: 800; color: var(--nv2); letter-spacing: .04em; }
+.s18g .cli .r { color: #1F9D63; }
+.s18g li b { margin-top: 2px; font-size: 36px; font-weight: 800; color: var(--ink); }
+.s18g li span { margin-top: 4px; font-size: 20px; font-weight: 600; color: var(--ink2); }
+.s18g li.co b { font-size: 30px; }
+.s8 .col { min-height: 0; }
+.s8 .two { min-height: 0; grid-template-columns: 260px 1fr; }
+.s8 .two figure { min-height: 0; }
+.s8 .two figure div { min-height: 0; }
+.s8 .col1 .two figure img { object-position: 50% 30%; }
 </style>
 </head>
 <body>
@@ -616,8 +667,13 @@ b { font-weight: 800; }
       <div class="s8">
         <div class="col col1">
           <p class="hd-n">인퓨전 펌프</p>
-          <div class="it"><img src="media/ic-price.png" alt=""><div><b>높은 가격 약 100만원 이상</b><span>고가 장비로 병상당 도입 부담이 큼</span></div></div>
-          <div class="it"><img src="media/ic-bed.png" alt=""><div><b>한정적인 보유 수량</b><span>일반 수액 환자는 결국 직접 확인에 의존</span></div></div>
+          <div class="two">
+            <figure><div><img src="media/pump-real.webp" alt="병상 옆 인퓨전 펌프"></div><figcaption>병상 옆 인퓨전 펌프<br>수액 1줄마다 장비 1대</figcaption></figure>
+            <div class="its">
+              <div class="it"><img src="media/ic-price.png" alt=""><div><b>높은 가격 약 100만원 이상</b><span>고가 장비로 병상당 도입 부담이 큼</span></div></div>
+              <div class="it"><img src="media/ic-bed.png" alt=""><div><b>한정적인 보유 수량</b><span>일반 수액 환자는 결국 직접 확인에 의존</span></div></div>
+            </div>
+          </div>
           <p class="res">→ 모든 병상 도입 어려움</p>
         </div>
         <div class="col">
@@ -743,13 +799,38 @@ b { font-weight: 800; }
           <p class="hh"><span class="tg">02 · 학술 검증</span>국내외 학회 <b>우수논문상 2회</b> 수상</p>
           <div class="aw"><div class="im"><img src="media/award-best.webp" alt="AIT 2026 Best Paper Award 상장"></div><div><span class="k">국제 학회 · 베트남 다낭</span><h4>Best Paper Award</h4><p>Design of a Dual-Track Algorithm for Real-Time IV Monitoring Based on Load Cell</p><p class="m">AIT 2026 국제학술대회 · 2026.01</p></div></div>
           <div class="aw"><div class="im"><img src="media/award-kr.webp" alt="우수논문상 상장"></div><div><span class="k">국내 학회 · 공동학술발표회</span><h4>우수논문상</h4><p>CNN 상태 패턴 분석 기반 정맥 수액 이상 감지 알고리즘</p><p class="m">(사)한국혁신산업학회 · (사)한국디지털정책학회 · 2026.07.06</p></div></div>
-          <div class="ch"><div><i>A</i><p><b>캡스톤 디자인 대상</b><span>대학부 및 글로벌</span></p></div><div><i>P</i><p><b>특허 출원 진행</b><span>HW 결합 구조 · 이상 감지 알고리즘</span></p></div></div>
+          <div class="ch"><div><i>A</i><p><b>캡스톤 디자인 대상</b><span>대학부 및 글로벌</span></p></div><div><i>P</i><p><b>특허 출원 진행 중</b><span>변리사 통해 출원 · HW 결합 구조 · 알고리즘</span></p></div></div>
         </div>
       </div>
     </div>
     <p class="pg">13</p>
   </div>
   <div class="note" hidden><p></p></div>
+</section>
+<!-- 13b deal -->
+<section class="slide" id="s-deal" data-sec="5" data-title="실제 의료기기 유통업체가 5,000만 원 규모 구매의향으로 답했습니다">
+  <div class="frame">
+    <p class="crumb"><b>시장 검증</b>유통 협약 · LOI · 지식재산권</p>
+    <img class="logo" src="media/logo.png" alt="E² FESTA 2026 공학페스티벌">
+    <h2 class="ttl">실제 의료기기 유통업체가 <em>5,000만 원 규모 구매의향</em>으로 답했습니다</h2>
+    <div class="body">
+      <div class="sdl">
+        <div class="ncard hero">
+          <p class="k">의료기기 유통업체 ㈜에스케이엠엔엠</p>
+          <p class="t">구매의향 협약 체결</p>
+          <p class="big">5,000<small>만 원</small></p>
+          <p class="d">스마트 수액관리 솔루션 구매의향 및 사업협력 업무협약<br>판로 개척 지원 포함 · 2026.10.11</p>
+        </div>
+        <figure class="card doc"><div><img src="media/doc-skmm-1.webp" alt="㈜에스케이엠엔엠 스마트 수액관리 솔루션 구매의향 및 사업협력 업무협약서"></div><figcaption>구매의향 및 사업협력 업무협약서</figcaption></figure>
+        <div class="side">
+          <div class="card loi"><div class="ph"><img src="media/visit-lab.webp" alt="전남대학교 수의과대학 LOI 체결 — 시제품 모듈을 든 팀원들"></div><div><span class="tg">LOI</span><b>전남대학교 수의과대학</b><p>LOI 체결 → 실증 거점 확보</p></div></div>
+          <div class="card pat"><i>P</i><div><span class="tg">지식재산권</span><b>특허 출원 진행 중</b><p>변리사를 통해 출원 진행<br>HW 결합 구조 · 이상 감지 알고리즘</p></div></div>
+        </div>
+      </div>
+    </div>
+    <p class="pg">14</p>
+  </div>
+  <div class="note" hidden><p>실제 의료기기 유통업체 ㈜에스케이엠엔엠과 5,000만 원 규모의 구매의향 협약을 맺었고, 판로 개척 지원도 함께 약속받았습니다. 전남대학교 수의과대학과는 LOI를 체결해 실증 거점을 확보했고, 특허는 현재 변리사를 통해 출원을 진행하고 있습니다.</p></div>
 </section>
 
 <!-- 14 market -->
@@ -779,7 +860,7 @@ b { font-weight: 800; }
       </div>
     </div>
     <p class="src">출처: 성장률·시장 추이 – Precedence Research, Infusion Pump Market(2025년 174.9억 → 2035년 364.2억 달러, CAGR 7.61%) · 병원 수 – 심평원(4,221개소, 2024) · TAM – 원본 자료 기준 · SAM/SOM – 자체 추정</p>
-    <p class="pg">14</p>
+    <p class="pg">15</p>
   </div>
   <div class="note" hidden><p></p></div>
 </section>
@@ -803,9 +884,20 @@ b { font-weight: 800; }
       </div>
       <p class="pill-n s15-q">병원은 도입 부담을 덜고, INFUTECH는 <em>반복 매출(MRR)</em>을 쌓습니다</p>
     </div>
-    <p class="pg">15</p>
+    <p class="pg">16</p>
   </div>
   <div class="note" hidden><p></p></div>
+</section>
+<!-- 15b bm map -->
+<section class="slide" id="s-bmmap" data-sec="7" data-title="비즈니스 모델 구조도">
+  <div class="frame">
+    <p class="crumb"><b>비즈니스 모델</b>비즈니스 모델 구조도</p>
+    <img class="logo" src="media/logo.png" alt="E² FESTA 2026 공학페스티벌">
+    <h2 class="ttl">생산 · 유통 · 병원 · 공공을 잇는 <em>구독형 비즈니스 구조</em></h2>
+    <div class="body"><div class="card bmc"><svg class="bmsvg" viewBox="0 0 1728 660" role="img" aria-label="비즈니스 모델 구조도 — 생산 파트너가 INFUTECH 설계대로 모듈을 납품하고, 의료기기 유통업체 ㈜에스케이엠엔엠(구매의향 5,000만 원)이 판로를 열며, 병원 · 동물병원(B2B)에는 설치 + 월간 관리 구독으로 대당 25만 원과 월 관리비를 받고 수액 투여 데이터로 AI를 고도화합니다. 공공(B2G)에는 관제 인프라 · 데이터 사업을 보조금 사업과 연계합니다."><defs><marker id="fa" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#1C3A8A"/></marker><marker id="fm" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#E5484D"/></marker><marker id="fd" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#1F9D63"/></marker><linearGradient id="fhub" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1C3A8A"/><stop offset="1" stop-color="#0B2466"/></linearGradient></defs><g font-size="19" font-weight="750" fill="#3F4A66"><line x1="4" y1="24" x2="48" y2="24" stroke="#1C3A8A" stroke-width="3.4"/><text x="58" y="31">제품 · 서비스</text><line x1="196" y1="24" x2="240" y2="24" stroke="#E5484D" stroke-width="3.4" stroke-dasharray="11 8"/><text x="250" y="31">돈</text><line x1="300" y1="24" x2="344" y2="24" stroke="#1F9D63" stroke-width="4" stroke-dasharray="2 8" stroke-linecap="round"/><text x="354" y="31">데이터</text></g><rect x="600" y="150" width="330" height="330" rx="30" fill="url(#fhub)"/><clipPath id="fhc"><circle cx="765.0" cy="250" r="66"/></clipPath><circle cx="765.0" cy="250" r="66" fill="#FFFFFF"/><image href="media/product.png" x="699.0" y="184" width="132" height="132" preserveAspectRatio="xMidYMid meet" clip-path="url(#fhc)"/><circle cx="765.0" cy="250" r="66" fill="none" stroke="#0891B2" stroke-width="5"/><text x="765.0" y="368" text-anchor="middle" font-size="40" font-weight="900" fill="#FFFFFF">INFUTECH</text><text x="765.0" y="406" text-anchor="middle" font-size="21" font-weight="700" fill="#DCE4F7">모듈 · 이상 감지 AI</text><text x="765.0" y="438" text-anchor="middle" font-size="21" font-weight="700" fill="#DCE4F7">관제 SaaS · 데이터</text><rect x="0" y="225" width="360" height="180" rx="20" fill="#FFFFFF" stroke="#DCE2EE" stroke-width="2"/><clipPath id="fp"><rect x="20" y="277.0" width="76" height="76" rx="12"/></clipPath><rect x="20" y="277.0" width="76" height="76" rx="12" fill="#F3F6FB"/><image href="media/pcb-real.webp" x="20" y="277.0" width="76" height="76" preserveAspectRatio="xMidYMid slice" clip-path="url(#fp)"/><rect x="118" y="265.0" width="55" height="28" rx="14" fill="#6B7590"/><text x="146" y="285.0" text-anchor="middle" font-size="17" font-weight="850" fill="#FFFFFF">생산</text><text x="118" y="329.0" font-size="29" font-weight="850" fill="#0F1A38">생산 파트너</text><text x="118" y="361.0" font-size="20" font-weight="650" fill="#3F4A66">PCB · 금형 · 사출 외주</text><path d="M592 255 L368 255" stroke="#1C3A8A" stroke-width="3.4" fill="none" stroke-linejoin="round" marker-end="url(#fa)"/><rect x="394" y="238" width="172" height="34" rx="17" fill="#FFFFFF" stroke="#1C3A8A" stroke-opacity=".5" stroke-width="1.8"/><text x="480" y="262" text-anchor="middle" font-size="20" font-weight="800" fill="#1C3A8A">설계 · 부품 사양</text><path d="M368 315 L592 315" stroke="#1C3A8A" stroke-width="3.4" fill="none" stroke-linejoin="round" marker-end="url(#fa)"/><rect x="423" y="298" width="114" height="34" rx="17" fill="#FFFFFF" stroke="#1C3A8A" stroke-opacity=".5" stroke-width="1.8"/><text x="480" y="322" text-anchor="middle" font-size="20" font-weight="800" fill="#1C3A8A">모듈 납품</text><path d="M592 375 L368 375" stroke="#E5484D" stroke-width="3.4" fill="none" stroke-linejoin="round" stroke-dasharray="11 8" marker-end="url(#fm)"/><rect x="413" y="358" width="134" height="34" rx="17" fill="#FFFFFF" stroke="#E5484D" stroke-opacity=".5" stroke-width="1.8"/><text x="480" y="382" text-anchor="middle" font-size="20" font-weight="800" fill="#E5484D">제조비 지급</text><rect x="1236" y="0" width="492" height="150" rx="20" fill="#FFF6EC" stroke="#DCE2EE" stroke-width="2"/><clipPath id="fdst"><rect x="1256" y="33.0" width="84" height="84" rx="12"/></clipPath><rect x="1256" y="33.0" width="84" height="84" rx="12" fill="#F3F6FB"/><image href="media/doc-skmm-1.webp" x="1256" y="33.0" width="84" height="84" preserveAspectRatio="xMidYMid slice" clip-path="url(#fdst)"/><rect x="1362" y="25.0" width="93" height="28" rx="14" fill="#E07B2E"/><text x="1409" y="45.0" text-anchor="middle" font-size="17" font-weight="850" fill="#FFFFFF">B2B 판로</text><text x="1362" y="89.0" font-size="29" font-weight="850" fill="#0F1A38">의료기기 유통업체</text><text x="1362" y="121.0" font-size="20" font-weight="650" fill="#3F4A66">㈜에스케이엠엔엠 · 구매의향 5,000만</text><rect x="1236" y="240" width="492" height="170" rx="20" fill="#EEF2FB" stroke="#DCE2EE" stroke-width="2"/><clipPath id="fhos"><rect x="1256" y="283.0" width="84" height="84" rx="12"/></clipPath><rect x="1256" y="283.0" width="84" height="84" rx="12" fill="#F3F6FB"/><image href="media/ic-hosp.png" x="1256" y="283.0" width="84" height="84" preserveAspectRatio="xMidYMid slice" clip-path="url(#fhos)"/><rect x="1362" y="275.0" width="55" height="28" rx="14" fill="#0B2466"/><text x="1390" y="295.0" text-anchor="middle" font-size="17" font-weight="850" fill="#FFFFFF">B2B</text><text x="1362" y="339.0" font-size="29" font-weight="850" fill="#0F1A38">병원 · 동물병원</text><text x="1362" y="371.0" font-size="20" font-weight="650" fill="#3F4A66">병상마다 설치 · 스테이션 대시보드</text><rect x="1236" y="510" width="492" height="140" rx="20" fill="#EDF8F2" stroke="#DCE2EE" stroke-width="2"/><clipPath id="fgov"><rect x="1256" y="538.0" width="84" height="84" rx="12"/></clipPath><rect x="1256" y="538.0" width="84" height="84" rx="12" fill="#F3F6FB"/><image href="media/ic-gov.png" x="1256" y="538.0" width="84" height="84" preserveAspectRatio="xMidYMid slice" clip-path="url(#fgov)"/><rect x="1362" y="530.0" width="55" height="28" rx="14" fill="#1F9D63"/><text x="1390" y="550.0" text-anchor="middle" font-size="17" font-weight="850" fill="#FFFFFF">B2G</text><text x="1362" y="594.0" font-size="29" font-weight="850" fill="#0F1A38">공공 · 정부</text><text x="1362" y="626.0" font-size="20" font-weight="650" fill="#3F4A66">스마트 의료 인프라 보조금 사업</text><path d="M765.0 144 L765.0 75 L1228 75" stroke="#1C3A8A" stroke-width="3.4" fill="none" stroke-linejoin="round" marker-end="url(#fa)"/><rect x="917" y="58" width="216" height="34" rx="17" fill="#FFFFFF" stroke="#1C3A8A" stroke-opacity=".5" stroke-width="1.8"/><text x="1025" y="82" text-anchor="middle" font-size="20" font-weight="800" fill="#1C3A8A">모듈 공급 · 영업 협력</text><path d="M1480 158 L1480 232" stroke="#1C3A8A" stroke-width="3.4" fill="none" stroke-linejoin="round" marker-end="url(#fa)"/><rect x="1517" y="178" width="127" height="34" rx="17" fill="#FFFFFF" stroke="#1C3A8A" stroke-opacity=".5" stroke-width="1.8"/><text x="1580" y="202" text-anchor="middle" font-size="20" font-weight="800" fill="#1C3A8A">판로 · 납품</text><path d="M938 262 L1228 262" stroke="#1C3A8A" stroke-width="3.4" fill="none" stroke-linejoin="round" marker-end="url(#fa)"/><rect x="972" y="245" width="221" height="34" rx="17" fill="#FFFFFF" stroke="#1C3A8A" stroke-opacity=".5" stroke-width="1.8"/><text x="1083" y="269" text-anchor="middle" font-size="20" font-weight="800" fill="#1C3A8A">설치 + 월간 관리 구독</text><path d="M1228 326 L938 326" stroke="#E5484D" stroke-width="3.4" fill="none" stroke-linejoin="round" stroke-dasharray="11 8" marker-end="url(#fm)"/><rect x="958" y="309" width="251" height="34" rx="17" fill="#FFFFFF" stroke="#E5484D" stroke-opacity=".5" stroke-width="1.8"/><text x="1083" y="333" text-anchor="middle" font-size="20" font-weight="800" fill="#E5484D">대당 25만 원 + 월 관리비</text><path d="M1228 390 L938 390" stroke="#1F9D63" stroke-width="4" fill="none" stroke-linejoin="round" stroke-dasharray="2 8" stroke-linecap="round" marker-end="url(#fd)"/><rect x="936" y="373" width="293" height="34" rx="17" fill="#FFFFFF" stroke="#1F9D63" stroke-opacity=".5" stroke-width="1.8"/><text x="1083" y="397" text-anchor="middle" font-size="20" font-weight="800" fill="#1F9D63">수액 투여 데이터 → AI 고도화</text><path d="M855.0 486 L855.0 556 L1228 556" stroke="#1C3A8A" stroke-width="3.4" fill="none" stroke-linejoin="round" marker-end="url(#fa)"/><rect x="912" y="539" width="256" height="34" rx="17" fill="#FFFFFF" stroke="#1C3A8A" stroke-opacity=".5" stroke-width="1.8"/><text x="1040" y="563" text-anchor="middle" font-size="20" font-weight="800" fill="#1C3A8A">관제 인프라 · 데이터 사업</text><path d="M1228 622 L675.0 622 L675.0 488" stroke="#E5484D" stroke-width="3.4" fill="none" stroke-linejoin="round" stroke-dasharray="11 8" marker-end="url(#fm)"/><rect x="951" y="605" width="178" height="34" rx="17" fill="#FFFFFF" stroke="#E5484D" stroke-opacity=".5" stroke-width="1.8"/><text x="1040" y="629" text-anchor="middle" font-size="20" font-weight="800" fill="#E5484D">보조금 사업 연계</text></svg></div></div>
+    <p class="pg">17</p>
+  </div>
+  <div class="note" hidden><p>생산은 PCB · 금형 · 사출을 외주로 맡기고, 의료기기 유통업체가 판로를 엽니다. 병원과 동물병원에는 설치 후 월간 관리 구독으로 매출을 만들고, 모이는 수액 투여 데이터로 AI를 고도화합니다. 공공에는 관제 인프라와 데이터 사업을 보조금 사업과 연계합니다.</p></div>
 </section>
 
 <!-- 16 unit -->
@@ -845,7 +937,7 @@ b { font-weight: 800; }
         </div>
       </div>
     </div>
-    <p class="pg">16</p>
+    <p class="pg">18</p>
   </div>
   <div class="note" hidden><p></p></div>
 </section>
@@ -863,13 +955,13 @@ b { font-weight: 800; }
         <div class="card c nv"><div class="ph"><img src="media/world-map.webp" alt="세계 지도"></div><span class="no">03</span><div class="tx"><p class="k">사회에</p><h3>국가적 기여<br>병원 AX 전환</h3><p>대한민국 정부의 디지털 뉴딜 스마트 의료 인프라 구축 목표에 부합하며 K-Bio 헬스케어의 글로벌 경쟁력 강화</p></div></div>
       </div>
     </div>
-    <p class="pg">17</p>
+    <p class="pg">19</p>
   </div>
   <div class="note" hidden><p></p></div>
 </section>
 
 <!-- 18 team -->
-<section class="slide" id="s-team" data-sec="8" data-title="INFUTECH 팀 소개 — 대표자 및 팀원 소개">
+<section class="slide" id="s-team" data-sec="8" data-title="INFUTECH 팀 소개 — 개발팀 · 의료 실증팀">
   <div class="frame">
     <p class="crumb"><b>INFUTECH 팀 소개</b>대표자 및 팀원 소개</p>
     <img class="logo" src="media/logo.png" alt="E² FESTA 2026 공학페스티벌">
@@ -878,13 +970,18 @@ b { font-weight: 800; }
       <div><p class="k">팀장</p><h3>정익상</h3><p class="rl">PL, AI ENGINEER</p></div>
       <ul><li>2026 WON+PBL 챌린지 총장상</li><li>학생창업 유망팀 U300+ 2026 선발</li><li>모두의 창업 1기 2라운드 선발</li></ul>
     </div>
-    <ul class="s18m">
-      <li><div class="ph"><img src="media/m-kwon.webp" alt="권용현"></div><p class="r">Engineer</p><b>권용현</b><span>F/W 및 PCB 개발총괄</span></li>
-      <li><div class="ph"><img src="media/m-han-wj.webp" alt="한우진"></div><p class="r">Developer</p><b>한우진</b><span>3D 설계 및 F/W 담당</span></li>
-      <li><div class="ph"><img src="media/m-choi.webp" alt="최이지"></div><p class="r">Developer</p><b>최이지</b><span>서버 및 데이터베이스 설계</span></li>
-      <li><div class="ph"><img src="media/m-han-b.webp" alt="한별"></div><p class="r">Advisor</p><b>한별</b><span>간호협력 및 실험 세팅</span></li>
-    </ul>
-    <p class="pg">18</p>
+    <div class="s18g">
+      <div class="grp dev"><p class="gh"><b>개발팀</b><span>하드웨어 · 펌웨어 · 3D 설계 · 서버</span></p><ul>
+        <li><div class="ph"><img src="media/m-kwon.webp" alt="권용현"></div><p class="r">Engineer</p><b>권용현</b><span>F/W 및 PCB 개발총괄</span></li>
+        <li><div class="ph"><img src="media/m-han-wj.webp" alt="한우진"></div><p class="r">Developer</p><b>한우진</b><span>3D 설계 및 F/W 담당</span></li>
+        <li><div class="ph"><img src="media/m-choi.webp" alt="최이지"></div><p class="r">Developer</p><b>최이지</b><span>서버 및 데이터베이스 설계</span></li>
+      </ul></div>
+      <div class="grp cli"><p class="gh"><b>의료 실증팀</b><span>간호 협력 · 실험 세팅</span></p><ul>
+        <li><div class="ph"><img src="media/m-han-b.webp" alt="한별"></div><p class="r">Advisor</p><b>한별</b><span>간호협력 및 실험 세팅</span></li>
+        <li class="co"><div class="ph"><img src="media/team-lab.webp" alt="원광대학교 간호학과 협업"></div><p class="r">협력</p><b>원광대 간호학과</b><span>현장 피드백 · 모의 임상</span></li>
+      </ul></div>
+    </div>
+    <p class="pg">20</p>
   </div>
   <div class="note" hidden><p></p></div>
 </section>
@@ -905,7 +1002,7 @@ b { font-weight: 800; }
 
 </main>
 <script>
-  const SECTIONS = ['표지', '기존 상황의 문제점', '현장 인터뷰', '기존 솔루션의 한계점', '솔루션 소개', '검증 · 학술 성과', '시장 규모', '비즈니스 모델', '팀 소개', '마무리'];
+  const SECTIONS = ['표지', '기존 상황의 문제점', '현장 인터뷰', '기존 솔루션의 한계점', '솔루션 소개', '검증 · 성과', '시장 규모', '비즈니스 모델', '팀 소개', '마무리'];
   const APPX = 10;
   const slides = [...document.querySelectorAll('.slide')];
   let cur = 0;
