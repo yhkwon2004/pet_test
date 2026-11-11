@@ -749,6 +749,78 @@ b { font-weight: 800; }
 .a1pr b { display: inline-block; margin-right: 12px; }
 .a1c { padding-bottom: 18px; }
 .a2r em.t { font-style: normal; }
+/* A1 hw sub + A3 compact */
+.a1c .h .sub { margin-left: 4px; padding: 3px 10px; border-radius: 8px; background: var(--bg2); color: var(--mute); font-size: 15px; font-weight: 800; }
+.a3g { align-items: center; }
+.a3s, .a3m { height: auto; }
+.a3s { gap: 14px; padding: 26px 26px 24px; }
+.a3s ul { flex: none; gap: 10px; }
+.a3s li { font-size: 21px; padding: 12px 14px 12px 34px; }
+.a3s .pp, .a3s .dl { margin-top: 4px; }
+.a3m { gap: 14px; padding: 24px; }
+.a3m .mm { flex: none; grid-template-columns: 1fr 1fr; gap: 12px; }
+.a3m .mm > div { display: grid; grid-template-columns: 76px 1fr; grid-template-rows: auto auto auto; column-gap: 14px; row-gap: 2px; align-items: center; justify-items: start; padding: 14px 16px; text-align: left; }
+.a3m .mm img { grid-row: 1 / 4; width: 76px; height: 76px; }
+.a3m .mm .k { margin-top: 0; }
+.a3m .mm b { font-size: 25px; }
+.a3m .mm span { font-size: 16px; }
+.a3x { align-self: center; }
+/* A3 scale-up */
+#s-a3 .body { justify-content: center; gap: 26px; }
+#s-a3 .a3g { flex: none; grid-template-columns: 420px 180px 1fr 180px 420px; }
+.a3s { padding: 30px 30px 28px; gap: 16px; }
+.a3s .tg, .a3m .tg { font-size: 18px; padding: 5px 14px; }
+.a3s h3 { font-size: 34px; }
+.a3s li { font-size: 23px; padding: 14px 16px 14px 38px; }
+.a3s li::before { left: 17px; top: 27px; width: 9px; height: 9px; }
+.a3s .pp img { width: 76px; height: 76px; }
+.a3s .pp b { font-size: 23px; }
+.a3s .pp span { font-size: 18px; }
+.a3s .dl { font-size: 19px; }
+.a3s .dl b { font-size: 40px; }
+.a3s .dl small { font-size: 16px; }
+.a3x p { font-size: 19px; padding: 10px 12px; }
+.a3m { padding: 28px; gap: 18px; }
+.a3m .mm { gap: 16px; }
+.a3m .mm > div { grid-template-columns: 96px 1fr; padding: 18px 20px; column-gap: 18px; }
+.a3m .mm img { width: 96px; height: 96px; }
+.a3m .mm .k { font-size: 16px; padding: 3px 12px; }
+.a3m .mm b { font-size: 30px; }
+.a3m .mm span { font-size: 18px; line-height: 1.35; }
+#s-a3 .a3b { margin-top: 0; font-size: 21px; }
+#s-a3 .a3b b { font-size: 18px; }
+#s-a3 .a3g { grid-template-columns: 380px 150px 1fr 150px 380px; }
+.a3m .mm .k { white-space: nowrap; }
+.a3m .mm > div { grid-template-columns: 84px 1fr; padding: 16px 18px; column-gap: 16px; }
+.a3m .mm img { width: 84px; height: 84px; }
+.a3m .mm span { font-size: 17px; }
+.a3x p { font-size: 17px; }
+.a3s h3 { font-size: 31px; }
+.a3s li { font-size: 21px; }
+/* A4 v3 — architecture diagram */
+#s-a4 .a4p { gap: 30px; }
+#s-a4 .a4p li { flex-direction: row; justify-content: center; gap: 12px; padding: 12px 10px; text-align: left; }
+#s-a4 .a4p li > b, #s-a4 .a4p li > span { display: block; }
+#s-a4 .a4p i { width: 54px; height: 54px; border-radius: 14px; flex: none; }
+#s-a4 .a4p i svg { width: 32px; height: 32px; }
+#s-a4 .a4p .pair { display: none; }
+#s-a4 .a4p li.gg::before { content: "→"; }
+#s-a4 .a4p b { font-size: 20px; }
+#s-a4 .a4p span { font-size: 15px; }
+#s-a4 .a4p li { display: grid; grid-template-columns: 54px auto; grid-template-rows: auto auto; column-gap: 12px; align-items: center; }
+#s-a4 .a4p li i { grid-row: 1 / 3; }
+#s-a4 .a4p li.gg { grid-template-columns: auto; }
+.a4d { flex: 1; min-height: 0; margin-top: 14px; padding: 6px 14px; display: flex; align-items: center; }
+.a4d .cnnsvg { display: block; width: 100%; height: 100%; }
+.a4w { margin-top: 14px; display: grid; grid-template-columns: 1fr 1fr 1fr 360px; gap: 14px; }
+.a4w .wy { display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: center; padding: 14px 16px; border-radius: 16px; background: #EEF2FB; }
+.a4w .wy i { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--nv); color: var(--cy); font-style: normal; font-size: 22px; font-weight: 900; }
+.a4w .wy b { display: block; font-size: 20px; font-weight: 800; color: var(--ink); }
+.a4w .wy span { display: block; margin-top: 2px; font-size: 16px; font-weight: 600; color: var(--ink2); line-height: 1.4; }
+.a4w .rz { display: grid; grid-template-columns: 1fr 1fr; border-radius: 16px; background: var(--nv); }
+.a4w .rz p { padding: 12px 16px; font-size: 15px; font-weight: 700; color: #C9D4F0; }
+.a4w .rz p + p { border-left: 2px solid rgba(255, 255, 255, .15); }
+.a4w .rz b { display: block; margin-top: 2px; font-size: 34px; font-weight: 900; color: var(--cy); letter-spacing: -.02em; line-height: 44px; }
 </style>
 </head>
 <body>
@@ -1300,26 +1372,26 @@ b { font-weight: 800; }
           </div>
         </div>
         <div class="card a1c">
-          <p class="h"><i>HW</i>기존 설계 방식과의 차별점</p>
+          <p class="h"><i>HW</i>기존 설계 방식과의 차별점 <span class="sub">PCB · 구조 설계</span></p>
           <div class="a1t">
             <p class="hd"><span></span><span>기존 방식</span><span>INFUTECH</span></p>
-            <p><span>설치 · 운용</span><span>전용 거치대 · 유선 접속장치</span><span>QR · BLE로 <b>수 분 내 설치</b> · OTA 갱신</span></p>
-            <p><span>측정 원리</span><span>점적 광학 센서 — 외광 · 기울기 민감</span><span>로드셀로 <b>잔량 무게 직접 측정</b></span></p>
-            <p><span>정밀도</span><span>범용 저가 ADC</span><span>24비트 ADC · RC 필터 → <b>방울 단위에 가까운</b> 변화</span></p>
-            <p><span>외란 검출</span><span>정지한 폴대 전제</span><span>보조 MEMS IMU로 <b>흔들림 · 전도</b> 구분 <small>(실시예)</small></span></p>
+            <p><span>결합 구조</span><span>폴대 일체형 · 폴대 교체 필요</span><span><b>스크류 · 마그네틱</b> 결합 → 기존 폴대에 조립</span></p>
+            <p><span>하중 구조</span><span>센서 · 표시부를 폴대에 고정</span><span>체결부 – <b>로드셀</b> – 걸이부 일직선 하중</span></p>
+            <p><span>PCB 설계</span><span>범용 저가 ADC</span><span><b>24비트 로드셀 전용 ADC</b> · 전원 분리 · RC 필터</span></p>
+            <p><span>데이터 처리</span><span>측정값을 하나씩 순차 판단</span><span>단일 로드셀 값을 <b>4×4 배열</b>로 묶어 ESP32 고속 처리</span></p>
           </div>
           <div class="a1v ph">
             <figure><img src="media/mod-inside.webp" alt="계측 모듈 내부 — 로드셀, 회로기판, 배터리"><figcaption>모듈 내부 · 로드셀 · 회로기판 · 배터리</figcaption></figure>
-            <figure><img src="media/mod-mounted.webp" alt="기존 링거폴대 걸이부에 장착한 모듈"><figcaption>기존 폴대 걸이부에 장착</figcaption></figure>
+            <figure><img src="media/mod-mounted.webp" alt="기존 링거폴대 걸이부에 장착한 모듈"><figcaption>기존 폴대에 조립 · 교체 없음</figcaption></figure>
           </div>
         </div>
       </div>
       <p class="a1pr"><b>선행특허 5건</b>10-0543391 · 10-0543390 · 10-1413945 · 10-2010-0128044 · 10-2020-0071897 — 무게 측정 · 탈부착 거치 · 원격 표시 · 도달 경보는 공통 / <em>이중 트랙 · 적응 임계 · 유형 분류 · 외란 마스킹 · 링버퍼</em>는 미개시</p>
     </div>
-    <p class="src">출처: INFUTECH 발명신고서 「이중 트랙 신호처리 기반 탈부착형 수액 모니터링 장치 및 그 방법」(2026) · 선행특허는 발명자 공개 검색 범위(최종 판단은 선행기술조사) · 출원 상태 – 팀 기준 · IMU는 실시예(보조 센서)</p>
+    <p class="src">출처: INFUTECH 발명신고서 「이중 트랙 신호처리 기반 탈부착형 수액 모니터링 장치 및 그 방법」(2026) · 선행특허는 발명자 공개 검색 범위(최종 판단은 선행기술조사) · 결합 구조(스크류 · 마그네틱) · 4×4 배열 처리 – INFUTECH 설계 · 출원 상태 – 팀 기준</p>
     <p class="pg">A1</p>
   </div>
-  <div class="note" hidden><p>특허의 핵심은 신호처리 구조입니다. 하나의 무게 신호를 예측 트랙과 감지 트랙으로 나눠 병렬 처리하고, 환자별 유속에 맞춰 임계값이 자동으로 바뀌며, 이상을 유형별로 구분합니다. 하드웨어는 24비트 ADC와 RC 필터로 방울 단위에 가까운 무게 변화를 읽고, QR과 BLE로 몇 분 안에 설치됩니다. 확인한 선행특허 5건은 무게 측정, 탈부착 거치, 원격 표시, 도달 경보까지가 공통이고, 이중 트랙과 적응형 임계, 유형 분류, 외란 마스킹, 링버퍼는 개시되어 있지 않습니다.</p></div>
+  <div class="note" hidden><p>특허의 핵심은 신호처리 구조입니다. 하나의 무게 신호를 예측 트랙과 감지 트랙으로 나눠 병렬 처리하고, 환자별 유속에 맞춰 임계값이 자동으로 바뀌며, 이상을 유형별로 구분합니다. 하드웨어는 스크류와 마그네틱 결합으로 기존 폴대를 교체하지 않고 조립하며, 체결부와 로드셀, 걸이부가 일직선으로 하중을 받는 구조입니다. PCB에는 24비트 로드셀 전용 ADC와 전원 분리, RC 필터를 넣었고, 단일 로드셀 값을 4×4 배열로 묶어 ESP32가 빠르게 처리하도록 설계했습니다. 확인한 선행특허 5건은 무게 측정, 탈부착 거치, 원격 표시, 도달 경보까지가 공통이고, 이중 트랙과 적응형 임계, 유형 분류, 외란 마스킹, 링버퍼는 개시되어 있지 않습니다.</p></div>
 </section>
 <!-- A2 application -->
 <section class="slide ax" id="s-a2" data-sec="10" data-title="부록 A2 · 적용 — 인퓨전 펌프를 대체하지 않고 보완합니다">
@@ -1362,24 +1434,24 @@ b { font-weight: 800; }
         <div class="card a3s med">
           <p class="tg">협력 기관 · 의료 실증</p>
           <h3>원광대학교 간호학과</h3>
-          <ul><li>현장 문제 정의 · 간호사 인터뷰</li><li>모의 임상 시나리오 설계</li><li>사용성 피드백 → 반복 개선</li><li>이동 · 흔들림 · 넘어짐 모의 테스트</li></ul>
+          <ul><li>현장 문제 정의 · 간호사 인터뷰</li><li>모의 임상 시나리오 · 테스트</li><li>사용성 피드백 → 반복 개선</li></ul>
           <div class="pp"><img src="media/m-han-b.webp" alt="한별"><div><b>한별 · Advisor</b><span>간호 협력 · 실험 환경 세팅</span></div></div>
         </div>
         <div class="a3x"><p class="r">현장 문제 ·<br>임상 피드백 →</p><p class="l">← 시제품 ·<br>테스트 환경</p></div>
         <div class="card a3m">
           <p class="tg">INFUTECH 개발팀 · 원광대 컴퓨터소프트웨어공학과</p>
           <div class="mm">
-            <div><img src="media/m-jeong.webp" alt="정익상"><p class="k">알고리즘</p><b>정익상</b><span>PL · AI 엔지니어 · 모델 학습</span></div>
+            <div><img src="media/m-jeong.webp" alt="정익상"><p class="k">알고리즘</p><b>정익상</b><span>PL · AI 엔지니어<br>모델 학습</span></div>
             <div><img src="media/m-kwon.webp" alt="권용현"><p class="k">제품 설계 · HW</p><b>권용현</b><span>F/W · PCB 개발 총괄</span></div>
-            <div><img src="media/m-han-wj.webp" alt="한우진"><p class="k">제품 설계 · 알고리즘</p><b>한우진</b><span>3D 설계 · F/W · CNN 논문 제1저자</span></div>
-            <div><img src="media/m-choi.webp" alt="최이지"><p class="k">서버 구축</p><b>최이지</b><span>서버 · DB · 대시보드 연동</span></div>
+            <div><img src="media/m-han-wj.webp" alt="한우진"><p class="k">설계 · 알고리즘</p><b>한우진</b><span>3D 설계 · F/W<br>CNN 논문 제1저자</span></div>
+            <div><img src="media/m-choi.webp" alt="최이지"><p class="k">서버 구축</p><b>최이지</b><span>서버 · DB<br>대시보드 연동</span></div>
           </div>
         </div>
         <div class="a3x"><p class="r">모듈 공급 ·<br>제품 정보 →</p><p class="l">← 판로 ·<br>현장 의견 전달</p></div>
         <div class="card a3s dst">
           <p class="tg">협력 기관 · 유통</p>
           <h3>㈜에스케이엠엔엠</h3>
-          <ul><li>의료기기 유통망으로 판로 확보</li><li>시장 정보 · 홍보 지원</li><li>의료 현장 사용자 의견 전달</li><li>생산 · 인허가 후 본계약 협의</li></ul>
+          <ul><li>의료기기 유통망으로 판로 확보</li><li>시장 정보 · 홍보 지원</li><li>현장 의견 전달 · 본계약 협의</li></ul>
           <p class="dl">구매의향 및 사업협력 업무협약<b>5,000만 원</b><small>법적 구속력 없는 의향 협약 (제7조)</small></p>
         </div>
       </div>
@@ -1402,31 +1474,21 @@ b { font-weight: 800; }
         <li><i><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="30" width="32" height="10" rx="3"/><path d="M24 30V12M14 12h20M17 12l-5 10h10zM31 12l-5 10h10z"/></svg></i><b>무게 측정</b><span>로드셀 · 24비트 ADC</span></li>
         <li><i><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 10h36L28 26v12l-8 4V26z"/></svg></i><b>칼만 필터</b><span>1차 노이즈 제거</span></li>
         <li><i><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M14 16l-8 8 8 8M34 16l8 8-8 8"/><path d="M20 30h3M26 30h3M20 18h8"/></svg></i><b>상태 부호화</b><span>편차 → 느림 −1 · 정상 0 · 빠름 +1</span></li>
-        <li class="gg"><div class="pair"><div class="g4"><i class="z"></i><i class="p"></i><i class="z"></i><i class="m"></i><i class="p"></i><i class="z"></i><i class="z"></i><i class="z"></i><i class="m"></i><i class="z"></i><i class="p"></i><i class="z"></i><i class="m"></i><i class="z"></i><i class="p"></i><i class="z"></i></div><div class="g4"><i class="z"></i><i class="z"></i><i class="m"></i><i class="m"></i><i class="z"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="z"></i><i class="z"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i></div></div><b>4×4 패턴 이미지</b><span>연속 16개 상태 · 정상 / 이상</span></li>
+        <li><i><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="8" width="32" height="32" rx="4"/><path d="M8 18.7h32M8 29.3h32M18.7 8v32M29.3 8v32"/></svg></i><b>4×4 패턴 이미지</b><span>연속 16개 상태</span></li>
         <li><i><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="12" width="12" height="24" rx="2"/><rect x="22" y="16" width="9" height="16" rx="2"/><rect x="35" y="20" width="7" height="8" rx="2"/><path d="M18 24h4M31 24h4"/></svg></i><b>경량 2D CNN</b><span>정상 · 급속 · 폐색 판별</span></li>
       </ol>
-      <div class="a4g">
-        <div class="card a4q">
-          <p class="h">Q. 왜 1D CNN · RNN이 아닌 <em>2D CNN</em>인가? <span class="ql">설계 관점 정성 비교</span></p>
-          <div class="a4t">
-            <p class="hd"><span></span><span>1D CNN</span><span>RNN · LSTM · GRU</span><span>2D CNN (INFUTECH)</span></p>
-            <p><span>입력</span><span>원시 시계열 1축</span><span>시점별 순차 입력</span><span><b>4×4 상태 패턴</b> 16칸</span></p>
-            <p><span>패턴 포착</span><span>시간축 한 방향</span><span>은닉 상태로 누적</span><span>3×3 필터 하나가 <b>최대 11스텝</b>을 9개 가중치로</span></p>
-            <p><span>노이즈</span><span>원시 값 요동에 노출</span><span>원시 값 요동에 노출</span><span>지속 이상은 <b>인접 덩어리</b>, 단발 노이즈는 고립 칸</span></p>
-            <p><span>MCU 부담</span><span>입력 길이에 비례</span><span>순차 연산 · 상태 메모리</span><span>파라미터 <b>약 660개</b> · 약 10KB</span></p>
-          </div>
-        </div>
-        <div class="card a4r">
-          <p class="k">모의 데이터 검증 정확도</p><p class="v">97.3<small>%</small></p>
-          <p class="k">판별 시간</p><p class="v">5<small>초 이내</small></p>
-          <p class="m">Conv2D(8, 3×3) → MaxPool(2×2)<br>→ Dense(16) → Dense(3) → Softmax<br>ESP32 · TensorFlow Lite Micro</p>
-        </div>
+      <div class="card a4d"><svg class="cnnsvg" viewBox="0 -34 1700 504" role="img" aria-label="경량 2D CNN 구조 — 입력 4×4×1 상태 패턴, Conv2D 3×3 커널 8필터(4×4×8), Max-Pooling 2×2(2×2×8), Flatten 32, Dense 16, 출력 Dense 3 Softmax(정상·급속·폐색). 파라미터 Conv 80, Dense16 528, Dense3 51, 합계 659개."><defs><marker id="ca" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#3F4A66"/></marker></defs><rect x="30" y="198.0" width="128" height="128" fill="#FFFFFF" stroke="#3F4A66" stroke-width="2"/><rect x="33.0" y="201.0" width="26.0" height="26.0" rx="3" fill="#E3E8F4"/><rect x="65.0" y="201.0" width="26.0" height="26.0" rx="3" fill="#E3E8F4"/><rect x="97.0" y="201.0" width="26.0" height="26.0" rx="3" fill="#0B2466"/><rect x="129.0" y="201.0" width="26.0" height="26.0" rx="3" fill="#0B2466"/><rect x="33.0" y="233.0" width="26.0" height="26.0" rx="3" fill="#E3E8F4"/><rect x="65.0" y="233.0" width="26.0" height="26.0" rx="3" fill="#0B2466"/><rect x="97.0" y="233.0" width="26.0" height="26.0" rx="3" fill="#0B2466"/><rect x="129.0" y="233.0" width="26.0" height="26.0" rx="3" fill="#0B2466"/><rect x="33.0" y="265.0" width="26.0" height="26.0" rx="3" fill="#E3E8F4"/><rect x="65.0" y="265.0" width="26.0" height="26.0" rx="3" fill="#E3E8F4"/><rect x="97.0" y="265.0" width="26.0" height="26.0" rx="3" fill="#0B2466"/><rect x="129.0" y="265.0" width="26.0" height="26.0" rx="3" fill="#0B2466"/><rect x="33.0" y="297.0" width="26.0" height="26.0" rx="3" fill="#0B2466"/><rect x="65.0" y="297.0" width="26.0" height="26.0" rx="3" fill="#0B2466"/><rect x="97.0" y="297.0" width="26.0" height="26.0" rx="3" fill="#0B2466"/><rect x="129.0" y="297.0" width="26.0" height="26.0" rx="3" fill="#0B2466"/><rect x="31" y="199.0" width="94.0" height="94.0" fill="none" stroke="#E07B2E" stroke-width="3" stroke-dasharray="6 4"/><text x="94" y="360" text-anchor="middle" font-size="19" font-weight="900" fill="#0F1A38">INPUT</text><text x="94" y="384" text-anchor="middle" font-size="16" font-weight="700" fill="#3F4A66">(4 × 4 × 1)</text><text x="94" y="406" text-anchor="middle" font-size="15" font-weight="600" fill="#7A84A0">16개 상태 패턴</text><rect x="363.0" y="166.5" width="128" height="128" fill="#C9D6F2" stroke="#4A5E91" stroke-width="1.4"/><rect x="354.0" y="175.5" width="128" height="128" fill="#C9D6F2" stroke="#4A5E91" stroke-width="1.4"/><rect x="345.0" y="184.5" width="128" height="128" fill="#C9D6F2" stroke="#4A5E91" stroke-width="1.4"/><rect x="336.0" y="193.5" width="128" height="128" fill="#C9D6F2" stroke="#4A5E91" stroke-width="1.4"/><rect x="327.0" y="202.5" width="128" height="128" fill="#C9D6F2" stroke="#4A5E91" stroke-width="1.4"/><rect x="318.0" y="211.5" width="128" height="128" fill="#C9D6F2" stroke="#4A5E91" stroke-width="1.4"/><rect x="309.0" y="220.5" width="128" height="128" fill="#C9D6F2" stroke="#4A5E91" stroke-width="1.4"/><rect x="300.0" y="229.5" width="128" height="128" fill="#C9D6F2" stroke="#4A5E91" stroke-width="1.4"/><path d="M332.0 229.5 V357.5M300 261.5 H428" stroke="#4A5E91" stroke-opacity=".45" stroke-width="1"/><path d="M364.0 229.5 V357.5M300 293.5 H428" stroke="#4A5E91" stroke-opacity=".45" stroke-width="1"/><path d="M396.0 229.5 V357.5M300 325.5 H428" stroke="#4A5E91" stroke-opacity=".45" stroke-width="1"/><text x="396" y="392" text-anchor="middle" font-size="16" font-weight="700" fill="#3F4A66">8 channels</text><text x="396" y="416" text-anchor="middle" font-size="16" font-weight="800" fill="#0B2466">(4 × 4 × 8)</text><path d="M126.0 198.0 L316.0 245.5" stroke="#E07B2E" stroke-width="1.6" stroke-dasharray="5 4"/><path d="M126.0 294.0 L316.0 245.5" stroke="#E07B2E" stroke-width="1.6" stroke-dasharray="5 4"/><circle cx="316.0" cy="245.5" r="5" fill="#E07B2E"/><path d="M300 84 Q300 70 314 70 L385.5 70 Q395.5 70 395.5 58 Q395.5 70 405.5 70 L477 70 Q491 70 491 84" fill="none" stroke="#3F4A66" stroke-width="2.2"/><text x="396" y="48" text-anchor="middle" font-size="15" font-weight="600" fill="#7A84A0">same padding</text><text x="396" y="28" text-anchor="middle" font-size="16" font-weight="700" fill="#3F4A66">3 × 3 kernel · 8 filters</text><text x="396" y="6" text-anchor="middle" font-size="19" font-weight="900" fill="#0B2466" text-decoration="underline">Conv2D</text><rect x="673.0" y="198.5" width="64" height="64" fill="#DCE3F2" stroke="#4A5E91" stroke-width="1.4"/><rect x="664.0" y="207.5" width="64" height="64" fill="#DCE3F2" stroke="#4A5E91" stroke-width="1.4"/><rect x="655.0" y="216.5" width="64" height="64" fill="#DCE3F2" stroke="#4A5E91" stroke-width="1.4"/><rect x="646.0" y="225.5" width="64" height="64" fill="#DCE3F2" stroke="#4A5E91" stroke-width="1.4"/><rect x="637.0" y="234.5" width="64" height="64" fill="#DCE3F2" stroke="#4A5E91" stroke-width="1.4"/><rect x="628.0" y="243.5" width="64" height="64" fill="#DCE3F2" stroke="#4A5E91" stroke-width="1.4"/><rect x="619.0" y="252.5" width="64" height="64" fill="#DCE3F2" stroke="#4A5E91" stroke-width="1.4"/><rect x="610.0" y="261.5" width="64" height="64" fill="#DCE3F2" stroke="#4A5E91" stroke-width="1.4"/><path d="M642.0 261.5 V325.5M610 293.5 H674" stroke="#4A5E91" stroke-opacity=".45" stroke-width="1"/><text x="674" y="360" text-anchor="middle" font-size="16" font-weight="700" fill="#3F4A66">8 channels</text><text x="674" y="384" text-anchor="middle" font-size="16" font-weight="800" fill="#0B2466">(2 × 2 × 8)</text><rect x="302" y="231.5" width="60.0" height="60.0" fill="none" stroke="#0B2466" stroke-width="2.4"/><path d="M364.0 261.5 L626.0 277.5" stroke="#0B2466" stroke-width="1.6" stroke-dasharray="5 4"/><circle cx="626.0" cy="277.5" r="4.5" fill="#0B2466"/><path d="M610 84 Q610 70 624 70 L663.5 70 Q673.5 70 673.5 58 Q673.5 70 683.5 70 L723 70 Q737 70 737 84" fill="none" stroke="#3F4A66" stroke-width="2.2"/><text x="674" y="48" text-anchor="middle" font-size="16" font-weight="700" fill="#3F4A66">(2 × 2)</text><text x="674" y="26" text-anchor="middle" font-size="19" font-weight="900" fill="#0B2466" text-decoration="underline">Max-Pooling</text><rect x="830" y="137.0" width="46" height="250" rx="8" fill="#FBE3CC" stroke="#E07B2E" stroke-width="2"/><text x="859" y="262" text-anchor="middle" font-size="18" font-weight="800" fill="#A04E10" transform="rotate(-90 853.0 262)">Flatten · 32</text><path d="M745 262 L822 262" stroke="#3F4A66" stroke-width="2" marker-end="url(#ca)"/><text x="853" y="421" text-anchor="middle" font-size="16" font-weight="700" fill="#3F4A66">32 values</text><path d="M876 155 L1022 112" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M876 198 L1022 112" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M876 241 L1022 112" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M876 283 L1022 112" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M876 326 L1022 112" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M876 369 L1022 112" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M1058 112 L1226 172" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M1058 112 L1226 262" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M1058 112 L1226 352" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M876 155 L1022 154" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M876 198 L1022 154" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M876 241 L1022 154" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M876 283 L1022 154" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M876 326 L1022 154" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M876 369 L1022 154" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M1058 154 L1226 172" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M1058 154 L1226 262" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M1058 154 L1226 352" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M876 155 L1022 196" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M876 198 L1022 196" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M876 241 L1022 196" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M876 283 L1022 196" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M876 326 L1022 196" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M876 369 L1022 196" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M1058 196 L1226 172" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M1058 196 L1226 262" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M1058 196 L1226 352" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M876 155 L1022 238" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M876 198 L1022 238" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M876 241 L1022 238" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M876 283 L1022 238" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M876 326 L1022 238" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M876 369 L1022 238" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M1058 238 L1226 172" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M1058 238 L1226 262" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M1058 238 L1226 352" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M876 155 L1022 280" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M876 198 L1022 280" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M876 241 L1022 280" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M876 283 L1022 280" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M876 326 L1022 280" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M876 369 L1022 280" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M1058 280 L1226 172" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M1058 280 L1226 262" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M1058 280 L1226 352" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M876 155 L1022 322" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M876 198 L1022 322" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M876 241 L1022 322" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M876 283 L1022 322" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M876 326 L1022 322" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M876 369 L1022 322" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M1058 322 L1226 172" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M1058 322 L1226 262" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M1058 322 L1226 352" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M876 155 L1022 412" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M876 198 L1022 412" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M876 241 L1022 412" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M876 283 L1022 412" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M876 326 L1022 412" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M876 369 L1022 412" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M1058 412 L1226 172" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M1058 412 L1226 262" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><path d="M1058 412 L1226 352" stroke="#9AA7C7" stroke-opacity=".55" stroke-width="1"/><circle cx="1040" cy="112" r="17" fill="#1F9D63"/><circle cx="1040" cy="154" r="17" fill="#1F9D63"/><circle cx="1040" cy="196" r="17" fill="#1F9D63"/><circle cx="1040" cy="238" r="17" fill="#1F9D63"/><circle cx="1040" cy="280" r="17" fill="#1F9D63"/><circle cx="1040" cy="322" r="17" fill="#1F9D63"/><circle cx="1040" cy="412" r="17" fill="#1F9D63"/><text x="1040" y="374" text-anchor="middle" font-size="26" font-weight="900" fill="#1F9D63">⋮</text><text x="1040" y="458" text-anchor="middle" font-size="16" font-weight="800" fill="#0B2466">16 units</text><path d="M980 84 Q980 70 994 70 L1030.0 70 Q1040.0 70 1040.0 58 Q1040.0 70 1050.0 70 L1086 70 Q1100 70 1100 84" fill="none" stroke="#3F4A66" stroke-width="2.2"/><text x="1040" y="48" text-anchor="middle" font-size="16" font-weight="700" fill="#3F4A66">Dense 16</text><text x="1040" y="26" text-anchor="middle" font-size="19" font-weight="900" fill="#0B2466" text-decoration="underline">Fully-Connected</text><circle cx="1250" cy="172" r="23" fill="#1F9D63"/><text x="1288" y="179" text-anchor="start" font-size="21" font-weight="900" fill="#0F1A38">정상</text><circle cx="1250" cy="262" r="23" fill="#E07B2E"/><text x="1288" y="269" text-anchor="start" font-size="21" font-weight="900" fill="#0F1A38">급속</text><circle cx="1250" cy="352" r="23" fill="#E5484D"/><text x="1288" y="359" text-anchor="start" font-size="21" font-weight="900" fill="#0F1A38">폐색</text><text x="1270" y="458" text-anchor="middle" font-size="16" font-weight="900" fill="#0F1A38">OUTPUT</text><path d="M1215 84 Q1215 70 1229 70 L1262.5 70 Q1272.5 70 1272.5 58 Q1272.5 70 1282.5 70 L1316 70 Q1330 70 1330 84" fill="none" stroke="#3F4A66" stroke-width="2.2"/><text x="1272" y="48" text-anchor="middle" font-size="16" font-weight="700" fill="#3F4A66">Dense 3</text><text x="1272" y="26" text-anchor="middle" font-size="19" font-weight="900" fill="#0B2466" text-decoration="underline">Softmax</text><rect x="1400" y="70" width="290" height="330" rx="20" fill="#0B2466"/><text x="1545" y="112" text-anchor="middle" font-size="18" font-weight="800" fill="#C9D4F0">층별 파라미터</text><text x="1430" y="152" text-anchor="start" font-size="18" font-weight="700" fill="#FFFFFF">Conv2D</text><text x="1660" y="152" text-anchor="end" font-size="20" font-weight="800" fill="#1CE8F2">80</text><text x="1430" y="192" text-anchor="start" font-size="18" font-weight="700" fill="#FFFFFF">Max-Pooling</text><text x="1660" y="192" text-anchor="end" font-size="20" font-weight="800" fill="#1CE8F2">0</text><text x="1430" y="232" text-anchor="start" font-size="18" font-weight="700" fill="#FFFFFF">Dense 16</text><text x="1660" y="232" text-anchor="end" font-size="20" font-weight="800" fill="#1CE8F2">528</text><text x="1430" y="272" text-anchor="start" font-size="18" font-weight="700" fill="#FFFFFF">Dense 3</text><text x="1660" y="272" text-anchor="end" font-size="20" font-weight="800" fill="#1CE8F2">51</text><path d="M1426 300 H1664" stroke="#FFFFFF" stroke-opacity=".25" stroke-width="2"/><text x="1430" y="338" text-anchor="start" font-size="19" font-weight="800" fill="#FFFFFF">합계</text><text x="1660" y="340" text-anchor="end" font-size="32" font-weight="900" fill="#1CE8F2">659개</text><text x="1545" y="378" text-anchor="middle" font-size="15" font-weight="700" fill="#C9D4F0">≈ 약 10KB · ESP32 실시간 추론</text></svg></div>
+      <div class="a4w">
+        <div class="wy"><i>①</i><div><b>노이즈와 이상을 '모양'으로 구분</b><span>순간 흔들림은 고립된 한 칸, 지속 이상은 뭉친 덩어리</span></div></div>
+        <div class="wy"><i>②</i><div><b>작은 필터로 넓게 본다</b><span>3×3 필터 하나가 최대 11스텝 범위를 9개 가중치로</span></div></div>
+        <div class="wy"><i>③</i><div><b>칩 안에서 바로 실행</b><span>파라미터 659개 · 약 10KB → ESP32 실시간 추론</span></div></div>
+        <div class="rz"><p>모의 데이터 검증 정확도<b>97.3%</b></p><p>판별 시간<b>5초 이내</b></p></div>
       </div>
     </div>
-    <p class="src">출처: 부호화 · 4×4 패턴 · 모델 구조 · 파라미터 · 메모리 – 한우진 외, 「상태 패턴 분석 기반 수액 이상 감지 알고리즘」(2026 공동학술발표회 우수논문상) · 칼만 필터 · 모의 데이터 검증 정확도 97.3% · 5초 이내 – INFUTECH 사업계획서 · 1D CNN · RNN 열은 설계 관점 정성 비교(미측정), LSTM · GRU 등과의 정량 비교는 후속 연구(논문) · 특허(A1)는 이중 트랙 신호처리 대상 · 4×4 그림은 예시</p>
+    <p class="src">출처: 부호화 · 4×4 패턴 · 모델 구조 · 총 파라미터(약 660개) · 메모리 – 한우진 외, 「상태 패턴 분석 기반 수액 이상 감지 알고리즘」(2026 공동학술발표회 우수논문상) · 칼만 필터 · 모의 데이터 검증 정확도 97.3% · 5초 이내 – INFUTECH 사업계획서 · 패딩 · 층별 파라미터는 총 파라미터에서 역산 · ①~③은 설계 근거(정성), LSTM · GRU 등과의 정량 비교는 후속 연구(논문) · 특허(A1)는 이중 트랙 신호처리 대상 · 4×4 그림은 예시</p>
     <p class="pg">A4</p>
   </div>
-  <div class="note" hidden><p>로드셀로 받은 무게 신호를 칼만 필터로 1차 정리한 뒤, 기준 유속 대비 편차를 느림, 정상, 빠름 세 상태로 부호화합니다. 연속 16개 상태를 4×4 이미지로 접으면, 지속되는 이상은 인접한 덩어리로, 순간 노이즈는 고립된 한 칸으로 나타납니다. 3×3 필터 하나가 최대 11스텝 범위를 9개 가중치로 보기 때문에, 파라미터 약 660개, 약 10KB의 작은 모델로도 ESP32에서 실시간 판별이 가능합니다. RNN 계열은 순차 연산과 상태 메모리 부담을 고려해, 임베디드 실시간 처리를 위해 경량 2D CNN을 우선 적용했습니다. 다른 시계열 모델과의 정량 비교는 후속 연구로 진행합니다.</p></div>
+  <div class="note" hidden><p>로드셀 무게 신호를 칼만 필터로 1차 정리하고, 기준 유속 대비 편차를 느림, 정상, 빠름 세 상태로 부호화합니다. 연속 16개 상태를 4×4 이미지로 접어 넣으면, 3×3 필터 8개의 합성곱 층이 4×4×8 특징을 만들고, 2×2 맥스풀링으로 2×2×8로 줄인 뒤 32개 값으로 펼쳐 16개 노드의 완전연결층과 3개 출력의 소프트맥스로 정상, 급속, 폐색을 판별합니다. 파라미터는 모두 659개, 약 10KB라 ESP32에서 바로 실행됩니다. 순간 흔들림은 고립된 한 칸, 지속 이상은 뭉친 덩어리로 나타나 모양으로 구분할 수 있습니다. 다른 시계열 모델과의 정량 비교는 후속 연구로 진행합니다.</p></div>
 </section>
 <!-- A5 anomaly detection -->
 <section class="slide ax" id="s-a5" data-sec="10" data-title="부록 A5 · 수액 이상 탐지 — 유형 구분과 스테이션 알림">
