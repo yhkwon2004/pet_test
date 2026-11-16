@@ -49,3 +49,16 @@
 .rf .cp-tl { gap: .6em; }
 .rf .cp-cnn .cp-a2, .rf .cp-tc .cp-t2 { display: block; width: 100%; height: 100%; }
 .rf .cp-tc { flex: 1; min-height: 0; display: flex; align-items: center; padding: 1.2em 1.6em; }
+.rf .cp-tl .cp-gsvg { flex: none; height: auto; margin: auto 0; }
+#s-background .r-foot, #s-onevet .r-foot { align-self: center; margin-top: 1.2em; padding: .5em 1.4em; border-radius: 99em; background: #EEEDFE; }
+.rf .cp-day { gap: 2.2em; }
+.rf .cp-tasks li { padding: 2.4em .8em; gap: .8em; }
+.rf .cp-tasks i { width: 4.6em; height: 4.6em; }
+.rf .cp-tasks i svg { width: 2.8em; height: 2.8em; }
+.rf .cp-tasks b { font-size: 1.5em; }
+.rf .cp-res { align-items: stretch; }
+.rf .cp-res i { align-self: center; }
+.rf .cp-res p { display: flex; align-items: center; justify-content: center; }
+.rf .cp-hw > li > p { min-height: 2.9em; text-wrap: balance; }
+.rf .cp-hw > li:nth-child(2) figure, .rf .cp-hw > li:nth-child(3) figure { background: var(--rl); padding: 1em; display: flex; align-items: center; justify-content: center; }
+.rf .cp-hw > li:nth-child(2) figure img, .rf .cp-hw > li:nth-child(3) figure img { width: 100%; height: auto; max-height: 100%; object-fit: contain; border-radius: .6em; background: transparent; }
