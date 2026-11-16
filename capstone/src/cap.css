@@ -1,0 +1,49 @@
+.rf .r-cv-cap { display: inline-block; align-self: flex-start; margin-bottom: .9em; padding: .35em 1.1em; border-radius: 99em; background: #FFD84D; color: #1D1C2B; font-size: 1.25em; font-weight: 900; letter-spacing: .02em; }
+.rf .r-ct span { margin-left: .6em; padding: .15em .6em; border-radius: .5em; background: var(--rg); color: var(--rm); font-size: .8em; font-weight: 800; vertical-align: .1em; }
+.rf .r-ct b { color: var(--rr); }
+.rf .cp-gap, .rf .cp-one { grid-template-columns: 1fr 2fr; }
+.rf .cp-pie { justify-content: center; }
+.rf .cp-pie .r-pie { width: 13em; height: 13em; }
+.rf .cp-tl { display: flex; flex-direction: column; gap: 1em; }
+.rf .cp-tl .cp-gsvg { flex: 1; min-height: 0; width: 100%; height: 100%; }
+.rf .cp-day { display: flex; flex-direction: column; justify-content: center; gap: 1.6em; }
+.rf .cp-tasks { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1em; }
+.rf .cp-tasks li { display: flex; flex-direction: column; align-items: center; gap: .6em; padding: 1.5em .8em; border-radius: 1.1em; background: var(--rl); text-align: center; }
+.rf .cp-tasks i { display: grid; place-items: center; width: 3.8em; height: 3.8em; border-radius: 50%; background: #FFFFFF; color: var(--ri); }
+.rf .cp-tasks i svg { width: 2.3em; height: 2.3em; }
+.rf .cp-tasks b { font-size: 1.35em; font-weight: 800; color: var(--rk); }
+.rf .cp-tasks li.iv { background: #FFF0F3; box-shadow: inset 0 0 0 .14em var(--rr); }
+.rf .cp-tasks li.iv i { color: var(--rr); }
+.rf .cp-tasks small { font-size: 1.05em; font-weight: 800; color: var(--rr); }
+.rf .cp-res { display: flex; align-items: center; gap: .8em; }
+.rf .cp-res p { flex: 1; padding: .85em 1em; border-radius: .9em; background: var(--rg); font-size: 1.2em; font-weight: 800; color: var(--rk2); text-align: center; }
+.rf .cp-res p.r { background: var(--rr); color: #FFFFFF; }
+.rf .cp-res i { font-style: normal; font-size: 1.5em; font-weight: 900; color: var(--rm); }
+.rf .cp-hw { flex: 1; min-height: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.6em; }
+.rf .cp-hw > li { display: flex; flex-direction: column; gap: .5em; padding: 1.2em 1.2em 1.4em; border-radius: 1.4em; background: #FFFFFF; border: 1.5px solid var(--rline); }
+.rf .cp-hw figure, .rf .cp-arr { flex: 1; min-height: 0; margin: 0 0 .6em; border-radius: 1em; overflow: hidden; background: var(--rg); }
+.rf .cp-hw figure img { width: 100%; height: 100%; object-fit: cover; }
+.rf .cp-hw > li:nth-child(2) figure img, .rf .cp-hw > li:nth-child(3) figure img { object-fit: contain; background: #FFFFFF; }
+.rf .cp-hw > li > i { font-style: normal; font-size: 1.1em; font-weight: 900; color: var(--ri); }
+.rf .cp-hw > li > b { font-size: 1.55em; font-weight: 800; color: var(--rk); letter-spacing: -.02em; }
+.rf .cp-hw > li > p { font-size: 1.1em; font-weight: 600; color: var(--rk2); line-height: 1.45; }
+.rf .cp-hw em { font-style: normal; font-weight: 800; color: var(--ri); }
+.rf .cp-arr { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1em; background: var(--rl); }
+.rf .cp-arr .g4 { display: grid; grid-template-columns: repeat(4, 2.5em); gap: .3em; }
+.rf .cp-arr .g4 b { width: 2.5em; height: 2.5em; border-radius: .4em; background: #FFFFFF; }
+.rf .cp-arr .g4 b.p { background: var(--rp); }
+.rf .cp-arr .g4 b.m { background: var(--ri); }
+.rf .cp-arr p { font-size: 1.05em; font-weight: 800; color: var(--ri); }
+.rf .cp-cnn { flex: 1; min-height: 0; display: flex; align-items: center; padding: .6em 1.4em; }
+.rf .cp-cnn .cnnsvg { display: block; width: 100%; height: 100%; }
+.rf .cp-why { margin-top: 1.1em; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2em; }
+.rf .cp-why li { display: flex; align-items: center; gap: 1em; padding: 1em 1.3em; border-radius: 1.1em; background: var(--rl); }
+.rf .cp-why i { flex: none; display: grid; place-items: center; width: 2.4em; height: 2.4em; border-radius: 50%; background: var(--ri); color: #FFFFFF; font-style: normal; font-size: 1.1em; font-weight: 900; }
+.rf .cp-why b { display: block; font-size: 1.25em; font-weight: 800; color: var(--rk); }
+.rf .cp-why span { display: block; margin-top: .2em; font-size: 1em; font-weight: 600; color: var(--rk2); }
+.rf .cp-why li.pp { background: var(--ri); }
+.rf .cp-why li.pp b { color: #FFFFFF; }
+.rf .cp-why li.pp span { color: #E5E4FF; }
+.rf .cp-why li.pp i { background: var(--ry); color: var(--rk); }
+.rf #s-hw .r-src.c, .rf #s-cnn .r-src.c { margin-top: .8em; }
+.rf .cp-tl { gap: .6em; }
