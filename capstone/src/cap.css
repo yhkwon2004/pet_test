@@ -47,3 +47,5 @@
 .rf .cp-why li.pp i { background: var(--ry); color: var(--rk); }
 .rf #s-hw .r-src.c, .rf #s-cnn .r-src.c { margin-top: .8em; }
 .rf .cp-tl { gap: .6em; }
+.rf .cp-cnn .cp-a2, .rf .cp-tc .cp-t2 { display: block; width: 100%; height: 100%; }
+.rf .cp-tc { flex: 1; min-height: 0; display: flex; align-items: center; padding: 1.2em 1.6em; }
