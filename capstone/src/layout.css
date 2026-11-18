@@ -1,0 +1,48 @@
+/* ===== layout & symmetry pass (slides 8 · 10 · 16) ===== */
+/* 8 — two equal columns, photo matches the text column height, every block spans the full column */
+#s-match .r-rv2 { grid-template-columns: 1fr 1fr; gap: 4.4em; align-items: stretch; }
+#s-match .r-rv2-ph { height: auto; }
+#s-match .r-rv2-ph img { object-position: 50% 40%; }
+#s-match .r-rv2-r { justify-content: center; align-items: stretch; gap: 1.1em; }
+#s-match .r-rv2-r > .r-kick { align-self: flex-start; }
+#s-match .r-rv2-t { font-size: 3.6em; }
+#s-match .r-rv2-l { margin-top: .4em; }
+#s-match .r-rv2-l li { grid-template-columns: 2.6em 1fr; }
+#s-match .r-rv2-v { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6em; margin-top: .6em; }
+#s-match .r-rv2-v li { justify-content: center; }
+#s-match .r-rv2-p { margin-top: 0; text-align: center; }
+/* 10 — 2 × 2, image left · text right, text vertically centred */
+#s-hw .cp-hw { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 1.4em 1.6em; }
+#s-hw .cp-hw > li { display: grid; grid-template-columns: 1.1fr 1fr; grid-template-rows: 1fr auto auto auto 1fr; column-gap: 1.8em; row-gap: .45em; padding: 1.2em; }
+#s-hw .cp-hw figure, #s-hw .cp-arr { grid-column: 1; grid-row: 1 / 6; height: 100%; margin: 0; }
+#s-hw .cp-hw > li > i { grid-column: 2; grid-row: 2; font-size: 1.15em; }
+#s-hw .cp-hw > li > b { grid-column: 2; grid-row: 3; font-size: 1.85em; }
+#s-hw .cp-hw > li > p { grid-column: 2; grid-row: 4; min-height: 0; font-size: 1.25em; line-height: 1.5; }
+#s-hw .cp-hw > li:first-child figure img { object-position: 50% 30%; }
+#s-hw .cp-arr .g4 { grid-template-columns: repeat(4, 2.2em); }
+#s-hw .cp-arr .g4 b { width: 2.2em; height: 2.2em; }
+#s-hw .r-src.c { margin-top: 1em; }
+/* 16 — equal person widths, matched award images, equal partner cards */
+#s-team .r-tgrp { grid-template-columns: 4fr 1.22fr; }
+#s-team .r-tgrp .dev .r-ppl { grid-template-columns: repeat(4, 1fr); }
+#s-team .r-tgrp .cli .r-ppl { grid-template-columns: 1fr; }
+#s-team .r-tgrp .tg { border-radius: .7em; }
+#s-team .r-tm2 { grid-template-columns: 1fr 1fr; gap: 3em; align-items: center; }
+#s-team .r-awi { grid-template-columns: auto 1fr; grid-template-rows: auto auto; gap: .9em 1.2em; }
+#s-team .r-awi figure { border-radius: .5em; }
+#s-team .r-tm2 .r-awi .cert { grid-row: 1; grid-column: 1; height: 12em !important; aspect-ratio: 720 / 1018; }
+#s-team .r-tm2 .r-awi .pic { grid-row: 1; grid-column: 2; height: 12em !important; }
+#s-team .r-awi .lg2 { grid-row: 2; grid-column: 1 / -1; justify-content: center; }
+#s-team .r-pt { border-radius: .7em; background: #F6F7F9; border: 1px solid #E5E7EB; }
+#s-team .r-pt ul { grid-template-columns: repeat(4, 1fr); }
+#s-team .r-pt li { border-radius: .5em; border: 1px solid #E5E7EB; }
+#s-team .r-pt b { font-size: 1.2em; }
+#s-match .r-rv2-v li { white-space: nowrap; font-size: 1.02em; padding: .6em .9em; }
+#s-hw .cp-hw > li > b { font-size: 1.7em; }
+#s-team .r-awi .lg2 { display: none; }
+#s-team .r-tm2 .r-awi .cert, #s-team .r-tm2 .r-awi .pic { height: 10.4em !important; }
+#s-team .r-awi figcaption { font-size: .78em; white-space: nowrap; }
+#s-team .r-ppl img { width: 6.8em !important; height: 6.8em !important; }
+#s-team .r-tm2 { margin-top: .9em; }
+#s-team .r-pt { margin-top: 1.1em; }
+#s-match .r-rv2-v { grid-template-columns: 1fr .9fr 1.2fr; } #s-match .r-rv2-v li { font-size: .98em; }

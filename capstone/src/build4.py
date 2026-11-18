@@ -78,4 +78,7 @@ THEME = '''
 .rf .r-src { line-height: 1.45; }
 '''
 s = s.replace('</head>', f'<style id="cap-theme">{THEME}</style>\n</head>', 1)
+import os
+LAY = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'layout.css')).read()
+s = s.replace('</head>', f'<style id="cap-layout">{LAY}</style>\n</head>', 1)
 open(DST, 'w', encoding='utf-8').write(s); print('theme ok')
