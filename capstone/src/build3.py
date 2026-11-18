@@ -60,3 +60,39 @@ s = open(DST, encoding='utf-8').read()
 for k, v in TIMES.items():
     s, n = re.subn(r'(<section [^>]*id="%s"[^>]*data-time=")\d+' % k, r'\g<1>%d' % v, s); assert n == 1, k
 open(DST, 'w', encoding='utf-8').write(s); print('timed', sum(TIMES.values()))
+# ---------- stage 3b (2026-11-18): papers & awards slide; paper-ready notation on 11–12
+s = open(DST, encoding='utf-8').read()
+pap = """<section class="slide rf " id="s-pap" data-sec="7" data-time="14" data-title="학회 검증 — 우수논문상 2건 · 논문 원문">
+  <div class="frame">
+    <header class="r-hd"><p class="r-kick b">Paper · Award</p><h2 class="r-t b">알고리즘은 <em>학회에서 먼저 검증</em>받았습니다 — 우수논문상 2건</h2></header>
+    <div class="cp-pap b">
+      <figure class="pg"><img src="media/paper-1.webp" alt="논문 1쪽 — 상태 패턴 분석 기반 수액 이상 감지 알고리즘, 초록 · 서론 · 연구 내용" data-zoom><figcaption>논문 1쪽</figcaption></figure>
+      <figure class="pg"><img src="media/paper-2.webp" alt="논문 2쪽 — 4×4 부호화 패턴과 CNN 분류, 선행 연구 비교, 참고문헌" data-zoom><figcaption>논문 2쪽</figcaption></figure>
+      <div class="aw">
+        <figure><img src="media/award-kr.webp" alt="우수논문상 상장 — CNN 상태 패턴 분석 기반 정맥 수액 이상 감지 알고리즘, (사)한국혁신산업학회 2026.07.06" data-zoom><figcaption><b>우수논문상 · 국내</b>「CNN 상태 패턴 분석 기반 정맥 수액 이상 감지 알고리즘」<span>(사)한국혁신산업학회 · (사)한국디지털정책학회 공동학술발표대회 · 2026.07.06</span></figcaption></figure>
+        <figure><img src="media/award-best.webp" alt="AIT 2026 Best Paper Award 상장 — Design of a Dual-Track Algorithm for Real-Time IV Monitoring Based on Load Cell" data-zoom><figcaption><b>Best Paper · 국제 AIT 2026</b>「Design of a Dual-Track Algorithm for Real-Time IV Monitoring Based on Load Cell」<span>ICAIT 2026 · Danang, Vietnam · 2026.01.12–15</span></figcaption></figure>
+      </div>
+    </div>
+    <p class="r-src c b">상장 원본 · 논문 원문(한우진 · 정익상 · 권용현 · 최이지 · 이완범) · 특허 출원 3건은 이중 트랙 신호처리 대상</p>
+  </div>
+  <div class="note" hidden><p>이 알고리즘은 학회에서 먼저 검증받았습니다. CNN 상태 패턴 논문은 국내 공동학술발표대회에서, 이중 트랙 알고리즘 논문은 국제 AIT 2026에서 우수논문상을 받았습니다.</p></div>
+</section>
+"""
+m = sec('s-cnn'); s = s[:m.end()] + pap + s[m.end():]
+# s-cnn: drop the bullet row (equations now live in the figure)
+m = sec('s-cnn'); t = re.sub(r'\n    <ul class="cp-why b">.*?</ul>', '', m.group(0), count=1, flags=re.S)
+t = re.sub(r'<p class="r-src c b">.*?</p>', '<p class="r-src c b">식 (11)–(13), CNN 구조 Conv2D(8, 3×3) → MaxPool(2×2) → Dense(16) – 한우진 외, 「CNN 상태 패턴 분석 기반 정맥 수액 이상 감지 알고리즘」 · (14)–(15) RNN · 결합 판정 – INFUTECH 설계(정량 비교 진행 중) · 판정 5종 – 2026-2 캡스톤디자인 참가신청서</p>', t, count=1, flags=re.S)
+s = s[:m.start()] + t + s[m.end():]
+m = sec('s-tech'); t = re.sub(r'<p class="r-src c b">.*?</p>', '<p class="r-src c b">식 (1)–(10) · 칼만 필터 – INFUTECH 사업계획서 · 가상 자이로 g<sub>φ</sub> 지도학습 · PID(LoRA · 유전 알고리즘 튜닝) – INFUTECH 설계 · 잔량 최대 오차 2.9% – 내부 모의시험(모의 병실 1,000회)</p>', m.group(0), count=1, flags=re.S)
+s = s[:m.start()] + t + s[m.end():]
+s = s.replace("'핵심 기술 · AI 분석',", "'핵심 기술 · AI 분석 · 논문',")
+open(DST, 'w', encoding='utf-8').write(s)
+note('s-cnn', ['보정된 신호는 두 갈래로 분석합니다. 기준 유속 대비 편차를 세 상태로 부호화해 4×4 그림으로 만들면, CNN이 그 모양으로 순간 흔들림과 지속 이상을 가르고, RNN은 유속을 순서대로 기억해 추세를 봅니다.',
+               '두 특징을 결합해 정상, 흔들림, 당겨짐, 줄 분리, 소진 다섯 가지로 판정합니다.'])
+open(DST, 'w', encoding='utf-8').write(s); print('papers slide ok')
+TIMES = {'s-opening': 13, 's-hook': 13, 's-background': 15, 's-onevet': 13, 's-law': 23, 's-rivals': 11, 's-field': 24, 's-match': 15, 's-solution': 9, 's-hw': 22, 's-tech': 28, 's-cnn': 23, 's-pap': 15, 's-edge': 15, 's-entry': 19, 's-team': 16, 's-end': 6}
+s = open(DST, encoding='utf-8').read()
+for k, v in TIMES.items():
+    s, n = re.subn(r'(<section [^>]*id="%s"[^>]*data-time=")\d+' % k, r'\g<1>%d' % v, s); assert n == 1, k
+s = s.replace('<p>본문 16장 + 부록 · 대본 약 4분 40초 · 2026 캡스톤 디자인</p>', '<p>본문 17장 + 부록 · 대본 약 4분 40초 · 2026 캡스톤 디자인</p>')
+open(DST, 'w', encoding='utf-8').write(s); print('timed', sum(TIMES.values()))

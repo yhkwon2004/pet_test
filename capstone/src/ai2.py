@@ -1,7 +1,8 @@
 # Slide 11 — the corrected signal analysed two ways: CNN (4×4 shape) + RNN (time trend) → combined decision (5 states)
 import sys, math
+from mathtxt import M
 RI, RI2, RP, RL, RK, RK2, RM, RLN, RY, RR, GN, OR = '#4B48E0', '#7471F0', '#AEB2FB', '#ECEBFE', '#1D1C2B', '#4A4A5C', '#8B8B9C', '#DCDCE6', '#FFD84D', '#F0506E', '#2E9E6A', '#E07B2E'
-W, H = 1700, 560
+W, H = 1700, 716
 O = []; A = O.append
 def t(x, y, s, fs=17, fw=700, col=RK2, anc='start'):
     A(f'<text x="{x:.0f}" y="{y:.0f}" font-size="{fs}" font-weight="{fw}" fill="{col}" text-anchor="{anc}">{s}</text>')
@@ -75,7 +76,24 @@ for k, (lab, col) in enumerate(outs):
     y = 120 + k * 80
     A(f'<path d="M1446 280 L{1500} {y}" stroke="#C9C8F8" stroke-width="1.6"/>')
     A(f'<circle cx="1518" cy="{y}" r="20" fill="{col}"/>'); t(1552, y + 7, lab, 21, 900, RK)
-t(1600, 548, '판정 5종', 15, 800, RM, 'middle')
+t(1600, 548, '판정 5종 · 식 (15)', 15, 800, RM, 'middle')
+
+# ---- equation band (numbered, continues 11장's (1)–(10))
+YE = 584
+A(f'<rect x="0" y="{YE}" width="{W}" height="130" rx="16" fill="#F6F7F9" stroke="{RLN}" stroke-width="1.2"/>')
+EQS = [(11, 'v_{n} = (W_{I} − W_{f}) / T,   r_k = (v_k − v_{n}) / v_{n}', '정상 유속 기준 자가측정 · 상대 편차'),
+       (12, 's_k = −1 (r_k < −τ),  +1 (r_k > τ),  0 (그 외)', '허용 오차 τ로 3상태 부호화'),
+       (13, 'X_k = reshape(s_{k−15:k}, 4×4)', '연속 16상태 → 4×4 입력 (원소 −1 · 0 · +1)'),
+       (14, 'h_k = tanh(W_{h}h_{k−1} + W_{v}v_k + b)', 'RNN 은닉 상태'),
+       (15, 'ŷ_k = argmax softmax(W_{o}[f_{C}(X_k); h_k] + b_{o})', 'CNN 특징 f_C와 결합 → 5종 판정')]
+cw = W / 3
+for i, (n, e, d) in enumerate(EQS):
+    col, row = (i % 3, i // 3) if i < 3 else (i - 3, 1)
+    x = 24 + col * cw if i < 3 else 24 + (i - 3) * (W / 2)
+    y = YE + 42 + row * 58
+    A(f'<text x="{x:.0f}" y="{y}" font-size="13" font-weight="700" fill="{RM}">({n})</text>')
+    A(f'<text x="{x + 40:.0f}" y="{y}" font-size="18" font-weight="600" fill="{RK}">{M(e, 18)}</text>')
+    A(f'<text x="{x + 40:.0f}" y="{y + 20}" font-size="13" font-weight="600" fill="{RM}">{d}</text>')
 defs = (f'<defs><marker id="a2a" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="context-stroke"/></marker>'
         f'<linearGradient id="a2g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="{RI2}"/><stop offset="1" stop-color="{RI}"/></linearGradient></defs>')
 svg = (f'<svg class="r-tsvg cp-a2" viewBox="0 0 {W} {H}" role="img" aria-label="AI 분석 — 10장의 보정 하중 · 유속을 두 갈래로 분석합니다. CNN은 −1 · 0 · +1 상태 부호화와 4×4 패턴을 Conv2D 3×3 · 8, MaxPool 2×2, Dense 16으로 분석해 순간 흔들림(고립 칸)과 지속 이상(덩어리)을 구분하고, RNN은 유속 v1…vt를 순서대로 기억해 점점 느려짐 · 멈춤 · 급감 추세를 봅니다. 두 결과를 종합해 정상 · 흔들림 · 당겨짐 · 줄 분리 · 소진 5종으로 판정합니다.">' + defs + ''.join(O) + '</svg>')

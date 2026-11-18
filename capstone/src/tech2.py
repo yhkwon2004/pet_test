@@ -1,10 +1,14 @@
 # Slide 10 — signal processing chain: load cell → Kalman → virtual gyro → PID (+ learning stage), template palette
 import math, sys
+from mathtxt import M
 RI, RI2, RP, RL, RK, RK2, RM, RLN, RY, RR, GN = '#4B48E0', '#7471F0', '#AEB2FB', '#ECEBFE', '#1D1C2B', '#4A4A5C', '#8B8B9C', '#DCDCE6', '#FFD84D', '#F0506E', '#2E9E6A'
 W, H = 1700, 600
 O = []; A = O.append
 def t(x, y, s, fs=17, fw=700, col=RK2, anc='start', extra=''):
     A(f'<text x="{x:.0f}" y="{y:.0f}" font-size="{fs}" font-weight="{fw}" fill="{col}" text-anchor="{anc}"{extra}>{s}</text>')
+def eq(x, y, n, s, fs=17, col=RK):
+    A(f'<text x="{x:.0f}" y="{y:.0f}" font-size="{fs}" font-weight="600" fill="{col}">{M(s, fs)}</text>')
+    if n: A(f'<text x="{x + 0:.0f}" y="{y:.0f}" font-size="13" font-weight="700" fill="{RM}" text-anchor="end" dx="-6">({n})</text>')
 def box(x, y, w, h, fill='#FFFFFF', stroke=RLN, rx=18, sw=1.5):
     A(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="{rx}" fill="{fill}" stroke="{stroke}" stroke-width="{sw}"/>')
 def arrow(x1, y1, x2, y2, col=RI, dash=''):
@@ -25,43 +29,44 @@ def chip(x, y, s, fill=RI, col='#FFFFFF', fs=15):
 # ---------- stage cards (top)
 Y, HH = 40, 300
 cards = [(0, 360), (420, 360), (840, 360), (1260, 440)]
-heads = [('① 로드셀 원신호', '4채널 · 24bit ADC'), ('② 칼만 필터', '측정 잡음 1차 제거'), ('③ 가상 자이로', '로드셀만으로 기울기 추정'), ('④ PID 보정', '흔들림 · 당김 오차 상쇄')]
+heads = [('① 측정 모델', '로드셀 원신호'), ('② 칼만 필터', '측정 잡음 1차 제거'), ('③ 가상 자이로', '로드셀만으로 기울기 · 오차 추정'), ('④ PID 보정', '외란 오차 상쇄')]
 for k, ((x, w), (h1, h2)) in enumerate(zip(cards, heads)):
     box(x, Y, w, HH, '#FFFFFF' if k < 3 else RL, RLN if k < 3 else RP, 22, 1.6)
     t(x + 22, Y + 40, h1, 22, 900, RI if k else RK)
-    t(x + 22, Y + 66, h2, 16, 700, RM)
+    t(x + 22, Y + 66, h2, 15, 700, RM)
     if k < 3: arrow(x + w + 6, Y + HH / 2, cards[k + 1][0] - 8, Y + HH / 2)
-# ① raw noisy signal + hook icon
-wave(22, Y + 200, 316, 60, 16, '#9A9AAC', 2.2, 80, 1)
-t(22, Y + 272, '흔들림 · 당김 · 센서 잡음이 섞인 무게', 15, 700, RM)
-for k in range(4):
-    A(f'<rect x="{230 + k * 30}" y="{Y + 92}" width="20" height="30" rx="5" fill="{RL}" stroke="{RP}" stroke-width="1.5"/>')
-t(290, Y + 140, '갈고리 4개', 14, 800, RI, 'middle')
-# ② Kalman
-x = 442
-wave(x, Y + 210, 316, 60, 16, '#D5D5DE', 2, 80, 1)
-wave(x, Y + 210, 316, 60, 2.2, RI, 3, 80, 1)
-t(x, Y + 106, '예측', 15, 800, RM); t(x + 52, Y + 106, 'x̂ₖ⁻ = x̂ₖ₋₁', 20, 800, RK)
-t(x, Y + 138, '보정', 15, 800, RM); t(x + 52, Y + 138, 'x̂ₖ = x̂ₖ⁻ + Kₖ(zₖ − x̂ₖ⁻)', 20, 800, RK)
-t(x, Y + 272, '측정값 z와 예측을 칼만 이득 K로 섞어 매끈하게', 15, 700, RM)
-# ③ virtual gyro (tilted pole + xyz)
-x = 862
-A(f'<g transform="rotate(-12 {x + 70} {Y + 200})"><line x1="{x + 70}" y1="{Y + 110}" x2="{x + 70}" y2="{Y + 250}" stroke="{RK2}" stroke-width="5" stroke-linecap="round"/><rect x="{x + 40}" y="{Y + 100}" width="60" height="16" rx="6" fill="{RP}"/><rect x="{x + 56}" y="{Y + 122}" width="28" height="40" rx="7" fill="#FFFFFF" stroke="{RK2}" stroke-width="2.5"/></g>')
-A(f'<path d="M{x + 18} {Y + 150} Q{x + 8} {Y + 180} {x + 18} {Y + 210}" stroke="{RR}" stroke-width="3" fill="none" stroke-linecap="round"/>')
-for k, (lab, val) in enumerate((('θx', '기울기'), ('θy', '기울기'), ('θz', '회전'))):
-    yy = Y + 110 + k * 46
-    A(f'<rect x="{x + 160}" y="{yy}" width="176" height="36" rx="10" fill="{RL}"/>')
-    t(x + 176, yy + 25, lab, 18, 900, RI); t(x + 214, yy + 25, f'가상 {val}', 16, 700, RK2)
-t(x, Y + 272, '자이로 없이 학습된 모델이 추정 → 오차 e 계산', 15, 700, RM)
+SUB = lambda c: f'<tspan font-size="12" baseline-shift="sub">{c}</tspan>'
+# ① load cell
+eq(48, Y + 112, 1, 'z_k = w_k + n_k', 20)
+A(f'<text x="48" y="{Y + 140}" font-size="14" font-weight="600" fill="{RM}">{M("w_k: 실제 수액 무게 · n_k: 측정 잡음 · 외란", 14)}</text>')
+wave(22, Y + 210, 316, 50, 14, '#9A9AAC', 2.2, 80, 1)
+t(22, Y + 272, '4채널 · 24bit ADC · 샘플 주기 Δt', 15, 700, RM)
+# ② Kalman (state x = [w, ẇ]ᵀ, H = [1 0])
+x = 462
+A(f'<text x="{x - 20}" y="{Y + 98}" font-size="14" font-weight="700" fill="{RM}">{M("상태 x_k = [w_k, ẇ_k]^{T},  H = [1 0]", 14)}</text>')
+eq(x, Y + 132, 2, 'x̂_k^{−} = F x̂_{k−1},  P_k^{−} = F P_{k−1} F^{T} + Q', 16)
+eq(x, Y + 164, 3, 'K_k = P_k^{−}H^{T}(H P_k^{−}H^{T} + R)^{−1}', 16)
+eq(x, Y + 196, 4, 'x̂_k = x̂_k^{−} + K_k(z_k − H x̂_k^{−})', 16)
+wave(x - 20, Y + 240, 316, 30, 1.6, RI, 2.6, 80, 1)
+A(f'<text x="{x - 20}" y="{Y + 272}" font-size="15" font-weight="700" fill="{RM}">{M("ŵ_k = H x̂_k : 잡음을 뺀 무게 추정", 15)}</text>')
+# ③ virtual gyro
+x = 882
+eq(x, Y + 112, 5, '(θ̂_k, Δŵ_k) = g_{φ}(z_{k−N+1:k})', 17)
+t(x - 20, Y + 140, '최근 N개 로드셀 값만으로 기울기 · 오차 추정', 14, 600, RM)
+for k, (lab, val) in enumerate((('θ̂x', '가상 기울기'), ('θ̂y', '가상 기울기'), ('θ̂z', '가상 회전'))):
+    yy = Y + 160 + k * 36
+    A(f'<rect x="{x + 120}" y="{yy}" width="196" height="30" rx="7" fill="{RL}"/>')
+    t(x + 134, yy + 21, lab, 16, 800, RI); t(x + 176, yy + 21, val, 15, 600, RK2)
+A(f'<g transform="rotate(-12 {x + 40} {Y + 210})"><line x1="{x + 40}" y1="{Y + 160}" x2="{x + 40}" y2="{Y + 262}" stroke="{RK2}" stroke-width="4" stroke-linecap="round"/><rect x="{x + 18}" y="{Y + 154}" width="44" height="12" rx="5" fill="{RP}"/><rect x="{x + 28}" y="{Y + 172}" width="24" height="32" rx="6" fill="#FFFFFF" stroke="{RK2}" stroke-width="2.2"/></g>')
+t(x - 20, Y + 284, '자이로 없이 학습된 모델이 추정 (출시 제품)', 15, 700, RM)
 # ④ PID
-x = 1282
-SUB = lambda c: f'<tspan font-size="14" baseline-shift="sub">{c}</tspan>'
-t(x, Y + 112, f'u(t) = K{SUB("P")}·e + K{SUB("I")}∫e dt + K{SUB("D")}·de/dt', 22, 850, RK)
-t(x, Y + 142, 'e = 가상 자이로가 추정한 흔들림 오차', 15, 700, RK2)
-wave(x, Y + 200, 396, 60, 16, '#D5D5DE', 2, 80, 3)
-A(f'<path d="M{x} {Y + 214} C{x + 120} {Y + 190} {x + 260} {Y + 226} {x + 396} {Y + 206}" stroke="{GN}" stroke-width="3.4" fill="none"/>')
-A(f'<rect x="{x}" y="{Y + 246}" width="396" height="36" rx="10" fill="#FFFFFF" stroke="{RP}" stroke-width="1.5"/>')
-t(x + 14, Y + 270, f'게인 K{SUB("P")} · K{SUB("I")} · K{SUB("D")}', 15, 850, RI); t(x + 150, Y + 270, '← LoRA · 유전 알고리즘 튜닝', 15, 700, RK2)
+x = 1302
+eq(x, Y + 106, 6, 'e_k = Δŵ_k', 17)
+eq(x, Y + 140, 7, 'u_k = K_{P}e_k + K_{I} Σ_{i≤k} e_i Δt + K_{D}(e_k − e_{k−1}) / Δt', 16)
+eq(x, Y + 174, 8, 'w̃_k = ŵ_k − u_k', 17)
+A(f'<path d="M{x - 20} {Y + 222} C{x + 100} {Y + 204} {x + 240} {Y + 234} {x + 396} {Y + 216}" stroke="{GN}" stroke-width="3" fill="none"/>')
+A(f'<rect x="{x - 20}" y="{Y + 248}" width="416" height="36" rx="8" fill="#FFFFFF" stroke="{RP}" stroke-width="1.2"/>')
+t(x - 6, Y + 272, f'게인 (K{SUB("P")}, K{SUB("I")}, K{SUB("D")}) · LoRA · 유전 알고리즘 튜닝', 15, 700, RK2)
 # ---------- bottom: learning stage + output bridge
 YB = 380
 box(0, YB, 1110, 210, '#FFFFFF', RLN, 22)
@@ -74,10 +79,10 @@ for k, (lab, sub, col) in enumerate((('프로세서 A', '로드셀 + 자이로',
     t(150, yy + 36, sub, 18, 850, RK)
 arrow(330, YB + 93, 400, YB + 128, RI); arrow(330, YB + 163, 400, YB + 136, RK2)
 A(f'<rect x="406" y="{YB + 96}" width="210" height="76" rx="14" fill="#FFF0F3" stroke="{RR}" stroke-width="1.6"/>')
-t(511, YB + 128, '편차 Δw', 20, 900, RR, 'middle'); t(511, YB + 154, '= 학습 정답', 15, 800, RK2, 'middle')
+A(f'<text x="511" y="{YB + 128}" font-size="18" font-weight="700" fill="{RR}" text-anchor="middle">{M("Δw_k = w_k^{B} − w_k^{A}", 18)}</text>'); t(511, YB + 156, '편차 = 학습 정답', 14, 700, RK2, 'middle')
 arrow(622, YB + 134, 680, YB + 134, RR)
 A(f'<rect x="686" y="{YB + 80}" width="230" height="108" rx="14" fill="{RL}"/>')
-t(801, YB + 112, '지도학습', 19, 900, RI, 'middle'); t(801, YB + 140, '입력 = 단일 신호', 15, 700, RK2, 'middle'); t(801, YB + 164, '드롭아웃 · 역전파 반복', 15, 700, RK2, 'middle')
+t(801, YB + 108, '지도학습 (9)', 17, 800, RI, 'middle'); A(f'<text x="801" y="{YB + 140}" font-size="15" font-weight="600" fill="{RK}" text-anchor="middle">{M("min_{φ} Σ‖g_{φ}(z^{B}) − Δw‖²", 15)}</text>'); t(801, YB + 166, '드롭아웃 · 역전파 반복', 14, 600, RK2, 'middle')
 arrow(922, YB + 134, 980, YB + 134, RI)
 A(f'<rect x="986" y="{YB + 96}" width="104" height="76" rx="14" fill="{RI}"/>')
 t(1038, YB + 128, 'ESP32', 17, 900, '#FFFFFF', 'middle'); t(1038, YB + 152, '가중치 탑재', 14, 700, '#E5E4FF', 'middle')
@@ -86,8 +91,8 @@ t(1046, YB - 12, '학습된 가중치', 14, 800, RI)
 # output bridge
 A(f'<rect x="1150" y="{YB}" width="550" height="210" rx="22" fill="url(#t2g)"/>')
 t(1176, YB + 44, '출력', 16, 850, '#E5E4FF')
-t(1176, YB + 90, '보정 하중 w(t) · 유속 v(t)', 28, 900, '#FFFFFF')
-t(1176, YB + 126, '흔들려도 오차 최대 2.9% · 내부 모의시험', 16, 700, '#E5E4FF')
+A(f'<text x="1176" y="{YB + 90}" font-size="24" font-weight="700" fill="#FFFFFF">{M("w̃_k ,  v_k = −(w̃_k − w̃_{k−1}) / Δt", 24)}</text>'); t(1660, YB + 90, '(10)', 13, 700, '#D7DEEA', 'end')
+t(1176, YB + 126, '보정 하중 · 유속 → 잔량 최대 오차 2.9% (내부 모의시험 1,000회)', 15, 600, '#E5E4FF')
 A(f'<rect x="1176" y="{YB + 148}" width="498" height="42" rx="21" fill="{RY}"/>')
 t(1425, YB + 176, '다음 장 ▶ CNN · RNN이 이 신호를 분석', 18, 900, RK, 'middle')
 A(f'<path d="M1480 {Y + HH + 4} L1480 {YB - 6}" stroke="{RI}" stroke-width="3" fill="none" marker-end="url(#t2a)"/>')

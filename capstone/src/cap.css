@@ -62,3 +62,14 @@
 .rf .cp-hw > li > p { min-height: 2.9em; text-wrap: balance; }
 .rf .cp-hw > li:nth-child(2) figure, .rf .cp-hw > li:nth-child(3) figure { background: var(--rl); padding: 1em; display: flex; align-items: center; justify-content: center; }
 .rf .cp-hw > li:nth-child(2) figure img, .rf .cp-hw > li:nth-child(3) figure img { width: 100%; height: auto; max-height: 100%; object-fit: contain; border-radius: .6em; background: transparent; }
+.rf .cp-pap { flex: none; height: 35em; display: grid; grid-template-columns: auto auto 1fr; grid-template-rows: 100%; gap: 1.6em; }
+.rf .cp-pap figure { margin: 0; }
+.rf .cp-pap .pg { position: relative; height: 100%; aspect-ratio: 873 / 1147; border: 1px solid #E5E7EB; border-radius: .5em; overflow: hidden; background: #FFFFFF; }
+.rf .cp-pap .pg img { width: 100%; height: 100%; object-fit: contain; }
+.rf .cp-pap .pg figcaption { position: absolute; right: .6em; bottom: .6em; padding: .2em .7em; border-radius: .3em; background: #1E3A8A; color: #FFFFFF; font-size: .9em; font-weight: 700; }
+.rf .cp-pap .aw { min-width: 0; display: grid; grid-template-rows: 1fr 1fr; gap: 1.2em; }
+.rf .cp-pap .aw figure { min-height: 0; display: grid; grid-template-columns: 1.35fr 1fr; gap: 1.2em; align-items: center; padding: 1em; border: 1px solid #E5E7EB; border-radius: .6em; }
+.rf .cp-pap .aw img { width: 100%; height: 100%; max-height: 100%; object-fit: contain; min-height: 0; }
+.rf .cp-pap .aw figcaption { font-size: .95em; font-weight: 600; color: #111418; line-height: 1.5; }
+.rf .cp-pap .aw figcaption b { display: block; margin-bottom: .4em; font-size: 1.15em; font-weight: 700; color: #1E3A8A; }
+.rf .cp-pap .aw figcaption span { display: block; margin-top: .5em; font-size: .85em; font-weight: 500; color: #6B7280; }
