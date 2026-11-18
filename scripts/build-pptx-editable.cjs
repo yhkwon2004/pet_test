@@ -122,8 +122,25 @@ function extract(id) {
     const svgr = t.ownerSVGElement.getBoundingClientRect(), vb = t.ownerSVGElement.viewBox.baseVal;
     const sc = vb && vb.width ? svgr.width / vb.width : 1;
     const anchor = t.getAttribute('text-anchor') || cs.textAnchor;
+    // keep <tspan> sub/superscripts and italics as separate runs
+    const runs = [], alpha0 = opac(t.ownerSVGElement);
+    const walkT = (node, sub, sup) => {
+      for (const n of node.childNodes) {
+        if (n.nodeType === 3) {
+          if (!n.textContent) continue;
+          const pcs = getComputedStyle(n.parentElement), pc = hex(pcs.fill) || c;
+          runs.push({ text: n.textContent, size: (sub || sup ? parseFloat(cs.fontSize) * .92 : parseFloat(pcs.fontSize)) * sc, weight: +pcs.fontWeight || 400, color: pc.hex,
+            alpha: (+pcs.fillOpacity || 1) * pc.a * alpha0, ls: 0, italic: pcs.fontStyle === 'italic', sub, sup });
+        } else if (n.nodeType === 1) {
+          const bs = n.getAttribute('baseline-shift') || '';
+          walkT(n, sub || bs === 'sub', sup || bs === 'super');
+        }
+      }
+    };
+    walkT(t, false, false);
+    if (!runs.length) continue;
     out.texts.push({ x: r.left - fr.left, y: r.top - fr.top, w: r.width, h: r.height, align: anchor === 'middle' ? 'center' : anchor === 'end' ? 'right' : 'left', lines: 1,
-      lh: r.height, runs: [{ text: t.textContent, size: parseFloat(cs.fontSize) * sc, weight: +cs.fontWeight || 400, color: c.hex, alpha: (+cs.fillOpacity || 1) * c.a * opac(t.ownerSVGElement), ls: 0 }] });
+      lh: r.height, runs });
   }
 
   // ③ images

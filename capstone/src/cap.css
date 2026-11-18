@@ -73,3 +73,5 @@
 .rf .cp-pap .aw figcaption { font-size: .95em; font-weight: 600; color: #111418; line-height: 1.5; }
 .rf .cp-pap .aw figcaption b { display: block; margin-bottom: .4em; font-size: 1.15em; font-weight: 700; color: #1E3A8A; }
 .rf .cp-pap .aw figcaption span { display: block; margin-top: .5em; font-size: .85em; font-weight: 500; color: #6B7280; }
+.rf .cp-tc, .rf .cp-cnn { padding: .4em .8em !important; }
+.rf #s-tech .r-hd, .rf #s-cnn .r-hd { margin-bottom: 1.1em; }
