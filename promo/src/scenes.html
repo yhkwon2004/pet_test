@@ -263,6 +263,19 @@ img { display: block; }
 #deal .tot2 .k2 { font-size: 22px; font-weight: 750; letter-spacing: .3em; color: var(--cy); }
 #deal .tot2 b { font-size: 84px; font-weight: 850; letter-spacing: -.05em; color: var(--navy); }
 #deal .tot2 .loi { font-size: 24px; font-weight: 650; color: var(--sub); }
+
+#verify .res { top: 190px; }
+#verify .r .v { font-size: 84px; }
+#verify .row5 { position: absolute; left: 100px; right: 100px; top: 430px; display: flex; justify-content: center; gap: 34px; align-items: flex-start; }
+#verify .row5 figure { display: flex; flex-direction: column; align-items: center; }
+#verify .row5 .pp2 { display: flex; gap: 12px; }
+#verify .row5 .pp2 img { height: 400px; width: auto; border-radius: 6px; background: #FFFFFF; box-shadow: 0 22px 50px rgba(16,34,74,.18), 0 0 0 1px rgba(16,34,74,.06); }
+#verify .row5 figcaption { margin-top: 18px; max-width: 640px; text-align: center; font-size: 19px; font-weight: 550; color: var(--sub); line-height: 1.4; }
+#verify .row5 figcaption b { display: block; font-size: 25px; font-weight: 800; color: var(--tx); margin-bottom: 2px; }
+#verify .row5 figure.top figcaption b { color: var(--navy); }
+/* steady text: moving copy is composited (rasterised once), no whole-screen zoom */
+[data-fx] { will-change: transform, opacity; backface-visibility: hidden; }
+body { text-rendering: geometricPrecision; }
 </style>
 </head>
 <body>
@@ -421,7 +434,7 @@ img { display: block; }
 </section>
 
 <!-- 기술 ③ 무게 → 4×4 패턴 · 114–126s -->
-<section class="scene tech" id="grid" data-t0="45" data-t1="48" data-k="0.25">
+<section class="scene tech" id="grid" data-t0="45" data-t1="47.5" data-k="0.21">
   <div class="dark"></div><div class="vig"></div>
   <div class="chap"><p class="kick" data-fx="fade" data-a=".3" data-d=".8">Technology 03<b>4×4 패턴</b></p><p class="ttl"><span class="mask"><span style="display:block" data-fx="rise" data-a=".6" data-d="1">무게 변화를 <em>4×4 그림</em>으로</span></span></p></div>
   <div class="chart" data-fx="fade" data-a="1.1" data-d=".8">
@@ -442,7 +455,7 @@ img { display: block; }
 </section>
 
 <!-- 기술 ④ RCNN · 126–139s -->
-<section class="scene tech" id="rcnn" data-t0="48" data-t1="51" data-k="0.23">
+<section class="scene tech" id="rcnn" data-t0="47.5" data-t1="50" data-k="0.19">
   <div class="dark"></div><div class="vig"></div>
   <div class="chap"><p class="kick" data-fx="fade" data-a=".3" data-d=".8">Technology 04<b>AI 판정</b></p><p class="ttl"><span class="mask"><span style="display:block" data-fx="rise" data-a=".6" data-d="1"><em>RCNN</em> — CNN은 모양을, RNN은 흐름을</span></span></p></div>
   <svg class="net" viewBox="0 0 1630 470" font-family="PV, sans-serif">
@@ -479,18 +492,20 @@ img { display: block; }
 </section>
 
 <!-- 검증 · 139–149s -->
-<section class="scene" id="verify" data-t0="51" data-t1="54" data-k="0.3">
+<section class="scene" id="verify" data-t0="50" data-t1="54">
   <div class="dark"></div><div class="vig"></div>
-  <div class="chap" data-fx="fade" data-a=".3" data-d=".8"><p class="kick">Chapter 06<b>검증</b></p></div>
+  <div class="chap" data-fx="fade" data-a=".1" data-d=".5"><p class="kick">Chapter 06<b>검증</b></p></div>
   <div class="res">
-    <div class="r" data-fx="up" data-a=".8" data-d=".8"><p class="v"><small>14.2%</small><span data-fx="count" data-a="1" data-d="1.4" data-from="14.2" data-to="2.9" data-dec="1">2.9</span><em>%</em></p><p>잔량 최대 오차 · 단일 로드셀 대비 1/5</p></div>
-    <div class="r" data-fx="up" data-a="1.4" data-d=".8"><p class="v"><span data-fx="count" data-a="1.4" data-d="1.3" data-from="200" data-to="250">250</span><em>/250</em></p><p>줄 분리 · 소진 감지 · 평균 2.8초</p></div>
-    <div class="r" data-fx="up" data-a="2.0" data-d=".8"><p class="v">1/36</p><p>센서 비용 · 90만 원+ → 2.5만 원</p></div>
+    <div class="r" data-fx="up" data-a=".2" data-d=".5"><p class="v"><small>14.2%</small>2.9<em>%</em></p><p>잔량 최대 오차 · 단일 로드셀 대비 1/5</p></div>
+    <div class="r" data-fx="up" data-a=".35" data-d=".5"><p class="v">250<em>/250</em></p><p>줄 분리 · 소진 감지 · 평균 2.8초</p></div>
+    <div class="r" data-fx="up" data-a=".5" data-d=".5"><p class="v">1/36</p><p>센서 비용 · 90만 원+ → 2.5만 원</p></div>
   </div>
-  <figure class="ph p1" data-fx="up" data-a="3" data-d=".8"><img src="../media/field-interview.png" alt=""><figcaption>현장 간호사 인터뷰<span>MVP 시연 · 피드백 → 설계 개선</span></figcaption></figure>
-  <figure class="ph p2" data-fx="up" data-a="3.5" data-d=".8"><img src="../media/award-newturn.webp" alt=""><figcaption>산업통상부장관상 · 공동 2위<span>창의적종합설계경진대회 2026 · 73개 대학 149팀</span></figcaption></figure>
-  <figure class="ph p3 c" data-fx="up" data-a="4" data-d=".8"><img src="../media/award-best.webp" alt=""><figcaption>우수논문상 2편<span>국제 AIT 2026 · 국내 학술대회</span></figcaption></figure>
-  <p class="src" data-fx="fade" data-a="1" data-d=".8">내부 모의시험 · 모의 병실 1,000회(원광대 간호학과) · 정식 성적서 2027 상 예정</p>
+  <div class="row5">
+    <figure data-fx="up" data-a=".7" data-d=".6"><div class="pp2"><img src="../media/paper-1.webp" alt=""><img src="../media/paper-2.webp" alt=""></div><figcaption><b>우수논문 원문</b>「CNN 상태 패턴 분석 기반 정맥 수액 이상 감지 알고리즘」</figcaption></figure>
+    <figure data-fx="up" data-a=".9" data-d=".6"><div class="pp2"><img src="../media/award-kr.webp" alt=""></div><figcaption><b>우수논문상 · 국내</b>(사)한국혁신산업학회 · 2026.07.06</figcaption></figure>
+    <figure class="top" data-fx="up" data-a="1.1" data-d=".6"><div class="pp2"><img src="../media/award-newturn.webp" alt=""></div><figcaption><b>산업통상부장관상 · 공동 2위</b>창의적종합설계경진대회 2026 · 73개 대학 149팀</figcaption></figure>
+  </div>
+  <p class="src" data-fx="fade" data-a=".3" data-d=".5">내부 모의시험 · 모의 병실 1,000회(원광대 간호학과) · 우수논문 2편(국내 · 국제 AIT 2026)</p>
 </section>
 
 <!-- 시장의 필요 → 실제 협약 · 149–165s (문서 원문 그대로) -->
@@ -586,7 +601,7 @@ function seek(t) {
     let o = p, tr = '';
     if (f.out != null) o *= 1 - clamp((lt - f.out) / .35);
     switch (f.fx) {
-      case 'up': tr = `translateY(${(1 - p) * 34}px)`; f.el.style.filter = p < 1 ? `blur(${(1 - p) * 6}px)` : ''; break;
+      case 'up': tr = `translateY(${(1 - p) * 34}px)`; f.el.style.filter = p < .97 ? `blur(${(1 - p) * 6}px)` : 'none'; break;
       case 'rise': tr = `translateY(${(1 - p) * 110}%)`; o = f.out != null ? o : 1; break;
       case 'left': tr = `translateX(${(1 - p) * -40}px)`; break;
       case 'right': tr = (f.el.classList.contains('news') ? 'perspective(1400px) rotateY(14deg) ' : '') + `translateX(${(1 - p) * 60}px)`; break;
@@ -604,7 +619,7 @@ function seek(t) {
     if (f.fx !== 'count' && f.fx !== 'draw' && f.fx !== 'arc') { f.el.style.opacity = o; f.el.style.transform = tr; }
   }
   // slow camera drift on every graphic scene (footage scenes keep their own motion)
-  for (const sc of scenes) if (sc.el.classList.contains('on') && !FOOTAGE.has(sc.id)) sc.el.style.transform = `scale(${1 + .03 * easeIO(clamp((t - sc.t0) / (sc.t1 - sc.t0)))})`;
+
   // letterbox slides in after the title card
   const bh = BAR * easeIO(clamp((t - 4.6) / .8));
   document.querySelector('#bars .t').style.height = bh + 'px'; document.querySelector('#bars .b').style.height = bh + 'px';

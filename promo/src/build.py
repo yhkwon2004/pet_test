@@ -3,7 +3,7 @@
 #   edit/media/bg_s3.mp4, bg_s5.mp4 · gfx_s3.mov, gfx_s5.mov   the same two scenes as separate layers
 #   edit/media/music.wav · ding_alert.wav · ding_total.wav
 #   edit/captions.srt · edit/INFU-RETRO_promo_timeline.xml (Premiere Pro / DaVinci Resolve, FCP 7 XML)
-#   export/INFU-RETRO_홍보영상.mp4   final 1920×1080 · 30 fps
+#   export/INFU-RETRO_홍보영상.mp4   final 3840×2160 · 120 fps (HEVC) + _1080p60.mp4 (H.264, for any player)
 # All times below are relative to a scene's start (scenes.json from render.cjs), so changing scene
 # lengths in scenes.html keeps captions and sounds on their scenes.
 import json, os, subprocess, wave
@@ -15,34 +15,33 @@ ROOT = os.path.dirname(HERE)
 SRC_MEDIA, EDIT, EXPORT = os.path.join(ROOT, 'media'), os.path.join(ROOT, 'edit'), os.path.join(ROOT, 'export')
 MED = os.path.join(EDIT, 'media')
 os.makedirs(EXPORT, exist_ok=True)
-FPS, SR = 30, 48000
+FPS, SR = 120, 48000
+W, H = 3840, 2160                      # 4K UHD · graphics rendered at 2× (render.cjs SCALE=2)
 SC = json.load(open(os.path.join(MED, 'scenes.json')))
 S = {s['id']: s for s in SC}
 TOTAL = max(s['t1'] for s in SC)
 OVER = ('reveal', 'demo')
 ff = lambda *a: subprocess.run(['ffmpeg', '-v', 'error', '-y', *a], check=True)
 dur = lambda i: S[i]['t1'] - S[i]['t0']
-X264 = ['-c:v', 'libx264', '-crf', '15', '-preset', 'slow', '-pix_fmt', 'yuv420p', '-r', str(FPS)]
+X264 = ['-c:v', 'libx264', '-crf', '14', '-preset', 'medium', '-pix_fmt', 'yuv420p', '-r', str(FPS)]
 
 # ── 1. footage layers ────────────────────────────────────────────────────────────────
 # s3: housing assembly render (600×600). Exploded → assembled 3/4 view (first 4.4 s), slowed 2× with
 # motion interpolation, then a slow push-in hold on that view; right half of the frame.
 d3 = dur('reveal')
-ff('-i', os.path.join(SRC_MEDIA, 'hanger.mp4'), '-f', 'lavfi', '-i', f'color=c=0xF6F9FD:s=1920x1080:r={FPS}:d={d3}',
+ff('-i', os.path.join(SRC_MEDIA, 'hanger.mp4'), '-f', 'lavfi', '-i', f'color=c=0xF6F9FD:s={W}x{H}:r={FPS}:d={d3}',
    '-filter_complex',
    f"[0:v]trim=0:4.4,setpts=1.0*(PTS-STARTPTS),minterpolate=fps={FPS}:mi_mode=mci:mc_mode=aobmc:vsbmc=1,"
-   f"scale=840:840:flags=lanczos,tpad=stop_mode=clone:stop_duration={d3},"
-   f"zoompan=z='if(lte(on,{int(4.3*FPS)}),1,1+0.0015*(on-{int(4.3*FPS)}))':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s=840x840:fps={FPS},"
-   f"null[v];[1:v][v]overlay=960:120,trim=duration={d3}[o]",
+   f"scale=1680:1680:flags=lanczos,tpad=stop_mode=clone:stop_duration={d3},"
+   f"zoompan=z='if(lte(on,{int(4.3*FPS)}),1,1+0.0015*(on-{int(4.3*FPS)}))':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s=1680x1680:fps={FPS},"
+   f"null[v];[1:v][v]overlay=1920:240,trim=duration={d3}[o]",
    '-map', '[o]', '-an', *X264, os.path.join(MED, 'bg_reveal.mp4'))
 # s5: live demo at normal speed, recut with hard cuts (no source dissolves); each alert screen held briefly.
 #   (source in, source out, hold seconds after)
 CUTS = [(1.6, 3.0, 0), (6.6, 8.4, 0), (14.6, 16.7, .4), (18.8, 20.6, .3), (22.8, 24.7, .3)]
-# the source clip has its own burned-in labels (<- 유속 빠름, 유속과다 알림 …); in-fill them so only our captions remain
-DELOGO = "delogo=x=50:y=455:w=395:h=95:enable='between(t,13.0,15.0)',delogo=x=760:y=540:w=390:h=118:enable='between(t,14.8,17.0)',delogo=x=78:y=425:w=392:h=100:enable='between(t,17.2,19.35)',delogo=x=770:y=345:w=350:h=100:enable='between(t,19.25,21.0)',delogo=x=245:y=440:w=290:h=82:enable='between(t,21.6,23.35)',delogo=x=740:y=448:w=350:h=96:enable='between(t,23.25,24.9)'"
 fc, labels = [], []
 for k, (a, b, hold) in enumerate(CUTS):
-    fc.append(f"[0:v]{DELOGO},trim={a}:{b},setpts=PTS-STARTPTS,fps={FPS},scale=1920:1080:flags=lanczos" + (f",tpad=stop_mode=clone:stop_duration={hold}" if hold else '') + f"[c{k}]")
+    fc.append(f"[0:v]trim={a}:{b},setpts=PTS-STARTPTS,fps={FPS},scale={W}:{H}:flags=lanczos" + (f",tpad=stop_mode=clone:stop_duration={hold}" if hold else '') + f"[c{k}]")
     labels.append(f'[c{k}]')
 d5 = dur('demo')
 fc.append(''.join(labels) + f"concat=n={len(CUTS)}:v=1:a=0,tpad=stop_mode=clone:stop_duration={d5},trim=duration={d5}[o]")
@@ -137,8 +136,11 @@ ff('-f', 'concat', '-safe', '0', '-i', lst, '-c', 'copy', os.path.join(TMP, 'vid
 wav(os.path.join(TMP, 'mix.wav'), mix)
 final = os.path.join(EXPORT, 'INFU-RETRO_홍보영상.mp4')
 ff('-i', os.path.join(TMP, 'video.mp4'), '-i', os.path.join(TMP, 'mix.wav'), '-map', '0:v', '-map', '1:a',
-   '-c:v', 'libx264', '-crf', '15', '-preset', 'slow', '-tune', 'film', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '256k', '-movflags', '+faststart',
-   '-metadata', 'title=INFU RETRO 홍보 영상', final)
+   '-c:v', 'libx265', '-crf', '16', '-preset', 'medium', '-tag:v', 'hvc1', '-pix_fmt', 'yuv420p', '-x265-params', 'log-level=error',
+   '-c:a', 'aac', '-b:a', '256k', '-movflags', '+faststart', '-metadata', 'title=INFU RETRO 홍보 영상', final)
+ff('-i', os.path.join(TMP, 'video.mp4'), '-i', os.path.join(TMP, 'mix.wav'), '-map', '0:v', '-map', '1:a',
+   '-vf', 'scale=1920:1080:flags=lanczos,fps=60', '-c:v', 'libx264', '-crf', '16', '-preset', 'slow', '-pix_fmt', 'yuv420p',
+   '-c:a', 'aac', '-b:a', '256k', '-movflags', '+faststart', '-metadata', 'title=INFU RETRO 홍보 영상 (1080p60)', os.path.join(EXPORT, 'INFU-RETRO_홍보영상_1080p60.mp4'))
 for f in os.listdir(TMP): os.remove(os.path.join(TMP, f))
 os.rmdir(TMP)
 
@@ -159,7 +161,7 @@ SUBS = [('cover', .2, 2.4, 'INFU RETRO — 가상의 자이로 AI 모델을 활�
         ('pid', .2, 3.4, '가상 AI 자이로 + LLM · 유전 알고리즘 PID로 흔들림 보정'),
         ('grid', .2, 2.9, '유속 편차를 4×4 그림으로'),
         ('rcnn', .2, 2.9, 'RCNN — 모양과 흐름으로 5가지 상태 판정'),
-        ('verify', .2, 2.9, '잔량 최대 오차 2.9% · 250/250 감지 · 산업통상부장관상'),
+        ('verify', .2, 3.9, '잔량 최대 오차 2.9% · 250/250 감지 · 우수논문상(국내) · 산업통상부장관상'),
         ('deal', .2, 3.9, '㈜씨엔 5,100만 원 · ㈜에스케이엠엔엠 5,000만 원 — 합계 1억 100만 원'),
         ('close', .2, 1.9, '폴대는 그대로, 수액은 놓치지 않게 — INFU RETRO')]
 ts = lambda x: '%02d:%02d:%02d,%03d' % (x // 3600, x % 3600 // 60, int(x % 60), round(x % 1 * 1000) % 1000)
@@ -170,7 +172,7 @@ open(os.path.join(EDIT, 'captions.srt'), 'w', encoding='utf-8').write(
 fr = lambda x: int(round(x * FPS))
 RATE = f'<rate><timebase>{FPS}</timebase><ntsc>FALSE</ntsc></rate>'
 url = lambda name: 'file://localhost' + quote(os.path.join(MED, name).replace(os.sep, '/'))
-VCHAR = f'<samplecharacteristics>{RATE}<width>1920</width><height>1080</height><anamorphic>FALSE</anamorphic><pixelaspectratio>square</pixelaspectratio><fielddominance>none</fielddominance></samplecharacteristics>'
+VCHAR = f'<samplecharacteristics>{RATE}<width>{W}</width><height>{H}</height><anamorphic>FALSE</anamorphic><pixelaspectratio>square</pixelaspectratio><fielddominance>none</fielddominance></samplecharacteristics>'
 ACHAR = f'<samplecharacteristics><depth>16</depth><samplerate>{SR}</samplerate></samplecharacteristics>'
 cid = 0
 def clip(name, fname, start, length, kind='video', alpha=False):
