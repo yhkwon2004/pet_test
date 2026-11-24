@@ -30,25 +30,27 @@ X264 = ['-c:v', 'libx264', '-crf', '15', '-preset', 'slow', '-pix_fmt', 'yuv420p
 d3 = dur('reveal')
 ff('-i', os.path.join(SRC_MEDIA, 'hanger.mp4'), '-f', 'lavfi', '-i', f'color=c=0xF6F9FD:s=1920x1080:r={FPS}:d={d3}',
    '-filter_complex',
-   f"[0:v]trim=0:4.4,setpts=1.36*(PTS-STARTPTS),minterpolate=fps={FPS}:mi_mode=mci:mc_mode=aobmc:vsbmc=1,"
+   f"[0:v]trim=0:4.4,setpts=1.0*(PTS-STARTPTS),minterpolate=fps={FPS}:mi_mode=mci:mc_mode=aobmc:vsbmc=1,"
    f"scale=840:840:flags=lanczos,tpad=stop_mode=clone:stop_duration={d3},"
-   f"zoompan=z='if(lte(on,{int(5.9*FPS)}),1,1+0.0015*(on-{int(5.9*FPS)}))':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s=840x840:fps={FPS},"
+   f"zoompan=z='if(lte(on,{int(4.3*FPS)}),1,1+0.0015*(on-{int(4.3*FPS)}))':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s=840x840:fps={FPS},"
    f"null[v];[1:v][v]overlay=960:120,trim=duration={d3}[o]",
    '-map', '[o]', '-an', *X264, os.path.join(MED, 'bg_reveal.mp4'))
 # s5: live demo at normal speed, recut with hard cuts (no source dissolves); each alert screen held briefly.
 #   (source in, source out, hold seconds after)
-CUTS = [(1.4, 3.6, 0), (6.5, 8.2, 0), (13.6, 16.7, .5), (18.1, 20.6, .4), (22.1, 24.7, 0)]
+CUTS = [(1.6, 3.0, 0), (6.6, 8.4, 0), (14.6, 16.7, .4), (18.8, 20.6, .3), (22.8, 24.7, .3)]
+# the source clip has its own burned-in labels (<- 유속 빠름, 유속과다 알림 …); in-fill them so only our captions remain
+DELOGO = "delogo=x=50:y=455:w=395:h=95:enable='between(t,13.0,15.0)',delogo=x=760:y=540:w=390:h=118:enable='between(t,14.8,17.0)',delogo=x=78:y=425:w=392:h=100:enable='between(t,17.2,19.35)',delogo=x=770:y=345:w=350:h=100:enable='between(t,19.25,21.0)',delogo=x=245:y=440:w=290:h=82:enable='between(t,21.6,23.35)',delogo=x=740:y=448:w=350:h=96:enable='between(t,23.25,24.9)'"
 fc, labels = [], []
 for k, (a, b, hold) in enumerate(CUTS):
-    fc.append(f"[0:v]trim={a}:{b},setpts=PTS-STARTPTS,fps={FPS},scale=1920:1080:flags=lanczos" + (f",tpad=stop_mode=clone:stop_duration={hold}" if hold else '') + f"[c{k}]")
+    fc.append(f"[0:v]{DELOGO},trim={a}:{b},setpts=PTS-STARTPTS,fps={FPS},scale=1920:1080:flags=lanczos" + (f",tpad=stop_mode=clone:stop_duration={hold}" if hold else '') + f"[c{k}]")
     labels.append(f'[c{k}]')
 d5 = dur('demo')
 fc.append(''.join(labels) + f"concat=n={len(CUTS)}:v=1:a=0,tpad=stop_mode=clone:stop_duration={d5},trim=duration={d5}[o]")
 ff('-i', os.path.join(SRC_MEDIA, 'demo-full.mp4'), '-filter_complex', ';'.join(fc), '-map', '[o]', '-an', *X264, os.path.join(MED, 'bg_demo.mp4'))
 # where each alert appears in the recut (scene-relative): segment start + time until the phone turns red
 seg_start = np.cumsum([0] + [b - a + h for a, b, h in CUTS])
-ALERTS = [('demo', seg_start[2] + 1.9), ('demo', seg_start[3] + 1.4), ('demo', seg_start[4] + 1.4)]
-TOTAL_DING = ('deal', 7.5)                    # the agreement total lands
+ALERTS = [('demo', seg_start[2] + .9), ('demo', seg_start[3] + .7), ('demo', seg_start[4] + .7)]
+TOTAL_DING = ('deal', 1.7)                    # the agreement total lands
 
 # composite the two footage scenes into finished clips
 for i in OVER:
@@ -141,27 +143,25 @@ for f in os.listdir(TMP): os.remove(os.path.join(TMP, f))
 os.rmdir(TMP)
 
 # ── 4. subtitles: (scene, start, end, text) — scene-relative, '\n' = line break ──────
-SUBS = [('cover', .3, 2.8, 'INFU RETRO — 가상의 자이로 AI 모델을 활용한 동물용 약물이상감지 시스템'),
-        ('hook', .3, 3.8, '진료가 끝난 밤, 수액은 지금도 들어가고 있지만\n지켜보는 사람은 없습니다.'),
-        ('market', .3, 6.8, '반려동물 양육가구 29.2% · 병원 이용률 95.1%\n동물병원 피해구제 접수 4년 새 3배 이상'),
-        ('law', .3, 4.8, '진료기록 열람 · 사본 발급 법안 농해수위 의결(2026.9.2)\n감시에 기록까지, 1인 수의사 혼자'),
-        ('problem', .3, 4.8, '카테터 4개 중 1개 합병증(정맥염 포함) · 동물병원 10곳 중 7곳은 수의사 1명\n사고는 순회와 순회 사이에서 납니다.'),
-        ('field', .3, 3.8, '현장 26곳 직접 방문 · 간호사 75명 중 70%가 이상 상황 자동 전송을 원했습니다.'),
-        ('reveal', .3, 5.8, 'INFU RETRO — 쓰던 폴대에 끼우기만 하면, 수액 이상을 먼저 알립니다.'),
-        ('real', .3, 3.8, 'MVP 구현 — ADS1232 & ESP32 프로세서 일체 PCB\n4×4 이미지 처리 · 연산 가속'),
-        ('demo', .2, 3.7, '실제 시연 — 폴대에 끼우고 수액백을 걸면 측정 시작'),
-        ('demo', 4.0, 7.2, '유속 빠름 → 알림 · 줄 빠짐 · 조절기 풀림 의심'),
-        ('demo', 7.6, 10.1, '유속 느림 → 알림 · 줄 꺾임 · 혈액 역류'),
-        ('demo', 10.5, 12.7, '유속 정지 → 알림 · 수액 소진 · 공기 색전'),
-        ('kalman', .3, 4.8, '로드셀 측정값의 잡음을 칼만 필터로 걸러 냅니다.'),
-        ('pid', .3, 5.8, '가상 AI 자이로 + LLM(LoRA) · 유전 알고리즘으로 튜닝한 PID가\n흔들림 오차를 상쇄합니다.'),
-        ('grid', .3, 4.8, '유속 편차를 −1 · 0 · +1로 부호화해 4×4 그림으로'),
-        ('rcnn', .3, 4.8, 'RCNN — CNN은 모양을, RNN은 흐름을 보고 5가지 상태로 판정'),
-        ('verify', .3, 4.8, '잔량 최대 오차 2.9% · 250/250 감지 (내부 모의시험)\n산업통상부장관상 · 우수논문상 2편'),
-        ('deal', .3, 3.4, '㈜씨엔 물품공급 약정 5,100만 원 · KC 인증 후 공급'),
-        ('deal', 3.6, 6.3, '㈜에스케이엠엔엠 구매의향 · 사업협력 협약 5,000만 원 · 판로 · 홍보 협력'),
-        ('deal', 6.5, 8.8, '약정 · 협약 합계 1억 100만 원 + 전남대 수의과대학 실증 LOI'),
-        ('close', .3, 3.8, '폴대는 그대로, 수액은 놓치지 않게 — INFU RETRO')]
+SUBS = [('cover', .2, 2.4, 'INFU RETRO — 가상의 자이로 AI 모델을 활용한 동물용 약물이상감지 시스템'),
+        ('hook', .2, 2.9, '진료가 끝난 밤, 수액은 지금도 들어가고 있지만\n지켜보는 사람은 없습니다.'),
+        ('market', .2, 4.9, '반려동물 양육가구 29.2% · 병원 이용률 95.1%\n동물병원 피해구제 접수 4년 새 3배 이상'),
+        ('law', .2, 3.4, '진료기록 열람 · 사본 발급 법안 농해수위 의결(2026.9.2)'),
+        ('problem', .2, 3.9, '사고는 순회와 순회 사이에서 납니다.'),
+        ('field', .2, 2.9, '현장 26곳 직접 방문 · 간호사 75명 중 70%가 자동 알림을 원했습니다.'),
+        ('reveal', .2, 4.4, 'INFU RETRO — 쓰던 폴대에 끼우기만 하면, 수액 이상을 먼저 알립니다.'),
+        ('real', .2, 2.9, 'MVP 구현 · ADS1232 & ESP32 프로세서 일체 PCB'),
+        ('demo', .1, 3.0, '실제 시연 — 폴대에 끼우고 수액백을 걸면 측정 시작'),
+        ('demo', 3.3, 5.4, '유속 빠름 → 알림 · 줄 빠짐 · 조절기 풀림 의심'),
+        ('demo', 5.8, 7.5, '유속 느림 → 알림 · 줄 꺾임 · 혈액 역류'),
+        ('demo', 7.9, 9.8, '유속 정지 → 알림 · 수액 소진 · 공기 색전'),
+        ('kalman', .2, 2.9, '칼만 필터로 로드셀 잡음 제거'),
+        ('pid', .2, 3.4, '가상 AI 자이로 + LLM · 유전 알고리즘 PID로 흔들림 보정'),
+        ('grid', .2, 2.9, '유속 편차를 4×4 그림으로'),
+        ('rcnn', .2, 2.9, 'RCNN — 모양과 흐름으로 5가지 상태 판정'),
+        ('verify', .2, 2.9, '잔량 최대 오차 2.9% · 250/250 감지 · 산업통상부장관상'),
+        ('deal', .2, 3.9, '㈜씨엔 5,100만 원 · ㈜에스케이엠엔엠 5,000만 원 — 합계 1억 100만 원'),
+        ('close', .2, 1.9, '폴대는 그대로, 수액은 놓치지 않게 — INFU RETRO')]
 ts = lambda x: '%02d:%02d:%02d,%03d' % (x // 3600, x % 3600 // 60, int(x % 60), round(x % 1 * 1000) % 1000)
 open(os.path.join(EDIT, 'captions.srt'), 'w', encoding='utf-8').write(
     ''.join(f"{k}\n{ts(S[i]['t0'] + a)} --> {ts(S[i]['t0'] + b)}\n{txt}\n\n" for k, (i, a, b, txt) in enumerate(SUBS, 1)))
