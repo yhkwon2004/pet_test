@@ -30,14 +30,14 @@ X264 = ['-c:v', 'libx264', '-crf', '15', '-preset', 'slow', '-pix_fmt', 'yuv420p
 d3 = dur('reveal')
 ff('-i', os.path.join(SRC_MEDIA, 'hanger.mp4'), '-f', 'lavfi', '-i', f'color=c=0xF6F9FD:s=1920x1080:r={FPS}:d={d3}',
    '-filter_complex',
-   f"[0:v]trim=0:4.4,setpts=2*(PTS-STARTPTS),minterpolate=fps={FPS}:mi_mode=mci:mc_mode=aobmc:vsbmc=1,"
+   f"[0:v]trim=0:4.4,setpts=1.36*(PTS-STARTPTS),minterpolate=fps={FPS}:mi_mode=mci:mc_mode=aobmc:vsbmc=1,"
    f"scale=840:840:flags=lanczos,tpad=stop_mode=clone:stop_duration={d3},"
-   f"zoompan=z='if(lte(on,{int(8.8*FPS)}),1,1+0.0015*(on-{int(8.8*FPS)}))':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s=840x840:fps={FPS},"
+   f"zoompan=z='if(lte(on,{int(5.9*FPS)}),1,1+0.0015*(on-{int(5.9*FPS)}))':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s=840x840:fps={FPS},"
    f"null[v];[1:v][v]overlay=960:120,trim=duration={d3}[o]",
    '-map', '[o]', '-an', *X264, os.path.join(MED, 'bg_reveal.mp4'))
 # s5: live demo at normal speed, recut with hard cuts (no source dissolves); each alert screen held briefly.
 #   (source in, source out, hold seconds after)
-CUTS = [(1.0, 4.6, 0), (6.3, 8.6, 0), (9.6, 11.6, 0), (13.1, 16.7, .8), (17.6, 20.6, .8), (21.6, 24.7, .8)]
+CUTS = [(1.4, 3.6, 0), (6.5, 8.2, 0), (13.6, 16.7, .5), (18.1, 20.6, .4), (22.1, 24.7, 0)]
 fc, labels = [], []
 for k, (a, b, hold) in enumerate(CUTS):
     fc.append(f"[0:v]trim={a}:{b},setpts=PTS-STARTPTS,fps={FPS},scale=1920:1080:flags=lanczos" + (f",tpad=stop_mode=clone:stop_duration={hold}" if hold else '') + f"[c{k}]")
@@ -47,8 +47,8 @@ fc.append(''.join(labels) + f"concat=n={len(CUTS)}:v=1:a=0,tpad=stop_mode=clone:
 ff('-i', os.path.join(SRC_MEDIA, 'demo-full.mp4'), '-filter_complex', ';'.join(fc), '-map', '[o]', '-an', *X264, os.path.join(MED, 'bg_demo.mp4'))
 # where each alert appears in the recut (scene-relative): segment start + time until the phone turns red
 seg_start = np.cumsum([0] + [b - a + h for a, b, h in CUTS])
-ALERTS = [('demo', seg_start[3] + 2.4), ('demo', seg_start[4] + 1.9), ('demo', seg_start[5] + 1.9)]
-TOTAL_DING = ('deal', 13.3)                    # the agreement total lands
+ALERTS = [('demo', seg_start[2] + 1.9), ('demo', seg_start[3] + 1.4), ('demo', seg_start[4] + 1.4)]
+TOTAL_DING = ('deal', 7.5)                    # the agreement total lands
 
 # composite the two footage scenes into finished clips
 for i in OVER:
@@ -61,41 +61,55 @@ note = lambda m: 440 * 2 ** ((m - 69) / 12)
 def env(n, a, r):
     e = np.ones(n); a = min(a, n // 2); r = min(r, n - a)
     e[:a] = np.linspace(0, 1, a); e[n - r:] = np.linspace(1, 0, r) ** 2; return e
-BEAT = 60 / 72; BAR = 4 * BEAT
-CHORDS = [[53, 57, 60, 64], [55, 59, 62, 67], [52, 55, 59, 62], [57, 60, 64, 67]]   # Fmaj7 · G · Em7 · Am7 — light, clinical
+# Medical-device score: bright A-major glass pad, monitor-style pulse, bell arpeggios, high ticks,
+# chimes on chapter cuts. Everything below 220 Hz is filtered out (no low-frequency content).
+from scipy.signal import butter, sosfilt
+BEAT = 60 / 100; BAR = 4 * BEAT
+CHORDS = [[64, 69, 71, 73, 76], [61, 66, 68, 69, 73], [62, 66, 69, 73, 76], [64, 68, 71, 74, 76]]   # Aadd9 · F#m9 · Dmaj7 · E7sus
 mus = np.zeros(N)
-def add(sig, start):
+def add(sig, start, g=1.0):
     i = int(start * SR); j = min(N, i + len(sig))
-    if 0 <= i < N: mus[i:j] += sig[:j - i]
+    if 0 <= i < N: mus[i:j] += g * sig[:j - i]
+rng = np.random.default_rng(3)
+def bell(m, dur=1.4, g=.04, dec=4.5):
+    nn = int(dur * SR); tt = np.arange(nn) / SR; f = note(m)
+    return g * (np.sin(2 * np.pi * f * tt) + .35 * np.sin(2 * np.pi * f * 4.01 * tt) * np.exp(-tt * 6) + .15 * np.sin(2 * np.pi * f * 2 * tt)) * np.exp(-tt * dec) * env(nn, 90, 3000)
+def beep(f=1318.5, dur=.07, g=.045):
+    nn = int(dur * SR); tt = np.arange(nn) / SR
+    return g * np.sin(2 * np.pi * f * tt) * env(nn, 120, int(.04 * SR))
+def tick(g=.018):
+    nn = int(.018 * SR); return g * rng.standard_normal(nn) * np.exp(-np.arange(nn) / SR * 260)
+sec = lambda sid: (S[sid]['t0'], S[sid]['t1'])
+def inside(x, *sids): return any(S[i]['t0'] <= x < S[i]['t1'] for i in sids)
 reveal = S['reveal']['t0']
 for k in range(int(np.ceil(TOTAL / BAR))):
-    st = k * BAR; ch = CHORDS[k % 4]; n = int((BAR + 1.2) * SR); tt = np.arange(n) / SR
-    pad = sum(np.sin(2 * np.pi * note(m) * tt) + .5 * np.sin(2 * np.pi * note(m) * 1.003 * tt) + .12 * np.sin(4 * np.pi * note(m) * tt) for m in ch)
-    add(.05 * pad * env(n, int(.9 * SR), int(1.4 * SR)), st)
-    if st >= S['market']['t0']:
-        for b in (0, 2):
-            nn = int(BEAT * 1.8 * SR); tb = np.arange(nn) / SR
-            add(.12 * np.sin(2 * np.pi * note(ch[0] - 12) * tb) * np.exp(-tb * 2.2) * env(nn, 400, 4000), st + b * BEAT)
-    if reveal <= st < TOTAL - 4:
-        for e8 in range(0, 8, 2):
-            m = ch[[0, 1, 2, 3, 2, 1, 2, 3][e8]] + 12; nn = int(.6 * SR); tp = np.arange(nn) / SR
-            add(.045 * (np.sin(2 * np.pi * note(m) * tp) + .3 * np.sin(4 * np.pi * note(m) * tp)) * np.exp(-tp * 6) * env(nn, 60, 2000), st + e8 * BEAT / 2)
-rng = np.random.default_rng(1)
-def impact(at, g=1.0):                   # low cinematic hit at a chapter opening
-    nn = int(2.2 * SR); tk = np.arange(nn) / SR; f = 34 + 26 * np.exp(-tk * 6)
-    sig = .34 * np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-tk * 2.4) + .05 * rng.standard_normal(nn) * np.exp(-tk * 9)
-    add(g * sig * env(nn, 60, int(.8 * SR)), at)
-def riser(end, dur=2.2):                 # filtered noise + rising tone into a reveal
-    nn = int(dur * SR); tk = np.arange(nn) / SR; ramp = (tk / dur) ** 2.2
-    sig = .05 * rng.standard_normal(nn) * ramp + .05 * np.sin(2 * np.pi * np.cumsum(220 + 660 * ramp) / SR) * ramp
-    add(sig, end - dur)
-for sid in ('hook', 'market', 'law', 'problem', 'field', 'reveal', 'kalman', 'verify', 'deal', 'close'):
-    impact(S[sid]['t0'], .8 if sid in ('reveal', 'close') else .5)
-riser(S['reveal']['t0']); riser(S['close']['t0'], 2.6)
-y = np.zeros_like(mus); a = np.exp(-2 * np.pi * 5200 / SR)
-for i in range(1, N): y[i] = (1 - a) * mus[i] + a * y[i - 1]
-mus = y * np.clip(t / 1.5, 0, 1) * np.clip((TOTAL - t) / 3.0, 0, 1)
-mus *= .5 / np.max(np.abs(mus))
+    st = k * BAR; ch = CHORDS[k % 4]; n = int((BAR + 1.4) * SR); tt = np.arange(n) / SR
+    pad = sum(np.sin(2 * np.pi * note(m) * tt) + .45 * np.sin(2 * np.pi * note(m) * 1.004 * tt) + .2 * np.sin(2 * np.pi * note(m + 12) * tt) for m in ch)
+    add(pad * env(n, int(.9 * SR), int(1.4 * SR)), st, .022 if st < reveal else .028)
+    for e in range(8):                                   # bell arpeggio: sparse early, 8ths from the reveal, 16ths in tech
+        x = st + e * BEAT / 2
+        if x < S['market']['t0'] or x > TOTAL - 3: continue
+        if x < reveal and e % 2: continue
+        add(bell(ch[[0, 2, 4, 1, 3, 2, 4, 1][e]] + 12, g=.03 if x < reveal else .038), x)
+        if inside(x, 'kalman', 'pid', 'grid', 'rcnn', 'verify'): add(bell(ch[[4, 1, 3, 0, 2, 4, 1, 3][e]] + 12, g=.022), x + BEAT / 4)
+    for b in range(4):                                   # light high ticks for pulse (no kick, no bass)
+        x = st + b * BEAT + BEAT / 2
+        if inside(x, 'reveal', 'real', 'kalman', 'pid', 'grid', 'rcnn', 'verify', 'deal'): add(tick(), x)
+x = S['hook']['t0']                                      # patient-monitor pulse through the problem chapters
+while x < S['reveal']['t0'] - .4:
+    add(beep(), x); x += 1.0
+for sid in ('hook', 'market', 'law', 'problem', 'field', 'real', 'kalman', 'verify', 'deal'):   # soft chime on each chapter cut
+    t0 = S[sid]['t0']; add(bell(81, 1.8, .05, 3.2), t0); add(bell(88, 1.8, .03, 3.2), t0 + .06)
+for t0, ms in ((reveal, (76, 81, 85, 88)), (S['close']['t0'], (69, 76, 81, 85, 88))):   # bigger, brighter chord at the reveal and the end
+    for i, m in enumerate(ms): add(bell(m, 3.2, .05, 1.6), t0 + i * .05)
+def swell(end, dur=1.4):                                 # airy high swell into a reveal
+    nn = int(dur * SR); tk = np.arange(nn) / SR
+    add(.05 * sosfilt(butter(2, 1800, 'hp', fs=SR, output='sos'), rng.standard_normal(nn)) * (tk / dur) ** 2.5, end - dur)
+swell(reveal); swell(S['close']['t0'], 1.8)
+mus = sosfilt(butter(4, 220, 'hp', fs=SR, output='sos'), mus)          # remove every low frequency
+mus = sosfilt(butter(2, 9500, 'lp', fs=SR, output='sos'), mus)
+mus = mus * np.clip(t / 1.0, 0, 1) * np.clip((TOTAL - t) / 2.2, 0, 1)
+mus *= .55 / np.max(np.abs(mus))
 def ding(hi=False):
     nn = int(.95 * SR); out = np.zeros(nn)
     for k, f in enumerate((1318.5, 1760.0) if not hi else (1568.0, 2093.0)):
@@ -121,33 +135,33 @@ ff('-f', 'concat', '-safe', '0', '-i', lst, '-c', 'copy', os.path.join(TMP, 'vid
 wav(os.path.join(TMP, 'mix.wav'), mix)
 final = os.path.join(EXPORT, 'INFU-RETRO_홍보영상.mp4')
 ff('-i', os.path.join(TMP, 'video.mp4'), '-i', os.path.join(TMP, 'mix.wav'), '-map', '0:v', '-map', '1:a',
-   '-c:v', 'libx264', '-crf', '18', '-preset', 'slow', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '192k', '-movflags', '+faststart',
+   '-c:v', 'libx264', '-crf', '15', '-preset', 'slow', '-tune', 'film', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '256k', '-movflags', '+faststart',
    '-metadata', 'title=INFU RETRO 홍보 영상', final)
 for f in os.listdir(TMP): os.remove(os.path.join(TMP, f))
 os.rmdir(TMP)
 
 # ── 4. subtitles: (scene, start, end, text) — scene-relative, '\n' = line break ──────
-SUBS = [('cover', .6, 4.8, 'INFU RETRO — 가상의 자이로 AI 모델을 활용한 동물용 약물이상감지 시스템'),
-        ('hook', .4, 5.8, '진료가 끝난 밤, 수액은 지금도 들어가고 있지만\n지켜보는 사람은 없습니다.'),
-        ('market', .4, 10.8, '반려동물 양육가구 29.2% · 병원 이용률 95.1%\n동물병원 피해구제 접수는 4년 새 3배 이상 늘었습니다.'),
-        ('law', .4, 10.8, '진료기록 열람 · 사본 발급 법안 농해수위 의결(2026.9.2)\n감시에 기록까지, 1인 수의사 혼자 해야 합니다.'),
-        ('problem', .4, 8.8, '입원 동물 수액 카테터 4개 중 1개에서 합병증(정맥염 포함)\n동물병원 10곳 중 7곳은 수의사 1명입니다.'),
-        ('field', .4, 7.8, '현장 26곳 직접 방문 · 간호사 75명 인터뷰\n70%가 이상 상황 자동 전송을 원했습니다.'),
-        ('reveal', .5, 9.6, 'INFU RETRO — 쓰던 폴대에 끼우기만 하면,\n수액 이상을 먼저 알립니다.'),
-        ('real', .3, 4.8, 'MVP 구현 — 로드셀 4개 모듈과\nADS1232 & ESP32 프로세서 일체 PCB(4×4 이미지 처리 · 연산 가속)'),
-        ('demo', .3, 7.6, '실제 시연 — 폴대에 끼우고 수액백을 걸면\n무게를 실시간으로 측정합니다.'),
-        ('demo', 8.0, 12.0, '유속 빠름 → 알림 · 줄 빠짐 · 조절기 풀림 의심'),
-        ('demo', 12.4, 15.8, '유속 느림 → 알림 · 줄 꺾임 · 혈액 역류 위험'),
-        ('demo', 16.2, 19.7, '유속 정지 → 알림 · 수액 소진 · 공기 색전 위험'),
-        ('kalman', .4, 12.6, '로드셀 측정값 z = w + n 의 잡음을\n칼만 필터(예측 → 이득 → 갱신)로 걸러 냅니다.'),
-        ('pid', .4, 15.6, '가상 AI 자이로가 기울기를 추정하고, LLM(LoRA)과 유전 알고리즘이\n찾은 PID 게인으로 흔들림 오차를 상쇄합니다.'),
-        ('grid', .4, 11.6, '유속 편차를 −1 · 0 · +1로 부호화해\n16개씩 모아 4×4 그림으로 만듭니다.'),
-        ('rcnn', .4, 12.6, 'RCNN — CNN은 4×4 그림의 모양을, RNN은 유속의 흐름을 보고\n두 특징을 결합해 5가지 상태로 판정합니다.'),
-        ('verify', .3, 9.6, '잔량 최대 오차 2.9% · 줄 분리 · 소진 250/250 (내부 모의시험)\n산업통상부장관상 · 우수논문상 2편'),
-        ('deal', .4, 6.2, '㈜씨엔 물품공급 약정 5,100만 원 (KC 인증 후 효력)'),
-        ('deal', 6.6, 11.2, '㈜에스케이엠엔엠 구매의향 · 사업협력 협약 5,000만 원 (비구속)'),
-        ('deal', 11.6, 15.8, '약정 · 협약 합계 1억 100만 원 · 확정 매출 아님'),
-        ('close', .4, 6.8, '폴대는 그대로, 수액은 놓치지 않게 — INFU RETRO')]
+SUBS = [('cover', .3, 2.8, 'INFU RETRO — 가상의 자이로 AI 모델을 활용한 동물용 약물이상감지 시스템'),
+        ('hook', .3, 3.8, '진료가 끝난 밤, 수액은 지금도 들어가고 있지만\n지켜보는 사람은 없습니다.'),
+        ('market', .3, 6.8, '반려동물 양육가구 29.2% · 병원 이용률 95.1%\n동물병원 피해구제 접수 4년 새 3배 이상'),
+        ('law', .3, 4.8, '진료기록 열람 · 사본 발급 법안 농해수위 의결(2026.9.2)\n감시에 기록까지, 1인 수의사 혼자'),
+        ('problem', .3, 4.8, '카테터 4개 중 1개 합병증(정맥염 포함) · 동물병원 10곳 중 7곳은 수의사 1명\n사고는 순회와 순회 사이에서 납니다.'),
+        ('field', .3, 3.8, '현장 26곳 직접 방문 · 간호사 75명 중 70%가 이상 상황 자동 전송을 원했습니다.'),
+        ('reveal', .3, 5.8, 'INFU RETRO — 쓰던 폴대에 끼우기만 하면, 수액 이상을 먼저 알립니다.'),
+        ('real', .3, 3.8, 'MVP 구현 — ADS1232 & ESP32 프로세서 일체 PCB\n4×4 이미지 처리 · 연산 가속'),
+        ('demo', .2, 3.7, '실제 시연 — 폴대에 끼우고 수액백을 걸면 측정 시작'),
+        ('demo', 4.0, 7.2, '유속 빠름 → 알림 · 줄 빠짐 · 조절기 풀림 의심'),
+        ('demo', 7.6, 10.1, '유속 느림 → 알림 · 줄 꺾임 · 혈액 역류'),
+        ('demo', 10.5, 12.7, '유속 정지 → 알림 · 수액 소진 · 공기 색전'),
+        ('kalman', .3, 4.8, '로드셀 측정값의 잡음을 칼만 필터로 걸러 냅니다.'),
+        ('pid', .3, 5.8, '가상 AI 자이로 + LLM(LoRA) · 유전 알고리즘으로 튜닝한 PID가\n흔들림 오차를 상쇄합니다.'),
+        ('grid', .3, 4.8, '유속 편차를 −1 · 0 · +1로 부호화해 4×4 그림으로'),
+        ('rcnn', .3, 4.8, 'RCNN — CNN은 모양을, RNN은 흐름을 보고 5가지 상태로 판정'),
+        ('verify', .3, 4.8, '잔량 최대 오차 2.9% · 250/250 감지 (내부 모의시험)\n산업통상부장관상 · 우수논문상 2편'),
+        ('deal', .3, 3.4, '㈜씨엔 물품공급 약정 5,100만 원 · KC 인증 후 공급'),
+        ('deal', 3.6, 6.3, '㈜에스케이엠엔엠 구매의향 · 사업협력 협약 5,000만 원 · 판로 · 홍보 협력'),
+        ('deal', 6.5, 8.8, '약정 · 협약 합계 1억 100만 원 + 전남대 수의과대학 실증 LOI'),
+        ('close', .3, 3.8, '폴대는 그대로, 수액은 놓치지 않게 — INFU RETRO')]
 ts = lambda x: '%02d:%02d:%02d,%03d' % (x // 3600, x % 3600 // 60, int(x % 60), round(x % 1 * 1000) % 1000)
 open(os.path.join(EDIT, 'captions.srt'), 'w', encoding='utf-8').write(
     ''.join(f"{k}\n{ts(S[i]['t0'] + a)} --> {ts(S[i]['t0'] + b)}\n{txt}\n\n" for k, (i, a, b, txt) in enumerate(SUBS, 1)))
