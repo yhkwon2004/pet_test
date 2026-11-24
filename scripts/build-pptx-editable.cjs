@@ -225,7 +225,13 @@ async function toPng(file) {
 async function fitImage(file, im) {
   const src = await toPng(file);
   const boxW = im.w, boxH = im.h;
-  if (im.fit !== 'cover') return { data: src.data, x: im.x, y: im.y, w: im.w, h: im.h, contain: im.fit === 'contain', nw: src.w, nh: src.h };
+  if (im.fit === 'contain' || im.fit === 'scale-down') {   // keep the picture's shape: place it at its fitted rect inside the box (object-position)
+    let sc = Math.min(boxW / src.w, boxH / src.h); if (im.fit === 'scale-down') sc = Math.min(sc, 1);
+    const w = src.w * sc, h = src.h * sc;
+    const [px, py] = (im.pos || '50% 50%').split(' ').map(v => v.endsWith('%') ? parseFloat(v) / 100 : .5);
+    return { data: src.data, x: im.x + (boxW - w) * (isNaN(px) ? .5 : px), y: im.y + (boxH - h) * (isNaN(py) ? .5 : py), w, h };
+  }
+  if (im.fit !== 'cover') return { data: src.data, x: im.x, y: im.y, w: im.w, h: im.h };
   const sc = Math.max(boxW / src.w, boxH / src.h);
   const cw = Math.round(boxW / sc), ch = Math.round(boxH / sc);
   const [px, py] = (im.pos || '50% 50%').split(' ').map(v => v.endsWith('%') ? parseFloat(v) / 100 : .5);
@@ -339,8 +345,7 @@ async function finish(file, media) {
         box = { ...im, x: ix, y: iy, w: ix2 - ix, h: iy2 - iy, fit: 'cover' };
       }
       const f = await fitImage(file, box);
-      const opt = { data: f.data, x: box.x * PX, y: box.y * PX, w: box.w * PX, h: box.h * PX, rotate: im.rot || undefined, rounding: !!im.round, altText: path.basename(im.src) };
-      if (f.contain) opt.sizing = { type: 'contain', w: box.w * PX, h: box.h * PX };
+      const opt = { data: f.data, x: f.x * PX, y: f.y * PX, w: f.w * PX, h: f.h * PX, rotate: im.rot || undefined, rounding: !!im.round, altText: path.basename(im.src) };
       if (im.alpha < .99) opt.transparency = Math.round((1 - im.alpha) * 100);
       slide.addImage(opt); stats.i++;
     }
