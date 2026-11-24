@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>INFU RETRO 홍보 영상 — 장면 그래픽</title>
+<!--
+  홍보 영상의 모든 글자 · 그래픽 · 사진 배치가 이 파일 하나에 있습니다.
+  문구를 고치려면 아래 <section> 안의 글자만 바꾸고 `node render.cjs`로 다시 렌더하세요.
+  data-a = 장면 시작 후 나타나는 시각(초), data-d = 나타나는 데 걸리는 시간(초), data-fx = 효과(up · fade · left · right · scale · zoom · draw · count)
+  실제 영상(제품 조립 렌더 · 시연)은 뒤 레이어(bg)에 따로 깔리고, 이 파일은 그 위에 얹는 그래픽입니다(.hole = 영상이 보이는 자리).
+-->
+<style>
+@font-face { font-family: 'PV'; src: url('PretendardVariable.woff2') format('woff2'); font-weight: 45 920; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; }
+body { font-family: 'PV', 'Pretendard', sans-serif; color: #111418; letter-spacing: -.02em; -webkit-font-smoothing: antialiased; }
+:root { --navy: #1E3A8A; --ink: #111418; --sub: #4B5563; --mute: #6B7280; --line: #E5E7EB; --soft: #F3F5F9; --sky: #DCE6F7; }
+.scene { position: absolute; inset: 0; display: none; overflow: hidden; }
+.scene.on { display: block; }
+.bgw { position: absolute; inset: 0; background: #FFFFFF; }
+.pad { position: absolute; left: 140px; right: 140px; top: 96px; bottom: 90px; }
+.kick { display: flex; align-items: center; gap: 16px; font-size: 26px; font-weight: 700; color: var(--navy); letter-spacing: .02em; }
+.kick::before { content: ""; width: 44px; height: 3px; background: var(--navy); }
+.kick b { font-weight: 800; }
+h2 { margin-top: 18px; font-size: 64px; font-weight: 800; line-height: 1.2; letter-spacing: -.035em; }
+h2 em { font-style: normal; color: var(--navy); }
+.src { position: absolute; left: 140px; right: 140px; bottom: 40px; font-size: 22px; color: #6B7280; font-weight: 550; }
+.tag { position: absolute; right: 48px; bottom: 36px; font-size: 18px; font-weight: 600; color: rgba(255,255,255,.75); padding: 4px 12px; border: 1px solid rgba(255,255,255,.4); border-radius: 99px; }
+img { display: block; }
+.mark { font-weight: 860; letter-spacing: -.045em; display: inline-flex; align-items: center; gap: .06em; line-height: 1; }
+.mark i { display: inline-block; width: .34em; height: .3em; background: var(--navy); clip-path: polygon(0 0, 100% 0, 50% 100%); margin: 0 .04em; transform: translateY(-.06em); }
+#fade { position: absolute; inset: 0; background: #FFFFFF; opacity: 0; pointer-events: none; z-index: 50; }
+
+/* S1 hook */
+#s1 .ph { position: absolute; inset: 0; background: url('../media/scene-night.webp') center / cover; transform-origin: 70% 50%; }
+#s1 .shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(8,10,20,.86) 0%, rgba(8,10,20,.6) 45%, rgba(8,10,20,.05) 80%); }
+#s1 .tx { position: absolute; left: 140px; top: 330px; color: #FFFFFF; }
+#s1 .k { font-size: 30px; font-weight: 600; color: #C9D3E8; }
+#s1 .l1 { margin-top: 26px; font-size: 84px; font-weight: 800; line-height: 1.16; letter-spacing: -.04em; }
+#s1 .l2 { margin-top: 34px; font-size: 46px; font-weight: 650; color: #FFFFFF; }
+#s1 .l2 b { color: #9DB7F2; font-weight: 800; }
+
+/* S2 problem */
+#s2 .cards { position: absolute; left: 0; right: 0; top: 270px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; }
+#s2 .card { height: 380px; border-radius: 22px; background: var(--soft); padding: 44px 44px 36px; display: flex; flex-direction: column; }
+#s2 .card .n { font-size: 30px; font-weight: 800; color: var(--navy); }
+#s2 .card .big { margin-top: 26px; font-size: 92px; font-weight: 850; letter-spacing: -.05em; line-height: 1; }
+#s2 .card .big small { font-size: .5em; font-weight: 800; margin-left: 6px; }
+#s2 .card p { margin-top: 26px; font-size: 30px; font-weight: 600; line-height: 1.4; color: var(--sub); }
+#s2 .card .s { margin-top: auto; font-size: 22px; color: #6B7280; font-weight: 550; }
+#s2 .bot { position: absolute; left: 0; right: 0; top: 700px; font-size: 40px; font-weight: 750; letter-spacing: -.03em; }
+#s2 .bot em { font-style: normal; color: #FFFFFF; background: var(--navy); padding: 2px 14px 6px; border-radius: 10px; }
+
+/* S3 product reveal (right half = assembly render video) */
+#s3 .lp { position: absolute; left: 0; top: 0; bottom: 0; width: 960px; background: #FFFFFF; }
+#s3 .hole { position: absolute; left: 960px; top: 0; right: 0; bottom: 0; }
+#s3 .pad { right: auto; width: 760px; }
+#s3 .mark { margin-top: 40px; font-size: 118px; }
+#s3 .sub { margin-top: 30px; font-size: 38px; font-weight: 650; line-height: 1.35; color: var(--sub); }
+#s3 .sub b { color: var(--ink); }
+#s3 ul { list-style: none; margin-top: 54px; display: grid; gap: 22px; }
+#s3 li { display: flex; align-items: center; gap: 22px; font-size: 32px; font-weight: 650; }
+#s3 li span { flex: none; width: 52px; height: 52px; border-radius: 14px; background: var(--navy); color: #FFFFFF; font-size: 24px; font-weight: 800; display: grid; place-items: center; }
+#s3 .rtag { position: absolute; right: 40px; bottom: 34px; font-size: 18px; font-weight: 600; color: #FFFFFF; background: rgba(17,20,24,.55); padding: 6px 14px; border-radius: 99px; }
+
+/* S4 real product */
+#s4 .grid { position: absolute; left: 0; right: 0; top: 250px; bottom: 30px; display: grid; grid-template-columns: 1.15fr 1fr 1fr; gap: 30px; }
+#s4 figure { position: relative; border-radius: 20px; overflow: hidden; background: var(--soft); }
+#s4 figure img { width: 100%; height: 100%; object-fit: cover; }
+#s4 figure.c img { object-fit: contain; }
+#s4 figcaption { position: absolute; left: 20px; bottom: 20px; right: 20px; padding: 14px 20px; border-radius: 14px; background: rgba(255,255,255,.94); font-size: 26px; font-weight: 750; }
+#s4 figcaption span { display: block; margin-top: 4px; font-size: 20px; font-weight: 550; color: var(--mute); }
+#s4 .pcb { background: linear-gradient(#CBCBE6, #66667F); }
+
+/* S5 demo (full-frame real footage underneath) */
+#s5 .chip { position: absolute; left: 60px; bottom: 52px; display: flex; align-items: center; gap: 14px; padding: 12px 24px; border-radius: 99px; background: var(--navy); color: #FFFFFF; font-size: 26px; font-weight: 750; }
+#s5 .chip i { width: 14px; height: 14px; border-radius: 50%; background: #FF5A5A; }
+#s5 .cap { position: absolute; left: 50%; top: 44px; transform: translateX(-50%); white-space: nowrap; padding: 16px 36px; border-radius: 16px; background: rgba(17,20,24,.82); color: #FFFFFF; font-size: 40px; font-weight: 750; letter-spacing: -.03em; }
+#s5 .cap b { color: #9DB7F2; }
+#s5 .cap .no { display: inline-grid; place-items: center; width: 44px; height: 44px; margin-right: 16px; border-radius: 50%; background: #FFFFFF; color: #111418; font-size: 26px; font-weight: 850; vertical-align: 3px; }
+#s5 .cap.alert b { color: #FFB4B4; }
+
+/* S6 technology */
+#s6 .flow { position: absolute; left: 0; right: 0; top: 262px; height: 300px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 34px; }
+#s6 .node { position: relative; border-radius: 20px; background: var(--soft); padding: 30px 28px; display: flex; flex-direction: column; }
+#s6 .node .i { font-size: 22px; font-weight: 800; color: var(--navy); }
+#s6 .node b { margin-top: 16px; font-size: 36px; font-weight: 800; letter-spacing: -.035em; line-height: 1.2; }
+#s6 .node p { margin-top: 12px; font-size: 23px; font-weight: 550; color: var(--sub); line-height: 1.4; }
+#s6 .node.hl { background: var(--navy); }
+#s6 .node.hl .i, #s6 .node.hl p { color: #C9D3E8; } #s6 .node.hl b { color: #FFFFFF; }
+#s6 .node + .node::before { content: ""; position: absolute; left: -30px; top: 50%; width: 22px; height: 22px; border-top: 4px solid #9AA9CC; border-right: 4px solid #9AA9CC; transform: translateY(-50%) rotate(45deg); }
+#s6 .px { margin-top: auto; display: grid; grid-template-columns: repeat(4, 22px); gap: 5px; }
+#s6 .px u { width: 22px; height: 22px; border-radius: 4px; background: #C7D2EA; }
+#s6 .px u.a { background: var(--navy); } #s6 .px u.b { background: #E25C5C; }
+#s6 .wave { margin-top: auto; height: 60px; }
+#s6 .res { position: absolute; left: 0; right: 0; top: 620px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 34px; }
+#s6 .r { border-top: 3px solid var(--navy); padding-top: 24px; }
+#s6 .r .v { font-size: 74px; font-weight: 850; letter-spacing: -.05em; line-height: 1; color: var(--navy); }
+#s6 .r .v small { font-size: .45em; font-weight: 750; color: var(--mute); margin-right: 14px; text-decoration: line-through; }
+#s6 .r .v em { font-style: normal; font-size: .5em; }
+#s6 .r p { margin-top: 14px; font-size: 27px; font-weight: 650; color: var(--sub); }
+
+/* S7 validation */
+#s7 .grid { position: absolute; left: 0; right: 0; top: 250px; bottom: 30px; display: grid; grid-template-columns: 1fr 1.25fr 1fr; gap: 30px; }
+#s7 figure { position: relative; border-radius: 20px; overflow: hidden; background: var(--soft); display: flex; flex-direction: column; }
+#s7 figure .im { flex: 1; min-height: 0; position: relative; }
+#s7 figure .im img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+#s7 figure .im.c img { object-fit: contain; padding: 18px; }
+#s7 figcaption { padding: 24px 26px 26px; background: #FFFFFF; border: 1px solid var(--line); border-top: 0; border-radius: 0 0 20px 20px; }
+#s7 figcaption .k { font-size: 21px; font-weight: 800; color: var(--navy); letter-spacing: .02em; }
+#s7 figcaption b { display: block; margin-top: 8px; font-size: 32px; font-weight: 800; letter-spacing: -.03em; }
+#s7 figcaption span { display: block; margin-top: 6px; font-size: 21px; font-weight: 550; color: var(--mute); }
+#s7 figure.top figcaption { background: var(--navy); border-color: var(--navy); }
+#s7 figure.top figcaption .k { color: #C9D3E8; } #s7 figure.top figcaption b { color: #FFFFFF; } #s7 figure.top figcaption span { color: #C9D3E8; }
+
+/* S8 partners & agreements */
+#s8 .docs { position: absolute; left: 0; top: 250px; width: 980px; height: 640px; }
+#s8 .doc { position: absolute; top: 0; width: 360px; height: 460px; background: #FFFFFF; border-radius: 10px; box-shadow: 0 18px 48px rgba(17,20,40,.16), 0 0 0 1px var(--line); overflow: hidden; }
+#s8 .doc img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+#s8 .d1 { left: 0; } #s8 .d2 { left: 170px; top: 60px; } #s8 .d3 { left: 470px; } #s8 .d4 { left: 640px; top: 60px; }
+#s8 .lab { position: absolute; top: 540px; width: 470px; }
+#s8 .lab .co { font-size: 30px; font-weight: 800; letter-spacing: -.03em; }
+#s8 .lab .amt { margin-top: 6px; font-size: 46px; font-weight: 850; color: var(--navy); letter-spacing: -.04em; }
+#s8 .lab .amt small { display: none; }
+#s8 .lab .q { display: inline-block; margin-top: 10px; padding: 5px 16px; border-radius: 99px; background: var(--sky); color: var(--navy); font-size: 24px; font-weight: 750; }
+#s8 .l1 { left: 0; } #s8 .l2 { left: 470px; }
+#s8 .tot { position: absolute; right: 0; top: 270px; width: 580px; height: 540px; border-radius: 24px; background: var(--navy); color: #FFFFFF; padding: 50px 50px 40px; display: flex; flex-direction: column; }
+#s8 .tot .k { font-size: 26px; font-weight: 700; color: #C9D3E8; }
+#s8 .tot .v { margin-top: 20px; font-size: 104px; font-weight: 860; letter-spacing: -.05em; line-height: 1; }
+#s8 .tot .v small { font-size: .42em; font-weight: 750; margin-left: 8px; }
+#s8 .tot ul { list-style: none; margin-top: 44px; display: grid; gap: 16px; }
+#s8 .tot li { font-size: 28px; font-weight: 650; padding-left: 26px; position: relative; }
+#s8 .tot li::before { content: ""; position: absolute; left: 0; top: 13px; width: 10px; height: 10px; border-radius: 50%; background: #9DB7F2; }
+#s8 .tot .ft { margin-top: auto; font-size: 20px; color: #C9D3E8; font-weight: 550; }
+
+/* S9 closing */
+#s9 { background: var(--navy); }
+#s9 .c { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #FFFFFF; text-align: center; }
+#s9 .mark { font-size: 150px; color: #FFFFFF; }
+#s9 .mark i { background: #9DB7F2; }
+#s9 .sl { margin-top: 44px; font-size: 52px; font-weight: 750; letter-spacing: -.035em; }
+#s9 .bd { margin-top: 64px; display: flex; gap: 18px; }
+#s9 .bd span { padding: 12px 26px; border-radius: 99px; border: 1.5px solid rgba(255,255,255,.4); font-size: 24px; font-weight: 650; color: #DCE4F5; }
+#s9 .co { position: absolute; bottom: 70px; left: 0; right: 0; text-align: center; font-size: 26px; font-weight: 700; letter-spacing: .3em; color: #AEBBDA; }
+</style>
+</head>
+<body>
+
+<!-- S1 · 0–7s · 도입 (연출 이미지) -->
+<section class="scene" id="s1" data-t0="0" data-t1="7">
+  <div class="ph" data-fx="zoom" data-a="0" data-d="7"></div>
+  <div class="shade"></div>
+  <div class="tx">
+    <p class="k" data-fx="up" data-a=".5" data-d=".8">진료가 끝난 밤, 동물병원 입원실</p>
+    <p class="l1" data-fx="up" data-a="1.2" data-d=".9">수액은 지금도<br>들어가고 있습니다</p>
+    <p class="l2" data-fx="up" data-a="3.4" data-d=".9">그런데, <b>지켜보는 사람</b>은 없습니다.</p>
+  </div>
+  <p class="tag">연출 이미지</p>
+</section>
+
+<!-- S2 · 7–17s · 문제 -->
+<section class="scene" id="s2" data-t0="7" data-t1="17">
+  <div class="bgw"></div>
+  <div class="pad">
+    <p class="kick" data-fx="left" data-a=".2" data-d=".6"><b>01</b> 문제</p>
+    <h2 data-fx="up" data-a=".4" data-d=".8">사고는 <em>순회와 순회 사이</em>에서 납니다</h2>
+    <div class="cards">
+      <div class="card" data-fx="up" data-a="1.4" data-d=".8"><p class="n">카테터 합병증</p><p class="big">4개 중 1개</p><p>입원 동물 수액 카테터<br>합병증 26.7%</p><p class="s">Haskey 2024 · 영국 19개 기관 · 정맥염 포함</p></div>
+      <div class="card" data-fx="up" data-a="2.2" data-d=".8"><p class="n">확인 간격</p><p class="big">1~2<small>시간</small></p><p>수액 눈금 확인 권고 간격<br>그 사이 이상은 다음 순회에</p><p class="s">AAHA 2024</p></div>
+      <div class="card" data-fx="up" data-a="3.0" data-d=".8"><p class="n">1인 수의사 구조</p><p class="big">10곳 중 7곳</p><p>수의사 1명이 진료 · 수술 ·<br>입원실을 함께 봅니다</p><p class="s">농식품부 2025.6 · 5,312곳 중 3,815곳</p></div>
+    </div>
+    <p class="bot" data-fx="up" data-a="4.4" data-d=".8">계속 지켜볼 수 없다면, <em>이상이 생긴 순간 먼저 알려 줘야</em> 합니다.</p>
+  </div>
+</section>
+
+<!-- S3 · 17–27s · 제품 공개 (오른쪽 = 하우징 조립 렌더 영상) -->
+<section class="scene" id="s3" data-t0="17" data-t1="27">
+  <div class="lp"></div>
+  <div class="hole"></div>
+  <div class="pad">
+    <p class="kick" data-fx="left" data-a=".2" data-d=".6"><b>02</b> 제품</p>
+    <p class="mark" data-fx="up" data-a=".5" data-d=".9">INFU<i></i>RETRO</p>
+    <p class="sub" data-fx="up" data-a="1.3" data-d=".8"><b>쓰던 폴대에 끼우기만 하면,</b><br>수액 이상을 먼저 알립니다</p>
+    <ul>
+      <li data-fx="left" data-a="2.6" data-d=".6"><span>01</span>갈고리 4개 · 수액백 4개 동시 측정</li>
+      <li data-fx="left" data-a="3.4" data-d=".6"><span>02</span>줄 분리 · 소진 5초 안에 판정</li>
+      <li data-fx="left" data-a="4.2" data-d=".6"><span>03</span>휴대폰 알림 · 조치 시각 자동 기록</li>
+      <li data-fx="left" data-a="5.0" data-d=".6"><span>04</span>폴대 · 수액 세트 교체 없음</li>
+    </ul>
+  </div>
+  <p class="rtag">하우징 3D 렌더</p>
+</section>
+
+<!-- S4 · 27–33s · 실물 -->
+<section class="scene" id="s4" data-t0="27" data-t1="33">
+  <div class="bgw"></div>
+  <div class="pad">
+    <p class="kick" data-fx="left" data-a=".2" data-d=".6"><b>02</b> 제품</p>
+    <h2 data-fx="up" data-a=".3" data-d=".7">그리고 <em>실물로</em> 만들었습니다</h2>
+    <div class="grid">
+      <figure data-fx="up" data-a=".9" data-d=".7"><img src="../media/hanger-real.webp" alt=""><figcaption>시제품 · 폴대 장착<span>수액백을 거는 그대로 측정</span></figcaption></figure>
+      <figure data-fx="up" data-a="1.4" data-d=".7"><img src="../media/mod-inside.webp" alt=""><figcaption>모듈 내부<span>로드셀 4개 · 회로 · 배터리 일체</span></figcaption></figure>
+      <figure class="c" data-fx="up" data-a="1.9" data-d=".7"><img src="../media/pcb-real.webp" alt=""><figcaption>실물 PCB<span>앞 · 뒷면 · 24-bit ADC · ESP32</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- S5 · 33–53s · 실제 시연 (전체 화면 = 시연 영상 1.25배속) -->
+<section class="scene" id="s5" data-t0="33" data-t1="53">
+  <p class="chip" data-fx="left" data-a=".2" data-d=".5"><i></i>03 · 실제 시연</p>
+  <p class="cap" data-fx="fade" data-a=".3" data-d=".3" data-out="3.4"><span class="no">1</span>폴대에 <b>끼우고</b></p>
+  <p class="cap" data-fx="fade" data-a="3.7" data-d=".3" data-out="7.6"><span class="no">2</span>수액백을 걸면 <b>무게 측정 시작</b></p>
+  <p class="cap alert" data-fx="fade" data-a="8.0" data-d=".3" data-out="12.0"><span class="no">3</span>유속 빠름 → <b>대시보드 · 휴대폰 알림</b></p>
+  <p class="cap alert" data-fx="fade" data-a="12.4" data-d=".3" data-out="15.8"><span class="no">4</span>유속 느림 → <b>알림</b></p>
+  <p class="cap alert" data-fx="fade" data-a="16.2" data-d=".3" data-out="19.7"><span class="no">5</span>유속 정지 → <b>알림</b></p>
+</section>
+
+<!-- S6 · 53–69s · 기술 -->
+<section class="scene" id="s6" data-t0="53" data-t1="69">
+  <div class="bgw"></div>
+  <div class="pad">
+    <p class="kick" data-fx="left" data-a=".2" data-d=".6"><b>04</b> 기술</p>
+    <h2 data-fx="up" data-a=".4" data-d=".8">자이로 센서 없이, <em>AI가 흔들림을 보정</em>합니다</h2>
+    <div class="flow">
+      <div class="node" data-fx="up" data-a="1.4" data-d=".6"><span class="i">01 측정</span><b>로드셀<br>4채널</b><p>24-bit ADC로<br>무게를 읽음</p></div>
+      <div class="node" data-fx="up" data-a="2.4" data-d=".6"><span class="i">02 잡음 제거</span><b>칼만 필터</b><p>원신호 잡음을<br>1차로 걸러 냄</p><svg class="wave" viewBox="0 0 220 60" preserveAspectRatio="none"><path d="M0 30 C 20 10, 30 50, 50 30 S 80 12, 100 30 S 130 46, 150 30 S 190 24, 220 30" fill="none" stroke="#1E3A8A" stroke-width="4" data-fx="draw" data-a="2.8" data-d="1"/></svg></div>
+      <div class="node hl" data-fx="up" data-a="3.4" data-d=".6"><span class="i">03 핵심</span><b>가상 AI 자이로<br>+ PID</b><p>로드셀만으로 기울기를<br>추정해 흔들림 상쇄</p></div>
+      <div class="node" data-fx="up" data-a="4.4" data-d=".6"><span class="i">04 패턴 분석</span><b>4×4 패턴<br>CNN · RNN</b><div class="px"><u class="a"></u><u></u><u></u><u class="a"></u><u></u><u class="a"></u><u></u><u></u><u></u><u></u><u class="b"></u><u></u><u class="a"></u><u></u><u></u><u class="a"></u></div></div>
+      <div class="node" data-fx="up" data-a="5.4" data-d=".6"><span class="i">05 판정</span><b>5가지 상태</b><p>정상 · 흔들림 · 당겨짐<br>· 줄 분리 · 소진</p></div>
+    </div>
+    <div class="res">
+      <div class="r" data-fx="up" data-a="7.4" data-d=".7"><p class="v"><small>14.2%</small><span data-fx="count" data-a="7.6" data-d="1.4" data-from="14.2" data-to="2.9" data-dec="1">2.9</span><em>%</em></p><p>잔량 최대 오차 · 단일 로드셀 대비 1/5</p></div>
+      <div class="r" data-fx="up" data-a="8.4" data-d=".7"><p class="v"><span data-fx="count" data-a="8.4" data-d="1.2" data-from="200" data-to="250">250</span><em>/250</em></p><p>줄 분리 · 소진 감지 · 평균 2.8초</p></div>
+      <div class="r" data-fx="up" data-a="9.4" data-d=".7"><p class="v">1/36</p><p>센서 비용 · 90만 원+ → 2.5만 원</p></div>
+    </div>
+  </div>
+  <p class="src" data-fx="fade" data-a="7.4" data-d=".6">내부 모의시험 · 모의 병실 1,000회 · 가상 AI 자이로 – INFUTECH 설계 · 우수논문 2편</p>
+</section>
+
+<!-- S7 · 69–77s · 검증 -->
+<section class="scene" id="s7" data-t0="69" data-t1="77">
+  <div class="bgw"></div>
+  <div class="pad">
+    <p class="kick" data-fx="left" data-a=".2" data-d=".6"><b>05</b> 검증</p>
+    <h2 data-fx="up" data-a=".3" data-d=".7">모의 병실에서, 학회에서, <em>전국 대회</em>에서 검증받았습니다</h2>
+    <div class="grid">
+      <figure data-fx="up" data-a=".9" data-d=".7"><div class="im"><img src="../media/field-bag.webp" alt=""></div><figcaption><p class="k">모의 병실</p><b>1,000회 내부 시험</b><span>원광대 간호학과 · 현장 26곳 방문</span></figcaption></figure>
+      <figure class="top" data-fx="up" data-a="1.4" data-d=".7"><div class="im"><img src="../media/award-newturn.webp" alt=""></div><figcaption><p class="k">창의적종합설계경진대회 · 2026</p><b>산업통상부장관상 · 공동 2위</b><span>전국 73개 대학 149팀 · 최우수상</span></figcaption></figure>
+      <figure data-fx="up" data-a="1.9" data-d=".7"><div class="im c"><img src="../media/award-best.webp" alt=""></div><figcaption><p class="k">학회</p><b>우수논문상 2편</b><span>국제 AIT 2026 · 국내 공동학술대회</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- S8 · 77–89s · 구매 협약 -->
+<section class="scene" id="s8" data-t0="77" data-t1="89">
+  <div class="bgw"></div>
+  <div class="pad">
+    <p class="kick" data-fx="left" data-a=".2" data-d=".6"><b>06</b> 구매 협약</p>
+    <h2 data-fx="up" data-a=".4" data-d=".8">유통사와 <em>공급 약정 · 구매의향 협약</em>을 맺었습니다</h2>
+    <div class="docs">
+      <div class="doc d1" data-fx="up" data-a="1.3" data-d=".7"><img src="../media/docblur-cn-1.webp" alt=""></div>
+      <div class="doc d2" data-fx="up" data-a="1.7" data-d=".7"><img src="../media/docblur-cn-2.webp" alt=""></div>
+      <div class="doc d3" data-fx="up" data-a="2.3" data-d=".7"><img src="../media/docblur-skmm-1.webp" alt=""></div>
+      <div class="doc d4" data-fx="up" data-a="2.7" data-d=".7"><img src="../media/docblur-skmm-2.webp" alt=""></div>
+      <div class="lab l1" data-fx="up" data-a="3.4" data-d=".6"><p class="co">㈜씨엔 · 물품공급 약정</p><p class="amt">5,100만 원</p><p class="q">KC 인증 후 효력</p></div>
+      <div class="lab l2" data-fx="up" data-a="3.9" data-d=".6"><p class="co">㈜에스케이엠엔엠 · 구매의향 협약</p><p class="amt">5,000만 원</p><p class="q">비구속</p></div>
+    </div>
+    <div class="tot" data-fx="right" data-a="4.8" data-d=".8">
+      <p class="k">약정 · 협약 합계</p>
+      <p class="v"><span data-fx="count" data-a="5.2" data-d="1.6" data-to="10100" data-fmt="kr">1억 100만</span><small>원</small></p>
+      <ul>
+        <li data-fx="fade" data-a="6.8" data-d=".5">확정 매출 아님 · 부가세 별도</li>
+        <li data-fx="fade" data-a="7.3" data-d=".5">+ 전남대 수의과대학 실증 LOI (합계 제외)</li>
+      </ul>
+      <p class="ft">약정 · 협약 원문 – INFUTECH (2026)</p>
+    </div>
+  </div>
+</section>
+
+<!-- S9 · 89–96s · 마무리 -->
+<section class="scene" id="s9" data-t0="89" data-t1="96">
+  <div class="c">
+    <p class="mark" data-fx="scale" data-a=".4" data-d="1">INFU<i></i>RETRO</p>
+    <p class="sl" data-fx="up" data-a="1.5" data-d=".8">폴대는 그대로, 수액은 놓치지 않게</p>
+    <div class="bd">
+      <span data-fx="up" data-a="2.6" data-d=".5">산업통상부장관상</span>
+      <span data-fx="up" data-a="2.9" data-d=".5">학생창업유망팀 300+ 선발</span>
+      <span data-fx="up" data-a="3.2" data-d=".5">우수논문 2편 · 특허 출원 3건</span>
+    </div>
+  </div>
+  <p class="co" data-fx="fade" data-a="3.6" data-d=".8">INFUTECH</p>
+</section>
+
+<div id="fade"></div>
+
+<script>
+// ── deterministic timeline: seek(t) draws the frame at t seconds (no CSS animations, so every frame is reproducible)
+const FADE = .28;                                    // fade-through-white half length at each scene cut
+const scenes = [...document.querySelectorAll('.scene')].map(el => ({ el, id: el.id, t0: +el.dataset.t0, t1: +el.dataset.t1 }));
+const TOTAL = Math.max(...scenes.map(s => s.t1));
+const ease = p => 1 - Math.pow(1 - p, 3);
+const clamp = p => Math.max(0, Math.min(1, p));
+const fx = [...document.querySelectorAll('[data-fx]')].map(el => ({ el, sc: scenes.find(s => s.el.contains(el)), fx: el.dataset.fx, a: +el.dataset.a, d: +el.dataset.d || .6, out: el.dataset.out != null ? +el.dataset.out : null, txt: el.textContent }));
+for (const f of fx) if (f.fx === 'draw') { const L = f.el.getTotalLength(); f.L = L; f.el.style.strokeDasharray = L; }
+const fmtKr = man => { const e = Math.floor(man / 10000), m = Math.round(man % 10000); return (e ? e + '억 ' : '') + (m ? m.toLocaleString('ko-KR') + '만' : (e ? '' : '0만')); };
+function seek(t) {
+  for (const s of scenes) s.el.classList.toggle('on', t >= s.t0 && t < s.t1 || (t === TOTAL && s.t1 === TOTAL));
+  for (const f of fx) {
+    if (!f.sc.el.classList.contains('on')) continue;
+    const lt = t - f.sc.t0, p = ease(clamp((lt - f.a) / f.d));
+    let o = p, tr = '';
+    if (f.out != null) o *= 1 - clamp((lt - f.out) / .3);
+    switch (f.fx) {
+      case 'up': tr = `translateY(${(1 - p) * 40}px)`; break;
+      case 'left': tr = `translateX(${(1 - p) * -50}px)`; break;
+      case 'right': tr = `translateX(${(1 - p) * 60}px)`; break;
+      case 'scale': tr = `scale(${.9 + .1 * p})`; break;
+      case 'zoom': o = 1; tr = `scale(${1 + .08 * clamp(lt / f.d)})`; break;
+      case 'draw': o = 1; f.el.style.strokeDashoffset = f.L * (1 - p); break;
+      case 'count': {
+        o = 1; const from = f.el.dataset.from != null ? +f.el.dataset.from : 0, to = +f.el.dataset.to, dec = +(f.el.dataset.dec || 0);
+        const v = from + (to - from) * p, fm = f.el.dataset.fmt;
+        f.el.textContent = fm === 'kr' ? fmtKr(Math.round(v / 100) * 100) : fm ? fm.replace('{n}', Math.max(1, Math.round(v))) : (dec ? v.toFixed(dec) : Math.round(v).toLocaleString('ko-KR'));
+        break; }
+    }
+    if (f.fx !== 'count' && f.fx !== 'draw') { f.el.style.opacity = o; f.el.style.transform = tr; }
+  }
+  // fade through white around every internal cut
+  let w = 0;
+  for (const s of scenes) { if (s.t0 > 0) w = Math.max(w, 1 - clamp(Math.abs(t - s.t0) / FADE)); }
+  w = Math.max(w, clamp((t - (TOTAL - .6)) / .6) * 0);            // no fade at the very end (closing holds on navy)
+  document.getElementById('fade').style.opacity = w;
+}
+window.SCENES = scenes.map(({ id, t0, t1 }) => ({ id, t0, t1 }));
+window.seek = seek;
+seek(+(new URLSearchParams(location.search).get('t') || 0));
+</script>
+</body>
+</html>
