@@ -2,333 +2,583 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<title>INFU RETRO 홍보 영상 — 장면 그래픽</title>
+<title>INFU RETRO 제품 소개 영상 — 장면 그래픽</title>
 <!--
-  홍보 영상의 모든 글자 · 그래픽 · 사진 배치가 이 파일 하나에 있습니다.
-  문구를 고치려면 아래 <section> 안의 글자만 바꾸고 `node render.cjs`로 다시 렌더하세요.
-  data-a = 장면 시작 후 나타나는 시각(초), data-d = 나타나는 데 걸리는 시간(초), data-fx = 효과(up · fade · left · right · scale · zoom · draw · count)
-  실제 영상(제품 조립 렌더 · 시연)은 뒤 레이어(bg)에 따로 깔리고, 이 파일은 그 위에 얹는 그래픽입니다(.hole = 영상이 보이는 자리).
+  영상의 모든 글자 · 수식 · 그래픽 · 사진 배치가 이 파일 하나에 있습니다.
+  문구를 고치려면 각 <section> 안의 글자만 바꾸고 `node render.cjs` → `python3 build.py`로 다시 만드세요.
+  data-t0 / data-t1 = 장면 시작 · 끝(초, 영상 전체 기준)
+  data-a = 장면 시작 기준 나타나는 시각(초) · data-d = 나타나는 데 걸리는 시간(초) · data-out = 사라지는 시각(초)
+  data-fx = up · rise(마스크에서 올라오기) · left · right · scale · fade · push(천천히 다가가기) · draw(선 그리기) · count(숫자 세기) · grow(막대)
+  실제 영상(하우징 조립 렌더 · 시연)은 뒤 레이어(bg)에 따로 깔리고, 이 파일은 그 위의 그래픽입니다.
 -->
 <style>
 @font-face { font-family: 'PV'; src: url('PretendardVariable.woff2') format('woff2'); font-weight: 45 920; }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; }
-body { font-family: 'PV', 'Pretendard', sans-serif; color: #111418; letter-spacing: -.02em; -webkit-font-smoothing: antialiased; }
-:root { --navy: #1E3A8A; --ink: #111418; --sub: #4B5563; --mute: #6B7280; --line: #E5E7EB; --soft: #F3F5F9; --sky: #DCE6F7; }
+body { font-family: 'PV', sans-serif; color: #0F1B2D; letter-spacing: -.02em; -webkit-font-smoothing: antialiased; }
+:root { --tx: #0F1B2D; --sub: #4A5568; --dim: #7A8699; --acc: #1D4ED8; --navy: #1E3A8A; --cy: #0EA5C6; --red: #E04F4F; --line: #E3E8F0; --soft: #F4F7FB; }
 .scene { position: absolute; inset: 0; display: none; overflow: hidden; }
 .scene.on { display: block; }
-.bgw { position: absolute; inset: 0; background: #FFFFFF; }
-.pad { position: absolute; left: 140px; right: 140px; top: 96px; bottom: 90px; }
-.kick { display: flex; align-items: center; gap: 16px; font-size: 26px; font-weight: 700; color: var(--navy); letter-spacing: .02em; }
-.kick::before { content: ""; width: 44px; height: 3px; background: var(--navy); }
-.kick b { font-weight: 800; }
-h2 { margin-top: 18px; font-size: 64px; font-weight: 800; line-height: 1.2; letter-spacing: -.035em; }
-h2 em { font-style: normal; color: var(--navy); }
-.src { position: absolute; left: 140px; right: 140px; bottom: 40px; font-size: 22px; color: #6B7280; font-weight: 550; }
-.tag { position: absolute; right: 48px; bottom: 36px; font-size: 18px; font-weight: 600; color: rgba(255,255,255,.75); padding: 4px 12px; border: 1px solid rgba(255,255,255,.4); border-radius: 99px; }
-img { display: block; }
-.mark { font-weight: 860; letter-spacing: -.045em; display: inline-flex; align-items: center; gap: .06em; line-height: 1; }
+/* clinical white stage: soft light + faint monitor grid */
+.dark { position: absolute; inset: 0; background:
+  linear-gradient(rgba(30,58,138,.035) 1px, transparent 1px) 0 0 / 48px 48px,
+  linear-gradient(90deg, rgba(30,58,138,.035) 1px, transparent 1px) 0 0 / 48px 48px,
+  radial-gradient(110% 90% at 65% 35%, #FFFFFF 0%, #F6F9FD 55%, #EAF0F8 100%); }
+.glow { position: absolute; border-radius: 50%; filter: blur(90px); opacity: .45; }
+.vig { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(255,255,255,0) 60%, rgba(214,224,238,.45) 100%); pointer-events: none; }
+.frame { position: absolute; border-radius: 22px; overflow: hidden; box-shadow: 0 30px 80px rgba(16,34,74,.16), 0 0 0 1px rgba(16,34,74,.06); background: #FFFFFF; }
+.frame .im { position: absolute; inset: 0; background-size: cover; background-position: center; transform-origin: 55% 50%; }
+.frame img { width: 100%; height: 100%; object-fit: cover; transform-origin: 55% 50%; }
+.kick { font-size: 20px; font-weight: 700; letter-spacing: .3em; color: var(--cy); text-transform: uppercase; }
+.kick b { color: var(--navy); font-weight: 750; letter-spacing: .06em; margin-left: 14px; }
+.ttl { font-size: 66px; font-weight: 780; line-height: 1.18; letter-spacing: -.035em; color: var(--tx); }
+.ttl em { font-style: normal; color: var(--acc); }
+.src { position: absolute; left: 150px; right: 150px; bottom: 44px; font-size: 19px; color: var(--dim); font-weight: 550; letter-spacing: 0; }
+.tag { position: absolute; font-size: 17px; font-weight: 650; color: #FFFFFF; letter-spacing: .06em; padding: 5px 14px; border-radius: 99px; background: rgba(15,27,45,.55); }
+.mark { font-weight: 860; letter-spacing: -.045em; display: inline-flex; align-items: center; gap: .06em; line-height: 1; color: #0F1B2D; }
 .mark i { display: inline-block; width: .34em; height: .3em; background: var(--navy); clip-path: polygon(0 0, 100% 0, 50% 100%); margin: 0 .04em; transform: translateY(-.06em); }
+.mask { overflow: hidden; display: block; padding-bottom: .08em; }
+.eq { font-family: 'Times New Roman', serif; font-size: 34px; letter-spacing: 0; white-space: nowrap; color: #0F1B2D; }
+.eq i { font-style: italic; } .eq sub, .eq sup { font-size: .62em; } .eq .n { font-family: 'PV'; font-size: 18px; font-weight: 700; color: var(--dim); margin-left: 18px; vertical-align: 4px; }
+.eqb { padding: 18px 24px 18px 26px; border-left: 3px solid var(--acc); background: rgba(255,255,255,.75); border-radius: 0 14px 14px 0; box-shadow: 0 10px 30px rgba(16,34,74,.06); }
+.eqb .t { font-size: 18px; font-weight: 750; letter-spacing: .2em; color: var(--cy); margin-bottom: 6px; }
+.eqb .note { font-size: 22px; font-weight: 550; color: var(--sub); line-height: 1.45; margin-top: 6px; }
+.panel { border-radius: 18px; background: #FFFFFF; border: 1px solid var(--line); box-shadow: 0 16px 44px rgba(16,34,74,.08); }
+img { display: block; }
+#bars { display: none; }
+#grain { display: none; }
 #fade { position: absolute; inset: 0; background: #FFFFFF; opacity: 0; pointer-events: none; z-index: 50; }
+.chap { position: absolute; left: 150px; top: 96px; }
 
-/* S1 hook */
-#s1 .ph { position: absolute; inset: 0; background: url('../media/scene-night.webp') center / cover; transform-origin: 70% 50%; }
-#s1 .shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(8,10,20,.86) 0%, rgba(8,10,20,.6) 45%, rgba(8,10,20,.05) 80%); }
-#s1 .tx { position: absolute; left: 140px; top: 330px; color: #FFFFFF; }
-#s1 .k { font-size: 30px; font-weight: 600; color: #C9D3E8; }
-#s1 .l1 { margin-top: 26px; font-size: 84px; font-weight: 800; line-height: 1.16; letter-spacing: -.04em; }
-#s1 .l2 { margin-top: 34px; font-size: 46px; font-weight: 650; color: #FFFFFF; }
-#s1 .l2 b { color: #9DB7F2; font-weight: 800; }
+/* cover — the deck's title screen, untouched */
+#cover img { position: absolute; inset: 0; width: 1920px; height: 1080px; }
 
-/* S2 problem */
-#s2 .cards { position: absolute; left: 0; right: 0; top: 270px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; }
-#s2 .card { height: 380px; border-radius: 22px; background: var(--soft); padding: 44px 44px 36px; display: flex; flex-direction: column; }
-#s2 .card .n { font-size: 30px; font-weight: 800; color: var(--navy); }
-#s2 .card .big { margin-top: 26px; font-size: 92px; font-weight: 850; letter-spacing: -.05em; line-height: 1; }
-#s2 .card .big small { font-size: .5em; font-weight: 800; margin-left: 6px; }
-#s2 .card p { margin-top: 26px; font-size: 30px; font-weight: 600; line-height: 1.4; color: var(--sub); }
-#s2 .card .s { margin-top: auto; font-size: 22px; color: #6B7280; font-weight: 550; }
-#s2 .bot { position: absolute; left: 0; right: 0; top: 700px; font-size: 40px; font-weight: 750; letter-spacing: -.03em; }
-#s2 .bot em { font-style: normal; color: #FFFFFF; background: var(--navy); padding: 2px 14px 6px; border-radius: 10px; }
+/* hook — the night ward as a framed window on a white stage */
+#hook .frame { left: 860px; top: 150px; width: 920px; height: 780px; }
+#hook .im { background-image: url('../media/scene-night.webp'); }
+#hook .tx { position: absolute; left: 150px; top: 330px; width: 680px; }
+#hook .k { font-size: 26px; font-weight: 650; color: var(--cy); letter-spacing: .02em; }
+#hook .l1 { margin-top: 22px; font-size: 80px; font-weight: 800; line-height: 1.14; letter-spacing: -.045em; }
+#hook .l2 { margin-top: 34px; font-size: 38px; font-weight: 600; color: var(--sub); }
+#hook .l2 b { color: var(--acc); font-weight: 780; }
+#hook .tag { right: 160px; bottom: 170px; }
 
-/* S3 product reveal (right half = assembly render video) */
-#s3 .lp { position: absolute; left: 0; top: 0; bottom: 0; width: 960px; background: #FFFFFF; }
-#s3 .hole { position: absolute; left: 960px; top: 0; right: 0; bottom: 0; }
-#s3 .pad { right: auto; width: 760px; }
-#s3 .mark { margin-top: 40px; font-size: 118px; }
-#s3 .sub { margin-top: 30px; font-size: 38px; font-weight: 650; line-height: 1.35; color: var(--sub); }
-#s3 .sub b { color: var(--ink); }
-#s3 ul { list-style: none; margin-top: 54px; display: grid; gap: 22px; }
-#s3 li { display: flex; align-items: center; gap: 22px; font-size: 32px; font-weight: 650; }
-#s3 li span { flex: none; width: 52px; height: 52px; border-radius: 14px; background: var(--navy); color: #FFFFFF; font-size: 24px; font-weight: 800; display: grid; place-items: center; }
-#s3 .rtag { position: absolute; right: 40px; bottom: 34px; font-size: 18px; font-weight: 600; color: #FFFFFF; background: rgba(17,20,24,.55); padding: 6px 14px; border-radius: 99px; }
+/* kinetic stats */
+.kin { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.kin .big { font-size: 220px; font-weight: 830; letter-spacing: -.06em; line-height: .95; background: linear-gradient(180deg, #1E3A8A 20%, #0EA5C6 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.kin .big small { font-size: .38em; font-weight: 760; }
+.kin .lab { margin-top: 26px; font-size: 38px; font-weight: 650; color: var(--sub); }
+.kin .lab b { color: var(--tx); font-weight: 780; }
+#market .bars3 { display: flex; align-items: flex-end; gap: 70px; height: 360px; }
+#market .bars3 div { width: 150px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; }
+#market .bars3 u { width: 100%; border-radius: 10px 10px 0 0; background: linear-gradient(180deg, #5B8DEF, #C9DAFB); transform-origin: bottom; }
+#market .bars3 div.hl u { background: linear-gradient(180deg, #E04F4F, #F8CACA); }
+#market .bars3 b { font-size: 64px; font-weight: 820; margin-bottom: 12px; }
+#market .bars3 span { margin-top: 14px; font-size: 24px; font-weight: 650; color: var(--sub); }
 
-/* S4 real product */
-#s4 .grid { position: absolute; left: 0; right: 0; top: 250px; bottom: 30px; display: grid; grid-template-columns: 1.15fr 1fr 1fr; gap: 30px; }
-#s4 figure { position: relative; border-radius: 20px; overflow: hidden; background: var(--soft); }
-#s4 figure img { width: 100%; height: 100%; object-fit: cover; }
-#s4 figure.c img { object-fit: contain; }
-#s4 figcaption { position: absolute; left: 20px; bottom: 20px; right: 20px; padding: 14px 20px; border-radius: 14px; background: rgba(255,255,255,.94); font-size: 26px; font-weight: 750; }
-#s4 figcaption span { display: block; margin-top: 4px; font-size: 20px; font-weight: 550; color: var(--mute); }
-#s4 .pcb { background: linear-gradient(#CBCBE6, #66667F); }
+/* law */
+#law .news { position: absolute; left: 150px; top: 290px; width: 860px; transform: perspective(1400px) rotateY(12deg); transform-origin: left center; }
+#law .news img { width: 100%; border-radius: 14px; box-shadow: 0 34px 80px rgba(16,34,74,.18), 0 0 0 1px rgba(16,34,74,.06); }
+#law .rt { position: absolute; left: 1090px; right: 140px; top: 270px; }
+#law .tl { position: absolute; left: 150px; right: 140px; top: 700px; height: 140px; }
+#law .tl .ln { position: absolute; left: 0; right: 0; top: 22px; height: 3px; background: var(--line); }
+#law .tl .lnf { position: absolute; left: 0; top: 22px; height: 3px; width: 100%; background: linear-gradient(90deg, var(--navy), var(--cy)); transform-origin: left; }
+#law .tl .st { position: absolute; top: 0; width: 360px; }
+#law .tl .st i { display: block; width: 20px; height: 20px; border-radius: 50%; background: #FFFFFF; border: 3px solid var(--acc); margin: 13px 0 18px; }
+#law .tl .st.now i { background: var(--acc); box-shadow: 0 0 0 8px rgba(29,78,216,.15); }
+#law .tl .st b { display: block; font-size: 26px; font-weight: 780; }
+#law .tl .st span { display: block; margin-top: 4px; font-size: 21px; font-weight: 550; color: var(--sub); }
+#law .msg { margin-top: 40px; font-size: 32px; font-weight: 650; color: var(--sub); line-height: 1.45; }
+#law .msg b { color: var(--tx); }
+#law .msg em { font-style: normal; color: var(--acc); font-weight: 780; }
 
-/* S5 demo (full-frame real footage underneath) */
-#s5 .chip { position: absolute; left: 60px; bottom: 52px; display: flex; align-items: center; gap: 14px; padding: 12px 24px; border-radius: 99px; background: var(--navy); color: #FFFFFF; font-size: 26px; font-weight: 750; }
-#s5 .chip i { width: 14px; height: 14px; border-radius: 50%; background: #FF5A5A; }
-#s5 .cap { position: absolute; left: 50%; top: 44px; transform: translateX(-50%); white-space: nowrap; padding: 16px 36px; border-radius: 16px; background: rgba(17,20,24,.82); color: #FFFFFF; font-size: 40px; font-weight: 750; letter-spacing: -.03em; }
-#s5 .cap b { color: #9DB7F2; }
-#s5 .cap .no { display: inline-grid; place-items: center; width: 44px; height: 44px; margin-right: 16px; border-radius: 50%; background: #FFFFFF; color: #111418; font-size: 26px; font-weight: 850; vertical-align: 3px; }
-#s5 .cap.alert b { color: #FFB4B4; }
+/* problem */
+#problem .row { position: absolute; left: 150px; right: 150px; top: 300px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+#problem .row > div { padding: 40px 38px 34px; border-radius: 20px; background: #FFFFFF; border: 1px solid var(--line); box-shadow: 0 18px 50px rgba(16,34,74,.08); }
+#problem .v { font-size: 96px; font-weight: 830; letter-spacing: -.055em; line-height: 1; color: var(--navy); }
+#problem .v small { font-size: .46em; }
+#problem .l { margin-top: 18px; font-size: 30px; font-weight: 750; }
+#problem .d { margin-top: 10px; font-size: 22px; font-weight: 550; color: var(--sub); line-height: 1.45; }
+#problem .s { margin-top: 14px; font-size: 18px; color: var(--dim); font-weight: 550; }
+#problem .bot { position: absolute; left: 150px; right: 150px; top: 760px; font-size: 52px; font-weight: 780; letter-spacing: -.04em; }
+#problem .bot em { font-style: normal; color: var(--acc); }
 
-/* S6 technology */
-#s6 .flow { position: absolute; left: 0; right: 0; top: 262px; height: 300px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 34px; }
-#s6 .node { position: relative; border-radius: 20px; background: var(--soft); padding: 30px 28px; display: flex; flex-direction: column; }
-#s6 .node .i { font-size: 22px; font-weight: 800; color: var(--navy); }
-#s6 .node b { margin-top: 16px; font-size: 36px; font-weight: 800; letter-spacing: -.035em; line-height: 1.2; }
-#s6 .node p { margin-top: 12px; font-size: 23px; font-weight: 550; color: var(--sub); line-height: 1.4; }
-#s6 .node.hl { background: var(--navy); }
-#s6 .node.hl .i, #s6 .node.hl p { color: #C9D3E8; } #s6 .node.hl b { color: #FFFFFF; }
-#s6 .node + .node::before { content: ""; position: absolute; left: -30px; top: 50%; width: 22px; height: 22px; border-top: 4px solid #9AA9CC; border-right: 4px solid #9AA9CC; transform: translateY(-50%) rotate(45deg); }
-#s6 .px { margin-top: auto; display: grid; grid-template-columns: repeat(4, 22px); gap: 5px; }
-#s6 .px u { width: 22px; height: 22px; border-radius: 4px; background: #C7D2EA; }
-#s6 .px u.a { background: var(--navy); } #s6 .px u.b { background: #E25C5C; }
-#s6 .wave { margin-top: auto; height: 60px; }
-#s6 .res { position: absolute; left: 0; right: 0; top: 620px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 34px; }
-#s6 .r { border-top: 3px solid var(--navy); padding-top: 24px; }
-#s6 .r .v { font-size: 74px; font-weight: 850; letter-spacing: -.05em; line-height: 1; color: var(--navy); }
-#s6 .r .v small { font-size: .45em; font-weight: 750; color: var(--mute); margin-right: 14px; text-decoration: line-through; }
-#s6 .r .v em { font-style: normal; font-size: .5em; }
-#s6 .r p { margin-top: 14px; font-size: 27px; font-weight: 650; color: var(--sub); }
+/* field — real interview photos in frames */
+#field .frame { left: 880px; top: 150px; width: 900px; height: 620px; }
+#field .f1 { background-image: url('../media/field-interview.webp'); }
+#field .f2 { background-image: url('../media/iv-jnu.webp'); }
+#field .tx { position: absolute; left: 150px; top: 250px; width: 680px; }
+#field .cap { font-size: 22px; font-weight: 650; color: var(--sub); letter-spacing: .02em; }
+#field .stats { position: absolute; left: 150px; right: 140px; top: 800px; display: flex; gap: 90px; }
+#field .stats .v { font-size: 96px; font-weight: 830; letter-spacing: -.05em; line-height: 1; color: var(--navy); }
+#field .stats p { margin-top: 10px; font-size: 25px; font-weight: 700; max-width: 600px; line-height: 1.35; }
+#field .stats p:not(.v) span { display: block; margin-top: 4px; font-size: 19px; font-weight: 550; color: var(--sub); }
+#field .stats > div { display: flex; gap: 24px; align-items: flex-end; }
+#field .ftag { right: 160px; top: 172px; }
 
-/* S7 validation */
-#s7 .grid { position: absolute; left: 0; right: 0; top: 250px; bottom: 30px; display: grid; grid-template-columns: 1fr 1.25fr 1fr; gap: 30px; }
-#s7 figure { position: relative; border-radius: 20px; overflow: hidden; background: var(--soft); display: flex; flex-direction: column; }
-#s7 figure .im { flex: 1; min-height: 0; position: relative; }
-#s7 figure .im img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-#s7 figure .im.c img { object-fit: contain; padding: 18px; }
-#s7 figcaption { padding: 24px 26px 26px; background: #FFFFFF; border: 1px solid var(--line); border-top: 0; border-radius: 0 0 20px 20px; }
-#s7 figcaption .k { font-size: 21px; font-weight: 800; color: var(--navy); letter-spacing: .02em; }
-#s7 figcaption b { display: block; margin-top: 8px; font-size: 32px; font-weight: 800; letter-spacing: -.03em; }
-#s7 figcaption span { display: block; margin-top: 6px; font-size: 21px; font-weight: 550; color: var(--mute); }
-#s7 figure.top figcaption { background: var(--navy); border-color: var(--navy); }
-#s7 figure.top figcaption .k { color: #C9D3E8; } #s7 figure.top figcaption b { color: #FFFFFF; } #s7 figure.top figcaption span { color: #C9D3E8; }
+/* reveal — render in a rounded studio window (hole) */
+#reveal .hole { position: absolute; left: 960px; top: 120px; width: 840px; height: 840px; border-radius: 28px; box-shadow: 0 0 0 3000px #F6F9FD; }
+#reveal .holeb { position: absolute; left: 960px; top: 120px; width: 840px; height: 840px; border-radius: 28px; box-shadow: inset 0 0 0 1px rgba(16,34,74,.08); }
+#reveal .tx { position: absolute; left: 150px; top: 220px; width: 760px; }
+#reveal .mark { margin-top: 26px; font-size: 124px; }
+#reveal .sub { margin-top: 30px; font-size: 36px; font-weight: 600; line-height: 1.4; color: var(--sub); }
+#reveal .sub b { color: var(--tx); }
+#reveal ul { list-style: none; margin-top: 46px; display: grid; gap: 18px; }
+#reveal li { display: flex; align-items: center; gap: 20px; font-size: 28px; font-weight: 650; }
+#reveal li span { flex: none; width: 44px; height: 44px; border-radius: 12px; background: var(--navy); color: #FFFFFF; font-size: 18px; font-weight: 800; display: grid; place-items: center; }
+#reveal .rtag { position: absolute; right: 140px; bottom: 140px; }
 
-/* S8 partners & agreements */
-#s8 .docs { position: absolute; left: 0; top: 250px; width: 980px; height: 640px; }
-#s8 .doc { position: absolute; top: 0; width: 360px; height: 460px; background: #FFFFFF; border-radius: 10px; box-shadow: 0 18px 48px rgba(17,20,40,.16), 0 0 0 1px var(--line); overflow: hidden; }
-#s8 .doc img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
-#s8 .d1 { left: 0; } #s8 .d2 { left: 170px; top: 60px; } #s8 .d3 { left: 470px; } #s8 .d4 { left: 640px; top: 60px; }
-#s8 .lab { position: absolute; top: 540px; width: 470px; }
-#s8 .lab .co { font-size: 30px; font-weight: 800; letter-spacing: -.03em; }
-#s8 .lab .amt { margin-top: 6px; font-size: 46px; font-weight: 850; color: var(--navy); letter-spacing: -.04em; }
-#s8 .lab .amt small { display: none; }
-#s8 .lab .q { display: inline-block; margin-top: 10px; padding: 5px 16px; border-radius: 99px; background: var(--sky); color: var(--navy); font-size: 24px; font-weight: 750; }
-#s8 .l1 { left: 0; } #s8 .l2 { left: 470px; }
-#s8 .tot { position: absolute; right: 0; top: 270px; width: 580px; height: 540px; border-radius: 24px; background: var(--navy); color: #FFFFFF; padding: 50px 50px 40px; display: flex; flex-direction: column; }
-#s8 .tot .k { font-size: 26px; font-weight: 700; color: #C9D3E8; }
-#s8 .tot .v { margin-top: 20px; font-size: 104px; font-weight: 860; letter-spacing: -.05em; line-height: 1; }
-#s8 .tot .v small { font-size: .42em; font-weight: 750; margin-left: 8px; }
-#s8 .tot ul { list-style: none; margin-top: 44px; display: grid; gap: 16px; }
-#s8 .tot li { font-size: 28px; font-weight: 650; padding-left: 26px; position: relative; }
-#s8 .tot li::before { content: ""; position: absolute; left: 0; top: 13px; width: 10px; height: 10px; border-radius: 50%; background: #9DB7F2; }
-#s8 .tot .ft { margin-top: auto; font-size: 20px; color: #C9D3E8; font-weight: 550; }
+/* MVP — three framed shots */
+#real .frame { left: 820px; top: 150px; width: 960px; height: 780px; }
+#real .frame.c { background: #F4F7FB; } #real .frame.c img { object-fit: contain; padding: 40px; }
+#real .lt { position: absolute; left: 150px; top: 380px; width: 620px; }
+#real .lt .k2 { font-size: 20px; font-weight: 750; color: var(--cy); letter-spacing: .3em; }
+#real .lt b { display: block; margin-top: 14px; font-size: 58px; font-weight: 800; letter-spacing: -.04em; line-height: 1.2; }
+#real .lt span { display: block; margin-top: 16px; font-size: 27px; font-weight: 600; color: var(--sub); line-height: 1.4; }
 
-/* S9 closing */
-#s9 { background: var(--navy); }
-#s9 .c { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #FFFFFF; text-align: center; }
-#s9 .mark { font-size: 150px; color: #FFFFFF; }
-#s9 .mark i { background: #9DB7F2; }
-#s9 .sl { margin-top: 44px; font-size: 52px; font-weight: 750; letter-spacing: -.035em; }
-#s9 .bd { margin-top: 64px; display: flex; gap: 18px; }
-#s9 .bd span { padding: 12px 26px; border-radius: 99px; border: 1.5px solid rgba(255,255,255,.4); font-size: 24px; font-weight: 650; color: #DCE4F5; }
-#s9 .co { position: absolute; bottom: 70px; left: 0; right: 0; text-align: center; font-size: 26px; font-weight: 700; letter-spacing: .3em; color: #AEBBDA; }
+/* demo (full-frame footage) */
+#demo .chip { position: absolute; right: 60px; top: 50px; font-size: 18px; font-weight: 750; letter-spacing: .25em; color: var(--navy); display: flex; align-items: center; gap: 12px; padding: 10px 20px; border-radius: 99px; background: rgba(255,255,255,.92); box-shadow: 0 8px 24px rgba(16,34,74,.15); }
+#demo .chip i { width: 12px; height: 12px; border-radius: 50%; background: var(--red); }
+#demo .topg { display: none; }
+#demo .cap { position: absolute; left: 60px; top: 50px; padding: 22px 30px 24px; border-radius: 18px; background: rgba(255,255,255,.93); box-shadow: 0 16px 40px rgba(16,34,74,.18); }
+#demo .cap .no { font-size: 18px; font-weight: 750; letter-spacing: .25em; color: var(--cy); }
+#demo .cap b { display: block; margin-top: 6px; font-size: 44px; font-weight: 800; letter-spacing: -.035em; }
+#demo .cap .risk { display: inline-block; margin-top: 12px; padding: 6px 16px 8px; border-radius: 10px; background: #FDECEC; font-size: 28px; font-weight: 750; color: #C03535; }
+#demo .cap .risk::before { content: "위험 "; font-weight: 850; }
+
+/* tech */
+.tech .ttl { margin-top: 14px; font-size: 56px; }
+#kalman .chart { position: absolute; left: 150px; top: 330px; width: 900px; height: 520px; }
+#kalman .chart svg { width: 900px; height: 470px; overflow: visible; }
+#kalman .lg { display: flex; gap: 34px; font-size: 21px; font-weight: 600; color: var(--sub); }
+#kalman .lg i { display: inline-block; width: 30px; height: 4px; border-radius: 3px; vertical-align: 6px; margin-right: 10px; }
+#kalman .eqs { position: absolute; left: 1120px; right: 140px; top: 300px; display: grid; gap: 18px; }
+#pid .flow { position: absolute; left: 150px; right: 140px; top: 300px; display: grid; grid-template-columns: 1fr 1.3fr 1fr; gap: 30px; height: 370px; }
+#pid .box { padding: 26px 28px; display: flex; flex-direction: column; }
+#pid .box .t { font-size: 17px; font-weight: 750; letter-spacing: .2em; color: var(--cy); }
+#pid .box b { margin-top: 10px; font-size: 31px; font-weight: 800; letter-spacing: -.03em; }
+#pid .box p { margin-top: 12px; font-size: 22px; font-weight: 550; color: var(--sub); line-height: 1.45; }
+#pid .box.hl { background: linear-gradient(160deg, #EEF4FF, #FFFFFF); border-color: #BFD3FB; position: relative; }
+#pid .gen { position: absolute; right: 28px; top: 24px; font-size: 17px; font-weight: 750; letter-spacing: .2em; color: var(--dim); }
+#pid .gen b { font-size: 30px; color: var(--acc); margin: 0 0 0 8px; letter-spacing: 0; display: inline; }
+#pid .loop { display: flex; gap: 8px; margin-top: 14px; }
+#pid .loop span { flex: 1; text-align: center; padding: 7px 0; border-radius: 8px; background: #FFFFFF; border: 1px solid #BFD3FB; font-size: 19px; font-weight: 700; color: var(--navy); }
+#pid .box svg { margin-top: 8px; width: 100%; height: 150px; overflow: visible; }
+#pid .eqs { position: absolute; left: 150px; right: 140px; top: 710px; display: grid; grid-template-columns: 1fr 1.15fr; gap: 40px; }
+#grid .chart { position: absolute; left: 150px; top: 330px; width: 820px; height: 270px; }
+#grid .chart svg { width: 820px; height: 270px; overflow: visible; }
+#grid .seq { position: absolute; left: 150px; top: 640px; width: 820px; display: grid; grid-template-columns: repeat(16, 1fr); gap: 6px; }
+#grid .seq span, #grid .mat span { border-radius: 7px; display: grid; place-items: center; font-family: 'Times New Roman', serif; font-weight: 700; color: #4A5568; background: #E9EFF8; border: 1px solid #D5DFEE; }
+#grid .seq span { height: 50px; font-size: 22px; }
+#grid .seq span.p, #grid .mat span.p { background: var(--acc); border-color: var(--acc); color: #FFFFFF; box-shadow: 0 6px 18px rgba(29,78,216,.3); }
+#grid .seq span.m, #grid .mat span.m { background: var(--red); border-color: var(--red); color: #FFFFFF; box-shadow: 0 6px 18px rgba(224,79,79,.3); }
+#grid .seql { position: absolute; left: 150px; top: 712px; font-size: 21px; font-weight: 550; color: var(--sub); }
+#grid .mat { position: absolute; left: 1030px; top: 330px; display: grid; grid-template-columns: repeat(4, 80px); gap: 8px; }
+#grid .mat span { height: 80px; font-size: 28px; }
+#grid .matl { position: absolute; left: 1030px; top: 690px; width: 344px; text-align: center; font-size: 22px; font-weight: 650; color: var(--sub); }
+#grid .eqs { position: absolute; left: 1420px; right: 110px; top: 300px; display: grid; gap: 14px; }
+#grid .eqs .eq { font-size: 25px; }
+#rcnn svg.net { position: absolute; left: 150px; top: 290px; width: 1630px; height: 470px; overflow: visible; }
+#rcnn .eqs { position: absolute; left: 150px; right: 140px; top: 790px; display: grid; grid-template-columns: 1fr 1.25fr; gap: 40px; }
+
+/* verify */
+#verify .res { position: absolute; left: 150px; right: 140px; top: 220px; display: grid; grid-template-columns: repeat(3, 1fr); }
+#verify .r { padding: 0 40px; border-left: 1px solid var(--line); }
+#verify .r:first-child { border-left: 0; padding-left: 0; }
+#verify .r .v { font-size: 96px; font-weight: 830; letter-spacing: -.055em; line-height: 1; color: var(--navy); }
+#verify .r .v small { font-size: .36em; font-weight: 700; color: var(--dim); margin-right: 14px; text-decoration: line-through; }
+#verify .r .v em { font-style: normal; font-size: .45em; color: var(--sub); }
+#verify .r p { margin-top: 14px; font-size: 24px; font-weight: 600; color: var(--sub); }
+#verify .ph { position: absolute; top: 480px; height: 400px; border-radius: 18px; overflow: hidden; box-shadow: 0 24px 60px rgba(16,34,74,.14); background: #FFFFFF; }
+#verify .ph img { width: 100%; height: calc(100% - 84px); object-fit: cover; }
+#verify .ph.c img { object-fit: contain; padding: 16px; background: #F4F7FB; }
+#verify .ph figcaption { position: absolute; left: 0; right: 0; bottom: 0; height: 84px; padding: 14px 22px; background: #FFFFFF; font-size: 23px; font-weight: 780; }
+#verify .ph figcaption span { display: block; font-size: 17px; font-weight: 550; color: var(--sub); margin-top: 2px; }
+#verify .ph.top figcaption { background: var(--navy); color: #FFFFFF; } #verify .ph.top figcaption span { color: #C9D6F2; }
+#verify .p1 { left: 150px; width: 470px; } #verify .p2 { left: 650px; width: 600px; } #verify .p3 { left: 1280px; width: 500px; }
+
+/* deal — documents sharp on a light stage */
+#deal .spot { position: absolute; inset: 0; background: radial-gradient(60% 75% at 32% 55%, rgba(14,165,198,.10), rgba(255,255,255,0) 70%); }
+#deal .pg { position: absolute; top: 150px; height: 790px; border-radius: 6px; overflow: hidden; box-shadow: 0 40px 90px rgba(16,34,74,.22), 0 0 0 1px rgba(16,34,74,.06); background: #FFFFFF; }
+#deal .pg img { height: 100%; width: auto; }
+#deal .a1, #deal .b1 { left: 150px; } #deal .a2 { left: 730px; } #deal .b2 { left: 790px; }
+#deal .lab { position: absolute; left: 1390px; right: 90px; top: 320px; }
+#deal .lab .k2 { font-size: 19px; font-weight: 750; letter-spacing: .3em; color: var(--cy); }
+#deal .lab .co { margin-top: 16px; font-size: 40px; font-weight: 800; letter-spacing: -.035em; line-height: 1.25; }
+#deal .lab .amt { margin-top: 24px; font-size: 80px; font-weight: 830; letter-spacing: -.05em; color: var(--navy); }
+#deal .lab .q { display: inline-block; margin-top: 14px; padding: 6px 18px; border-radius: 99px; background: #E6EEFF; font-size: 24px; font-weight: 750; color: var(--acc); }
+#deal .tot { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+#deal .tot .k2 { font-size: 22px; font-weight: 750; letter-spacing: .35em; color: var(--cy); }
+#deal .tot .v { margin-top: 22px; font-size: 190px; font-weight: 850; letter-spacing: -.06em; line-height: 1; background: linear-gradient(180deg, #1E3A8A 25%, #0EA5C6 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+#deal .tot .v small { font-size: .32em; }
+#deal .tot p { margin-top: 26px; font-size: 28px; font-weight: 600; color: var(--sub); }
+#deal .tot p b { color: var(--tx); }
+
+/* close */
+#close .c { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+#close .mark { font-size: 156px; }
+#close .sl { margin-top: 44px; font-size: 48px; font-weight: 700; letter-spacing: -.03em; color: var(--tx); }
+#close .bd { margin-top: 60px; display: flex; gap: 40px; font-size: 21px; font-weight: 650; color: var(--sub); letter-spacing: .04em; }
+#close .bd span + span::before { content: "·"; margin-right: 40px; color: var(--dim); }
+#close .co { position: absolute; bottom: 110px; left: 0; right: 0; text-align: center; font-size: 22px; font-weight: 750; letter-spacing: .5em; color: var(--navy); }
 </style>
 </head>
 <body>
 
-<!-- S1 · 0–7s · 도입 (연출 이미지) -->
-<section class="scene" id="s1" data-t0="0" data-t1="7">
-  <div class="ph" data-fx="zoom" data-a="0" data-d="7"></div>
-  <div class="shade"></div>
+<!-- 표지 · 0–5s (발표 자료 표지 그대로) -->
+<section class="scene" id="cover" data-t0="0" data-t1="5">
+  <img src="../media/cover.png" alt="" data-fx="fade" data-a="0" data-d="1">
+</section>
+
+<!-- 도입 · 5–11s (연출 이미지) -->
+<section class="scene" id="hook" data-t0="5" data-t1="11">
+  <div class="dark"></div><div class="glow" style="left:900px;top:200px;width:800px;height:600px;background:#CFE6F5"></div>
+  <div class="frame" data-fx="up" data-a=".2" data-d="1"><div class="im" data-fx="push" data-a="0" data-d="6" data-z=".08"></div><p class="tag" style="right:20px;bottom:20px">연출 이미지</p></div>
   <div class="tx">
-    <p class="k" data-fx="up" data-a=".5" data-d=".8">진료가 끝난 밤, 동물병원 입원실</p>
-    <p class="l1" data-fx="up" data-a="1.2" data-d=".9">수액은 지금도<br>들어가고 있습니다</p>
-    <p class="l2" data-fx="up" data-a="3.4" data-d=".9">그런데, <b>지켜보는 사람</b>은 없습니다.</p>
-  </div>
-  <p class="tag">연출 이미지</p>
-</section>
-
-<!-- S2 · 7–17s · 문제 -->
-<section class="scene" id="s2" data-t0="7" data-t1="17">
-  <div class="bgw"></div>
-  <div class="pad">
-    <p class="kick" data-fx="left" data-a=".2" data-d=".6"><b>01</b> 문제</p>
-    <h2 data-fx="up" data-a=".4" data-d=".8">사고는 <em>순회와 순회 사이</em>에서 납니다</h2>
-    <div class="cards">
-      <div class="card" data-fx="up" data-a="1.4" data-d=".8"><p class="n">카테터 합병증</p><p class="big">4개 중 1개</p><p>입원 동물 수액 카테터<br>합병증 26.7%</p><p class="s">Haskey 2024 · 영국 19개 기관 · 정맥염 포함</p></div>
-      <div class="card" data-fx="up" data-a="2.2" data-d=".8"><p class="n">확인 간격</p><p class="big">1~2<small>시간</small></p><p>수액 눈금 확인 권고 간격<br>그 사이 이상은 다음 순회에</p><p class="s">AAHA 2024</p></div>
-      <div class="card" data-fx="up" data-a="3.0" data-d=".8"><p class="n">1인 수의사 구조</p><p class="big">10곳 중 7곳</p><p>수의사 1명이 진료 · 수술 ·<br>입원실을 함께 봅니다</p><p class="s">농식품부 2025.6 · 5,312곳 중 3,815곳</p></div>
-    </div>
-    <p class="bot" data-fx="up" data-a="4.4" data-d=".8">계속 지켜볼 수 없다면, <em>이상이 생긴 순간 먼저 알려 줘야</em> 합니다.</p>
+    <p class="k" data-fx="up" data-a=".5" data-d="1">진료가 끝난 밤, 동물병원 입원실</p>
+    <p class="l1"><span class="mask"><span style="display:block" data-fx="rise" data-a="1" data-d="1">수액은 지금도</span></span><span class="mask"><span style="display:block" data-fx="rise" data-a="1.3" data-d="1">들어가고 있습니다</span></span></p>
+    <p class="l2" data-fx="up" data-a="3.1" data-d="1">그런데, <b>지켜보는 사람</b>은 없습니다.</p>
   </div>
 </section>
 
-<!-- S3 · 17–27s · 제품 공개 (오른쪽 = 하우징 조립 렌더 영상) -->
-<section class="scene" id="s3" data-t0="17" data-t1="27">
-  <div class="lp"></div>
-  <div class="hole"></div>
-  <div class="pad">
-    <p class="kick" data-fx="left" data-a=".2" data-d=".6"><b>02</b> 제품</p>
-    <p class="mark" data-fx="up" data-a=".5" data-d=".9">INFU<i></i>RETRO</p>
-    <p class="sub" data-fx="up" data-a="1.3" data-d=".8"><b>쓰던 폴대에 끼우기만 하면,</b><br>수액 이상을 먼저 알립니다</p>
+<!-- 시장의 변화 · 11–22s -->
+<section class="scene" id="market" data-t0="11" data-t1="22">
+  <div class="dark"></div>
+  <div class="glow" style="left:620px;top:260px;width:680px;height:520px;background:#2A4AB0"></div><div class="vig"></div>
+  <div class="chap" data-fx="fade" data-a=".3" data-d=".8"><p class="kick">Chapter 01<b>시장의 변화</b></p></div>
+  <div class="kin" data-fx="scale" data-a=".5" data-d="1" data-out="3.3"><p class="big"><span data-fx="count" data-a=".6" data-d="1.6" data-to="29.2" data-dec="1">29.2</span><small>%</small></p><p class="lab"><b>반려동물 양육가구</b> · 역대 최고</p></div>
+  <div class="kin" data-fx="scale" data-a="3.6" data-d="1" data-out="6.4"><p class="big"><span data-fx="count" data-a="3.7" data-d="1.6" data-to="95.1" data-dec="1">95.1</span><small>%</small></p><p class="lab">양육가구의 <b>최근 1년 동물병원 이용률</b></p></div>
+  <div class="kin" data-fx="fade" data-a="6.7" data-d=".6">
+    <div class="bars3"><div><b>9</b><u data-fx="grow" data-a="6.9" data-d="1" style="height:52px"></u><span>2021</span></div><div><b>27</b><u data-fx="grow" data-a="7.2" data-d="1" style="height:156px"></u><span>2025</span></div><div class="hl"><b>45</b><u data-fx="grow" data-a="7.5" data-d="1" style="height:260px"></u><span>2026 상반기</span></div></div>
+    <p class="lab" data-fx="up" data-a="8" data-d=".7">동물병원 <b>피해구제 접수</b> · 4년 새 3배 이상</p>
+  </div>
+  <p class="src" data-fx="fade" data-a=".8" data-d=".8">농식품부 「2025년 반려동물 양육현황 조사」 · 한국소비자원 2026.9 · 국내 동물병원 5,312곳(농식품부 2025.6) · 세계 동물 의료시장 69조 원(IMARC 2025)</p>
+</section>
+
+<!-- 제도의 변화 · 22–33s -->
+<section class="scene" id="law" data-t0="22" data-t1="33">
+  <div class="dark"></div><div class="glow" style="left:120px;top:250px;width:900px;height:400px;background:#22408F"></div><div class="vig"></div>
+  <div class="chap" data-fx="fade" data-a=".3" data-d=".8"><p class="kick">Chapter 02<b>제도의 변화</b></p></div>
+  <div class="news" data-fx="right" data-a=".8" data-d="1.2"><img src="../media/news-dvm.webp" alt=""></div>
+  <div class="rt">
+    <p class="ttl"><span class="mask"><span style="display:block" data-fx="rise" data-a="1.4" data-d="1">진료 <em>기록 · 정보 제공</em>,</span></span><span class="mask"><span style="display:block" data-fx="rise" data-a="1.7" data-d="1">법적 의무가 됩니다</span></span></p>
+    <p class="msg" data-fx="up" data-a="6.6" data-d=".9">기록이 있으면 분쟁 해결률 <em>1.5배</em> <span style="color:var(--dim);font-size:22px">(19.5% → 30%)</span><br><b>감시에 기록까지, 1인 수의사 혼자.</b></p>
+  </div>
+  <div class="tl">
+    <div class="ln"></div><div class="lnf" data-fx="grow" data-a="2.6" data-d="3"></div>
+    <div class="st" style="left:0" data-fx="up" data-a="2.6" data-d=".6"><i></i><b>현행 · 처치 기록 의무</b><span>수의사법 제13조</span></div>
+    <div class="st now" style="left:440px" data-fx="up" data-a="3.4" data-d=".6"><i></i><b>2026.9.2 농해수위 의결</b><span>진료기록 열람 · 사본 발급</span></div>
+    <div class="st" style="left:880px" data-fx="up" data-a="4.2" data-d=".6"><i></i><b>법사위 · 본회의</b><span>심사 대기</span></div>
+    <div class="st" style="left:1320px;width:300px" data-fx="up" data-a="5.0" data-d=".6"><i></i><b>공포 1년 뒤 시행</b><span>모든 동물병원</span></div>
+  </div>
+  <p class="src" data-fx="fade" data-a="1" data-d=".8">수의사법 제13조 · 농해수위 대안(2026.9.2) · 데일리벳 2026.8.27 · 한국소비자원 2026.9(80건 · 41건, 소표본 · 인과 아님)</p>
+</section>
+
+<!-- 현장의 문제 · 33–42s -->
+<section class="scene" id="problem" data-t0="33" data-t1="42">
+  <div class="dark"></div><div class="vig"></div>
+  <div class="chap" data-fx="fade" data-a=".3" data-d=".8"><p class="kick">Chapter 03<b>현장의 문제</b></p></div>
+  <div class="row">
+    <div data-fx="up" data-a=".8" data-d=".9"><p class="v">4개 중 1개</p><p class="l">카테터 합병증</p><p class="d">입원 동물 수액 카테터 26.7%</p><p class="s">Haskey 2024 · 영국 19개 기관 · 정맥염 포함</p></div>
+    <div data-fx="up" data-a="1.6" data-d=".9"><p class="v">1~2<small>시간</small></p><p class="l">수액 확인 간격</p><p class="d">그 사이 이상은 다음 순회에서야</p><p class="s">AAHA 2024</p></div>
+    <div data-fx="up" data-a="2.4" data-d=".9"><p class="v">10곳 중 7곳</p><p class="l">수의사 1명</p><p class="d">진료 · 수술 · 입원실을 혼자</p><p class="s">농식품부 2025.6 · 5,312곳 중 3,815곳</p></div>
+  </div>
+  <p class="bot"><span class="mask"><span style="display:block" data-fx="rise" data-a="4.4" data-d="1">사고는 <em>순회와 순회 사이</em>에서 납니다.</span></span></p>
+</section>
+
+<!-- 현장 인터뷰 · 42–50s (실제 사진) -->
+<section class="scene" id="field" data-t0="42" data-t1="50">
+  <div class="dark"></div><div class="vig"></div>
+  <div class="chap" data-fx="fade" data-a=".3" data-d=".8"><p class="kick">Chapter 04<b>현장 검증</b></p></div>
+  <div class="frame" data-fx="up" data-a=".3" data-d="1"><div class="im f1" data-fx="push" data-a="0" data-d="4.4" data-z=".06"></div><div class="im f2" data-fx="fade" data-a="4" data-d=".8"></div>
+    <p class="tag" style="left:20px;bottom:20px" data-fx="fade" data-a=".8" data-d=".5" data-out="3.8">병원 현장 간호사 인터뷰 · 실제 사진</p><p class="tag" style="left:20px;bottom:20px" data-fx="fade" data-a="4.4" data-d=".5">전남대 수의과대학 · 실제 사진</p></div>
+  <div class="tx"><p class="ttl"><span class="mask"><span style="display:block" data-fx="rise" data-a=".9" data-d="1">MVP를 들고,</span></span><span class="mask"><span style="display:block" data-fx="rise" data-a="1.2" data-d="1"><em>현장에 직접</em></span></span><span class="mask"><span style="display:block" data-fx="rise" data-a="1.5" data-d="1">물었습니다</span></span></p></div>
+  <div class="stats">
+    <div data-fx="up" data-a="4.6" data-d=".8"><p class="v"><span data-fx="count" data-a="4.6" data-d="1.2" data-to="26">26</span>곳</p><p>동물병원 · 병원 직접 방문<span>호남권 반려동물병원 16 · 전북 병원 10</span></p></div>
+    <div data-fx="up" data-a="5.4" data-d=".8"><p class="v"><span data-fx="count" data-a="5.4" data-d="1.2" data-to="70">70</span>%</p><p>"이상 상황을 스테이션으로 자동 전송해야"<span>현장 간호사 75명 인터뷰 · 설문 (INFUTECH 자체 조사)</span></p></div>
+  </div>
+</section>
+
+<!-- 제품 공개 · 50–60s (오른쪽 = 어둡게 처리한 하우징 조립 렌더) -->
+<section class="scene" id="reveal" data-t0="50" data-t1="60">
+  <div class="hole"></div><div class="holeb"></div>
+  <div class="tx">
+    <p class="kick" data-fx="fade" data-a=".4" data-d=".8">Chapter 05<b>제품</b></p>
+    <p class="mark"><span class="mask"><span style="display:block" data-fx="rise" data-a=".8" data-d="1.2">INFU<i></i>RETRO</span></span></p>
+    <p class="sub" data-fx="up" data-a="1.8" data-d=".9"><b>쓰던 폴대에 끼우기만 하면,</b><br>수액 이상을 먼저 알립니다</p>
     <ul>
-      <li data-fx="left" data-a="2.6" data-d=".6"><span>01</span>갈고리 4개 · 수액백 4개 동시 측정</li>
-      <li data-fx="left" data-a="3.4" data-d=".6"><span>02</span>줄 분리 · 소진 5초 안에 판정</li>
-      <li data-fx="left" data-a="4.2" data-d=".6"><span>03</span>휴대폰 알림 · 조치 시각 자동 기록</li>
-      <li data-fx="left" data-a="5.0" data-d=".6"><span>04</span>폴대 · 수액 세트 교체 없음</li>
+      <li data-fx="left" data-a="3.0" data-d=".7"><span>01</span>갈고리 4개 · 수액백 4개 동시 측정</li>
+      <li data-fx="left" data-a="3.7" data-d=".7"><span>02</span>줄 분리 · 소진 5초 안에 판정</li>
+      <li data-fx="left" data-a="4.4" data-d=".7"><span>03</span>휴대폰 · 스테이션 알림 · 자동 기록</li>
+      <li data-fx="left" data-a="5.1" data-d=".7"><span>04</span>폴대 · 수액 세트 교체 없음</li>
     </ul>
   </div>
-  <p class="rtag">하우징 3D 렌더</p>
+  <p class="tag rtag">하우징 3D 렌더</p>
 </section>
 
-<!-- S4 · 27–33s · 실물 -->
-<section class="scene" id="s4" data-t0="27" data-t1="33">
-  <div class="bgw"></div>
-  <div class="pad">
-    <p class="kick" data-fx="left" data-a=".2" data-d=".6"><b>02</b> 제품</p>
-    <h2 data-fx="up" data-a=".3" data-d=".7">그리고 <em>실물로</em> 만들었습니다</h2>
-    <div class="grid">
-      <figure data-fx="up" data-a=".9" data-d=".7"><img src="../media/hanger-real.webp" alt=""><figcaption>시제품 · 폴대 장착<span>수액백을 거는 그대로 측정</span></figcaption></figure>
-      <figure data-fx="up" data-a="1.4" data-d=".7"><img src="../media/mod-inside.webp" alt=""><figcaption>모듈 내부<span>로드셀 4개 · 회로 · 배터리 일체</span></figcaption></figure>
-      <figure class="c" data-fx="up" data-a="1.9" data-d=".7"><img src="../media/pcb-real.webp" alt=""><figcaption>실물 PCB<span>앞 · 뒷면 · 24-bit ADC · ESP32</span></figcaption></figure>
-    </div>
+<!-- 실물 · 60–65s (빠른 컷) -->
+<section class="scene" id="real" data-t0="60" data-t1="65">
+  <div class="dark"></div><div class="vig"></div>
+  <div data-fx="fade" data-a="0" data-d=".2" data-out="1.6">
+    <div class="frame"><img src="../media/hanger-real.webp" alt="" style="object-position:50% 40%" data-fx="push" data-a="0" data-d="1.9" data-z=".05"></div>
+    <div class="lt"><p class="k2">MVP</p><b>MVP 구현</b><span>폴대에 끼우고 수액백을 거는 그대로 측정</span></div></div>
+  <div data-fx="fade" data-a="1.6" data-d=".2" data-out="3.1">
+    <div class="frame"><img src="../media/mod-inside.webp" alt="" data-fx="push" data-a="1.6" data-d="1.7" data-z=".05"></div>
+    <div class="lt"><p class="k2">MODULE</p><b>로드셀 4개 · 회로 · 배터리 일체</b><span>기존 폴대 걸이부에 그대로 장착</span></div></div>
+  <div data-fx="fade" data-a="3.1" data-d=".2">
+    <div class="frame c"><img src="../media/pcb-real.webp" alt="" data-fx="push" data-a="3.1" data-d="1.9" data-z=".04"></div>
+    <div class="lt"><p class="k2">PCB</p><b>ADS1232 &amp; ESP32<br>프로세서 일체 PCB</b><span>4×4 이미지 처리 · 연산 가속</span></div></div>
+</section>
+
+<!-- 실제 시연 · 65–85s (전체 화면 = 시연 영상, 실제 속도) -->
+<section class="scene" id="demo" data-t0="65" data-t1="85">
+  <div class="topg"></div>
+  <p class="chip" data-fx="fade" data-a=".2" data-d=".6"><i></i>LIVE DEMO · 실제 시연</p>
+  <div class="cap" data-fx="fade" data-a=".3" data-d=".4" data-out="3.4"><p class="no">01</p><b>폴대에 끼우고</b></div>
+  <div class="cap" data-fx="fade" data-a="3.7" data-d=".4" data-out="7.6"><p class="no">02</p><b>수액백을 걸면, 무게 측정 시작</b></div>
+  <div class="cap" data-fx="fade" data-a="8.0" data-d=".4" data-out="12.0"><p class="no">03 · 유속 빠름</p><b>휴대폰 · 대시보드 알림</b><p class="risk">줄 빠짐 · 조절기 풀림 의심</p></div>
+  <div class="cap" data-fx="fade" data-a="12.4" data-d=".4" data-out="15.8"><p class="no">04 · 유속 느림</p><b>알림</b><p class="risk">줄 꺾임 · 혈액 역류 위험</p></div>
+  <div class="cap" data-fx="fade" data-a="16.2" data-d=".4" data-out="19.7"><p class="no">05 · 유속 정지</p><b>알림</b><p class="risk">수액 소진 · 공기 색전 위험</p></div>
+</section>
+
+<!-- 기술 ① 칼만 필터 · 85–98s -->
+<section class="scene tech" id="kalman" data-t0="85" data-t1="98">
+  <div class="dark"></div><div class="vig"></div>
+  <div class="chap"><p class="kick" data-fx="fade" data-a=".3" data-d=".8">Technology 01<b>측정 · 잡음 제거</b></p><p class="ttl"><span class="mask"><span style="display:block" data-fx="rise" data-a=".6" data-d="1">로드셀 무게 신호를 <em>칼만 필터</em>로</span></span></p></div>
+  <div class="chart" data-fx="fade" data-a="1.2" data-d=".8">
+    <svg viewBox="0 0 900 470"><g stroke="rgba(16,34,74,.08)" stroke-width="1"><line x1="0" y1="117" x2="900" y2="117"/><line x1="0" y1="235" x2="900" y2="235"/><line x1="0" y1="352" x2="900" y2="352"/></g>
+      <text x="0" y="-8" fill="#6B7689" font-size="20" font-weight="600" font-family="PV">수액 무게 w(t) · 시간에 따라 줄어듦 (원리 예시)</text>
+      <path id="kz" fill="none" stroke="#AEBBD0" stroke-width="2" data-fx="draw" data-a="1.6" data-d="3.4"/>
+      <path id="kx" fill="none" stroke="#1D4ED8" stroke-width="6" stroke-linecap="round" style="filter: drop-shadow(0 4px 10px rgba(29,78,216,.3))" data-fx="draw" data-a="2.4" data-d="3.4"/></svg>
+    <div class="lg"><span><i style="background:#AEBBD0"></i>측정값 z<sub>k</sub> — 흔들림 · 잡음 포함</span><span><i style="background:#1D4ED8"></i>칼만 추정 x̂<sub>k</sub></span></div>
+  </div>
+  <div class="eqs">
+    <div class="eqb" data-fx="up" data-a="2" data-d=".7"><p class="t">MEASUREMENT</p><p class="eq"><i>z<sub>k</sub></i> = <i>w<sub>k</sub></i> + <i>n<sub>k</sub></i><span class="n">(1)</span></p><p class="note">로드셀 4채널 · 24-bit ADC = 실제 무게 + 잡음 · 외란</p></div>
+    <div class="eqb" data-fx="up" data-a="3.4" data-d=".7"><p class="t">PREDICT</p><p class="eq"><i>x̂</i><sub><i>k</i></sub><sup>−</sup> = <i>F x̂</i><sub><i>k</i>−1</sub>, &nbsp;<i>P</i><sub><i>k</i></sub><sup>−</sup> = <i>FP</i><sub><i>k</i>−1</sub><i>F</i><sup>T</sup> + <i>Q</i><span class="n">(2)</span></p></div>
+    <div class="eqb" data-fx="up" data-a="4.8" data-d=".7"><p class="t">KALMAN GAIN</p><p class="eq"><i>K<sub>k</sub></i> = <i>P</i><sub><i>k</i></sub><sup>−</sup><i>H</i><sup>T</sup>(<i>HP</i><sub><i>k</i></sub><sup>−</sup><i>H</i><sup>T</sup> + <i>R</i>)<sup>−1</sup><span class="n">(3)</span></p></div>
+    <div class="eqb" data-fx="up" data-a="6.2" data-d=".7"><p class="t">UPDATE</p><p class="eq"><i>x̂<sub>k</sub></i> = <i>x̂</i><sub><i>k</i></sub><sup>−</sup> + <i>K<sub>k</sub></i>(<i>z<sub>k</sub></i> − <i>Hx̂</i><sub><i>k</i></sub><sup>−</sup>)<span class="n">(4)</span></p><p class="note">상태 [<i>w</i>, <i>ẇ</i>] — 무게와 유속을 함께 추정</p></div>
+  </div>
+  <p class="src" data-fx="fade" data-a="2" data-d=".8">식 (1)–(4) – INFUTECH 사업계획서 · 그래프는 실제 칼만 계산을 적용한 원리 예시</p>
+</section>
+
+<!-- 기술 ② 가상 AI 자이로 + LLM · 유전 알고리즘 PID · 98–114s -->
+<section class="scene tech" id="pid" data-t0="98" data-t1="114">
+  <div class="dark"></div><div class="glow" style="left:620px;top:300px;width:700px;height:420px;background:#2A4AB0;opacity:.35"></div><div class="vig"></div>
+  <div class="chap"><p class="kick" data-fx="fade" data-a=".3" data-d=".8">Technology 02<b>흔들림 보정</b></p><p class="ttl"><span class="mask"><span style="display:block" data-fx="rise" data-a=".6" data-d="1">가상 AI 자이로 + <em>LLM · 유전 알고리즘</em> PID</span></span></p></div>
+  <div class="flow">
+    <div class="panel box" data-fx="up" data-a="1.3" data-d=".8"><p class="t">01 VIRTUAL GYRO</p><b>자이로 없이 기울기 추정</b><p>자이로를 단 프로세서 A와 로드셀만 단 프로세서 B의 편차로 지도학습 · 약 660개 파라미터 · 10KB · ESP32 탑재</p></div>
+    <div class="panel box hl" data-fx="up" data-a="2.4" data-d=".8"><p class="t">02 LLM(LoRA) × GENETIC</p><b>환경마다 PID 게인 자동 튜닝</b>
+      <p class="gen">GEN<b data-fx="count" data-a="3.4" data-d="4.4" data-to="40">40</b></p>
+      <div class="loop"><span data-fx="fade" data-a="2.9" data-d=".4">LLM 후보 제안</span><span data-fx="fade" data-a="3.2" data-d=".4">선택</span><span data-fx="fade" data-a="3.5" data-d=".4">교차 · 변이</span><span data-fx="fade" data-a="3.8" data-d=".4">평가</span></div>
+      <svg viewBox="0 0 460 150"><text x="0" y="14" fill="#6B7689" font-size="15" font-weight="700" font-family="PV">보정 오차 Σ|e| (예시)</text><line x1="0" y1="146" x2="460" y2="146" stroke="#D5DFEE"/><path id="gaf" fill="none" stroke="#1D4ED8" stroke-width="4.5" stroke-linecap="round" data-fx="draw" data-a="3.4" data-d="4.4"/></svg></div>
+    <div class="panel box" data-fx="up" data-a="5.8" data-d=".8"><p class="t">03 PID</p><b>흔들림 오차를 상쇄</b><p>찾은 게인 (<span class="eq" style="font-size:22px"><i>K</i><sub>P</sub>, <i>K</i><sub>I</sub>, <i>K</i><sub>D</sub></span>)로 가상 자이로가 추정한 무게 오차를 실시간으로 지웁니다</p></div>
+  </div>
+  <div class="eqs">
+    <div class="eqb" data-fx="up" data-a="7" data-d=".7"><p class="t">VIRTUAL GYRO · TRAINING</p><p class="eq">(<i>θ̂<sub>k</sub></i>, Δ<i>ŵ<sub>k</sub></i>) = <i>g<sub>φ</sub></i>(<i>z</i><sub><i>k</i>−<i>N</i>+1:<i>k</i></sub>)<span class="n">(5)</span></p><p class="eq" style="margin-top:8px">min<sub><i>φ</i></sub> Σ<sub><i>k</i></sub> ‖<i>g<sub>φ</sub></i>(<i>z</i><sup>B</sup>) − Δ<i>w<sub>k</sub></i>‖<sup>2</sup><span class="n">(9)</span></p></div>
+    <div class="eqb" data-fx="up" data-a="8.6" data-d=".7"><p class="t">PID CORRECTION</p><p class="eq"><i>u<sub>k</sub></i> = <i>K</i><sub>P</sub><i>e<sub>k</sub></i> + <i>K</i><sub>I</sub>Σ<i>e<sub>i</sub></i>Δ<i>t</i> + <i>K</i><sub>D</sub>(<i>e<sub>k</sub></i> − <i>e</i><sub><i>k</i>−1</sub>)/Δ<i>t</i><span class="n">(7)</span></p><p class="eq" style="margin-top:8px"><i>w̃<sub>k</sub></i> = <i>ŵ<sub>k</sub></i> − <i>u<sub>k</sub></i>, &nbsp;<i>v<sub>k</sub></i> = −(<i>w̃<sub>k</sub></i> − <i>w̃</i><sub><i>k</i>−1</sub>)/Δ<i>t</i><span class="n">(8)(10)</span></p></div>
+  </div>
+  <p class="src" data-fx="fade" data-a="7" data-d=".8">식 (5)–(10) · 가상 자이로 g<sub>φ</sub> 지도학습 · PID(LoRA · 유전 알고리즘 튜닝) – INFUTECH 설계 · 그래프는 예시</p>
+</section>
+
+<!-- 기술 ③ 무게 → 4×4 패턴 · 114–126s -->
+<section class="scene tech" id="grid" data-t0="114" data-t1="126">
+  <div class="dark"></div><div class="vig"></div>
+  <div class="chap"><p class="kick" data-fx="fade" data-a=".3" data-d=".8">Technology 03<b>4×4 패턴</b></p><p class="ttl"><span class="mask"><span style="display:block" data-fx="rise" data-a=".6" data-d="1">무게 변화를 <em>4×4 그림</em>으로</span></span></p></div>
+  <div class="chart" data-fx="fade" data-a="1.1" data-d=".8">
+    <svg viewBox="0 0 820 270"><text x="0" y="-8" fill="#6B7689" font-size="20" font-weight="600" font-family="PV">보정된 유속 v_k · 기준 ±τ (예시)</text><rect x="0" y="95" width="820" height="80" fill="rgba(29,78,216,.07)"/><line x1="0" y1="135" x2="820" y2="135" stroke="rgba(29,78,216,.5)" stroke-dasharray="8 6" stroke-width="2"/>
+      <text x="814" y="88" text-anchor="end" font-size="18" fill="#6B7689" font-weight="700">+τ</text><text x="814" y="196" text-anchor="end" font-size="18" fill="#6B7689" font-weight="700">−τ</text>
+      <path id="gv" fill="none" stroke="#0F1B2D" stroke-width="3.5" stroke-linejoin="round" data-fx="draw" data-a="1.6" data-d="3.6"/></svg>
+  </div>
+  <div class="seq" id="seq"></div>
+  <p class="seql" data-fx="fade" data-a="1.8" data-d=".5">3상태 부호화 <span class="eq" style="font-size:23px"><i>s<sub>k</sub></i> ∈ {−1, 0, +1}</span> · 16개를 모아 한 장의 그림으로</p>
+  <div class="mat" id="mat"></div>
+  <p class="matl" data-fx="fade" data-a="6.2" data-d=".5">입력 그림 <span class="eq" style="font-size:24px"><i>X<sub>k</sub></i></span> · 4×4</p>
+  <div class="eqs">
+    <div class="eqb" data-fx="up" data-a="2.4" data-d=".7"><p class="t">FLOW DEVIATION</p><p class="eq"><i>v</i><sub>n</sub> = (<i>W</i><sub>I</sub> − <i>W</i><sub>f</sub>)/<i>T</i><span class="n">(11)</span></p><p class="eq" style="margin-top:6px"><i>r<sub>k</sub></i> = (<i>v<sub>k</sub></i> − <i>v</i><sub>n</sub>)/<i>v</i><sub>n</sub></p></div>
+    <div class="eqb" data-fx="up" data-a="3.6" data-d=".7"><p class="t">3-STATE CODE</p><p class="eq"><i>s<sub>k</sub></i> = −1 (<i>r<sub>k</sub></i> &lt; −<i>τ</i>)<span class="n">(12)</span></p><p class="eq">+1 (<i>r<sub>k</sub></i> &gt; <i>τ</i>), 0 (그 외)</p></div>
+    <div class="eqb" data-fx="up" data-a="5" data-d=".7"><p class="t">4×4 ARRAY</p><p class="eq"><i>X<sub>k</sub></i> = reshape(<i>s</i><sub><i>k</i>−15:<i>k</i></sub>, 4×4)<span class="n">(13)</span></p><p class="note">ADS1232 · ESP32 일체 PCB에서 4×4 이미지 처리 · 연산 가속</p></div>
+  </div>
+  <p class="src" data-fx="fade" data-a="2.4" data-d=".8">식 (11)–(13) – 한우진 외, 「CNN 상태 패턴 분석 기반 정맥 수액 이상 감지 알고리즘」(우수논문상) · 그래프 · 배열은 예시</p>
+</section>
+
+<!-- 기술 ④ RCNN · 126–139s -->
+<section class="scene tech" id="rcnn" data-t0="126" data-t1="139">
+  <div class="dark"></div><div class="vig"></div>
+  <div class="chap"><p class="kick" data-fx="fade" data-a=".3" data-d=".8">Technology 04<b>AI 판정</b></p><p class="ttl"><span class="mask"><span style="display:block" data-fx="rise" data-a=".6" data-d="1"><em>RCNN</em> — CNN은 모양을, RNN은 흐름을</span></span></p></div>
+  <svg class="net" viewBox="0 0 1630 470" font-family="PV, sans-serif">
+    <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#7C9CE0"/></marker></defs>
+    <g fill="#FFFFFF" stroke="#DCE3EE" style="filter: drop-shadow(0 10px 24px rgba(16,34,74,.07))">
+      <g data-fx="up" data-a="1.2" data-d=".7"><rect x="0" y="20" width="210" height="190" rx="14"/></g>
+      <g data-fx="up" data-a="1.8" data-d=".7"><rect x="270" y="20" width="250" height="190" rx="14"/></g>
+      <g data-fx="up" data-a="2.3" data-d=".7"><rect x="580" y="20" width="230" height="190" rx="14"/></g>
+      <g data-fx="up" data-a="2.8" data-d=".7"><rect x="870" y="20" width="230" height="190" rx="14"/></g>
+      <g data-fx="up" data-a="3.6" data-d=".7"><rect x="0" y="260" width="210" height="190" rx="14"/></g>
+      <g data-fx="up" data-a="4.2" data-d=".7"><rect x="270" y="260" width="830" height="190" rx="14"/></g>
+    </g>
+    <g fill="#0F1B2D" text-anchor="middle">
+      <g data-fx="up" data-a="1.2" data-d=".7"><text x="105" y="60" font-size="20" font-weight="700" fill="#1D4ED8" letter-spacing="2">INPUT X_k</text><text x="105" y="88" font-size="19" fill="#6B7689" font-weight="600">4×4 패턴</text><g transform="translate(57 104)" id="minimat"></g></g>
+      <g data-fx="up" data-a="1.8" data-d=".7"><text x="395" y="82" font-size="28" font-weight="760">Conv2D</text><text x="395" y="118" font-size="20" fill="#6B7689" font-weight="600">필터 8개 · 3×3</text><text x="395" y="148" font-size="20" fill="#6B7689" font-weight="600">4×4×1 → 2×2×8</text></g>
+      <g data-fx="up" data-a="2.3" data-d=".7"><text x="695" y="82" font-size="28" font-weight="760">MaxPool</text><text x="695" y="118" font-size="20" fill="#6B7689" font-weight="600">2×2</text><text x="695" y="148" font-size="20" fill="#6B7689" font-weight="600">→ 1×1×8</text></g>
+      <g data-fx="up" data-a="2.8" data-d=".7"><text x="985" y="82" font-size="28" font-weight="760">Dense 16</text><text x="985" y="118" font-size="20" fill="#6B7689" font-weight="600">모양 특징</text><text x="985" y="148" font-size="21" fill="#1D4ED8" font-weight="700">f_C(X_k)</text></g>
+      <g data-fx="up" data-a="3.6" data-d=".7"><text x="105" y="306" font-size="20" font-weight="700" fill="#1D4ED8" letter-spacing="2">FLOW v_k</text><text x="105" y="334" font-size="19" fill="#6B7689" font-weight="600">유속 순서열</text><path d="M30 410 L60 395 L90 402 L120 380 L150 388 L180 370" fill="none" stroke="#0F1B2D" stroke-width="3"/></g>
+      <g data-fx="up" data-a="4.2" data-d=".7"><text x="685" y="312" font-size="26" font-weight="760">RNN — 유속의 흐름(추세)을 기억</text>
+        <g font-size="19" font-weight="700"><rect x="330" y="350" width="130" height="56" rx="10" fill="#EEF4FF" stroke="#BFD3FB"/><text x="395" y="385">h(k−2)</text><rect x="520" y="350" width="130" height="56" rx="10" fill="#EEF4FF" stroke="#BFD3FB"/><text x="585" y="385">h(k−1)</text><rect x="710" y="350" width="130" height="56" rx="10" fill="#1D4ED8" stroke="#1D4ED8"/><text x="775" y="385" fill="#FFFFFF">h(k)</text></g>
+        <g stroke="#7C9CE0" stroke-width="2.5" marker-end="url(#ah)"><line x1="462" y1="378" x2="514" y2="378"/><line x1="652" y1="378" x2="704" y2="378"/></g><text x="970" y="385" font-size="20" fill="#6B7689" font-weight="600">추세 특징 h_k</text></g>
+    </g>
+    <g stroke="#7C9CE0" stroke-width="2.5" marker-end="url(#ah)" data-fx="fade" data-a="2.0" data-d=".5"><line x1="212" y1="115" x2="264" y2="115"/><line x1="522" y1="115" x2="574" y2="115"/><line x1="812" y1="115" x2="864" y2="115"/><line x1="212" y1="355" x2="264" y2="355"/></g>
+    <g data-fx="up" data-a="5.2" data-d=".7"><path d="M1102 115 C 1150 115, 1150 225, 1180 225 M1102 355 C 1150 355, 1150 245, 1180 245" fill="none" stroke="#7C9CE0" stroke-width="2.5" marker-end="url(#ah)"/>
+      <rect x="1188" y="165" width="150" height="140" rx="16" fill="#1D4ED8" style="filter: drop-shadow(0 10px 24px rgba(29,78,216,.35))"/><text x="1263" y="228" text-anchor="middle" font-size="24" font-weight="760" fill="#FFFFFF">결합</text><text x="1263" y="260" text-anchor="middle" font-size="18" font-weight="600" fill="#DCE6FF">softmax</text>
+      <line x1="1340" y1="235" x2="1380" y2="235" stroke="#7C9CE0" stroke-width="2.5" marker-end="url(#ah)"/></g>
+    <g id="cls" data-fx="up" data-a="6.0" data-d=".7"></g>
+  </svg>
+  <div class="eqs">
+    <div class="eqb" data-fx="up" data-a="7.2" data-d=".7"><p class="t">RNN</p><p class="eq"><i>h<sub>k</sub></i> = tanh(<i>W</i><sub>h</sub><i>h</i><sub><i>k</i>−1</sub> + <i>W</i><sub>v</sub><i>v<sub>k</sub></i> + <i>b</i>)<span class="n">(14)</span></p></div>
+    <div class="eqb" data-fx="up" data-a="8.2" data-d=".7"><p class="t">FUSION · 5 STATES</p><p class="eq"><i>ŷ<sub>k</sub></i> = argmax softmax(<i>W</i><sub>o</sub>[<i>f</i><sub>C</sub>(<i>X<sub>k</sub></i>); <i>h<sub>k</sub></i>] + <i>b</i><sub>o</sub>)<span class="n">(15)</span></p></div>
+  </div>
+  <p class="src" data-fx="fade" data-a="7.2" data-d=".8">CNN 구조 – 한우진 외(우수논문상) · (14)–(15) RNN · 결합 판정 – INFUTECH 설계(정량 비교 진행 중) · 판정 5종 – 2026 캡스톤디자인 참가신청서</p>
+</section>
+
+<!-- 검증 · 139–149s -->
+<section class="scene" id="verify" data-t0="139" data-t1="149">
+  <div class="dark"></div><div class="vig"></div>
+  <div class="chap" data-fx="fade" data-a=".3" data-d=".8"><p class="kick">Chapter 06<b>검증</b></p></div>
+  <div class="res">
+    <div class="r" data-fx="up" data-a=".8" data-d=".8"><p class="v"><small>14.2%</small><span data-fx="count" data-a="1" data-d="1.4" data-from="14.2" data-to="2.9" data-dec="1">2.9</span><em>%</em></p><p>잔량 최대 오차 · 단일 로드셀 대비 1/5</p></div>
+    <div class="r" data-fx="up" data-a="1.4" data-d=".8"><p class="v"><span data-fx="count" data-a="1.4" data-d="1.3" data-from="200" data-to="250">250</span><em>/250</em></p><p>줄 분리 · 소진 감지 · 평균 2.8초</p></div>
+    <div class="r" data-fx="up" data-a="2.0" data-d=".8"><p class="v">1/36</p><p>센서 비용 · 90만 원+ → 2.5만 원</p></div>
+  </div>
+  <figure class="ph p1" data-fx="up" data-a="3" data-d=".8"><img src="../media/field-interview.webp" alt=""><figcaption>현장 간호사 인터뷰<span>MVP 시연 · 피드백 → 설계 개선</span></figcaption></figure>
+  <figure class="ph p2" data-fx="up" data-a="3.5" data-d=".8"><img src="../media/award-newturn.webp" alt=""><figcaption>산업통상부장관상 · 공동 2위<span>창의적종합설계경진대회 2026 · 73개 대학 149팀</span></figcaption></figure>
+  <figure class="ph p3 c" data-fx="up" data-a="4" data-d=".8"><img src="../media/award-best.webp" alt=""><figcaption>우수논문상 2편<span>국제 AIT 2026 · 국내 학술대회</span></figcaption></figure>
+  <p class="src" data-fx="fade" data-a="1" data-d=".8">내부 모의시험 · 모의 병실 1,000회(원광대 간호학과) · 정식 성적서 2027 상 예정</p>
+</section>
+
+<!-- 시장의 필요 → 실제 협약 · 149–165s (문서 원문 그대로) -->
+<section class="scene" id="deal" data-t0="149" data-t1="165">
+  <div class="dark"></div><div class="spot"></div><div class="vig"></div>
+  <div class="chap" data-fx="fade" data-a=".3" data-d=".8" data-out="11.2" style="z-index:2"><p class="kick">Chapter 07<b>시장의 필요, 실제 계약으로</b></p></div>
+  <div data-fx="fade" data-a=".6" data-d=".6" data-out="6.2">
+    <div class="pg a1" data-fx="push" data-a=".6" data-d="5.8" data-z=".035"><img src="../media/doc-cn-1.webp" alt=""></div>
+    <div class="pg a2" data-fx="up" data-a="1.2" data-d=".9"><img src="../media/doc-cn-2.webp" alt=""></div>
+    <div class="lab"><p class="k2" data-fx="up" data-a="1.8" data-d=".6">DISTRIBUTOR 01</p><p class="co" data-fx="up" data-a="2.0" data-d=".6">㈜씨엔<br>물품공급 약정</p><p class="amt" data-fx="up" data-a="2.5" data-d=".7">5,100만 원</p><p class="q" data-fx="up" data-a="3.0" data-d=".6">KC 인증 후 효력</p></div>
+  </div>
+  <div data-fx="fade" data-a="6.4" data-d=".6" data-out="11.2">
+    <div class="pg b1" data-fx="push" data-a="6.4" data-d="5" data-z=".035"><img src="../media/doc-skmm-1.webp" alt=""></div>
+    <div class="pg b2" data-fx="up" data-a="7.0" data-d=".9"><img src="../media/doc-skmm-2.webp" alt=""></div>
+    <div class="lab"><p class="k2" data-fx="up" data-a="7.6" data-d=".6">DISTRIBUTOR 02</p><p class="co" data-fx="up" data-a="7.8" data-d=".6">㈜에스케이엠엔엠<br>구매의향 · 사업협력</p><p class="amt" data-fx="up" data-a="8.3" data-d=".7">5,000만 원</p><p class="q" data-fx="up" data-a="8.8" data-d=".6">비구속</p></div>
+  </div>
+  <div class="tot" data-fx="scale" data-a="11.5" data-d="1">
+    <p class="k2">약정 · 협약 합계</p>
+    <p class="v"><span data-fx="count" data-a="11.7" data-d="1.6" data-to="10100" data-fmt="kr">1억 100만</span><small>원</small></p>
+    <p data-fx="up" data-a="13.2" data-d=".7"><b>확정 매출 아님 · 부가세 별도</b> &nbsp;+ 전남대 수의과대학 실증 LOI (합계 제외)</p>
   </div>
 </section>
 
-<!-- S5 · 33–53s · 실제 시연 (전체 화면 = 시연 영상 1.25배속) -->
-<section class="scene" id="s5" data-t0="33" data-t1="53">
-  <p class="chip" data-fx="left" data-a=".2" data-d=".5"><i></i>03 · 실제 시연</p>
-  <p class="cap" data-fx="fade" data-a=".3" data-d=".3" data-out="3.4"><span class="no">1</span>폴대에 <b>끼우고</b></p>
-  <p class="cap" data-fx="fade" data-a="3.7" data-d=".3" data-out="7.6"><span class="no">2</span>수액백을 걸면 <b>무게 측정 시작</b></p>
-  <p class="cap alert" data-fx="fade" data-a="8.0" data-d=".3" data-out="12.0"><span class="no">3</span>유속 빠름 → <b>대시보드 · 휴대폰 알림</b></p>
-  <p class="cap alert" data-fx="fade" data-a="12.4" data-d=".3" data-out="15.8"><span class="no">4</span>유속 느림 → <b>알림</b></p>
-  <p class="cap alert" data-fx="fade" data-a="16.2" data-d=".3" data-out="19.7"><span class="no">5</span>유속 정지 → <b>알림</b></p>
-</section>
-
-<!-- S6 · 53–69s · 기술 -->
-<section class="scene" id="s6" data-t0="53" data-t1="69">
-  <div class="bgw"></div>
-  <div class="pad">
-    <p class="kick" data-fx="left" data-a=".2" data-d=".6"><b>04</b> 기술</p>
-    <h2 data-fx="up" data-a=".4" data-d=".8">자이로 센서 없이, <em>AI가 흔들림을 보정</em>합니다</h2>
-    <div class="flow">
-      <div class="node" data-fx="up" data-a="1.4" data-d=".6"><span class="i">01 측정</span><b>로드셀<br>4채널</b><p>24-bit ADC로<br>무게를 읽음</p></div>
-      <div class="node" data-fx="up" data-a="2.4" data-d=".6"><span class="i">02 잡음 제거</span><b>칼만 필터</b><p>원신호 잡음을<br>1차로 걸러 냄</p><svg class="wave" viewBox="0 0 220 60" preserveAspectRatio="none"><path d="M0 30 C 20 10, 30 50, 50 30 S 80 12, 100 30 S 130 46, 150 30 S 190 24, 220 30" fill="none" stroke="#1E3A8A" stroke-width="4" data-fx="draw" data-a="2.8" data-d="1"/></svg></div>
-      <div class="node hl" data-fx="up" data-a="3.4" data-d=".6"><span class="i">03 핵심</span><b>가상 AI 자이로<br>+ PID</b><p>로드셀만으로 기울기를<br>추정해 흔들림 상쇄</p></div>
-      <div class="node" data-fx="up" data-a="4.4" data-d=".6"><span class="i">04 패턴 분석</span><b>4×4 패턴<br>CNN · RNN</b><div class="px"><u class="a"></u><u></u><u></u><u class="a"></u><u></u><u class="a"></u><u></u><u></u><u></u><u></u><u class="b"></u><u></u><u class="a"></u><u></u><u></u><u class="a"></u></div></div>
-      <div class="node" data-fx="up" data-a="5.4" data-d=".6"><span class="i">05 판정</span><b>5가지 상태</b><p>정상 · 흔들림 · 당겨짐<br>· 줄 분리 · 소진</p></div>
-    </div>
-    <div class="res">
-      <div class="r" data-fx="up" data-a="7.4" data-d=".7"><p class="v"><small>14.2%</small><span data-fx="count" data-a="7.6" data-d="1.4" data-from="14.2" data-to="2.9" data-dec="1">2.9</span><em>%</em></p><p>잔량 최대 오차 · 단일 로드셀 대비 1/5</p></div>
-      <div class="r" data-fx="up" data-a="8.4" data-d=".7"><p class="v"><span data-fx="count" data-a="8.4" data-d="1.2" data-from="200" data-to="250">250</span><em>/250</em></p><p>줄 분리 · 소진 감지 · 평균 2.8초</p></div>
-      <div class="r" data-fx="up" data-a="9.4" data-d=".7"><p class="v">1/36</p><p>센서 비용 · 90만 원+ → 2.5만 원</p></div>
-    </div>
-  </div>
-  <p class="src" data-fx="fade" data-a="7.4" data-d=".6">내부 모의시험 · 모의 병실 1,000회 · 가상 AI 자이로 – INFUTECH 설계 · 우수논문 2편</p>
-</section>
-
-<!-- S7 · 69–77s · 검증 -->
-<section class="scene" id="s7" data-t0="69" data-t1="77">
-  <div class="bgw"></div>
-  <div class="pad">
-    <p class="kick" data-fx="left" data-a=".2" data-d=".6"><b>05</b> 검증</p>
-    <h2 data-fx="up" data-a=".3" data-d=".7">모의 병실에서, 학회에서, <em>전국 대회</em>에서 검증받았습니다</h2>
-    <div class="grid">
-      <figure data-fx="up" data-a=".9" data-d=".7"><div class="im"><img src="../media/field-bag.webp" alt=""></div><figcaption><p class="k">모의 병실</p><b>1,000회 내부 시험</b><span>원광대 간호학과 · 현장 26곳 방문</span></figcaption></figure>
-      <figure class="top" data-fx="up" data-a="1.4" data-d=".7"><div class="im"><img src="../media/award-newturn.webp" alt=""></div><figcaption><p class="k">창의적종합설계경진대회 · 2026</p><b>산업통상부장관상 · 공동 2위</b><span>전국 73개 대학 149팀 · 최우수상</span></figcaption></figure>
-      <figure data-fx="up" data-a="1.9" data-d=".7"><div class="im c"><img src="../media/award-best.webp" alt=""></div><figcaption><p class="k">학회</p><b>우수논문상 2편</b><span>국제 AIT 2026 · 국내 공동학술대회</span></figcaption></figure>
-    </div>
-  </div>
-</section>
-
-<!-- S8 · 77–89s · 구매 협약 -->
-<section class="scene" id="s8" data-t0="77" data-t1="89">
-  <div class="bgw"></div>
-  <div class="pad">
-    <p class="kick" data-fx="left" data-a=".2" data-d=".6"><b>06</b> 구매 협약</p>
-    <h2 data-fx="up" data-a=".4" data-d=".8">유통사와 <em>공급 약정 · 구매의향 협약</em>을 맺었습니다</h2>
-    <div class="docs">
-      <div class="doc d1" data-fx="up" data-a="1.3" data-d=".7"><img src="../media/docblur-cn-1.webp" alt=""></div>
-      <div class="doc d2" data-fx="up" data-a="1.7" data-d=".7"><img src="../media/docblur-cn-2.webp" alt=""></div>
-      <div class="doc d3" data-fx="up" data-a="2.3" data-d=".7"><img src="../media/docblur-skmm-1.webp" alt=""></div>
-      <div class="doc d4" data-fx="up" data-a="2.7" data-d=".7"><img src="../media/docblur-skmm-2.webp" alt=""></div>
-      <div class="lab l1" data-fx="up" data-a="3.4" data-d=".6"><p class="co">㈜씨엔 · 물품공급 약정</p><p class="amt">5,100만 원</p><p class="q">KC 인증 후 효력</p></div>
-      <div class="lab l2" data-fx="up" data-a="3.9" data-d=".6"><p class="co">㈜에스케이엠엔엠 · 구매의향 협약</p><p class="amt">5,000만 원</p><p class="q">비구속</p></div>
-    </div>
-    <div class="tot" data-fx="right" data-a="4.8" data-d=".8">
-      <p class="k">약정 · 협약 합계</p>
-      <p class="v"><span data-fx="count" data-a="5.2" data-d="1.6" data-to="10100" data-fmt="kr">1억 100만</span><small>원</small></p>
-      <ul>
-        <li data-fx="fade" data-a="6.8" data-d=".5">확정 매출 아님 · 부가세 별도</li>
-        <li data-fx="fade" data-a="7.3" data-d=".5">+ 전남대 수의과대학 실증 LOI (합계 제외)</li>
-      </ul>
-      <p class="ft">약정 · 협약 원문 – INFUTECH (2026)</p>
-    </div>
-  </div>
-</section>
-
-<!-- S9 · 89–96s · 마무리 -->
-<section class="scene" id="s9" data-t0="89" data-t1="96">
+<!-- 마무리 · 165–172s -->
+<section class="scene" id="close" data-t0="165" data-t1="172">
+  <div class="dark"></div><div class="glow" style="left:660px;top:330px;width:600px;height:300px;background:#2A4AB0;opacity:.35"></div>
   <div class="c">
-    <p class="mark" data-fx="scale" data-a=".4" data-d="1">INFU<i></i>RETRO</p>
-    <p class="sl" data-fx="up" data-a="1.5" data-d=".8">폴대는 그대로, 수액은 놓치지 않게</p>
-    <div class="bd">
-      <span data-fx="up" data-a="2.6" data-d=".5">산업통상부장관상</span>
-      <span data-fx="up" data-a="2.9" data-d=".5">학생창업유망팀 300+ 선발</span>
-      <span data-fx="up" data-a="3.2" data-d=".5">우수논문 2편 · 특허 출원 3건</span>
-    </div>
+    <p class="mark"><span class="mask"><span style="display:block" data-fx="rise" data-a=".5" data-d="1.4">INFU<i></i>RETRO</span></span></p>
+    <p class="sl" data-fx="up" data-a="1.8" data-d="1">폴대는 그대로, 수액은 놓치지 않게</p>
+    <div class="bd" data-fx="fade" data-a="3" data-d="1"><span>산업통상부장관상</span><span>학생창업유망팀 300+ 선발</span><span>우수논문 2편 · 특허 출원 3건</span></div>
   </div>
-  <p class="co" data-fx="fade" data-a="3.6" data-d=".8">INFUTECH</p>
+  <p class="co" data-fx="fade" data-a="3.8" data-d="1">INFUTECH</p>
 </section>
 
+<canvas id="grain" width="960" height="540"></canvas>
+<div id="bars"><div class="t"></div><div class="b"></div></div>
 <div id="fade"></div>
 
 <script>
-// ── deterministic timeline: seek(t) draws the frame at t seconds (no CSS animations, so every frame is reproducible)
-const FADE = .28;                                    // fade-through-white half length at each scene cut
+// ── generated illustration data (deterministic, so every render is identical) ──────────────
+let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+(function kalmanChart() {                       // a real 1-D constant-velocity Kalman filter on a noisy falling weight
+  const N = 160, W = 900, H = 470, z = [], xs = [];
+  let x = [300, -1.1], P = [[50, 0], [0, 5]]; const Q = [[.02, 0], [0, .002]], R = 140;
+  for (let k = 0; k < N; k++) {
+    const w = 300 - .99 * k, sway = (k > 60 && k < 95) ? 26 * Math.sin(k * .9) : 0;
+    const zk = w + sway + (rnd() - .5) * 34; z.push(zk);
+    x = [x[0] + x[1], x[1]]; P = [[P[0][0] + 2 * P[0][1] + P[1][1] + Q[0][0], P[0][1] + P[1][1]], [P[0][1] + P[1][1], P[1][1] + Q[1][1]]];
+    const S = P[0][0] + R, K0 = P[0][0] / S, K1 = P[1][0] / S, y = zk - x[0];
+    x = [x[0] + K0 * y, x[1] + K1 * y]; P = [[(1 - K0) * P[0][0], (1 - K0) * P[0][1]], [P[1][0] - K1 * P[0][0], P[1][1] - K1 * P[0][1]]];
+    xs.push(x[0]);
+  }
+  const sx = k => (k / (N - 1) * W).toFixed(1), sy = v => (H - 20 - (v - 100) / 240 * (H - 40)).toFixed(1);
+  document.getElementById('kz').setAttribute('d', 'M' + z.map((v, k) => sx(k) + ' ' + sy(v)).join(' L'));
+  document.getElementById('kx').setAttribute('d', 'M' + xs.map((v, k) => sx(k) + ' ' + sy(v)).join(' L'));
+})();
+(function gaChart() {
+  const pts = []; for (let g = 0; g <= 40; g++) { const f = 115 / (1 + .22 * g) + 16 + (rnd() - .5) * 5 * Math.exp(-g / 20); pts.push((g / 40 * 450 + 5).toFixed(1) + ' ' + (146 - f).toFixed(1)); }
+  document.getElementById('gaf').setAttribute('d', 'M' + pts.join(' L'));
+})();
+const S16 = [0, 0, 0, 1, 0, 0, 0, 0, 0, -1, -1, 0, 0, 0, 0, 0];   // example code sequence (one sway + one dip)
+(function gridScene() {
+  const vals = [], N = 120;
+  for (let k = 0; k < N; k++) { const b = Math.floor(k / (N / 16)); const base = S16[b] === 1 ? -58 : S16[b] === -1 ? 62 : 0; vals.push(135 + base + (rnd() - .5) * 26); }
+  document.getElementById('gv').setAttribute('d', 'M' + vals.map((v, k) => (k / (N - 1) * 820).toFixed(1) + ' ' + v.toFixed(1)).join(' L'));
+  const seq = document.getElementById('seq'), mat = document.getElementById('mat');
+  S16.forEach((s, i) => {
+    const cls = s === 1 ? 'p' : s === -1 ? 'm' : '', txt = s === 1 ? '+1' : s === -1 ? '−1' : '0', a = (1.9 + i * .2).toFixed(2);
+    seq.insertAdjacentHTML('beforeend', `<span class="${cls}" data-fx="up" data-a="${a}" data-d=".35">${txt}</span>`);
+    mat.insertAdjacentHTML('beforeend', `<span class="${cls}" data-fx="scale" data-a="${(+a + 2.4).toFixed(2)}" data-d=".35">${txt}</span>`);
+  });
+  const mm = document.getElementById('minimat'); S16.forEach((s, i) => mm.insertAdjacentHTML('beforeend', `<rect x="${(i % 4) * 25}" y="${Math.floor(i / 4) * 25}" width="21" height="21" rx="4" fill="${s === 1 ? '#1D4ED8' : s === -1 ? '#E04F4F' : '#D5DFEE'}"/>`));
+  const C = [['정상', .06], ['흔들림', .71], ['당겨짐', .12], ['줄 분리', .07], ['소진', .04]], g = document.getElementById('cls');
+  g.insertAdjacentHTML('beforeend', '<text x="1392" y="76" font-size="18" font-weight="700" fill="#6F7A90" letter-spacing="2">판정 확률 (예시)</text>');
+  C.forEach(([n, p], i) => { const y = 96 + i * 56, hl = i === 1;
+    g.insertAdjacentHTML('beforeend', `<text x="1392" y="${y + 24}" font-size="22" font-weight="${hl ? 760 : 600}" fill="${hl ? '#1D4ED8' : '#4A5568'}">${n}</text><rect x="1480" y="${y + 6}" width="${(p * 140).toFixed(0)}" height="24" rx="5" fill="${hl ? '#1D4ED8' : '#D5DFEE'}"/><text x="${1488 + p * 140}" y="${y + 25}" font-size="18" font-weight="700" fill="#6B7689">${Math.round(p * 100)}%</text>`); });
+})();
+// film grain: 6 fixed noise tiles, picked by frame number
+const gc = document.getElementById('grain'), gx = gc.getContext('2d'), tiles = [];
+for (let n = 0; n < 6; n++) { const im = gx.createImageData(960, 540); for (let i = 0; i < im.data.length; i += 4) { const v = rnd() * 255; im.data[i] = im.data[i + 1] = im.data[i + 2] = v; im.data[i + 3] = 255; } tiles.push(im); }
+
+// ── deterministic timeline: seek(t) draws the frame at t seconds ────────────────────────────
+const FADE = .32, BAR = 92;
+const FOOTAGE = new Set(['reveal', 'demo']);
 const scenes = [...document.querySelectorAll('.scene')].map(el => ({ el, id: el.id, t0: +el.dataset.t0, t1: +el.dataset.t1 }));
 const TOTAL = Math.max(...scenes.map(s => s.t1));
 const ease = p => 1 - Math.pow(1 - p, 3);
+const easeIO = p => p < .5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
 const clamp = p => Math.max(0, Math.min(1, p));
-const fx = [...document.querySelectorAll('[data-fx]')].map(el => ({ el, sc: scenes.find(s => s.el.contains(el)), fx: el.dataset.fx, a: +el.dataset.a, d: +el.dataset.d || .6, out: el.dataset.out != null ? +el.dataset.out : null, txt: el.textContent }));
+const fx = [...document.querySelectorAll('[data-fx]')].map(el => ({ el, sc: scenes.find(s => s.el.contains(el)), fx: el.dataset.fx, a: +el.dataset.a, d: +el.dataset.d || .6, out: el.dataset.out != null ? +el.dataset.out : null, z: +(el.dataset.z || .06) }));
 for (const f of fx) if (f.fx === 'draw') { const L = f.el.getTotalLength(); f.L = L; f.el.style.strokeDasharray = L; }
 const fmtKr = man => { const e = Math.floor(man / 10000), m = Math.round(man % 10000); return (e ? e + '억 ' : '') + (m ? m.toLocaleString('ko-KR') + '만' : (e ? '' : '0만')); };
 function seek(t) {
-  for (const s of scenes) s.el.classList.toggle('on', t >= s.t0 && t < s.t1 || (t === TOTAL && s.t1 === TOTAL));
+  let cur = null;
+  for (const s of scenes) { const on = t >= s.t0 && t < s.t1 || (t === TOTAL && s.t1 === TOTAL); s.el.classList.toggle('on', on); if (on) cur = s; }
   for (const f of fx) {
     if (!f.sc.el.classList.contains('on')) continue;
     const lt = t - f.sc.t0, p = ease(clamp((lt - f.a) / f.d));
     let o = p, tr = '';
-    if (f.out != null) o *= 1 - clamp((lt - f.out) / .3);
+    if (f.out != null) o *= 1 - clamp((lt - f.out) / .35);
     switch (f.fx) {
-      case 'up': tr = `translateY(${(1 - p) * 40}px)`; break;
-      case 'left': tr = `translateX(${(1 - p) * -50}px)`; break;
-      case 'right': tr = `translateX(${(1 - p) * 60}px)`; break;
-      case 'scale': tr = `scale(${.9 + .1 * p})`; break;
-      case 'zoom': o = 1; tr = `scale(${1 + .08 * clamp(lt / f.d)})`; break;
+      case 'up': tr = `translateY(${(1 - p) * 34}px)`; break;
+      case 'rise': tr = `translateY(${(1 - p) * 110}%)`; o = f.out != null ? o : 1; break;
+      case 'left': tr = `translateX(${(1 - p) * -40}px)`; break;
+      case 'right': tr = (f.el.classList.contains('news') ? 'perspective(1400px) rotateY(14deg) ' : '') + `translateX(${(1 - p) * 60}px)`; break;
+      case 'scale': tr = `scale(${.94 + .06 * p})`; break;
+      case 'push': o = f.out != null ? o : 1; tr = `scale(${1 + f.z * easeIO(clamp((lt - f.a) / f.d))})`; break;
+      case 'grow': o = 1; tr = f.el.parentElement.closest('.bars3') ? `scaleY(${p})` : `scaleX(${p})`; break;
       case 'draw': o = 1; f.el.style.strokeDashoffset = f.L * (1 - p); break;
       case 'count': {
         o = 1; const from = f.el.dataset.from != null ? +f.el.dataset.from : 0, to = +f.el.dataset.to, dec = +(f.el.dataset.dec || 0);
         const v = from + (to - from) * p, fm = f.el.dataset.fmt;
-        f.el.textContent = fm === 'kr' ? fmtKr(Math.round(v / 100) * 100) : fm ? fm.replace('{n}', Math.max(1, Math.round(v))) : (dec ? v.toFixed(dec) : Math.round(v).toLocaleString('ko-KR'));
+        f.el.textContent = fm === 'kr' ? fmtKr(Math.round(v / 100) * 100) : (dec ? v.toFixed(dec) : Math.round(v).toLocaleString('ko-KR'));
         break; }
     }
     if (f.fx !== 'count' && f.fx !== 'draw') { f.el.style.opacity = o; f.el.style.transform = tr; }
   }
-  // fade through white around every internal cut
+  // letterbox slides in after the title card
+  const bh = BAR * easeIO(clamp((t - 4.6) / .8));
+  document.querySelector('#bars .t').style.height = bh + 'px'; document.querySelector('#bars .b').style.height = bh + 'px';
+  // grain on graphic scenes only (footage keeps its own texture)
+  const fr = Math.round(t * 30);
+  gc.style.display = cur && !FOOTAGE.has(cur.id) && cur.id !== 'cover' ? 'block' : 'none';
+  gx.putImageData(tiles[fr % tiles.length], 0, 0);
+  // dip to black at every cut
   let w = 0;
-  for (const s of scenes) { if (s.t0 > 0) w = Math.max(w, 1 - clamp(Math.abs(t - s.t0) / FADE)); }
-  w = Math.max(w, clamp((t - (TOTAL - .6)) / .6) * 0);            // no fade at the very end (closing holds on navy)
+  for (const s of scenes) if (s.t0 > 0) w = Math.max(w, 1 - clamp(Math.abs(t - s.t0) / FADE));
+  if (t < .01) w = 1;
   document.getElementById('fade').style.opacity = w;
 }
 window.SCENES = scenes.map(({ id, t0, t1 }) => ({ id, t0, t1 }));

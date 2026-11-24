@@ -6,7 +6,7 @@ const { chromium } = require('playwright');
 const { spawn } = require('child_process');
 const path = require('path'), fs = require('fs');
 const FPS = 30;
-const OVER_FOOTAGE = new Set(['s3', 's5']);           // these scenes have a hole for video underneath
+const OVER_FOOTAGE = new Set(['reveal', 'demo']);           // these scenes have a hole for video underneath
 const HERE = __dirname, OUT = path.join(HERE, '..', 'edit', 'media');
 fs.mkdirSync(OUT, { recursive: true });
 
