@@ -2,6 +2,9 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
+<base href="/promo/">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1E3A8A">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>INFU RETRO — 제품 소개 영상</title>
 <meta name="description" content="가상의 자이로 AI 모델을 활용한 동물용 약물이상감지 시스템 INFU RETRO 제품 소개 영상 (1분)">
@@ -33,6 +36,8 @@ h1 i { display: inline-block; width: .34em; height: .3em; background: var(--navy
 .dl a { font-size: 14px; font-weight: 700; color: var(--navy); text-decoration: none; padding: 9px 16px; border: 1px solid var(--line); border-radius: 99px; background: #FFFFFF; }
 .dl a:hover { border-color: var(--navy); }
 .note { margin-top: 10px; font-size: 13px; color: #7A8699; }
+.off { margin-top: 6px; font-size: 13px; font-weight: 700; color: var(--cy); }
+.off.ok::before { content: "● "; color: #16A34A; }
 .chap { margin-top: 36px; display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; }
 .chap button { text-align: left; border: 1px solid var(--line); background: #FFFFFF; border-radius: 12px; padding: 12px 14px; font: inherit; cursor: pointer; }
 .chap button:hover { border-color: var(--navy); }
@@ -47,7 +52,7 @@ footer { margin-top: 40px; font-size: 12px; color: #8A96AB; line-height: 1.6; }
   <h1>INFU<i></i>RETRO — 제품 소개 영상</h1>
   <p class="lead">가상의 자이로 AI 모델을 활용한 동물용 약물이상감지 시스템 · 쓰던 폴대에 끼우기만 하면, 수액 이상을 먼저 알립니다.</p>
 
-  <div class="player"><video id="v" controls playsinline preload="metadata" poster="poster.jpg"><source id="src" src="export/INFU-RETRO_%ED%99%8D%EB%B3%B4%EC%98%81%EC%83%81_1080p60.mp4" type="video/mp4"></video></div>
+  <div class="player"><video id="v" controls playsinline autoplay muted loop preload="auto" poster="poster.jpg"><source id="src" src="export/INFU-RETRO_%ED%99%8D%EB%B3%B4%EC%98%81%EC%83%81_1080p60.mp4" type="video/mp4"></video></div>
 
   <div class="bar">
     <div class="q" role="group" aria-label="화질">
@@ -60,6 +65,7 @@ footer { margin-top: 40px; font-size: 12px; color: #8A96AB; line-height: 1.6; }
     </div>
   </div>
   <p class="note" id="note">4K 120fps(HEVC)는 지원하는 기기 · 브라우저에서 선택할 수 있습니다.</p>
+  <p class="off" id="off">오프라인 저장 준비 중…</p>
 
   <div class="chap" id="chap"></div>
 
@@ -74,10 +80,27 @@ if (!hevc) { uhd.disabled = true; document.getElementById('note').textContent = 
 function pick(k) {
   const t = v.currentTime, play = !v.paused;
   src.src = SRC[k]; v.load(); v.addEventListener('loadedmetadata', () => { v.currentTime = t; if (play) v.play(); }, { once: true });
+  if (navigator.serviceWorker && navigator.serviceWorker.controller) navigator.serviceWorker.controller.postMessage({ cache: SRC[k] });
   hd.classList.toggle('on', k === 'hd'); uhd.classList.toggle('on', k === 'uhd');
 }
 hd.onclick = () => pick('hd'); uhd.onclick = () => hevc && pick('uhd');
 const CH = [[0, '표지'], [2.5, '도입'], [5.5, '시장의 변화'], [10.5, '제도의 변화'], [14, '현장의 문제'], [18, '현장 검증'], [21, '제품 공개'], [25.5, 'MVP 구현'], [28.5, '실제 시연'], [38.5, '기술 · 칼만 필터'], [41.5, '가상 AI 자이로 · PID'], [45, '4×4 패턴'], [47.5, 'RCNN'], [50, '검증 · 수상'], [54, '구매 협약'], [58, '마무리']];
+// endless playback: loop, and resume if the browser pauses the muted autoplay
+v.loop = true;
+v.addEventListener('ended', () => { v.currentTime = 0; v.play(); });
+v.play().catch(() => {});
+// offline: service worker caches the page + 1080p video (and 4K once chosen)
+const off = document.getElementById('off');
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js', { scope: '/promo/' }).then(async reg => {
+    await navigator.serviceWorker.ready;
+    const ctl = () => navigator.serviceWorker.controller || reg.active;
+    navigator.serviceWorker.addEventListener('message', e => {
+      if (e.data && e.data.cached === SRC.hd) { off.textContent = e.data.ok ? '오프라인 재생 준비 완료 — 인터넷 없이도 재생됩니다' : '오프라인 저장 실패 — 다시 접속하면 재시도합니다'; off.classList.toggle('ok', e.data.ok); }
+    });
+    ctl().postMessage({ cache: SRC.hd });
+  }).catch(() => { off.textContent = '이 브라우저는 오프라인 저장을 지원하지 않습니다'; });
+} else off.textContent = '이 브라우저는 오프라인 저장을 지원하지 않습니다';
 const box = document.getElementById('chap');
 for (const [t, n] of CH) {
   const b = document.createElement('button'); b.type = 'button';

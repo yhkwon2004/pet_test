@@ -1,0 +1,10 @@
+{
+  "name": "INFU RETRO 제품 소개 영상",
+  "short_name": "INFU RETRO",
+  "start_url": "/promo/",
+  "scope": "/promo/",
+  "display": "standalone",
+  "background_color": "#F4F7FB",
+  "theme_color": "#1E3A8A",
+  "icons": [{ "src": "icon-512.png", "sizes": "512x512", "type": "image/png" }]
+}
