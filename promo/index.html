@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>INFU RETRO — 제품 소개 영상</title>
+<meta name="description" content="가상의 자이로 AI 모델을 활용한 동물용 약물이상감지 시스템 INFU RETRO 제품 소개 영상 (1분)">
+<meta property="og:title" content="INFU RETRO — 제품 소개 영상">
+<meta property="og:description" content="쓰던 폴대에 끼우기만 하면, 수액 이상을 먼저 알립니다.">
+<meta property="og:image" content="poster.jpg">
+<meta property="og:type" content="video.other">
+<style>
+@font-face { font-family: 'PV'; src: url('src/PretendardVariable.woff2') format('woff2'); font-weight: 45 920; font-display: swap; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --navy: #1E3A8A; --cy: #0E7490; --tx: #0F1B2D; --sub: #4A5568; --line: #E3E8F0; }
+body { font-family: 'PV', -apple-system, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; color: var(--tx); letter-spacing: -.01em;
+  background: radial-gradient(110% 80% at 70% 0%, #FFFFFF 0%, #F4F7FB 60%, #EAF0F8 100%); min-height: 100vh; -webkit-font-smoothing: antialiased; }
+main { max-width: 1280px; margin: 0 auto; padding: 48px 24px 64px; }
+.top { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.kick { font-size: 13px; font-weight: 750; letter-spacing: .3em; color: var(--cy); }
+.co { font-size: 13px; font-weight: 750; letter-spacing: .4em; color: #8A96AB; }
+h1 { margin-top: 10px; font-size: clamp(28px, 4vw, 48px); font-weight: 820; letter-spacing: -.035em; line-height: 1.15; }
+h1 i { display: inline-block; width: .34em; height: .3em; background: var(--navy); clip-path: polygon(0 0, 100% 0, 50% 100%); margin: 0 .05em; transform: translateY(-.06em); }
+.lead { margin-top: 10px; font-size: clamp(15px, 1.6vw, 19px); color: var(--sub); font-weight: 550; }
+.player { position: relative; margin-top: 28px; border-radius: 18px; overflow: hidden; background: #0B1220; box-shadow: 0 30px 80px rgba(16,34,74,.18), 0 0 0 1px rgba(16,34,74,.06); aspect-ratio: 16 / 9; }
+.player video { display: block; width: 100%; height: 100%; background: #0B1220; }
+.bar { margin-top: 16px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.q { display: inline-flex; border: 1px solid var(--line); border-radius: 99px; background: #FFFFFF; padding: 4px; }
+.q button { border: 0; background: none; font: inherit; font-size: 14px; font-weight: 700; color: var(--sub); padding: 8px 16px; border-radius: 99px; cursor: pointer; }
+.q button.on { background: var(--navy); color: #FFFFFF; }
+.q button:disabled { opacity: .4; cursor: not-allowed; }
+.dl { margin-left: auto; display: flex; gap: 8px; flex-wrap: wrap; }
+.dl a { font-size: 14px; font-weight: 700; color: var(--navy); text-decoration: none; padding: 9px 16px; border: 1px solid var(--line); border-radius: 99px; background: #FFFFFF; }
+.dl a:hover { border-color: var(--navy); }
+.note { margin-top: 10px; font-size: 13px; color: #7A8699; }
+.chap { margin-top: 36px; display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; }
+.chap button { text-align: left; border: 1px solid var(--line); background: #FFFFFF; border-radius: 12px; padding: 12px 14px; font: inherit; cursor: pointer; }
+.chap button:hover { border-color: var(--navy); }
+.chap b { display: block; font-size: 15px; font-weight: 750; }
+.chap span { font-size: 12px; font-weight: 700; color: var(--cy); letter-spacing: .05em; }
+footer { margin-top: 40px; font-size: 12px; color: #8A96AB; line-height: 1.6; }
+</style>
+</head>
+<body>
+<main>
+  <div class="top"><p class="kick">PRODUCT FILM · 1:00</p><p class="co">INFUTECH</p></div>
+  <h1>INFU<i></i>RETRO — 제품 소개 영상</h1>
+  <p class="lead">가상의 자이로 AI 모델을 활용한 동물용 약물이상감지 시스템 · 쓰던 폴대에 끼우기만 하면, 수액 이상을 먼저 알립니다.</p>
+
+  <div class="player"><video id="v" controls playsinline preload="metadata" poster="poster.jpg"><source id="src" src="export/INFU-RETRO_%ED%99%8D%EB%B3%B4%EC%98%81%EC%83%81_1080p60.mp4" type="video/mp4"></video></div>
+
+  <div class="bar">
+    <div class="q" role="group" aria-label="화질">
+      <button id="hd" class="on" type="button">1080p · 60fps</button>
+      <button id="uhd" type="button">4K · 120fps</button>
+    </div>
+    <div class="dl">
+      <a href="export/INFU-RETRO_%ED%99%8D%EB%B3%B4%EC%98%81%EC%83%81.mp4" download="INFU-RETRO_광고영상_4K120.mp4">4K 120fps 다운로드 · 51MB</a>
+      <a href="export/INFU-RETRO_%ED%99%8D%EB%B3%B4%EC%98%81%EC%83%81_1080p60.mp4" download="INFU-RETRO_광고영상_1080p60.mp4">1080p 60fps 다운로드 · 24MB</a>
+    </div>
+  </div>
+  <p class="note" id="note">4K 120fps(HEVC)는 지원하는 기기 · 브라우저에서 선택할 수 있습니다.</p>
+
+  <div class="chap" id="chap"></div>
+
+  <footer>© INFUTECH · 2026 캡스톤 디자인 · 산업통상부장관상(창의적종합설계경진대회) · 우수논문 2편(국내 · 국제 AIT 2026)<br>도입부 밤 입원실 이미지는 연출 이미지입니다. 수치 출처는 영상 내 표기를 따릅니다.</footer>
+</main>
+<script>
+const v = document.getElementById('v'), src = document.getElementById('src');
+const SRC = { hd: 'export/INFU-RETRO_%ED%99%8D%EB%B3%B4%EC%98%81%EC%83%81_1080p60.mp4', uhd: 'export/INFU-RETRO_%ED%99%8D%EB%B3%B4%EC%98%81%EC%83%81.mp4' };
+const hevc = v.canPlayType('video/mp4; codecs="hvc1.1.6.L153.B0"') || v.canPlayType('video/mp4; codecs="hvc1"');
+const hd = document.getElementById('hd'), uhd = document.getElementById('uhd');
+if (!hevc) { uhd.disabled = true; document.getElementById('note').textContent = '이 브라우저는 4K HEVC 재생을 지원하지 않아 1080p 60fps로 재생합니다. 4K 원본은 다운로드해 보실 수 있습니다.'; }
+function pick(k) {
+  const t = v.currentTime, play = !v.paused;
+  src.src = SRC[k]; v.load(); v.addEventListener('loadedmetadata', () => { v.currentTime = t; if (play) v.play(); }, { once: true });
+  hd.classList.toggle('on', k === 'hd'); uhd.classList.toggle('on', k === 'uhd');
+}
+hd.onclick = () => pick('hd'); uhd.onclick = () => hevc && pick('uhd');
+const CH = [[0, '표지'], [2.5, '도입'], [5.5, '시장의 변화'], [10.5, '제도의 변화'], [14, '현장의 문제'], [18, '현장 검증'], [21, '제품 공개'], [25.5, 'MVP 구현'], [28.5, '실제 시연'], [38.5, '기술 · 칼만 필터'], [41.5, '가상 AI 자이로 · PID'], [45, '4×4 패턴'], [47.5, 'RCNN'], [50, '검증 · 수상'], [54, '구매 협약'], [58, '마무리']];
+const box = document.getElementById('chap');
+for (const [t, n] of CH) {
+  const b = document.createElement('button'); b.type = 'button';
+  b.innerHTML = `<span>0:${String(Math.floor(t)).padStart(2, '0')}</span><b>${n}</b>`;
+  b.onclick = () => { v.currentTime = t; v.play(); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+  box.appendChild(b);
+}
+</script>
+</body>
+</html>
